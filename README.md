@@ -8,6 +8,13 @@
 
 ![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/RevisedPlannedSafetyFrameWork-1.jpg)
 
+## Running Framework
+
+1. ./atg.sh 
+2. python3 -m pytest --alluredir=results nav_test.py -v -s
+3. roslaunch jackal_navigation odom_navigation_demo.launch 
+4. allure serve results/
+
 ## Acknowledgements
 
 Supervised by:

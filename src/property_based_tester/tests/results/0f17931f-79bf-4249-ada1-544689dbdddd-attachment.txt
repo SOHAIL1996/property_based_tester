@@ -1,5 +1,0 @@
-[32mINFO    [0m rospy.internal:core.py:138 topic[/collision_object] adding connection to [/move_group], count 0
-[32mINFO    [0m rospy.internal:core.py:138 topic[/attached_collision_object] adding connection to [/move_group], count 0
-[32mINFO    [0m rosout:pick_Toyota_client.py:52 step1: move_to_neutral
-[32mINFO    [0m rosout:pick_Toyota_client.py:77 step2: pick target1
-[32mINFO    [0m rosout:pick_Toyota_client.py:100 Pick attempt: 1

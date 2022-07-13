@@ -1,1 +1,0 @@
-[32mINFO    [0m rospy.internal:core.py:138 topic[/rosout] adding connection to [/rosout], count 0

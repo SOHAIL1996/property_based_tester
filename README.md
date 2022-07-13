@@ -11,7 +11,7 @@
 ## Running Framework
 
 1. ./atg.sh 
-2. python3 -m pytest --alluredir=results nav_test.py -v -s
+2. python3 -m pytest --alluredir=results tests/nav_test.py -v -s
 3. roslaunch jackal_navigation odom_navigation_demo.launch 
 4. allure serve results/
 

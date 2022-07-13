@@ -1,5 +1,0 @@
-[32mINFO    [0m rospy.internal:core.py:140 topic[/rosout] adding connection to [/rosout], count 0
-[32mINFO    [0m rospy.core:core.py:560 signal_shutdown [signal-2]
-[32mINFO    [0m rospy.internal:core.py:140 topic[/rosout] removing connection to /rosout
-[32mINFO    [0m rospy.internal:core.py:140 topic[/clock] removing connection to http://legion:34709/
-[32mINFO    [0m rospy.impl.masterslave:masterslave.py:342 signal-2

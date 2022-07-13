@@ -21,7 +21,10 @@ import numpy as np
 import rospy
 from property_based_tester.scen_gen.random_scenario_generator import World
 from property_based_tester.scen_gen.random_scenario_generator import Model
-from property_based_tester.logger.data_logger import data_logger
+
+# from property_based_tester.logger.data_logger import data_logger
+from property_based_tester.temporal_cache.data_depot import data_logger
+
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.configuration.config import choices
 from property_based_tester.configuration.config import collision_checker
@@ -100,4 +103,4 @@ def model_placement(param=None):
                 print(colored('No space for model insertion ','red'),dynamic_model.model_real_name)
                 continue
     print(colored('Completed spawning dynamic models','cyan'))
-    data_logger('src/logger/logs/start_up')
+    # data_logger('src/logger/logs/start_up')

@@ -1,9 +1,0 @@
-[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/status] adding connection to [http://legion:45133/], count 0
-[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] adding connection to [http://legion:45133/], count 0
-[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/feedback] adding connection to [http://legion:45133/], count 0
-[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/cancel] adding connection to [/move_base], count 0
-[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/goal] adding connection to [/move_base], count 0
-[32mINFO    [0m rospy.internal:core.py:140 topic[/tf] adding connection to [http://legion:40955/], count 0
-[32mINFO    [0m rospy.internal:core.py:140 topic[/tf] adding connection to [http://legion:37261/], count 1
-[32mINFO    [0m rospy.internal:core.py:140 topic[/tf] adding connection to [http://legion:34559/], count 2
-[32mINFO    [0m rospy.internal:core.py:140 topic[/tf_static] adding connection to [http://legion:40955/], count 0

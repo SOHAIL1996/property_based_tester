@@ -1,4 +1,0 @@
-[32mINFO    [0m rosout:pick_place_client.py:51 step1: move_to_neutral
-[32mINFO    [0m rospy.internal:core.py:138 topic[/collision_object] adding connection to [/move_group], count 0
-[32mINFO    [0m rosout:pick_place_client.py:82 step2: pick target1
-[32mINFO    [0m rosout:pick_place_client.py:140 Pick attempt: 1

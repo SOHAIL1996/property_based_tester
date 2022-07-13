@@ -27,9 +27,9 @@ print(colored('Starting Automated Testing Gazebo Simulation', 'green'))
 
 try:
     conf = Configuration()
-    robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_file])
+    # robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_file])
     model_placement()
 finally:
     time.sleep(1000)
-    robot_node.terminate() 
+    # robot_node.terminate() 
     print(colored('Terminating ros!','red'))    

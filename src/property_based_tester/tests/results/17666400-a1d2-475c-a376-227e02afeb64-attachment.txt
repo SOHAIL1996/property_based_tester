@@ -1,1 +1,0 @@
-[1m[31mERROR   [0m rosout:simple_action_client.py:236 Received comm state PREEMPTING when in simple state DONE with SimpleActionClient in NS /hsrb/omni_base_controller/follow_joint_trajectory

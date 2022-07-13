@@ -1,1 +1,0 @@
-[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_rgbd_sensor/depth_registered/rectified_points] adding connection to [http://192.168.0.101:35991/], count 0

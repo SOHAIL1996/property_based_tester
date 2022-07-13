@@ -6,7 +6,7 @@
 
 ## Framework Overview
 
-![Overview of Automatic Test Generator](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/RevisedPlannedSafetyFrameWork.pdf)
+![Overview of Automatic Test Generator](hhttps://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/RevisedPlannedSafetyFrameWork-1.jpg)
 
 ## Acknowledgements
 

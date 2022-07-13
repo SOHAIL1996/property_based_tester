@@ -1,0 +1,17 @@
+Configuration Settings,Selected Parameters,Models,X-pos,Y-pos,Z-pos,Q-1,Q-2,Q-3,Q-4
+Launch directory,/home/orion92/catkin_ws/src/atg/launch/hsr.launch,ground_plane,0.0,0.0,0.0,0.0,0.0,0.0,1.0
+Model directory,/home/orion92/catkin_ws/src/atg/Environment/models,hsrb,-0.018000000000000002,2.839,0.02,0.0,-0.0,0.711,0.703
+Number of models for multi obstacle platform,8,room,0.0,0.0,0.0,0.0,0.0,0.0,1.0
+Multi object platform,table,table337,-0.0,4.0,0.02,0.0,-0.0,0.0,1.0
+Objects for multi object platform,"bottle,glass,plate,spoon,fork,mug,saltshaker",shelf467,4.8,3.0,0.025,0.0,0.0,0.7070000000000001,0.7070000000000001
+Number of obstacles for navigation,4,sofa588,-3.7,-4.8,0.025,0.0,0.0,0.7070000000000001,0.7070000000000001
+Obstacles for navigation,"coffeetable,minicoffeetable",cabinet163,4.5,-4.8,0.02,0.031,-0.031,0.706,0.706
+Platform for pick-action,minicoffeetable,glass564,0.006,3.425,0.495,0.0,-0.0,-0.004,1.0
+Object for pick-action,glass,fork602,-0.868,3.786,0.499,-0.01,0.0,-0.0,1.0
+Platform for perception,coffeetable,mug774,-0.797,4.343,0.495,0.0,0.0,0.013000000000000001,1.0
+Objects for perception,glass,spoon678,0.47,3.534,0.49700000000000005,-0.002,-0.0,-0.0,1.0
+Selected world environment,room,glass133,0.726,3.5269999999999997,0.495,0.0,-0.0,-0.002,1.0
+,,mug536,-0.27899999999999997,4.016,0.495,0.001,-0.001,0.031,1.0
+,,mug776,-0.7929999999999999,4.453,0.495,-0.0,0.0,-0.871,0.49200000000000005
+,,saltshaker130,1.162,4.448,0.495,0.0,-0.0,-0.001,1.0
+,,glass254,0.53,4.172,0.495,0.0,-0.0,0.009000000000000001,1.0

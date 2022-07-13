@@ -1,0 +1,1 @@
+[32mINFO    [0m rospy.internal:core.py:138 topic[/known_object] adding connection to [/collision_environment], count 0

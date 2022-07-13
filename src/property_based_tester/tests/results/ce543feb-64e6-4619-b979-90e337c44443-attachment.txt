@@ -1,0 +1,2 @@
+[32mINFO    [0m rospy.internal:core.py:138 topic[/clock] adding connection to [http://192.168.0.101:41299/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/command_velocity] adding connection to [/gazebo], count 0

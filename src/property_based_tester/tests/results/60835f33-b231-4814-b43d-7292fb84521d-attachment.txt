@@ -1,0 +1,1 @@
+[32mINFO    [0m rospy.internal:core.py:138 topic[/clock] adding connection to [http://192.168.0.101:44369/], count 0

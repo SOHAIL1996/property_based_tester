@@ -1,0 +1,22 @@
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/status] adding connection to [http://legion:36275/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] adding connection to [http://legion:36275/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/feedback] adding connection to [http://legion:36275/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/cancel] adding connection to [/move_base], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/goal] adding connection to [/move_base], count 0
+[32mINFO    [0m rospy.core:core.py:560 signal_shutdown [signal-2]
+[32mINFO    [0m rospy.internal:core.py:140 topic[/rosout] removing connection to /rosout
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/goal] removing connection to /move_base
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/cancel] removing connection to /move_base
+[32mINFO    [0m rospy.internal:core.py:140 topic[/clock] removing connection to http://legion:45487/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/status] removing connection to http://legion:36275/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] removing connection to http://legion:36275/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] removing connection to http://legion:36275/
+[1m[31mERROR   [0m rospy.topics:topics.py:329 Traceback (most recent call last):
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/topics.py", line 326, in close
+    c.close()
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/feedback] removing connection to http://legion:36275/
+[32mINFO    [0m rospy.impl.masterslave:masterslave.py:342 signal-2

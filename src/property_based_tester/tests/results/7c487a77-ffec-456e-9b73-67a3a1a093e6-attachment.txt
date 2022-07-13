@@ -1,0 +1,70 @@
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/status] adding connection to [http://legion:42747/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] adding connection to [http://legion:42747/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/feedback] adding connection to [http://legion:42747/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/goal] adding connection to [/move_base], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/cancel] adding connection to [/move_base], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/clock] removing connection to http://legion:45487/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/rosout] removing connection to /rosout
+[32mINFO    [0m rospy.core:core.py:560 signal_shutdown [signal-2]
+[33mWARNING [0m rospy.registration:registration.py:379 cannot unregister with master due to network issues
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/goal] removing connection to /move_base
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/cancel] removing connection to /move_base
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/status] removing connection to http://legion:42747/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] removing connection to http://legion:42747/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/feedback] removing connection to http://legion:42747/
+[32mINFO    [0m rospy.impl.masterslave:masterslave.py:342 signal-2
+[1m[31mERROR   [0m rospy.rosout:rosout.py:107 Unable to report rosout: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/src/property_based_tester/tests/action_client/navigation_client.py", line 65, in pose_action_client
+    if not distance_tolerance > 0.0:
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/timer.py", line 165, in sleep
+    raise rospy.exceptions.ROSInterruptException("ROS shutdown request")
+rospy.exceptions.ROSInterruptException: ROS shutdown request
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/msproxy.py", line 165, in get_param_cached
+    return rospy.impl.paramserver.get_param_server_cache().get(resolved_key)
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/paramserver.py", line 167, in get
+    raise KeyError(key)
+KeyError: '/rosout_disable_topics_generation'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/rosout.py", line 91, in _rosout
+    disable_topics_ = rospy.get_param_cached("/rosout_disable_topics_generation", False)
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/client.py", line 490, in get_param_cached
+    return _param_server.get_param_cached(param_name)
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/msproxy.py", line 168, in get_param_cached
+    code, msg, value = self.target.subscribeParam(rospy.names.get_caller_id(), rospy.core.get_node_uri(), resolved_key)
+  File "/usr/lib/python3.8/xmlrpc/client.py", line 1109, in __call__
+    return self.__send(self.__name, args)
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/core.py", line 669, in _ServerProxy__request
+    return xmlrpcclient.ServerProxy._ServerProxy__request(
+  File "/usr/lib/python3.8/xmlrpc/client.py", line 1450, in __request
+    response = self.__transport.request(
+  File "/usr/lib/python3.8/xmlrpc/client.py", line 1153, in request
+    return self.single_request(host, handler, request_body, verbose)
+  File "/usr/lib/python3.8/xmlrpc/client.py", line 1165, in single_request
+    http_conn = self.send_request(host, handler, request_body, verbose)
+  File "/usr/lib/python3.8/xmlrpc/client.py", line 1278, in send_request
+    self.send_content(connection, request_body)
+  File "/usr/lib/python3.8/xmlrpc/client.py", line 1308, in send_content
+    connection.endheaders(request_body)
+  File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/usr/lib/python3.8/http/client.py", line 922, in connect
+    self.sock = self._create_connection(
+  File "/usr/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+[1m[31mERROR   [0m rosout:navigation_client.py:68 ROS shutdown request

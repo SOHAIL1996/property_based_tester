@@ -1,0 +1,52 @@
+<?xml version='1.0'?>
+<sdf version="1.5">
+  <model name="table"> <!-- Very important to change-->
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+    <link name="body">
+
+    <inertial> >
+    <mass>177</mass>
+    <!-- <pose>0 0 344 0 0 0</pose> -->
+      <inertia> 
+        <ixx>19.64</ixx>      
+        <ixy>-0.014</ixy>     
+        <ixz>0</ixz>        
+        <iyy>141</iyy>      
+        <iyz>0</iyz>      
+        <izz>152</izz>  
+      </inertia>
+    </inertial>
+
+       <collision name="collision"> <!-- You can use mesh like below -->
+        <geometry>
+          <mesh><!-- Very important to change-->
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/table/meshes/table.stl</uri>
+             <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <mesh><!-- Very important to change-->
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/table/meshes/table.stl</uri>
+             <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <script> <!-- Very important to change-->
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/table/materials/scripts</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/table/materials/textures</uri>
+             <name>material Gazebo/DarkGrey</name>
+          </script>
+        </material>
+      </visual>
+
+    </link>
+  </model>
+</sdf>
+
+
+

@@ -1,0 +1,1 @@
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/state] adding connection to [http://192.168.0.101:41469/], count 0

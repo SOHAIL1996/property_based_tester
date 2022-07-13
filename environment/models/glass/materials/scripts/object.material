@@ -1,0 +1,21 @@
+material object/rgb
+{
+  receive_shadows off
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+
+      texture_unit
+      {
+        texture ../textures/rgb.jpeg
+        scale 0.01 0.01
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<?xml version='1.0'?>
+<sdf version="1.5">
+  <model name="bottle"> <!-- Very important to change-->
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+    <link name="body">
+
+    <inertial> >
+    <mass>0.301</mass>
+    <pose>-0.003 -0.024 118.081 0 0 0</pose> 
+      <inertia> 
+        <ixx>0.003</ixx>      
+        <ixy>4.33e-8</ixy>     
+        <ixz>-3.65e-8</ixz>        
+        <iyy>0.003</iyy>      
+        <iyz>-2.57e-7</iyz>      
+        <izz>3.88e-4</izz>  
+      </inertia>
+    </inertial>
+
+       <collision name="collision"> <!-- You can use mesh like below -->
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/bottle/meshes/bottle.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+      <transparency>0.8</transparency>
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/bottle/meshes/bottle.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <script> 
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/bottle/materials/scripts</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/bottle/materials/textures</uri>
+             <name>Gazebo/FlatBlack</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

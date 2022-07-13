@@ -1,0 +1,48 @@
+<?xml version='1.0'?>
+<sdf version="1.5">
+  <model name="plate"> <!-- Very important to change-->
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+    <link name="body">
+
+      <inertial> 
+        <mass>0.608</mass>
+        <pose>7.16734e-014 1.3232e-013 8.174 0 0 0</pose>
+          <inertia> 
+          <ixx>0.012</ixx>      
+          <ixy>-6.842e-049</ixy>     
+          <ixz>0</ixz>        
+          <iyy>0.012</iyy>      
+          <iyz>-9.63e-035 </iyz>      
+          <izz>0.023</izz>  
+        </inertia>
+      </inertial>
+
+       <collision name="collision"> <!-- You can use mesh like below -->
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/plate/meshes/plate.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/plate/meshes/plate.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <script> 
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/plate/materials/scripts</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/plate/materials/textures</uri>
+             <name>Gazebo/FlatBlack</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

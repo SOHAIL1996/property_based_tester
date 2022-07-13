@@ -1,0 +1,16 @@
+material object/grey
+{
+  receive_shadows off
+
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture ../textures/grey.png
+        scale 0.01 0.01
+      }
+    }
+  }
+}

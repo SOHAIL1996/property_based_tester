@@ -1,0 +1,4 @@
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/apply_force/cancel] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/grasp/goal] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/grasp/cancel] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/apply_force/goal] adding connection to [/gazebo], count 0

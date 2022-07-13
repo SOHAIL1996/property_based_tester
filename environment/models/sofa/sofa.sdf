@@ -1,0 +1,35 @@
+<?xml version='1.0'?>
+<sdf version="1.5">
+  <model name="sofa"> <!-- Very important to change-->
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+    <link name="body">
+
+      <collision name="collision"> <!-- You can use mesh like below -->
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/sofa/meshes/sofa.stl</uri>
+             <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/sofa/meshes/sofa.stl</uri>
+             <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <script> 
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/sofa/materials/scripts</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/sofa/materials/textures</uri>
+             <name>PR2/White</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

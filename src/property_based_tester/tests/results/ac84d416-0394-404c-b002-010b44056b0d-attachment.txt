@@ -1,0 +1,16 @@
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/status] adding connection to [http://legion:34867/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] adding connection to [http://legion:34867/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/feedback] adding connection to [http://legion:34867/], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/goal] adding connection to [/move_base], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/cancel] adding connection to [/move_base], count 0
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/result] removing connection to http://legion:34867/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/feedback] removing connection to http://legion:34867/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/status] removing connection to http://legion:34867/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/goal] removing connection to /move_base
+[32mINFO    [0m rospy.internal:core.py:140 topic[/move_base/cancel] removing connection to /move_base
+[32mINFO    [0m rospy.core:core.py:560 signal_shutdown [signal-2]
+[32mINFO    [0m rospy.internal:core.py:140 topic[/rosout] removing connection to /rosout
+[32mINFO    [0m rospy.internal:core.py:140 topic[/clock] removing connection to http://legion:45487/
+[32mINFO    [0m rospy.internal:core.py:140 topic[/clock] removing connection to http://legion:45487/
+[32mINFO    [0m rospy.impl.masterslave:masterslave.py:342 signal-2
+[1m[31mERROR   [0m rosout:navigation_client.py:68 ROS shutdown request

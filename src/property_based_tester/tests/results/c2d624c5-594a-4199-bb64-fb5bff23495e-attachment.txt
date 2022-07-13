@@ -1,0 +1,120 @@
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf_static] adding connection to [http://192.168.0.101:40715/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:38253/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:45869/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:33387/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:46573/], count 1
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:40715/], count 2
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:32923/], count 1
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:42673/], count 5
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:46639/], count 5
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:38583/], count 8
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:36187/], count 9
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] adding connection to [http://192.168.0.101:43625/], count 10
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/status] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/result] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/feedback] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/goal] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/cancel] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/feedback] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/result] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/status] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/goal] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/cancel] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/feedback] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/result] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/status] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/goal] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/cancel] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/result] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/feedback] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/status] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/cancel] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/goal] adding connection to [/gazebo], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/result] adding connection to [http://192.168.0.101:42105/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/feedback] adding connection to [http://192.168.0.101:42105/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/status] adding connection to [http://192.168.0.101:42105/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/cancel] adding connection to [/hsrb/impedance_control], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/goal] adding connection to [/hsrb/impedance_control], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/joint_states] adding connection to [http://192.168.0.101:43625/], count 0
+[32mINFO    [0m rospy.core:core.py:454 signal_shutdown [shutdown]
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/cancel] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/goal] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/goal] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/goal] removing connection to /hsrb/impedance_control
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/goal] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/rosout] removing connection to /rosout
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/cancel] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/cancel] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/cancel] removing connection to /hsrb/impedance_control
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/cancel] removing connection to /move_base_server
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/goal] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/goal] removing connection to /move_base_server
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/cancel] removing connection to /gazebo
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/status] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/result] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/feedback] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:38253/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:45869/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:33387/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:46573/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:40715/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:32923/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:42673/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:46639/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:38583/
+[33mWARNING [0m rospy.internal:core.py:144 Unknown error initiating TCP/IP socket to 192.168.0.101:49071 (http://192.168.0.101:38583/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 559, in connect
+    self.local_endpoint = self.socket.getsockname()
+AttributeError: 'NoneType' object has no attribute 'getsockname'
+
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:36187/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/state] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/result] removing connection to http://192.168.0.101:43759/
+[33mWARNING [0m rospy.internal:core.py:144 Unknown error initiating TCP/IP socket to 192.168.0.101:54669 (http://192.168.0.101:43625/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 559, in connect
+    self.local_endpoint = self.socket.getsockname()
+AttributeError: 'NoneType' object has no attribute 'getsockname'
+
+[32mINFO    [0m rospy.internal:core.py:138 topic[/tf_static] removing connection to http://192.168.0.101:40715/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/feedback] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/feedback] removing connection to http://192.168.0.101:42105/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/status] removing connection to http://192.168.0.101:43625/
+[33mWARNING [0m rospy.internal:core.py:144 Unknown error initiating TCP/IP socket to 192.168.0.101:54669 (http://192.168.0.101:43625/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 559, in connect
+    self.local_endpoint = self.socket.getsockname()
+AttributeError: 'NoneType' object has no attribute 'getsockname'
+
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/status] removing connection to http://192.168.0.101:42105/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/feedback] removing connection to http://192.168.0.101:43625/
+[33mWARNING [0m rospy.internal:core.py:144 Unknown error initiating TCP/IP socket to 192.168.0.101:54669 (http://192.168.0.101:43625/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 559, in connect
+    self.local_endpoint = self.socket.getsockname()
+AttributeError: 'NoneType' object has no attribute 'getsockname'
+
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/result] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/omni_base_controller/follow_joint_trajectory/status] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/status] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/gripper_controller/follow_joint_trajectory/feedback] removing connection to http://192.168.0.101:43625/
+[33mWARNING [0m rospy.internal:core.py:144 Unknown error initiating TCP/IP socket to 192.168.0.101:54669 (http://192.168.0.101:43625/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 559, in connect
+    self.local_endpoint = self.socket.getsockname()
+AttributeError: 'NoneType' object has no attribute 'getsockname'
+
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/joint_states] removing connection to http://192.168.0.101:43625/
+[33mWARNING [0m rospy.internal:core.py:144 Unknown error initiating TCP/IP socket to 192.168.0.101:54669 (http://192.168.0.101:43625/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 559, in connect
+    self.local_endpoint = self.socket.getsockname()
+AttributeError: 'NoneType' object has no attribute 'getsockname'
+
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/feedback] removing connection to http://192.168.0.101:43759/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/head_trajectory_controller/follow_joint_trajectory/result] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/clock] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/arm_trajectory_controller/follow_joint_trajectory/result] removing connection to http://192.168.0.101:43625/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/hsrb/impedance_control/follow_joint_trajectory/result] removing connection to http://192.168.0.101:42105/
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/status] removing connection to http://192.168.0.101:43759/
+[32mINFO    [0m rospy.impl.masterslave:masterslave.py:342 shutdown
+[33mWARNING [0m rospy.internal:core.py:144 Unknown error initiating TCP/IP socket to 192.168.0.101:54669 (http://192.168.0.101:43625/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 559, in connect
+    self.local_endpoint = self.socket.getsockname()
+AttributeError: 'NoneType' object has no attribute 'getsockname'

@@ -1,0 +1,54 @@
+<?xml version='1.0'?>
+<sdf version="1.5">
+  <model name="knife"> <!-- Very important to change-->
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+    <link name="body">
+
+      <inertial> 
+        <mass>0.421</mass>
+        <!-- <pose>0 0 8 0 0 0</pose> -->
+          <inertia> 
+          <!-- <ixx>2.851e-005 </ixx>      
+          <ixy>-1.713e-005</ixy>     
+          <ixz>-1.015e-007</ixz>        
+          <iyy>0.001</iyy>      
+          <iyz>6.66e-009</iyz>      
+          <izz>0.001</izz>   -->
+          <ixx>1</ixx>      
+          <ixy>0</ixy>     
+          <ixz>0</ixz>        
+          <iyy>1</iyy>      
+          <iyz>0</iyz>      
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+
+       <collision name="collision"> <!-- You can use mesh like below -->
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/knife/meshes/knife.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/knife/meshes/knife.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <script> 
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/knife/materials/scripts</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/knife/materials/textures</uri>
+             <name>Gazebo/FlatBlack</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

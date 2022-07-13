@@ -1,0 +1,6 @@
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/status] adding connection to [http://192.168.0.101:39667/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/result] adding connection to [http://192.168.0.101:39667/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/feedback] adding connection to [http://192.168.0.101:39667/], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/cancel] adding connection to [/move_base_server], count 0
+[32mINFO    [0m rospy.internal:core.py:138 topic[/move_base_server/goal] adding connection to [/move_base_server], count 0
+[32mINFO    [0m rosout:nav_client.py:72 Sending action lib goal to move_base_server,

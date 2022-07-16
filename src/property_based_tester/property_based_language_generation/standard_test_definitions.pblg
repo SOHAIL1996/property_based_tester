@@ -7,4 +7,12 @@ Test_definitions (S)
             composite-property 'must_not_collide'
             tolerance 0.5
             time-constraint 0.2
+        user_test
+            composite-property 'must_not_collide'
+            tolerance 0.5
+            time-constraint 0.2
+        user_test
+            composite-property 'must_be_at'
+            tolerance 0.5
+            time-constraint 0.2
 Test_definitions (E)

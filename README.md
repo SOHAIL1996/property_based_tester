@@ -38,9 +38,11 @@ roslaunch jackal_navigation odom_navigation_demo.launch
 ./pblg.sh
 ```
 
+- Test definitions are written in `src/property_based_tester/property_based_language_generator/standard_test_definitions.pblg`
+
 - (In the works!)  Used for feeding into hypothesis for  generating tests 
 
-- Test definitions are written in `src/property_based_tester/property_based_language_generator/standard_test_definitions.pblg`
+![Sample: TextX Generation](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/standard_test_definition.dot.png)
 
 ## Running Framework (Hypothesis|ROS|Omniverse Nvidia IssacSim|Allure|TextX)
 
@@ -49,6 +51,7 @@ roslaunch jackal_navigation odom_navigation_demo.launch
 ```bash
 ./omni.sh
 ```
+![Sample: Nvidia Issac Sim](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/jackal_nvidia_issac_sim.png)
 
 ## Acknowledgements
 
@@ -82,6 +85,14 @@ Supervised by:
 * `torchvision==0.5.0`
 * `allure-python-commons==2.6.0`
 * `hypothesis--4.57.1`
+* `Nvidia-Issac-Sim`
+* `TextX`
+
+### ROS Packages
+
+* `Jackal`
+* `xARM6`
+* `Husky`
 
 ## Hardware Requirements
 

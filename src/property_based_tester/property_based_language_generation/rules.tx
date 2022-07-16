@@ -1,7 +1,8 @@
 TestInterface:
-  'test_start'
-    test_type*=TestType
-  'test_end'
+  'Test_definitions (S)'
+    robot = Robot
+    test_type+=TestType
+  'Test_definitions (E)'
 ;
 
 TestType:
@@ -10,13 +11,11 @@ TestType:
 
 StandardTest:
     'standard_test'
-    robot += Robot
     'standard' standard = STRING
 ; 
 
 CustomTest:
     'user_test'
-    robot += Robot
     'composite-property' composite_property = STRING
     'tolerance' tolerance = FLOAT
     'time-constraint' time_constraint = FLOAT?

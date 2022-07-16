@@ -1,0 +1,22 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+140176665873568 -> 140176665873712 [label="robot" arrowtail=diamond dir=both]
+140176665873712[label="{:Robot|+robot_name:str='Husky'\l+robot_type:str='UGV'\l}"]
+140176665873568 -> 140176665873856 [label="test_type:0" arrowtail=diamond dir=both]
+140176665873856[label="{:StandardTest|+standard:str='ISO 238-1'\l}"]
+140176665873568 -> 140176665873952 [label="test_type:1" arrowtail=diamond dir=both]
+140176665873952[label="{:CustomTest|+composite_property:str='must_not_collide'\l+tolerance:float=0.5\l+time_constraint:float=0.2\l}"]
+140176665873568[label="{:TestInterface|}"]
+
+}

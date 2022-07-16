@@ -8,13 +8,13 @@
 
 ![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/RevisedPlannedSafetyFrameWork-1.jpg)
 
-## Running Framework
+## Running Framework (Hypothesis|ROS|Gazebo|Allure|TextX)
 
 1. Basic setup 
 ```bash
 ./atg.sh
 ``` 
-2. Run from inside the src/property_based_tester folder, this applies the tests
+2. Run from inside the `src/property_based_tester` folder, this applies the tests
 ```bash
 python3 -m pytest --alluredir=results tests/nav_test.py -v -s
 ```
@@ -22,9 +22,32 @@ python3 -m pytest --alluredir=results tests/nav_test.py -v -s
 ```bash
 roslaunch jackal_navigation odom_navigation_demo.launch 
 ```
-4. Result generator
+### Result generation (Allure)
+
+- Run from inside the `src/property_based_tester` folder, this generates the results viewable from chrome
+
 ```bash
 ./result_generation.sh
+```
+
+### Property-Based Language Generator (TextX)
+
+- Run from inside the `src/property_based_tester/property_based_language_generator` folder, generates a DSL
+
+```bash
+./pblg.sh
+```
+
+- (In the works!)  Used for feeding into hypothesis for  generating tests 
+
+- Test definitions are written in `src/property_based_tester/property_based_language_generator/standard_test_definitions.pblg`
+
+## Running Framework (Hypothesis|ROS|Omniverse Nvidia IssacSim|Allure|TextX)
+
+- (In the works!) Generate Universal Scene Description physics based simulation in ISSAC Sim.
+
+```bash
+./omni.sh
 ```
 
 ## Acknowledgements

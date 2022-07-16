@@ -1,5 +1,33 @@
+TestInterface:
+  'test_start'
+    test_type*=TestType
+  'test_end'
+;
+
+TestType:
+    StandardTest | CustomTest
+;
+
+StandardTest:
+    'standard_test'
+    robot += Robot
+    'standard' standard = STRING
+; 
+
+CustomTest:
+    'user_test'
+    robot += Robot
+    'composite-property' composite_property = STRING
+    'tolerance' tolerance = FLOAT
+    'time-constraint' time_constraint = FLOAT?
+; 
+
+
 Robot:
-  'robot' who=ID
-  'must not collide' who=STRING
-  'tolerance' who=INT?
+    'robot' robot_name = STRING
+    'type' robot_type = STRING
+;
+
+Comment:
+  /A comment/
 ;

@@ -14,4 +14,8 @@ Date: July 16, 2022
 ----------------------------------------------------
 """
 
-import nltk
+from textx import metamodel_from_file
+
+
+pblg = metamodel_from_file('rules.tx')
+test_model = pblg.model_from_file('test_definitions.pblg')

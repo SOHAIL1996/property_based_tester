@@ -1,0 +1,15 @@
+test_start
+    standard_test
+        robot 'Husky' 
+        type 'UGV'
+            standard 'ISO 238-1'
+test_end
+
+test_start
+    user_test
+        robot 'Husky' 
+        type 'UGV'
+            composite-property 'must_not_collide'
+            tolerance 0.5
+            time-constraint 0.2
+test_end

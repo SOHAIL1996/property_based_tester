@@ -42,7 +42,7 @@ roslaunch jackal_navigation odom_navigation_demo.launch
 
 - (In the works!)  Used for feeding into hypothesis for  generating tests 
 
-![Sample: TextX Generation](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/standard_test_definition.dot.png)
+![Sample: TextX Generation](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/standard_test_definition.png)
 
 ## Running Framework (Hypothesis|ROS|Omniverse Nvidia IssacSim|Allure|TextX)
 

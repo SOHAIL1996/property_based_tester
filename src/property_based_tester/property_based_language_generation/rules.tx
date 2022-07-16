@@ -1,0 +1,5 @@
+Robot:
+  'robot' who=ID
+  'must not collide' who=STRING
+  'tolerance' who=INT?
+;

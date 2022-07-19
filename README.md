@@ -100,10 +100,10 @@ Supervised by:
 
 These constitute the bare minimum requirements to run this package.
 
-* `8 Gb ram`
-* `Intel® Core™ i5-6300HQ CPU @ 2.30GHz × 4 `
-* `Nvidia GeForce GTX 960M/PCIe/SSE2`
-* `250 Gb hard disk`
+* `16 Gb RAM`
+* `AMD Ryzen 5 5600H CPU @ 3.30GHz`
+* `Nvidia GeForce RTX 3060`
+* `250 Gb SSD`
 <!-- 
 
 ## Note has to be redone

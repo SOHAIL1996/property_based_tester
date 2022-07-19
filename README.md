@@ -22,6 +22,8 @@ python3 -m pytest --alluredir=results tests/nav_test.py -v -s
 ```bash
 roslaunch jackal_navigation odom_navigation_demo.launch 
 ```
+![Husky Odom Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif)
+
 ### Result generation (Allure)
 
 - Run from inside the `src/property_based_tester` folder, this generates the results viewable from chrome

@@ -43,9 +43,9 @@ roslaunch jackal_navigation odom_navigation_demo.launch
 - Test definitions are written in `src/property_based_tester/property_based_language_generator/standard_test_definitions.pblg`
 
 - (In the works!)  Used for feeding into hypothesis for  generating tests 
-<p align="center">
+
 ![Sample: TextX Generation](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/standard_test_definitions.png)
-</p>
+
 ## Running Framework (Hypothesis|ROS|Omniverse Nvidia IssacSim|Allure|TextX)
 
 - (In the works!) Generate Universal Scene Description physics based simulation in ISSAC Sim.

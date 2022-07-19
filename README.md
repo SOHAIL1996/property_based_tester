@@ -90,7 +90,7 @@ Supervised by:
 * `Nvidia-Issac-Sim`
 * `TextX`
 
-### ROS Packages
+### Required ROS Packages
 
 * `Jackal`
 * `xARM6`

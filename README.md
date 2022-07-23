@@ -29,6 +29,11 @@ roslaunch jackal_navigation odom_navigation_demo.launch
 ```bash
 ./result_generation.sh
 ```
+### Conversion of custom robot
+
+```bash
+gz sdf -p /my_urdf.urdf > /my_sdf.sdf
+```
 
 ### Property-Based Language Generator (TextX)
 

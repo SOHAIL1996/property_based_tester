@@ -22,6 +22,8 @@ python3 -m pytest --alluredir=results tests/nav_test.py -v -s
 ```bash
 roslaunch jackal_navigation odom_navigation_demo.launch 
 ```
+![Husky Odom Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif)
+
 ### Result generation (Allure)
 
 - Run from inside the `src/property_based_tester` folder, this generates the results viewable from chrome
@@ -93,7 +95,7 @@ Supervised by:
 * `Nvidia-Issac-Sim`
 * `TextX`
 
-### ROS Packages
+### Required ROS Packages
 
 * `Jackal`
 * `xARM6`
@@ -103,10 +105,10 @@ Supervised by:
 
 These constitute the bare minimum requirements to run this package.
 
-* `8 Gb ram`
-* `Intel® Core™ i5-6300HQ CPU @ 2.30GHz × 4 `
-* `Nvidia GeForce GTX 960M/PCIe/SSE2`
-* `250 Gb hard disk`
+* `16 Gb RAM`
+* `AMD Ryzen 5 5600H CPU @ 3.30GHz`
+* `Nvidia GeForce RTX 3060`
+* `250 Gb SSD`
 <!-- 
 
 ## Note has to be redone

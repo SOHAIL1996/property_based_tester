@@ -23,7 +23,8 @@ import numpy as np
 import rospy
 
 from geometry_msgs.msg import *
-from gazebo_msgs.srv import SpawnModel, DeleteModel, SpawnModelRequest, DeleteModelRequest
+from gazebo_msgs.msg import ModelState 
+from gazebo_msgs.srv import SpawnModel, DeleteModel, SpawnModelRequest, DeleteModelRequest, SetModelState
 
 from property_based_tester.configuration.config import bound_box
 from property_based_tester.configuration.config import Configuration
@@ -39,7 +40,7 @@ class RobotModel():
         
         conf = Configuration()
 
-        self.model_dir       = conf.model_dir
+        self.robo_dir        = conf.robots_dir+'/urdf/'+model_name+'.urdf'
         self.model_name      = model_name
 
         self.object_pose = Pose()
@@ -51,31 +52,31 @@ class RobotModel():
         self.object_pose.orientation.z = np.cos(R/2) * np.cos(P/2) * np.sin(Y/2) - np.sin(R/2) * np.sin(P/2) * np.cos(Y/2)
         self.object_pose.orientation.w = np.cos(R/2) * np.cos(P/2) * np.cos(Y/2) + np.sin(R/2) * np.sin(P/2) * np.sin(Y/2)
 
-        self.bounding_box = bound_box(self.model_real_name)
+        # self.bounding_box = bound_box(self.model_real_name)
         
-    def spawn_robot(self, model_type, model_name, file_location):
+    def spawn_robot(self, model_type):
         """
         This function spawns the robot.
         
         Args:
             model_name (str): Name of the object and the object ID from which the model will be obtained.
         """
-        model_desc = '{model_name: '+ model_name +'}'
+
 
         if model_type == "urdf":
             srv_spawn_model = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
-            file_xml = open(file_location)
+            file_xml = open(self.robo_dir)
             xml_string=file_xml.read()
 
         elif model_type == "urdf.xacro":
-            p = os.popen("rosrun xacro xacro.py " + file_location)
+            p = os.popen("rosrun xacro xacro.py " + self.robo_dir)
             xml_string = p.read()
             p.close()
             srv_spawn_model = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
 
         elif model_type == "model":
             srv_spawn_model = rospy.ServiceProxy('/gazebo/spawn_gazebo_model', SpawnModel)
-            file_xml = open(file_location)
+            file_xml = open(self.robo_dir )
             xml_string=file_xml.read()
         else:
             rospy.logerr('Model type not know. model_type = ' + model_type)
@@ -107,5 +108,25 @@ class RobotModel():
         if res.success == True:
             rospy.loginfo(res.status_message + " " + self.model_name)
         else:
-            print("Error: Robot not spawned.")
-		
+            print("Error: Robot not spawned.")    	
+
+    def robot_pose(self):
+
+        rospy.wait_for_service('/gazebo/set_model_state')
+        try:
+           self.set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+        except rospy.ServiceException :
+            print("Service call failed")
+
+        state_msg = ModelState()
+        state_msg.model_name =  self.model_name
+
+        state_msg.pose.position.x = self.object_pose.position.x
+        state_msg.pose.position.y = self.object_pose.position.y
+        state_msg.pose.position.z = self.object_pose.position.z
+        state_msg.pose.orientation.x = self.object_pose.orientation.x
+        state_msg.pose.orientation.y = self.object_pose.orientation.y
+        state_msg.pose.orientation.z = self.object_pose.orientation.z
+        state_msg.pose.orientation.w = self.object_pose.orientation.w
+
+        resp = self.set_state(state_msg)

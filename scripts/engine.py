@@ -15,11 +15,11 @@ Author    : Salman Omar Sohail
 Date: July 01, 2022
 ----------------------------------------------------
 """
-import time
 import subprocess
 
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.scen_gen.model_placement import model_placement
+from property_based_tester.scen_gen.robot_placement import RobotModel
 
 from termcolor import colored
 
@@ -27,9 +27,16 @@ print(colored('Starting Automated Testing Gazebo Simulation', 'green'))
 
 try:
     conf = Configuration()
-    # robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_file])
+    robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_husk_file])
+
     model_placement()
-finally:
-    time.sleep(1000)
-    # robot_node.terminate() 
+
+    robo = RobotModel('jackal_robot_issac',x=0,y=0,z=0.1,R=0,P=0,Y=0)
+    robo.spawn_robot('urdf')
+
+    while True:
+        pass
+
+except KeyboardInterrupt:
+    robot_node.terminate() 
     print(colored('Terminating ros!','red'))    

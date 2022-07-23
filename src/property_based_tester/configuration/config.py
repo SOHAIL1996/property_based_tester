@@ -33,11 +33,13 @@ class Configuration():
     def __init__(self):
         
         self.rospkg_name = 'property_based_tester'
-        self.launch_file = 'spawn_robot.launch'
+        self.launch_husk_file = 'spawn_robot.launch'
+        self.launch_controller_file = 'jackal_controllers.launch'
 
         self.root_dir = os.path.dirname(os.path.abspath(__file__))
         self.workspace = rospkg.RosPack().get_path(self.rospkg_name)
         self.model_dir = self.workspace +'/environment/models'
+        self.robots_dir = self.workspace +'/environment/robots'
 
         self.yaml_parser()
 

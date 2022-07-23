@@ -23,19 +23,18 @@ import numpy as np
 import subprocess
 import pytest
 import allure
+import time
 
 from property_based_tester.tests.action_client.navigation_client import pose_action_client
 from property_based_tester.tests.obstacle_generator.obstacle_gen import Model
 from property_based_tester.configuration.config import Configuration
+from property_based_tester.scen_gen.model_placement import model_placement
+from property_based_tester.scen_gen.robot_placement import RobotModel
 
 from property_based_tester.temporal_cache.data_depot import data_logger
 # from property_based_tester.temporal_cache.data_depot import data_reader
 
-# from property_based_tester.logger.data_logger import log_reader_comparator
-# from property_based_tester.logger.data_logger import log_hsrb_reader
-
 from hypothesis import given, settings, Verbosity, example
-
 import hypothesis.strategies as st
 
 global spawned_items
@@ -56,11 +55,33 @@ class TestNavigation(Base):
             val = np.random.randint(min_val, max_val)
             return val
         return _parameters
+    def pytest_configure():
+        pytest.robot_node = 0
+
+    def get_selected_standards():
+        return [['ISO 23482-1','7.2'],['ISO 3691','4.8']]
+
+    def get_user_tests():
+        return [['ISO 23482-1','7.2'],['ISO 3691','4.8']]
     
-    def test_set_up(self,randomizer):
+    @pytest.fixture()
+    def world_spawn(self):        
+        model_placement()
+
+    @pytest.fixture()
+    def robo_spawn(self):
+
+        # conf = Configuration()
+        # pytest.robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_controller_file])
+        
+        robo = RobotModel('jackal_robot_issac',x=0,y=0,z=0.1,R=0,P=0,Y=0)
+        robo.robot_pose()
+    
+    def test_set_up(self, randomizer, robo_spawn):
         """Initializing navigation scenario.
         """  
         rospy.init_node('nav_test')
+
         store = [[0,0]]
         is_spawned = False
         for i in range(int(self.config.model_obst_num)):
@@ -77,7 +98,11 @@ class TestNavigation(Base):
                 spawned_items.append(obstacle_name + obstacles.model_number)
                 obstacles.insert_model()
                 is_spawned = False
-            
+
+    @pytest.mark.parametrize("standard, section", get_selected_standards())
+    def test_standard(self, standard, section):
+        pytest.skip("unsupported configuration")
+    
     # @settings(max_examples=1)
     # @given(st.sampled_from(['table','shelf','cabinet','sofa']))
     # def test_scenario_generation_map(destination): 
@@ -146,6 +171,9 @@ class TestNavigation(Base):
         test = Model('glass') 
         for i in spawned_items:  
             test.delete_model(i)  
+
+        # pytest.robot_node.terminate() 
+
         # Attaching log file to the test results
         # logs = self.config.config_data_frame('nav_end')
         # data = logs.to_csv(index=False)

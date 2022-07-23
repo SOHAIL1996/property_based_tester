@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Jackal Config-->
+  <arg name="front_laser" default="false" /> 
+  <arg name="default_config" value="front_laser" if="$(arg front_laser)" />
+  <arg name="default_config" value="base" unless="$(arg front_laser)" />
+  <arg name="config" default="$(arg default_config)" />
+  <arg name="joystick" default="false" />   
+
+  <include file="$(find jackal_description)/launch/description.launch">
+    <arg name="config" value="$(arg config)" />
+  </include>
+  <include file="$(find jackal_control)/launch/control.launch" />
+  <include file="$(find jackal_control)/launch/teleop.launch">
+    <arg name="joystick" value="$(arg joystick)" />
+  </include>
+
+</launch>

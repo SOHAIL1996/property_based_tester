@@ -4,7 +4,7 @@
 ---------------------------------------------------- 
 Navigation Tests
 
-Tests Lucy in a variety of parameterized and randomized
+Tests a UGV in a variety of parameterized and randomized
 navigation scenarios.
 ----------------------------------------------------
 Supervisor: Prof. Dr. Nico Hochgeschwender
@@ -30,6 +30,8 @@ from property_based_tester.tests.obstacle_generator.obstacle_gen import Model
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.scen_gen.model_placement import model_placement
 from property_based_tester.scen_gen.robot_placement import RobotModel
+
+from property_based_tester.properties.primitive_properties import spatial_information
 
 from property_based_tester.temporal_cache.data_depot import data_logger
 # from property_based_tester.temporal_cache.data_depot import data_reader
@@ -101,6 +103,7 @@ class TestNavigation(Base):
 
     @pytest.mark.parametrize("standard, section", get_selected_standards())
     def test_standard(self, standard, section):
+        spatial_information()
         pytest.skip("unsupported configuration")
     
     # @settings(max_examples=1)
@@ -113,14 +116,14 @@ class TestNavigation(Base):
     #     data_logger('logger/logs/nav_end')
     #     assert result == True
 
-    def test_verification_of_navigation(self, randomizer): 
-        """Defines a scenario for the rest of the tests to run in using coodrinates.
-        """    
-        coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
-        temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_nav_log.py'])
-        result = pose_action_client(coord_x, coord_y, direction)
-        temporal_logger.terminate() 
-        assert result == True    
+    # def test_verification_of_navigation(self, randomizer): 
+    #     """Defines a scenario for the rest of the tests to run in using coodrinates.
+    #     """    
+    #     coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
+    #     temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_nav_log.py'])
+    #     result = pose_action_client(coord_x, coord_y, direction)
+    #     temporal_logger.terminate() 
+    #     assert result == True    
 
     # def test_collision_detection(self):
     #     """ Checking if the position of objects changed furing navigation i.e. Lucy collided with an obstacle.

@@ -15,6 +15,6 @@
   </include>
 
   <!-- Jackal Config-->
-  <include file="$(find property_based_tester)/launch/include/jackal_controllers.launch"/>
+  <include file="$(find property_based_tester)/launch/include/jackal_controller.launch"/>
 
 </launch>

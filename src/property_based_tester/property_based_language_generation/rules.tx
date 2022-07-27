@@ -12,6 +12,7 @@ TestType:
 StandardTest:
     'standard_test'
     'standard' standard = STRING
+    'section' section = STRING
 ; 
 
 CustomTest:

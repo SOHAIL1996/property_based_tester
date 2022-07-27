@@ -33,8 +33,6 @@ class Configuration():
     def __init__(self):
         
         self.rospkg_name = 'property_based_tester'
-        self.launch_husk_file = 'spawn_robot.launch'
-        self.launch_controller_file = 'jackal_controllers.launch'
 
         self.root_dir = os.path.dirname(os.path.abspath(__file__))
         self.workspace = rospkg.RosPack().get_path(self.rospkg_name)
@@ -57,6 +55,15 @@ class Configuration():
 
             if key == "World":
                 self.world = value
+
+            if key == "Robot":
+                for key_ro, value_ro in value.items():
+                    if key_ro == "robot_urdf_name":
+                        self.robot_urdf = value_ro
+                    if key_ro == "robot_spawner_name":
+                        self.launch_robot_file = value_ro
+                    if key_ro == "robot_controller":
+                        self.launch_controller_file = value_ro
 
             if key == "Models_manipulation":
                 for key_manip, value_manip in value.items():

@@ -8,9 +8,17 @@
 #                                                           #
 # -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- #
 
-#  Multi_obstacle_platform     = table
-
  World: room
+
+ Robot: 
+   robot_urdf_name: husky
+   robot_spawner_name: spawn_husky_controller.launch
+   robot_controller: husky_controller.launch
+
+#  Robot: 
+#    robot_urdf_name: jackal_robot_issac
+#    robot_spawner_name: spawn_jackal_controller.launch
+#    robot_controller: jackal_controller.launch
 
  Models_manipulation:
    Spawnable: 8
@@ -28,9 +36,3 @@
    Objects:
      - coffeetable
      - minicoffeetable
-
-
-#  Platform_for_obstacle_pick  = minicoffeetable
-#  Obstacles_for_pick          = glass
-#  Platform_for_obstacle_perc  = coffeetable
-#  Obstacles_for_perc          = glass

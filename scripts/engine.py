@@ -27,11 +27,11 @@ print(colored('Starting Automated Testing Gazebo Simulation', 'green'))
 
 try:
     conf = Configuration()
-    robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_husk_file])
+    robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_robot_file])
 
     model_placement()
 
-    robo = RobotModel('jackal_robot_issac',x=0,y=0,z=0.1,R=0,P=0,Y=0)
+    robo = RobotModel(conf.robot_urdf,x=0,y=0,z=0.1,R=0,P=0,Y=0)
     robo.spawn_robot('urdf')
 
     while True:

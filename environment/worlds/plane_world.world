@@ -45,9 +45,8 @@
     <!-- The Camera position -->
     <gui>
         <camera name="user_camera">
-            <pose>2.576 3.779 2.978 0 0.5537 -2.187</pose> <!--Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+            <pose>12.0 -4.0 7.5 0 0.56 2.87</pose> <!--Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
         </camera>
-    </gui>
-    
+    </gui>    
   </world>
 </sdf>

@@ -31,22 +31,19 @@ from property_based_tester.configuration.config import Configuration
 from property_based_tester.scen_gen.model_placement import model_placement
 from property_based_tester.scen_gen.robot_placement import RobotModel
 
-from property_based_tester.properties.primitive_properties import spatial_information
-
-from property_based_tester.temporal_cache.data_depot import data_logger
-# from property_based_tester.temporal_cache.data_depot import data_reader
+from property_based_tester.properties.composite_properties import CompositeProperties
 
 from hypothesis import given, settings, Verbosity, example
 import hypothesis.strategies as st
 
 global spawned_items
-
 spawned_items = []
 
 class Base:
     @pytest.fixture(autouse=True)
     def set_up(self):
         self.config = Configuration()
+        self.composite_properties = CompositeProperties()
         
 @pytest.mark.usefixtures('set_up')         
 class TestNavigation(Base):
@@ -59,6 +56,7 @@ class TestNavigation(Base):
         return _parameters
     def pytest_configure():
         pytest.robot_node = 0
+        pytest.collision = False
 
     def get_selected_standards():
         return [['ISO 23482-1','7.2'],['ISO 3691','4.8']]
@@ -76,8 +74,9 @@ class TestNavigation(Base):
         # conf = Configuration()
         # pytest.robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_controller_file])
         
-        robo = RobotModel('jackal_robot_issac',x=0,y=0,z=0.1,R=0,P=0,Y=0)
+        robo = RobotModel(self.config.robot_urdf,x=0,y=0,z=0.1,R=0,P=0,Y=0)
         robo.robot_pose()
+        # pass
     
     def test_set_up(self, randomizer, robo_spawn):
         """Initializing navigation scenario.
@@ -103,7 +102,7 @@ class TestNavigation(Base):
 
     @pytest.mark.parametrize("standard, section", get_selected_standards())
     def test_standard(self, standard, section):
-        spatial_information()
+        
         pytest.skip("unsupported configuration")
     
     # @settings(max_examples=1)
@@ -116,24 +115,20 @@ class TestNavigation(Base):
     #     data_logger('logger/logs/nav_end')
     #     assert result == True
 
-    # def test_verification_of_navigation(self, randomizer): 
-    #     """Defines a scenario for the rest of the tests to run in using coodrinates.
-    #     """    
-    #     coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
-    #     temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_nav_log.py'])
-    #     result = pose_action_client(coord_x, coord_y, direction)
-    #     temporal_logger.terminate() 
-    #     assert result == True    
+    def test_verification_of_navigation(self, randomizer): 
+        """Defines a scenario for the rest of the tests to run in using coodrinates.
+        """    
+        coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
+        temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_nav_log.py'])
+        result = pose_action_client(coord_x, coord_y, direction)
+        temporal_logger.terminate() 
+        pytest.collision = self.composite_properties.in_collision
+        assert result == True    
 
-    # def test_collision_detection(self):
-    #     """ Checking if the position of objects changed furing navigation i.e. Lucy collided with an obstacle.
-    #     """    
-    #     lower_tolerance_difference, upper_tolerance_difference = log_reader_comparator('X-pos', 'nav_start', 'nav_end')
-    #     assert lower_tolerance_difference == upper_tolerance_difference
-    #     lower_tolerance_difference, upper_tolerance_difference = log_reader_comparator('Y-pos', 'nav_start', 'nav_end')
-    #     assert lower_tolerance_difference == upper_tolerance_difference
-    #     lower_tolerance_difference, upper_tolerance_difference = log_reader_comparator('Z-pos', 'nav_start', 'nav_end')
-    #     assert lower_tolerance_difference == upper_tolerance_difference
+    def test_collision_detection(self):
+        """ Checking if the position of objects changed furing navigation i.e. Lucy collided with an obstacle.
+        """    
+        assert pytest.collision == False
 
     # def test_location_verification(self):
     #     """Checking if the projected position of the robot matches 

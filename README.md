@@ -48,11 +48,65 @@ roslaunch husky_navigation move_base_mapless_demo.launch
 ```bash
 ./result_generation.sh
 ```
-### Conversion of custom robot
+### Collision sensor addition in Gazebo
 
-```bash
-gz sdf -p /my_urdf.urdf > /my_sdf.sdf
+1. Use the default template to add the senor plugin to your robot.
+
+- Link and joint template:
 ```
+<!-- Links and joints templplate if you do not already have -->
+ <link name="sim_collider">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="2.0 0.8 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+         <box size="2.0 0.8 0.1"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="sim_collider_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/> <!-- Change param parent link -->
+    <child link="sim_collider"/>   <!-- Change param same as link -->
+  </joint>
+```
+
+- Sensor template:
+```
+<!-- Contact Sensor -->
+  <gazebo reference="sim_collider"> <!-- Change param same as link -->
+    <sensor name="sim_collider_link_contact_sensor" type="contact">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <contact>
+        <collision>base_link_fixed_joint_lump__sim_collider_collision_2</collision> <!-- Change param same as link -->
+      </contact>
+      <plugin filename="libgazebo_ros_bumper.so" name="gazebo_ros_sim_collider_controller">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <frameName>world</frameName> <!-- Change param -->
+        <bumperTopicName>bumper_contact_state</bumperTopicName>
+      </plugin>
+    </sensor>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+```
+2. Convert your URDF to SDF as there are parsing issues in detecting collision name.
+```bash
+gz sdf -p my.urdf > my.sdf
+```
+3. Search in the .sdf file the collision tag corresponding to your URDF and place it in the contact sensors collision tag.
 
 ### Property-Based Language Generator (TextX)
 

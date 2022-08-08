@@ -35,7 +35,7 @@ if __name__ == '__main__':
             time.sleep(2)
 
             df = pd.DataFrame(columns=logs_objects, data=logs_all[1:])
-            data_logger(df, config.workspace+'/src/property_based_tester/temporal_cache/logs/navi')
+            data_logger(df, config.workspace+'/src/property_based_tester/temporal_cache/logs/test')
             logs_all.extend([['------','------','------','------','------','------','------','------ ','------']])
     finally:
         print('Error in file storage')       

@@ -39,8 +39,8 @@ class Configuration():
         self.model_dir = self.workspace +'/environment/models'
         self.robots_dir = self.workspace +'/environment/robots'
 
-        self.grammar_dir = self.workspace +'/src/property_based_tester/src/property_based_tester/property_based_language_generation/rules.tx'
-        self.test_def_dir = self.workspace +'src/property_based_tester/property_based_language_generation/standard_test_definitions.pblg'
+        self.grammar_dir = self.workspace +'/src/property_based_tester/property_based_language_generation/rules.tx'
+        self.test_def_dir = self.workspace +'/src/property_based_tester/property_based_language_generation/standard_test_definitions.pblg'
 
         self.yaml_parser()
 

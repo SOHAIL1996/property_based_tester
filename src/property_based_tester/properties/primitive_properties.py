@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 ---------------------------------------------------- 
@@ -29,7 +29,12 @@ class PrimitiveProperties():
     def __init__(self) -> None:
         self.config = Configuration()       
 
-    def spatial_information(self):
-       
+    def spatial_temporal_information(self):
+
         data = data_reader(self.config.workspace+'/src/property_based_tester/temporal_cache/logs/navi')
-        print(data)
+        data = data.drop(columns=['Unnamed: 0'])
+
+        self.robot_data = data.loc[data['Models'] == self.config.robot_urdf]
+
+# a = PrimitiveProperties()
+# a.spatial_information()

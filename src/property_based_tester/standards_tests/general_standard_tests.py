@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 ---------------------------------------------------- 
-Composite Properties
-
-Culmination of composite properties that can used.
+Tests compliant to  several standards as mentioned
+in the README.md
 ----------------------------------------------------
 Supervisor: Prof. Dr. Nico Hochgeschwender
             Prof. Dr. Paul Ploger
@@ -22,20 +21,8 @@ from gazebo_msgs.msg import ContactsState
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.properties.primitive_properties import PrimitiveProperties
 
-class CompositeProperties():
+class StandardTesting():
 
     def __init__(self) -> None:
-        
-        self.in_collision = False
+        pass
 
-        self.config = Configuration()
-        self.primitive_properties = PrimitiveProperties()
-
-        rospy.Subscriber("bumper_contact_state", ContactsState, self.robot_collision_callback)
-        
-    def robot_collision_callback(self, data):
-        info = data.states
-        if info:
-            collider_1 = info[0].collision1_name
-            collider_2 = info[0].collision2_name
-            self.in_collision = True         

@@ -21,7 +21,7 @@ from gazebo_msgs.msg import ContactsState
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.properties.primitive_properties import PrimitiveProperties
 
-class StandardTesting():
+class UserTesting():
 
     def __init__(self) -> None:
         pass

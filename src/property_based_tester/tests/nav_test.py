@@ -117,7 +117,7 @@ class TestNavigation(Base):
     #     """Defines a scenario for the rest of the tests to run in using coodrinates.
     #     """    
     #     coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
-    #     temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_nav_log.py'])
+    #     temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'])
     #     result = pose_action_client(coord_x, coord_y, direction)
     #     temporal_logger.terminate() 
     #     pytest.collision = self.composite_properties.in_collision

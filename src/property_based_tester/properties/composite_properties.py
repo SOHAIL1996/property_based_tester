@@ -17,7 +17,6 @@ Date: July 01, 2022
 """
 
 import rospy
-from gazebo_msgs.msg import ContactsState
 
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.properties.primitive_properties import PrimitiveProperties
@@ -26,16 +25,23 @@ class CompositeProperties():
 
     def __init__(self) -> None:
         
-        self.in_collision = False
-
         self.config = Configuration()
         self.primitive_properties = PrimitiveProperties()
 
-        rospy.Subscriber("bumper_contact_state", ContactsState, self.robot_collision_callback)
-        
-    def robot_collision_callback(self, data):
-        info = data.states
-        if info:
-            collider_1 = info[0].collision1_name
-            collider_2 = info[0].collision2_name
-            self.in_collision = True         
+    def must_be_at(self, robot, area, time, tolerance):
+        pass
+
+    def must_not_be_at(self, robot, area, time, tolerance):
+        pass
+
+    def must_be_near_to(self, robot, object, time, tolerance):
+        pass
+
+    def must_not_be_near_to(self, robot, object, time, tolerance):
+        pass
+
+    def must_collide(self, robot, object):
+        pass
+
+    def must_not_collide(self, robot, object):
+        pass   

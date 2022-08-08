@@ -1,0 +1,41 @@
+import numpy as np
+from stl import mesh
+from itertools import accumulate as _accumulate, repeat as _repeat
+
+
+def mesh_extractor(model):
+    """Extracts mesh from the model folder.
+    """    
+    conf = Configuration()
+    model_directory = conf.workspace +'/environment/models/'+ model +'/meshes/'+ model +'.stl'
+    model_mesh = mesh.Mesh.from_file(model_directory)
+    return model_mesh
+    
+def find_mins_maxs(obj):
+    """This extracts the minimum and maximum value of the meshes boundaries.
+
+    Args:
+        obj 
+        class.obj: A class object obtained from the numpy-stl library. The 
+        functionality is directly tied to the mesh_extracto function.
+        
+
+    Returns:
+        minx, maxx, miny, maxy, minz, maxz 
+        float: The values of the cartesian coordinate.
+    """   
+    minx = obj.x.min()
+    maxx = obj.x.max()
+    miny = obj.y.min()
+    maxy = obj.y.max()
+    minz = obj.z.min()
+    maxz = obj.z.max()
+    return minx, maxx, miny, maxy, minz, maxz
+
+def bound_box(model_name):
+    """Generates bounding box for a given model.
+    """    
+    mesh_obj = mesh_extractor(model_name)
+    cartesian_min_max_vals = find_mins_maxs(mesh_obj)
+    adjusting_for_scaling = np.asarray(cartesian_min_max_vals)*0.001
+    return adjusting_for_scaling   

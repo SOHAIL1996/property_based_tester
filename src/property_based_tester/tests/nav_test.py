@@ -26,8 +26,8 @@ import allure
 import time
 
 from property_based_tester.configuration.config import Configuration
-from property_based_tester.tests.action_client.navigation_client import pose_action_client
-from property_based_tester.tests.obstacle_generator.obstacle_gen import Model
+from property_based_tester.robot_controllers.navigation_client import pose_action_client
+from property_based_tester.scen_gen.obstacle_gen import Model
 from property_based_tester.scen_gen.model_placement import model_placement
 from property_based_tester.scen_gen.robot_placement import RobotModel
 

@@ -30,10 +30,10 @@ import actionlib
 from mdr_pickup_action.msg import PickupAction, PickupGoal
 
 from property_based_tester.utilities.Omni_base_locator.oml import OmniListener
-from property_based_tester.tests.obstacle_generator.obstacle_gen import Model
+from property_based_tester.scen_gen.obstacle_gen import Model
 from property_based_tester.tests.file_reader.file_reader import Configuration
-from property_based_tester.tests.action_client.pick_client import picker_client
-from property_based_tester.tests.action_client.pick_Toyota_client import MoveItPickAndPlace
+from property_based_tester.robot_controllers.pick_client import picker_client
+from property_based_tester.robot_controllers.pick_Toyota_client import MoveItPickAndPlace
 from hypothesis import given, settings, Verbosity, example
 from property_based_tester.logger.data_logger import data_logger, lucy_gripper_information
 from property_based_tester.logger.data_logger import data_reader, object_information

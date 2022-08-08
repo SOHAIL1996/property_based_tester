@@ -31,10 +31,10 @@ import allure
 from gazebo_msgs.srv import GetLightProperties
 from mdr_pickup_action.msg import PickupAction, PickupGoal
 
-from property_based_tester.tests.obstacle_generator.obstacle_gen import Model
+from property_based_tester.scen_gen.obstacle_gen import Model
 from property_based_tester.tests.file_reader.file_reader import Configuration
-from property_based_tester.tests.world_properties.world_prop import world_state
-from property_based_tester.tests.action_client.perceive_client import perceive_client
+from property_based_tester.scen_gen.world_prop import world_state
+from property_based_tester.robot_controllers.perceive_client import perceive_client
 
 from hypothesis import given, settings, Verbosity, example
 

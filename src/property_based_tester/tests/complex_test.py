@@ -24,10 +24,9 @@ import allure
 
 from gazebo_msgs.srv import GetLightProperties
 
-from property_based_tester.tests.action_client.nav_client import pose_action_client
-from property_based_tester.tests.action_client.nav_client import toyota_action_client
+from property_based_tester.robot_controllers.nav_client import pose_action_client
+from property_based_tester.robot_controllers.nav_client import toyota_action_client
 from property_based_tester.utilities.Omni_base_locator.oml import OmniListener
-from property_based_tester.tests.obstacle_generator.obstacle_gen import Model
 from property_based_tester.tests.file_reader.file_reader import Configuration
 from property_based_tester.logger.data_logger import log_reader_comparator
 from property_based_tester.logger.data_logger import log_hsrb_reader
@@ -36,10 +35,10 @@ from hsrb_interface import Robot
 
 from hypothesis import given, settings, Verbosity, example
 
-from property_based_tester.tests.world_properties.world_prop import world_state
-from property_based_tester.tests.action_client.perceive_client import perceive_client
-from property_based_tester.tests.action_client.pick_place_client import MoveItPickAndPlace
-from property_based_tester.tests.action_client.pick_client import picker_client
+from property_based_tester.scen_gen.world_prop import world_state
+from property_based_tester.robot_controllers.perceive_client import perceive_client
+from property_based_tester.robot_controllers.pick_place_client import MoveItPickAndPlace
+from property_based_tester.robot_controllers.pick_client import picker_client
 from property_based_tester.logger.data_logger import data_logger, lucy_gripper_information
 from property_based_tester.logger.data_logger import data_reader, object_information
 

@@ -6,7 +6,7 @@
 
 ## Framework Overview
 
-![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/RevisedPlannedSafetyFrameWork-1.jpg)
+![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/briefoverview.png)
 
 ## Running Framework (Hypothesis|ROS|Gazebo|Allure|TextX)
 

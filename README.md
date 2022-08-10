@@ -22,16 +22,24 @@ python3 -m pytest --alluredir=results tests/nav_test.py -v -s
 3. World configuration inside the `src/property_based_tester/configuration/property_based_tester_params.yaml`
 
 Current available parameters:
-```
+```bash
  Robot: 
    robot_urdf_name: husky
    robot_spawner_name: spawn_husky_controller.launch
    robot_controller: husky_controller.launch
+```
 
+```bash
  Robot: 
    robot_urdf_name: jackal_robot_issac
    robot_spawner_name: spawn_jackal_controller.launch
    robot_controller: jackal_controller.launch
+```
+
+```bash
+Robot: 
+   robot_urdf_name: xarm6_gripper
+   robot_spawner_name: spawn_xarm6_controller.launch
 ```
 
 4. Run for the navigation tests

@@ -2,10 +2,11 @@ Test_definitions (S)
     robot 'Husky' 
     type 'UGV'
         standard_test
-            standard 'ISO 238-1'
+            standard 'ISO 23482-1'
             section '7.5'
+                spe
         standard_test
-            standard 'ISO 2348-1'
+            standard 'ISO 23482-1'
             section '11'
         user_test
             composite-property 'must_not_collide'
@@ -14,7 +15,7 @@ Test_definitions (S)
         user_test
             composite-property 'must_not_collide'
             tolerance 0.5
-            time-constraint 0.2
+            time-constraint 5.0
         user_test
             composite-property 'must_be_at'
             tolerance 0.5

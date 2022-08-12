@@ -407,15 +407,15 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="1.0 0.8 0.1"/>
+        <box size="1.0 0.7 0.2"/>
       </geometry>
     </collision>
-    <visual>
+    <!-- <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-         <box size="1.0 0.8 0.1"/>
+         <box size="1.0 0.7 0.2"/>
       </geometry>
-    </visual>
+    </visual> -->
     <inertial>
       <mass value="1e-5" />
       <origin xyz="0 0 0" rpy="0 0 0"/>

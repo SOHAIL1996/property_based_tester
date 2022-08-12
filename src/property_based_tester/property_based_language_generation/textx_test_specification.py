@@ -37,4 +37,4 @@ class PropertyBasedLanguageGenerator():
 
         print()
 
-p = PropertyBasedLanguageGenerator()
+# p = PropertyBasedLanguageGenerator()

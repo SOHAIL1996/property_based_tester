@@ -59,6 +59,6 @@ class PrimitiveProperties():
             collider_2 = info[0].collision2_name
             self.in_collision = True       
 
-a = PrimitiveProperties()
-a.physical_information()
+# a = PrimitiveProperties()
+# a.physical_information()
 # a.spatial_information()

@@ -113,15 +113,15 @@ class TestNavigation(Base):
     #     data_logger('logger/logs/nav_end')
     #     assert result == True
 
-    # def test_verification_of_navigation(self, randomizer): 
-    #     """Defines a scenario for the rest of the tests to run in using coodrinates.
-    #     """    
-    #     coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
-    #     temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'])
-    #     result = pose_action_client(coord_x, coord_y, direction)
-    #     temporal_logger.terminate() 
-    #     pytest.collision = self.composite_properties.in_collision
-    #     assert result == True    
+    def test_verification_of_navigation(self, randomizer): 
+        """Defines a scenario for the rest of the tests to run in using coodrinates.
+        """    
+        coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
+        temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'])
+        result = pose_action_client(coord_x, coord_y, direction)
+        temporal_logger.terminate() 
+        pytest.collision = self.composite_properties.in_collision
+        assert result == True    
 
     def test_collision_detection(self):
         """ Checking if the position of objects changed furing navigation i.e. Lucy collided with an obstacle.

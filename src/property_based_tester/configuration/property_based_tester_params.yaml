@@ -10,14 +10,14 @@
 
  World: room
 
-#  Robot: 
-#    robot_urdf_name: husky
-#    robot_spawner_name: spawn_husky_controller.launch
-#    robot_controller: husky_controller.launch
-
  Robot: 
-   robot_urdf_name: xarm6_gripper
-   robot_spawner_name: spawn_xarm6_controller.launch
+   robot_urdf_name: husky
+   robot_spawner_name: spawn_husky_controller.launch
+   robot_controller: husky_controller.launch
+
+#  Robot: 
+#    robot_urdf_name: xarm6_gripper
+#    robot_spawner_name: spawn_xarm6_controller.launch
 
 #  Robot: 
 #    robot_urdf_name: jackal_robot_issac

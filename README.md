@@ -114,7 +114,7 @@ roslaunch husky_navigation move_base_mapless_demo.launch
 ```bash
 gz sdf -p my.urdf > my.sdf
 ```
-3. Search in the .sdf file the collision tag corresponding to your URDF and place it in the contact sensors collision tag.
+3. Search in the .sdf file the collision tag corresponding to your URDF and place it in the contact sensors collision tag (i.e. sim_collider).
 
 ### Property-Based Language Generator (TextX)
 

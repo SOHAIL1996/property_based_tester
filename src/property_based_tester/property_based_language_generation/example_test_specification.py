@@ -30,7 +30,7 @@ class PropertyBasedLanguageGenerator():
 
 if __name__ == '__main__':
 
-    GRAMMAR_DIR = '/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/src/property_based_tester/property_based_language_generation/rules.tx'
+    GRAMMAR_DIR = '/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/src/property_based_tester/property_based_language_generation/dsl_grammar.tx'
     TEST_DEF_DIR = '/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/src/property_based_tester/property_based_language_generation/standard_test_definitions.pblg'
 
     # Importing rules and test definitons

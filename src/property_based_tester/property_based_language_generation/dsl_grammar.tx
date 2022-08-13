@@ -1,0 +1,166 @@
+TestInterface:
+  'Test_definitions (S)'
+    test_type+=TestType
+  'Test_definitions (E)'
+;
+
+Robot:
+    'robot_name' robot_name = STRING
+    'robot_type' robot_type = STRING
+;
+
+TestType:
+    StandardSelection | ScenarioTestUGV
+;
+
+StandardSelection:
+    'ISO23482' iso23482 = ISO23482 | 'ISO23484' iso23484 = ISO23484
+; 
+
+ISO23482:
+    iso23482_section_selector += ISO23482SectionSelector
+;
+
+ISO23482SectionSelector:
+    '7.2' iso23482_7_2 = ISO23482_7_2 |
+    '11' iso23482_11 = ISO23482_11 |
+    '12' iso23482_12 = ISO23482_12 |
+    '13.1' iso23482_13_1 = ISO23482_13_1 |
+    '13.2' iso23482_13_2 = ISO23482_13_2 |
+    '13.3' iso23482_13_3 = ISO23482_13_3 |
+    '13.4' iso23482_13_4 = ISO23482_13_4 |
+    '15.1' iso23482_15_1 = ISO23482_15_1 |
+    '15.2' iso23482_15_2 = ISO23482_15_2 |
+    '15.3' iso23482_15_3 = ISO23482_15_3 |
+    '15.4' iso23482_15_4 = ISO23482_15_4 |
+    '16' iso23482_16 = ISO23482_16 |
+    '17' iso23482_17 = ISO23482_17 |
+    '18.2' iso23482_18_2 = ISO23482_18_2 
+;
+
+ISO23482_7_2:
+    'parameters' param = INT
+;
+
+ISO23482_11:
+    'parameters' param = INT
+;
+
+ISO23482_12:
+    'parameters' param = INT
+;
+
+ISO23482_13_1:
+    'parameters' param = INT
+;
+
+ISO23482_13_2:
+    'parameters' param = INT
+;
+
+ISO23482_13_3:
+    'parameters' param = INT
+;
+
+ISO23482_13_4:
+    'parameters' param = INT
+;
+
+ISO23482_15_1:
+    'parameters' param = INT
+;
+
+ISO23482_15_2:
+    'parameters' param = INT
+;
+
+ISO23482_15_3:
+    'parameters' param = INT
+;
+
+ISO23482_15_4:
+    'parameters' param = INT
+;
+
+ISO23482_16:
+    'parameters' param = INT
+;
+
+ISO23482_17:
+    'parameters' param = INT
+;
+
+ISO23482_18_2:
+    'parameters' param = INT
+;
+
+ISO23484:
+    'section' section = STRING
+;
+
+ScenarioTestUGV:
+    'Scenario-UGV' 
+    'configuration'
+    config = Configuration
+    custom_scenario = CompositeProperties
+; 
+
+Configuration:
+    "world" world = STRING
+    "repetition" repetition = INT
+    "randomize_obstacles" randomize_obstacles = BOOL
+; 
+
+CompositeProperties:
+    property_check += PropertyCheck
+; 
+
+PropertyCheck:
+    'must_not_collide' must_not_collide = MustNotCollide |
+    'must_collide' must_collide = MustCollide |
+    'must_be_at' must_be_at = MustBeAt |
+    'must_not_be_at' must_not_be_at = MustNotBeAt 
+; 
+
+MustNotCollide:
+    'collision-object' collision_object = STRING
+    'tolerance' (tolerance = FLOAT)?
+    'time-constraint' (time_constraint = FLOAT)?
+; 
+
+MustCollide:
+    'collision-object' collision_object = STRING
+    'tolerance' (tolerance = FLOAT)?
+    'time-constraint' (time_constraint = FLOAT)?
+; 
+
+MustBeAt:
+    'area_start' 
+    'x1' x1 = FLOAT
+    'y1' y1 = FLOAT
+    'z1' z1 = FLOAT
+    'area_end'
+    'x2' x2 = FLOAT
+    'y2' y2 = FLOAT
+    'z2' z2 = FLOAT
+    'tolerance' (tolerance = FLOAT)?
+    'time-constraint' (time_constraint = FLOAT)?
+; 
+
+MustNotBeAt:
+    'allowable_region_start' 
+    'x1' x1 = FLOAT
+    'y1' y1 = FLOAT
+    'z1' z1 = FLOAT
+    'allowable_region_end'
+    'x2' x2 = FLOAT
+    'y2' y2 = FLOAT
+    'z2' z2 = FLOAT
+    'tolerance' (tolerance = FLOAT)?
+    'time-constraint' (time_constraint = FLOAT)?
+; 
+
+
+Comment:
+  /A comment/
+;

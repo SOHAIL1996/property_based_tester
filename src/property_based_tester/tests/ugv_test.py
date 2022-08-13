@@ -20,13 +20,12 @@ Date: July 01, 2022
 import random
 import rospy
 import numpy as np
-import subprocess
+import os, subprocess, signal, time
 import pytest
 import allure
-import time
 
 from property_based_tester.configuration.config import Configuration
-from property_based_tester.temporal_cache.temporal_log import TemporalStorage
+from property_based_tester.custom_tests.user_test_builder import UserTesting
 
 from property_based_tester.robot_controllers.navigation_client import pose_action_client
 from property_based_tester.scen_gen.obstacle_gen import Model
@@ -34,7 +33,7 @@ from property_based_tester.scen_gen.model_placement import model_placement
 from property_based_tester.scen_gen.robot_placement import RobotModel
 
 from property_based_tester.properties.composite_properties import CompositeProperties
-from property_based_language_generation.textx_test_specification import PropertyBasedLanguageGenerator
+
 
 from hypothesis import given, settings, Verbosity, example
 import hypothesis.strategies as st
@@ -46,8 +45,8 @@ class Base:
     @pytest.fixture(autouse=True)
     def set_up(self):
         self.config = Configuration()
-        # self.textx = PropertyBasedLanguageGenerator()
         self.composite_properties = CompositeProperties()
+        self.user_tests = UserTesting()
         
 @pytest.mark.usefixtures('set_up')         
 class TestNavigation(Base):
@@ -64,26 +63,25 @@ class TestNavigation(Base):
         model_placement()
 
     @pytest.fixture()
-    def robo_spawn(self):
-        robo = RobotModel(self.config.robot_urdf,x=0,y=0,z=0.1,R=0,P=0,Y=0)
+    def robo_pose_correction(self):
+        robo = RobotModel(self.config.robot_urdf,x=0,y=0,z=0.12,R=0,P=0,Y=0)
         robo.robot_pose()
 
     def pytest_configure():
-        pytest.robot_node = 0
         pytest.collision = False
 
     def get_selected_standards():
         return [['ISO 23482-1','7.2'],['ISO 3691','4.8']]
 
     def get_user_tests():
-        return [['ISO 23482-1','7.2'],['ISO 3691','4.8']]
+        return [['must_collide','True'],['must_not_collide','False']]
 
-    def test_set_up(self, robo_spawn):
+    def test_set_up(self, robo_pose_correction):
         """Initializing navigation scenario.
         """  
         rospy.init_node('nav_test')
 
-    def test_static_obstacle_generation(self, randomizer):
+    def test_scenario_generation(self, randomizer):
         store = [[0,0]]
         is_spawned = False
         for i in range(int(self.config.model_obst_num)):
@@ -115,20 +113,43 @@ class TestNavigation(Base):
     #     data_logger('logger/logs/nav_end')
     #     assert result == True
 
-    def test_verification_of_navigation(self, randomizer): 
+    def test_scenario_execution(self, randomizer): 
         """Defines a scenario for the rest of the tests to run in using coodrinates.
         """    
-        temporal_logger = TemporalStorage()
+        # Randomize given coordinates
         coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
+
+        # Excute navigation and temporal logger
+        temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'], preexec_fn=os.setsid)
         result = pose_action_client(coord_x, coord_y, direction)
-        temporal_logger.run_flag = False 
+        os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
         pytest.collision = self.composite_properties.in_collision
+
         assert result == True    
 
-    def test_collision_detection(self):
-        """ Checking if the position of objects changed furing navigation i.e. Lucy collided with an obstacle.
+    def test_must_collide(self):
+        """ Checking if the robot collided with a specific obstacle during navigation.
         """    
-        assert pytest.collision == False
+        if self.user_tests.must_collide:
+            assert pytest.collision == True
+        else:
+            pytest.skip("Uninitialized by user")
+
+    def test_must_not_collide(self):
+        """ Checking if the robot has not collided with an obstacle during navigation.
+        """    
+        if self.user_tests.must_not_collide:
+            assert pytest.collision == False
+        else:
+            pytest.skip("Uninitialized by user")
+
+    def test_must_be_at(self):
+        """ Checking if the robot is within a given area.
+        """    
+        if self.user_tests.must_be_at:
+            assert self.composite_properties.must_be_at() == True
+        else:
+            pytest.skip("Uninitialized by user")
 
     # def test_location_verification(self):
     #     """Checking if the projected position of the robot matches 

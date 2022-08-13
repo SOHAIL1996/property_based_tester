@@ -21,21 +21,47 @@ import time
 from property_based_tester.temporal_cache.data_depot import data_logger, world_state_extractor
 from property_based_tester.configuration.config import Configuration
 
-if __name__ == '__main__':
-    try:
-        
-        logs_objects = ['Models', 'X-pos','Y-pos','Z-pos','Q-1','Q-2','Q-3','Q-4','Time']
-        logs_all = [['------','------','------','------','------','------','------','------ ','------']]
-        config = Configuration()
-        
-        while True:
-            logs = world_state_extractor()
-            logs_all.extend(logs)
 
-            time.sleep(2)
+class TemporalStorage():
 
-            df = pd.DataFrame(columns=logs_objects, data=logs_all[1:])
-            data_logger(df, config.workspace+'/src/property_based_tester/temporal_cache/logs/test')
-            logs_all.extend([['------','------','------','------','------','------','------','------ ','------']])
-    finally:
-        print('Error in file storage')       
+    def __init__(self, interval):
+        self.run_flag = True
+        self.interval = interval
+
+    def run_temporal_logger(self):
+        try:
+            
+            logs_objects = ['Models', 'X-pos','Y-pos','Z-pos','Q-1','Q-2','Q-3','Q-4','Time']
+            logs_all = [['------','------','------','------','------','------','------','------ ','------']]
+            config = Configuration()
+            
+            while self.run_flag == True:
+                logs = world_state_extractor()
+                logs_all.extend(logs)
+
+                time.sleep(self.interval)
+
+                df = pd.DataFrame(columns=logs_objects, data=logs_all[1:])
+                data_logger(df, config.workspace+'/src/property_based_tester/temporal_cache/logs/test')
+                logs_all.extend([['------','------','------','------','------','------','------','------ ','------']])
+        finally:
+            print('Error in file storage')       
+
+# if __name__ == '__main__':
+#     try:
+        
+#         logs_objects = ['Models', 'X-pos','Y-pos','Z-pos','Q-1','Q-2','Q-3','Q-4','Time']
+#         logs_all = [['------','------','------','------','------','------','------','------ ','------']]
+#         config = Configuration()
+        
+#         while True:
+#             logs = world_state_extractor()
+#             logs_all.extend(logs)
+
+#             time.sleep(2)
+
+#             df = pd.DataFrame(columns=logs_objects, data=logs_all[1:])
+#             data_logger(df, config.workspace+'/src/property_based_tester/temporal_cache/logs/test')
+#             logs_all.extend([['------','------','------','------','------','------','------','------ ','------']])
+#     finally:
+#         print('Error in file storage')       

@@ -26,6 +26,8 @@ import allure
 import time
 
 from property_based_tester.configuration.config import Configuration
+from property_based_tester.temporal_cache.temporal_log import TemporalStorage
+
 from property_based_tester.robot_controllers.navigation_client import pose_action_client
 from property_based_tester.scen_gen.obstacle_gen import Model
 from property_based_tester.scen_gen.model_placement import model_placement
@@ -44,7 +46,7 @@ class Base:
     @pytest.fixture(autouse=True)
     def set_up(self):
         self.config = Configuration()
-        self.textx = PropertyBasedLanguageGenerator()
+        # self.textx = PropertyBasedLanguageGenerator()
         self.composite_properties = CompositeProperties()
         
 @pytest.mark.usefixtures('set_up')         
@@ -116,10 +118,10 @@ class TestNavigation(Base):
     def test_verification_of_navigation(self, randomizer): 
         """Defines a scenario for the rest of the tests to run in using coodrinates.
         """    
+        temporal_logger = TemporalStorage()
         coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
-        temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'])
         result = pose_action_client(coord_x, coord_y, direction)
-        temporal_logger.terminate() 
+        temporal_logger.run_flag = False 
         pytest.collision = self.composite_properties.in_collision
         assert result == True    
 

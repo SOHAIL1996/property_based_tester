@@ -16,7 +16,7 @@
 ``` 
 2. Run from inside the `src/property_based_tester` folder, this applies the tests
 ```bash
-python3 -m pytest --alluredir=results tests/nav_test.py -v -s
+python3 -m pytest --alluredir=results tests/ugv_test.py -v -s
 ```
 
 3. World configuration inside the `src/property_based_tester/configuration/property_based_tester_params.yaml`

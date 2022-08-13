@@ -21,12 +21,17 @@ import rospy
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.properties.primitive_properties import PrimitiveProperties
 
+from gazebo_msgs.msg import ContactsState
+
 class CompositeProperties():
 
     def __init__(self) -> None:
         
         self.config = Configuration()
         self.primitive_properties = PrimitiveProperties()
+
+        self.in_collision = False 
+        rospy.Subscriber("bumper_contact_state", ContactsState, self.robot_force_sensor_callback)
 
     def must_be_at(self, robot, area, time, tolerance):
         pass
@@ -44,4 +49,11 @@ class CompositeProperties():
         pass
 
     def must_not_collide(self, robot, object):
-        pass   
+        pass
+
+    def robot_force_sensor_callback(self, data):
+        info = data.states
+        if info:
+            collider_1 = info[0].collision1_name
+            collider_2 = info[0].collision2_name
+            self.in_collision = True       

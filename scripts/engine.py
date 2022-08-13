@@ -31,10 +31,12 @@ try:
     robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_robot_file])
 
     model_placement()
+
     # UGVs
-    # robo = RobotModel(conf.robot_urdf,x=0,y=0,z=0.1,R=0,P=0,Y=0)
+    robo = RobotModel(conf.robot_urdf,x=0,y=0,z=0.1,R=0,P=0,Y=0)
     # xARM6
-    robo = RobotModel(conf.robot_urdf,x=-0.2,y=-0.5,z=1.021 ,R=0,P=0,Y=1.571)  
+    # robo = RobotModel(conf.robot_urdf,x=-0.2,y=-0.5,z=1.021 ,R=0,P=0,Y=1.571)  
+    
     robo.spawn_robot('urdf')
 
     while not rospy.is_shutdown():

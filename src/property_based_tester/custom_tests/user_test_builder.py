@@ -15,14 +15,18 @@ Date: July 01, 2022
 ----------------------------------------------------
 """
 
-import rospy
-from gazebo_msgs.msg import ContactsState
 
-from property_based_tester.configuration.config import Configuration
-from property_based_tester.properties.primitive_properties import PrimitiveProperties
+from property_based_language_generation.textx_test_specification import PropertyBasedLanguageGenerator
 
 class UserTesting():
 
     def __init__(self) -> None:
-        pass
 
+        # self.textx = PropertyBasedLanguageGenerator()
+
+        self.must_be_at = False
+        self.must_not_be_at = False
+        self.must_be_near_to = False
+        self.must_be_near_to = False
+        self.must_collide = True
+        self.must_not_collide = True

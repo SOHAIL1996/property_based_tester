@@ -147,7 +147,15 @@ class TestNavigation(Base):
         """ Checking if the robot is within a given area.
         """    
         if self.user_tests.must_be_at:
-            assert self.composite_properties.must_be_at() == True
+            assert self.composite_properties.must_be_at(target_area_min=[-2,-2,-2], target_area_max=[1, 2, 2]) == True
+        else:
+            pytest.skip("Uninitialized by user")
+
+    def test_must_not_be_at(self):
+        """ Checking if the robot is within a given area.
+        """    
+        if self.user_tests.must_be_at:
+            assert self.composite_properties.must_not_be_at(target_area_min=[2, 2, -1], target_area_max=[6, 6, 2]) == True
         else:
             pytest.skip("Uninitialized by user")
 

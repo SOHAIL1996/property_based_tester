@@ -64,6 +64,8 @@ class Configuration():
                         self.launch_robot_file = value_ro
                     if key_ro == "robot_controller":
                         self.launch_controller_file = value_ro
+                    if key_ro == "robot_size":
+                        self.robot_size = value_ro
 
             if key == "Models_manipulation":
                 for key_manip, value_manip in value.items():

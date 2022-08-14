@@ -45,12 +45,18 @@ class PrimitiveProperties():
         data = data_reader(self.config.workspace+'/src/property_based_tester/temporal_cache/logs/test')
         data = data.drop(columns=['Unnamed: 0'])
 
-        self.robot_data = data.loc[data['Models'] == self.config.robot_urdf]
+        robot_data = data.loc[data['Models'] == self.config.robot_urdf]\
 
-        
+        time_step = robot_data['Time'].to_numpy().T
 
-        print(self.robot_data)
+        robo_pos_x = robot_data['X-pos'].to_numpy().astype(float)
+        robo_pos_y = robot_data['Y-pos'].to_numpy().astype(float)
+        robo_pos_z = robot_data['Z-pos'].to_numpy().astype(float)
 
-a = PrimitiveProperties()
+        robo_pos_all = np.vstack((np.vstack((robo_pos_x,robo_pos_y)),robo_pos_z)).T
+
+        return robo_pos_all
+
+# a = PrimitiveProperties()
 # a.physical_information()
-a.spatial_temporal_information()
+# a.spatial_temporal_information()

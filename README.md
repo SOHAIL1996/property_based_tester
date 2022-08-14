@@ -24,16 +24,16 @@ python3 -m pytest --alluredir=results tests/ugv_test.py -v -W ignore::Deprecatio
 Current available parameters:
 ```bash
  Robot: 
-   robot_urdf_name: husky
+   robot_urdf_name: husky # URDF name
    robot_spawner_name: spawn_husky_controller.launch
-   robot_controller: husky_controller.launch
+   robot_size: [0.580, 0.430, 0.250] # x,y,z in meters
 ```
 
 ```bash
  Robot: 
-   robot_urdf_name: jackal_robot_issac
+   robot_urdf_name: jackal_robot_issac # URDF name
    robot_spawner_name: spawn_jackal_controller.launch
-   robot_controller: jackal_controller.launch
+   robot_size: [0.990, 0.670, 0.390] # x,y,z in meters
 ```
 
 ```bash

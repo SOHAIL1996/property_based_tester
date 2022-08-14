@@ -41,13 +41,15 @@ import hypothesis.strategies as st
 global spawned_items
 spawned_items = []
 
+runs=len(range(6))
+
 class Base:
     @pytest.fixture(autouse=True)
     def set_up(self):
         self.config = Configuration()
         self.composite_properties = CompositeProperties()
         self.user_tests = UserTesting()
-        
+
 @pytest.mark.usefixtures('set_up')         
 class TestNavigation(Base):
     
@@ -154,7 +156,7 @@ class TestNavigation(Base):
     def test_must_not_be_at(self):
         """ Checking if the robot is within a given area.
         """    
-        if self.user_tests.must_be_at:
+        if self.user_tests.must_not_be_at:
             assert self.composite_properties.must_not_be_at(target_area_min=[2, 2, -1], target_area_max=[6, 6, 2]) == True
         else:
             pytest.skip("Uninitialized by user")

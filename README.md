@@ -16,10 +16,16 @@
 ``` 
 2. Run from inside the `src/property_based_tester` folder, this applies the tests
 ```bash
-python3 -m pytest --alluredir=results tests/ugv_test.py -v -W ignore::DeprecationWarning
+python3 -m pytest --alluredir=results tests/ugv_test.py -v -W ignore::DeprecationWarning --count=2 --repeat-scope=class
 ```
 
-3. World configuration inside the `src/property_based_tester/configuration/property_based_tester_params.yaml`
+3. Run for the navigation tests
+```bash
+roslaunch jackal_navigation odom_navigation_demo.launch 
+roslaunch husky_navigation move_base_mapless_demo.launch 
+```
+
+4. World configuration inside the `src/property_based_tester/configuration/property_based_tester_params.yaml`
 
 Current available parameters:
 ```bash
@@ -42,11 +48,6 @@ Robot:
    robot_spawner_name: spawn_xarm6_controller.launch
 ```
 
-4. Run for the navigation tests
-```bash
-roslaunch jackal_navigation odom_navigation_demo.launch 
-roslaunch husky_navigation move_base_mapless_demo.launch 
-```
 ![Husky Odom Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif)
 
 ### Result generation (Allure)

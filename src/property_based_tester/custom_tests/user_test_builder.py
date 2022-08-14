@@ -24,7 +24,7 @@ class UserTesting():
 
         # self.textx = PropertyBasedLanguageGenerator()
 
-        self.must_be_at = False
+        self.must_be_at = True
         self.must_not_be_at = True
         self.must_be_near_to = False
         self.must_be_near_to = False

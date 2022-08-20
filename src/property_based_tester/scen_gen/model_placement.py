@@ -43,7 +43,7 @@ def model_placement(param=None):
     dynamic_model_tracer = []
     
     # Static model placement
-    static_model = Model(conf.world,0,0,-0.1)
+    static_model = Model(conf.world,0,0,0)
     static_model.insert_model()
       
     static_model_platform = Model('table',0,4,0.0254,0,0,0)

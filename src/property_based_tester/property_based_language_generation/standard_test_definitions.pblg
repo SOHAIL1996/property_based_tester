@@ -1,66 +1,184 @@
 Test_definitions (S)
     ISO23482
         7.2
-            parameters 7
+            configuration
+                robot_type 'UGV'
+            must_have_collision_force_less_than
+                force_threshhold 25.0
+                tolerance 0.1    
         11
-            parameters 7
+            configuration
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
         12
-            parameters 7
+            configuration
+                robot_type 'UGV'
+                random_forces_range
+                    min_imparted_forces 0.5
+                    max_imparted_forces 75
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5
         13.1
-            parameters 7     
+            configuration
+                robot_type 'UGV'
+                inclined_surface 'slope'
+                stepped_surface 'steps'
+                gapped_surface 'gap'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
         13.2
-            parameters 7
+            configuration
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
         13.3
-            parameters 7
+            configuration
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
         13.4
-            parameters 7
+            configuration
+                robot_type 'UGV'
+                stepped_surface 'steps'
+                gapped_surface 'gap'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
         15.1
-            parameters 7
+            configuration
+                robot_type 'UGV'                    
+            must_not_be_near_to
+                entity 'safety_obstacle_polygon'
+                euclidean_distance 2.0
+                tolerance 6.0
         15.2
-            parameters 7
+            configuration
+                robot_type 'UGV' 
+                speed_reduction_percentage 50              
+            must_not_be_near_to
+                entity 'safety_obstacle_polygon'
+                euclidean_distance 2.0
+                tolerance 6.0
         15.3
-            parameters 7
+            configuration
+                robot_type 'UGV' 
+                concave_terrain 'concave_5cm'  
+                speed_reduction_percentage 50
+            must_not_be_near_to
+                entity 'safety_obstacle_polygon'
+                euclidean_distance 2.0
+                tolerance 6.0
         15.4
-            parameters 7
+            configuration
+                robot_type 'UGV' 
+                convex_terrain 'convex_10cm'  
+                speed_reduction_percentage 50
+            must_not_be_near_to
+                entity 'safety_obstacle_polygon'
+                euclidean_distance 2.0
+                tolerance 6.0     
         16
-            parameters 7
+            configuration
+                robot_type 'UGV' 
+                world 'iso_nav_room'
+                obstacle 'block_90x90_white'
+            must_not_collide
+                collision-object '*'
+                tolerance 0.5
+                time-constraint 0.2   
         17
-            parameters 7
+            configuration
+                robot_type 'UGV' 
+                world 'iso_nav_room'
+                obstacle 'block_90x90_white'
+            must_not_collide
+                collision-object '*'
+                tolerance 0.5
+                time-constraint 0.2    
         18.2
-            parameters 7        
-    Scenario-UGV
-        configuration
-            world 'lab'
-            repetition 8
-            randomize_obstacles true
-        must_not_collide
-            collision-object '*'
-            tolerance 0.5
-            time-constraint 0.2
-        must_collide
-            collision-object 'Table'
-            tolerance 3.5
-            time-constraint 0.2
-        must_be_at
-            area_start
-                x1 1.0
-                y1 2.2
-                z1 0.0
-            area_end
-                x2 12.0
-                y2 6.5
-                z2 0.5
-            tolerance 3.5
-            time-constraint 0.2
-        must_not_be_at
-            allowable_region_start
-                x1 1.0
-                y1 10.2
-                z1 0.0
-            allowable_region_end
-                x2 12.0
-                y2 155.5
-                z2 1.0
-            tolerance 3.5
-            time-constraint 0.2
+            configuration
+                robot_type 'UGV'    
+            must_be_at
+                area_start
+                    x1 1.0
+                    y1 2.2
+                    z1 0.0
+                area_end
+                    x2 12.0
+                    y2 6.5
+                    z2 0.5
+                tolerance 3.5
+                time-constraint 0.2
 Test_definitions (E)

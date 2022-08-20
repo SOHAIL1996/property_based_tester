@@ -38,60 +38,96 @@ ISO23482SectionSelector:
     '18.2' iso23482_18_2 = ISO23482_18_2 
 ;
 
+ISOConfiguration:
+    "configuration"
+    "robot_type" robot_type = STRING
+; 
+
 ISO23482_7_2:
-    'parameters' param = INT
+    config = ISOConfiguration
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_11:
-    'parameters' param = INT
+    config = ISOConfiguration
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_12:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'random_forces_range'
+    'min_imparted_forces' min_imparted_forces = FLOAT
+    'max_imparted_forces' max_imparted_forces = FLOAT
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_13_1:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'inclined_surface' inclined_surface = STRING
+    'stepped_surface' stepped_surface = STRING
+    'gapped_surface' gapped_surface = STRING
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_13_2:
-    'parameters' param = INT
+    config = ISOConfiguration
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_13_3:
-    'parameters' param = INT
+    config = ISOConfiguration
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_13_4:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'stepped_surface' stepped_surface = STRING
+    'gapped_surface' gapped_surface = STRING
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_15_1:
-    'parameters' param = INT
+    config = ISOConfiguration
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_15_2:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'speed_reduction_percentage' speed_reduction_percentage = FLOAT
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_15_3:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'concave_terrain' concave_terrain = STRING
+    'speed_reduction_percentage' speed_reduction_percentage = FLOAT
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_15_4:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'convex_terrain' concave_terrain = STRING
+    'speed_reduction_percentage' speed_reduction_percentage = FLOAT
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_16:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'world' world = STRING
+    'obstacle' obstacle = STRING 
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_17:
-    'parameters' param = INT
+    config = ISOConfiguration
+    'world' world = STRING
+    'obstacle' obstacle = STRING 
+    custom_scenario = CompositeProperties
 ;
 
 ISO23482_18_2:
-    'parameters' param = INT
+    config = ISOConfiguration
+    custom_scenario = CompositeProperties
 ;
 
 ISO23484:
@@ -119,7 +155,11 @@ PropertyCheck:
     'must_not_collide' must_not_collide = MustNotCollide |
     'must_collide' must_collide = MustCollide |
     'must_be_at' must_be_at = MustBeAt |
-    'must_not_be_at' must_not_be_at = MustNotBeAt 
+    'must_not_be_at' must_not_be_at = MustNotBeAt |
+    'must_have_collision_force_less_than' must_have_collision_force_less_than = MustHaveCollisionForcesLessThan |
+    'must_have_orientation' must_have_orientation = MustHaveOrientation |
+    'must_be_near_to' must_be_near_to = MustBeNearTo |
+    'must_not_be_near_to' must_not_be_near_to = MustNotBeNearTo 
 ; 
 
 MustNotCollide:
@@ -158,6 +198,32 @@ MustNotBeAt:
     'z2' z2 = FLOAT
     'tolerance' (tolerance = FLOAT)?
     'time-constraint' (time_constraint = FLOAT)?
+; 
+
+MustHaveCollisionForcesLessThan:
+    'force_threshhold' force_threshhold = FLOAT
+    'tolerance' (tolerance = FLOAT)?
+; 
+
+MustHaveOrientation:
+    'entity' entity = STRING
+    'angles' 
+    'roll' roll = FLOAT
+    'pitch' pitch = FLOAT
+    'yaw' yaw = FLOAT
+    'tolerance' tolerance = FLOAT
+; 
+
+MustBeNearTo:
+    'entity' entity = STRING
+    'euclidean_distance' euclidean_distance = FLOAT
+    'tolerance' tolerance = FLOAT
+; 
+
+MustNotBeNearTo:
+    'entity' entity = STRING
+    'euclidean_distance' euclidean_distance = FLOAT
+    'tolerance' tolerance = FLOAT
 ; 
 
 

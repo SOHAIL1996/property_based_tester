@@ -171,6 +171,9 @@ class CompositeProperties():
     def must_not_collide(self, robot, object):
         pass
 
+    def must_have_orientation(self, robot, object):
+        pass
+
     # Callback functions
     def robot_force_sensor_callback(self, data):
         info = data.states

@@ -1,0 +1,37 @@
+Test_definitions (S)
+    Scenario-UGV
+        configuration
+            world 'lab'
+            repetition 8
+            randomize_obstacles true
+        must_not_collide
+            collision-object '*'
+            tolerance 0.5
+            time-constraint 0.2
+        must_collide
+            collision-object 'Table'
+            tolerance 3.5
+            time-constraint 0.2
+        must_be_at
+            area_start
+                x1 1.0
+                y1 2.2
+                z1 0.0
+            area_end
+                x2 12.0
+                y2 6.5
+                z2 0.5
+            tolerance 3.5
+            time-constraint 0.2
+        must_not_be_at
+            allowable_region_start
+                x1 1.0
+                y1 10.2
+                z1 0.0
+            allowable_region_end
+                x2 12.0
+                y2 155.5
+                z2 1.0
+            tolerance 3.5
+            time-constraint 0.2
+Test_definitions (E)

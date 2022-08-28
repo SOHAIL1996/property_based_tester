@@ -8,6 +8,7 @@
 
 ![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/briefoverview.png)
 
+
 ## Running Framework (Hypothesis|ROS|Gazebo|Allure|TextX)
 
 1. Basic setup 
@@ -17,6 +18,7 @@
 2. Run from inside the `src/property_based_tester` folder, this applies the tests
 ```bash
 python3 -m pytest --alluredir=results tests/ugv_test.py -v -W ignore::DeprecationWarning --count=2 --repeat-scope=class
+python3 -m pytest --alluredir=results tests/pblg_test_interface.py -v -W ignore::DeprecationWarning 
 ```
 
 3. Run for the navigation tests

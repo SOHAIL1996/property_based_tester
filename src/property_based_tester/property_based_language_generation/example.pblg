@@ -1,16 +1,18 @@
 Test_definitions (S)
-    ISO23482
-        7.2
-            configuration
+    standard 'ISO 23482-1'
+        section 7.2
+            scenario_configuration
+                world_type 'empty'
                 robot_type 'UGV'
             must_have_collision_force_less_than
                 force_threshhold 25.0
                 tolerance 0.1    
-        11
-            configuration
+        section 11
+            scenario_configuration
+                world_type 'empty'
                 robot_type 'UGV'
             must_have_orientation
-                entity 'jackal'
+                entity 'husky'
                 angles
                     roll 0.0
                     pitch 0.0
@@ -23,12 +25,11 @@ Test_definitions (S)
                     pitch 0.0
                     yaw 0.0
                 tolerance 5 
-        12
-            configuration
+        section 12
+            scenario_configuration
+                world_type 'empty'
                 robot_type 'UGV'
-                random_forces_range
-                    min_imparted_forces 0.5
-                    max_imparted_forces 75
+                imparted_forces 25
             must_have_orientation
                 entity 'jackal'
                 angles
@@ -43,28 +44,9 @@ Test_definitions (S)
                     pitch 0.0
                     yaw 0.0
                 tolerance 5
-        13.1
-            configuration
-                robot_type 'UGV'
-                inclined_surface 'slope'
-                stepped_surface 'steps'
-                gapped_surface 'gap'
-            must_have_orientation
-                entity 'jackal'
-                angles
-                    roll 0.0
-                    pitch 0.0
-                    yaw 0.0
-                tolerance 5 
-            must_have_orientation
-                entity 'payload'
-                angles
-                    roll 0.0
-                    pitch 0.0
-                    yaw 0.0
-                tolerance 5  
-        13.2
-            configuration
+        section 13.1
+            scenario_configuration
+                world_type 'slope'
                 robot_type 'UGV'
             must_have_orientation
                 entity 'jackal'
@@ -80,28 +62,10 @@ Test_definitions (S)
                     pitch 0.0
                     yaw 0.0
                 tolerance 5  
-        13.3
-            configuration
+        section 13.1
+            scenario_configuration
+                world_type 'steps'
                 robot_type 'UGV'
-            must_have_orientation
-                entity 'jackal'
-                angles
-                    roll 0.0
-                    pitch 0.0
-                    yaw 0.0
-                tolerance 5 
-            must_have_orientation
-                entity 'payload'
-                angles
-                    roll 0.0
-                    pitch 0.0
-                    yaw 0.0
-                tolerance 5 
-        13.4
-            configuration
-                robot_type 'UGV'
-                stepped_surface 'steps'
-                gapped_surface 'gap'
             must_have_orientation
                 entity 'jackal'
                 angles
@@ -116,59 +80,152 @@ Test_definitions (S)
                     pitch 0.0
                     yaw 0.0
                 tolerance 5  
-        15.1
-            configuration
+        section 13.1
+            scenario_configuration
+                world_type 'gapped'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
+        section 13.2
+            scenario_configuration
+                world_type 'empty'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
+        section 13.3
+            scenario_configuration
+                world_type 'empty'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+        section 13.4
+            scenario_configuration
+                world_type 'steps'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
+        section 13.4
+            scenario_configuration
+                world_type 'gapped'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
                 robot_type 'UGV'                    
             must_not_be_near_to
                 entity 'safety_obstacle_polygon'
                 euclidean_distance 2.0
                 tolerance 6.0
-        15.2
-            configuration
+        section 15.2
+            scenario_configuration
+                world_type 'empty'
                 robot_type 'UGV' 
-                speed_reduction_percentage 50              
+                velocity_percentage 50.0            
             must_not_be_near_to
                 entity 'safety_obstacle_polygon'
                 euclidean_distance 2.0
                 tolerance 6.0
-        15.3
-            configuration
-                robot_type 'UGV' 
-                concave_terrain 'concave_5cm'  
-                speed_reduction_percentage 50
+        section 15.3
+            scenario_configuration
+                world_type 'concave_5cm'
+                robot_type 'UGV'  
+                velocity_percentage 50.0
             must_not_be_near_to
                 entity 'safety_obstacle_polygon'
                 euclidean_distance 2.0
                 tolerance 6.0
-        15.4
-            configuration
+        section 15.4
+            scenario_configuration
+                world_type 'convex_10cm'
                 robot_type 'UGV' 
-                convex_terrain 'convex_10cm'  
-                speed_reduction_percentage 50
+                velocity_percentage 50.0
             must_not_be_near_to
                 entity 'safety_obstacle_polygon'
                 euclidean_distance 2.0
                 tolerance 6.0     
-        16
-            configuration
+        section 16
+            scenario_configuration
+                world_type 'iso_nav_room'
                 robot_type 'UGV' 
-                world 'iso_nav_room'
-                obstacle 'block_90x90_white'
+                safety_obstacle 'block_90x90_white'
             must_not_collide
                 collision-object '*'
                 tolerance 0.5
                 time-constraint 0.2   
-        17
-            configuration
+        section 17
+            scenario_configuration
+                world_type 'iso_nav_room'
                 robot_type 'UGV' 
-                world 'iso_nav_room'
-                obstacle 'block_90x90_white'
+                safety_obstacle 'block_90x90_white'
             must_not_collide
                 collision-object '*'
                 tolerance 0.5
                 time-constraint 0.2    
-        18.2
-            configuration
+        section 18.2
+            scenario_configuration
+                world_type 'empty'
                 robot_type 'UGV'    
             must_be_at
                 area_start

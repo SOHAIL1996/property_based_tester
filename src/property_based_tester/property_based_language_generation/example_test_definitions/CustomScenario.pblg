@@ -1,7 +1,8 @@
 Test_definitions (S)
-    Scenario-UGV
-        configuration
-            world 'lab'
+    UserScenario
+        scenario_configuration
+            world_type 'lab'
+            robot_type 'UGV'
             repetition 8
             randomize_obstacles true
         must_not_collide

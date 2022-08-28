@@ -4,147 +4,58 @@ TestInterface:
   'Test_definitions (E)'
 ;
 
-Robot:
-    'robot_name' robot_name = STRING
-    'robot_type' robot_type = STRING
-;
-
 TestType:
-    StandardSelection | ScenarioTestUGV
+    StandardScenario | UserScenario
 ;
 
-StandardSelection:
-    'ISO23482' iso23482 = ISO23482 | 'ISO23484' iso23484 = ISO23484
+StandardScenario:
+    'standard' standard = STRING
+    number_of_sections += StandardSection
 ; 
 
-ISO23482:
-    iso23482_section_selector += ISO23482SectionSelector
+StandardSection:
+    'section' section = FLOAT    
+    scenario_configuration = ScenarioConfiguration
+    custom_scenario = CompositeProperties
 ;
 
-ISO23482SectionSelector:
-    '7.2' iso23482_7_2 = ISO23482_7_2 |
-    '11' iso23482_11 = ISO23482_11 |
-    '12' iso23482_12 = ISO23482_12 |
-    '13.1' iso23482_13_1 = ISO23482_13_1 |
-    '13.2' iso23482_13_2 = ISO23482_13_2 |
-    '13.3' iso23482_13_3 = ISO23482_13_3 |
-    '13.4' iso23482_13_4 = ISO23482_13_4 |
-    '15.1' iso23482_15_1 = ISO23482_15_1 |
-    '15.2' iso23482_15_2 = ISO23482_15_2 |
-    '15.3' iso23482_15_3 = ISO23482_15_3 |
-    '15.4' iso23482_15_4 = ISO23482_15_4 |
-    '16' iso23482_16 = ISO23482_16 |
-    '17' iso23482_17 = ISO23482_17 |
-    '18.2' iso23482_18_2 = ISO23482_18_2 
-;
-
-ISOConfiguration:
-    "configuration"
+ScenarioConfiguration:
+    "scenario_configuration"
+    "world_type" world = STRING
     "robot_type" robot_type = STRING
+    scenario_modifier *= ScenarioModifiers
+    
+;
+
+ScenarioModifiers:   
+    
+    sm_imparted_forces *= ImpartedForces
+    sm_safety_obstacle *= SafetyObstacle
+    sm_velocity_percentage *= VelocityPercentage
+    sm_repetition *= Repetition
+    sm_randomize_obstacles *= Randomization
 ; 
 
-ISO23482_7_2:
-    config = ISOConfiguration
-    custom_scenario = CompositeProperties
+ImpartedForces:
+    "imparted_forces" imparted_forces = FLOAT
 ;
-
-ISO23482_11:
-    config = ISOConfiguration
-    custom_scenario = CompositeProperties
+SafetyObstacle:
+    "safety_obstacle" safety_obstacle = STRING
 ;
-
-ISO23482_12:
-    config = ISOConfiguration
-    'random_forces_range'
-    'min_imparted_forces' min_imparted_forces = FLOAT
-    'max_imparted_forces' max_imparted_forces = FLOAT
-    custom_scenario = CompositeProperties
+VelocityPercentage:
+    "velocity_percentage" velocity_percentage = FLOAT
 ;
-
-ISO23482_13_1:
-    config = ISOConfiguration
-    'inclined_surface' inclined_surface = STRING
-    'stepped_surface' stepped_surface = STRING
-    'gapped_surface' gapped_surface = STRING
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_13_2:
-    config = ISOConfiguration
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_13_3:
-    config = ISOConfiguration
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_13_4:
-    config = ISOConfiguration
-    'stepped_surface' stepped_surface = STRING
-    'gapped_surface' gapped_surface = STRING
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_15_1:
-    config = ISOConfiguration
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_15_2:
-    config = ISOConfiguration
-    'speed_reduction_percentage' speed_reduction_percentage = FLOAT
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_15_3:
-    config = ISOConfiguration
-    'concave_terrain' concave_terrain = STRING
-    'speed_reduction_percentage' speed_reduction_percentage = FLOAT
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_15_4:
-    config = ISOConfiguration
-    'convex_terrain' concave_terrain = STRING
-    'speed_reduction_percentage' speed_reduction_percentage = FLOAT
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_16:
-    config = ISOConfiguration
-    'world' world = STRING
-    'obstacle' obstacle = STRING 
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_17:
-    config = ISOConfiguration
-    'world' world = STRING
-    'obstacle' obstacle = STRING 
-    custom_scenario = CompositeProperties
-;
-
-ISO23482_18_2:
-    config = ISOConfiguration
-    custom_scenario = CompositeProperties
-;
-
-ISO23484:
-    'section' section = STRING
-;
-
-ScenarioTestUGV:
-    'Scenario-UGV' 
-    'configuration'
-    config = Configuration
-    custom_scenario = CompositeProperties
-; 
-
-Configuration:
-    "world" world = STRING
+Repetition:
     "repetition" repetition = INT
+;
+Randomization:
     "randomize_obstacles" randomize_obstacles = BOOL
+;
+
+UserScenario:
+    'UserScenario' 
+    scenario_configuration = ScenarioConfiguration
+    custom_scenario = CompositeProperties
 ; 
 
 CompositeProperties:

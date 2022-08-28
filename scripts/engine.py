@@ -19,7 +19,7 @@ import subprocess
 import rospy
 
 from property_based_tester.configuration.config import Configuration
-from property_based_tester.scen_gen.model_placement import model_placement
+from property_based_tester.scen_gen.model_placement import world_placement
 from property_based_tester.scen_gen.robot_placement import RobotModel
 
 from termcolor import colored
@@ -30,7 +30,7 @@ try:
     conf = Configuration()
     robot_node = subprocess.Popen(['roslaunch', conf.rospkg_name, conf.launch_robot_file])
 
-    model_placement()
+    world_placement()
 
     # UGVs
     robo = RobotModel(conf.robot_urdf,x=0,y=0,z=0.1,R=0,P=0,Y=0)

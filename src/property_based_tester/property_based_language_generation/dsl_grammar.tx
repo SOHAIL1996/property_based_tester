@@ -10,7 +10,7 @@ TestType:
 
 StandardScenario:
     'standard' standard = STRING
-    number_of_sections += StandardSection
+    section_number += StandardSection
 ; 
 
 StandardSection:
@@ -21,10 +21,9 @@ StandardSection:
 
 ScenarioConfiguration:
     "scenario_configuration"
-    "world_type" world = STRING
+    "world_type" world_type = STRING
     "robot_type" robot_type = STRING
     scenario_modifier *= ScenarioModifiers
-    
 ;
 
 ScenarioModifiers:   

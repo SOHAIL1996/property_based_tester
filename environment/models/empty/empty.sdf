@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<sdf version="1.5">
+  <model name="empty"> <!-- Very important to change-->
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+    <link name="body">
+    <inertial> >
+    <mass>0</mass>
+      <inertia> 
+        <ixx>0</ixx>      
+        <ixy>0</ixy>     
+        <ixz>0</ixz>        
+        <iyy>0</iyy>      
+        <iyz>0</iyz>      
+        <izz>0</izz>  
+      </inertia>
+    </inertial>
+    </link>
+  </model>
+</sdf>
+
+
+

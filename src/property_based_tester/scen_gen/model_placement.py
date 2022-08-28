@@ -27,6 +27,35 @@ from property_based_tester.configuration.config import choices
 from property_based_tester.configuration.config import collision_checker
 
 from termcolor import colored
+from gazebo_msgs.srv import DeleteModel 
+
+
+def world_placement(param=None):
+    """This just places some static objects when the world starts.
+    It also logs the placement of the objects as startup_logs in the
+    logger file.
+
+    Args:
+        param ([type], optional): [description]. Defaults to None.
+    """    
+
+    rospy.init_node('gazebo_ros')
+    rospy.wait_for_service("/gazebo/spawn_sdf_model")
+
+def delete_model(model_name):
+        """
+        This function deletes a model in the gazebo world by passing a roscommand from the terminal.
+        
+        Args:
+            model_name (str): Name of the object and the object ID to be deleted.
+        """
+        model_desc = '{model_name: '+ model_name +'}'
+        rospy.wait_for_service("/gazebo/delete_model")
+        try:
+            del_model_prox = rospy.ServiceProxy('/gazebo/delete_model', DeleteModel) 
+            del_model_prox(model_name) 
+        except rospy.ServiceException as e:
+            print(colored('\n Rospy.ServiceException \n','red'))
 
 def model_placement(param=None):
     """This just places some static objects when the world starts.

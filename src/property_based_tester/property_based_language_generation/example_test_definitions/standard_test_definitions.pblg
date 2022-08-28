@@ -46,7 +46,7 @@ Test_definitions (S)
                 tolerance 5
         section 13.1
             scenario_configuration
-                world_type 'slope'
+                world_type 'slope_6deg'
                 robot_type 'UGV'
             must_have_orientation
                 entity 'jackal'
@@ -64,7 +64,7 @@ Test_definitions (S)
                 tolerance 5  
         section 13.1
             scenario_configuration
-                world_type 'steps'
+                world_type 'slope_9deg'
                 robot_type 'UGV'
             must_have_orientation
                 entity 'jackal'
@@ -82,7 +82,43 @@ Test_definitions (S)
                 tolerance 5  
         section 13.1
             scenario_configuration
-                world_type 'gapped'
+                world_type 'slope_15deg'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
+        section 13.1
+            scenario_configuration
+                world_type 'stairs_standard'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'jackal'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5  
+        section 13.1
+            scenario_configuration
+                world_type 'gap_5cm'
                 robot_type 'UGV'
             must_have_orientation
                 entity 'jackal'
@@ -136,7 +172,7 @@ Test_definitions (S)
                 tolerance 5 
         section 13.4
             scenario_configuration
-                world_type 'steps'
+                world_type 'stairs_standard'
                 robot_type 'UGV'
             must_have_orientation
                 entity 'jackal'
@@ -154,7 +190,7 @@ Test_definitions (S)
                 tolerance 5  
         section 13.4
             scenario_configuration
-                world_type 'gapped'
+                world_type 'gap_5cm'
                 robot_type 'UGV'
             must_have_orientation
                 entity 'jackal'
@@ -229,13 +265,13 @@ Test_definitions (S)
                 robot_type 'UGV'    
             must_be_at
                 area_start
-                    x1 1.0
-                    y1 2.2
-                    z1 0.0
+                    x1 -2.0
+                    y1 -2.0
+                    z1 -2.0
                 area_end
-                    x2 12.0
-                    y2 6.5
-                    z2 0.5
+                    x2 2.0
+                    y2 2.0
+                    z2 2.0
                 tolerance 3.5
                 time-constraint 0.2
 Test_definitions (E)

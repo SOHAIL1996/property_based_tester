@@ -76,7 +76,7 @@ class TestScenario(Base):
         rospy.init_node('pblg_test')
 
     def test_scenario_generation(self, randomizer, pblg_config):
-        world = Model(pblg_config[0].world_type,0,0,0)
+        world = Model(pblg_config[2][0].world_type,0,0,0)
         world.insert_model()
         assert True
     
@@ -124,7 +124,7 @@ class TestScenario(Base):
         """ Checking if the robot is within a given area.
         """    
         check = False
-        for configuration in pblg_config[1]:
+        for configuration in pblg_config[2][1]:
             if configuration[0] == 'must_be_at':
                 check = True
 
@@ -138,7 +138,7 @@ class TestScenario(Base):
         """ Checking if the robot is not within a given area.
         """    
         check = False
-        for configuration in pblg_config[1]:
+        for configuration in pblg_config[2][1]:
             if configuration[0] == 'must_not_be_at':
                 check = True
 
@@ -151,6 +151,6 @@ class TestScenario(Base):
     def test_static_obstacle_generation_tear_down(self, pblg_config):
         """Tearing down the setup for navigation.
         """  
-        delete_model(pblg_config[0].world_type) 
+        delete_model(pblg_config[2][0].world_type) 
 
         # allure.attach(data, 'Configuration', allure.attachment_type.CSV)            

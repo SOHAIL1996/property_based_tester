@@ -48,8 +48,9 @@ class PropertyBasedLanguageGenerator():
             scenario_compo = self.scenario_composite_test_extractor(
                                                 self.test_model.test_type[0].section_number[x].scenario_configuration,
                                                 self.test_model.test_type[0].section_number[x].custom_scenario.property_check)
+            test_details = [self.standard, self.standard_sections[x], scenario_compo]
 
-            self.scenario_composite_tests.append(scenario_compo)
+            self.scenario_composite_tests.append(test_details)
 
     def scenario_composite_test_extractor(self, scenario, composite_tests):
 
@@ -85,4 +86,4 @@ class PropertyBasedLanguageGenerator():
         return (scen, comp)
              
 
-# p = PropertyBasedLanguageGenerator()
+p = PropertyBasedLanguageGenerator()

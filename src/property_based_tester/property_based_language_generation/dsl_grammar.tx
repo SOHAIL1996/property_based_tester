@@ -35,6 +35,36 @@ ScenarioModifiers:
     sm_randomize_obstacles *= Randomization
 ; 
 
+RobotPosition:
+    "robot_position" 
+    'x_pos' x_pos= FLOAT
+    'y_pos' y_pos= FLOAT
+    'z_pos' z_pos= FLOAT
+    'r_ori' r_ori= FLOAT
+    'p_ori' p_ori = FLOAT
+    'y_ori' y_ori = FLOAT
+;
+
+RobotGoal:
+    "robot_goal" 
+    'x_pos' x_pos= FLOAT
+    'y_pos' y_pos= FLOAT
+    'z_pos' z_pos= FLOAT
+    'r_ori' r_ori= FLOAT
+    'p_ori' p_ori = FLOAT
+    'y_ori' y_ori = FLOAT
+;
+
+PayloadPosition:
+    "payload_position" 
+    'x_pos' x_pos= FLOAT
+    'y_pos' y_pos= FLOAT
+    'z_pos' z_pos= FLOAT
+    'r_ori' r_ori= FLOAT
+    'p_ori' p_ori = FLOAT
+    'y_ori' y_ori = FLOAT
+;
+
 ImpartedForces:
     "imparted_forces" imparted_forces = FLOAT
 ;

@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 ---------------------------------------------------- 
-Navigation Tests
+Property-Based Test
 
-Tests a UGV in a variety of parameterized and randomized
-navigation scenarios.
+Tests robots in diverse scenarios.
 ----------------------------------------------------
 Supervisor: Prof. Dr. Nico Hochgeschwender
             Prof. Dr. Paul Ploger

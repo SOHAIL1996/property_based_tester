@@ -22,6 +22,12 @@ import pytest
 class PropertyBasedLanguageGenerator():
 
     def __init__(self):
+        """
+        self.scenario_composite_tests[0]: Contains standard information
+        self.scenario_composite_tests[1]: Contains standard sections information
+        self.scenario_composite_tests[2][0]: Contains section scenario information
+        self.scenario_composite_tests[2][1]: Contains section composite properties information 
+        """
 
         self.config = Configuration()        
         
@@ -86,4 +92,4 @@ class PropertyBasedLanguageGenerator():
         return (scen, comp)
              
 
-p = PropertyBasedLanguageGenerator()
+# p = PropertyBasedLanguageGenerator()

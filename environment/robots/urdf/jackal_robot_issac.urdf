@@ -355,30 +355,15 @@
     <material>Gazebo/Yellow</material>
     <turnGravityOff>false</turnGravityOff>
   </gazebo>
-  <!--
-    As you add to this URDF, please be aware that both the robot and
-    simulation include it. You must retain compatibility with all of
-    the following launch files:
 
-    jackal_viz/launch/view_model.launch
-    jackal_gazebo/launch/jackal_world.launch
-    jackal_base/launch/base.launch
-  -->
-  <!-- 
-    Add Cameras. 
-    - JACKAL_FLEA3
-    - JACKAL_STEREO_FLEA3
-    - JACKAL_BB2
-  -->
-  <!-- This file is a placeholder which is included by default from
-       jackal.urdf.xacro. If a robot is being customized and requires
-       additional URDF, set the JACKAL_URDF_EXTRAS environment variable
-       to the full path of the file you would like included. -->
-  <!-- This file is a placeholder which is included by default from
-       jackal.urdf.xacro. If a robot is being customized and requires
-       additional URDF, set the JACKAL_URDF_EXTRAS environment variable
-       to the full path of the file you would like included. -->
+  <!-- Addition for property-based tester -->
 
+  <!-- Ouster Augment  -->
+  <xacro:include filename="$(find ouster_description)/urdf/OS1-64.urdf.xacro"/>
+  <OS1-64 parent="base_link" name="os1_sensor" hz="10" samples="220">
+    <origin xyz="0 0 1.2" rpy="0 0 0" />
+  </OS1-64>
+  
   <!-- Links and joints templplate if you do not already have -->
  <link name="sim_collider">
     <collision>
@@ -423,6 +408,5 @@
     </sensor>
     <material>Gazebo/Orange</material>
   </gazebo>
-  
-</robot>
 
+</robot>

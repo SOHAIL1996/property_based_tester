@@ -33,7 +33,7 @@
 #    robot_spawner_name: spawn_xarm6_controller.launch
 
  Robot: 
-   robot_urdf_name: jackal_robot_issac # URDF name
+   robot_urdf_name: jackal_robot # URDF name
    robot_spawner_name: spawn_jackal_controller.launch
    robot_size: [0.990, 0.670, 0.390] # x,y,z in meters
 

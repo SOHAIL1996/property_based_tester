@@ -7,9 +7,14 @@
   <arg name="config" default="$(arg default_config)" />
   <arg name="joystick" default="false" />   
 
-  <include file="$(find jackal_description)/launch/description.launch">
+  <!-- Default Behavior -->
+  <!-- <include file="$(find jackal_description)/launch/description.launch">
     <arg name="config" value="$(arg config)" />
-  </include>
+  </include> -->
+
+  <param name="robot_description" textfile="$(find property_based_tester)/environment/robots/urdf/jackal_robot.urdf"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
   <include file="$(find jackal_control)/launch/control.launch" />
   <include file="$(find jackal_control)/launch/teleop.launch">
     <arg name="joystick" value="$(arg joystick)" />

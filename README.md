@@ -117,6 +117,12 @@ Robot:
 ```bash
 gz sdf -p my.urdf > my.sdf
 ```
+- Incase you have to convert your xacro urdf to URDF
+
+```bash
+rosrun xacro xacro -o model.urdf model.urdf.xacro
+```
+
 3. Search in the .sdf file the collision tag corresponding to your URDF and place it in the contact sensors collision tag (i.e. sim_collider).
 
 ### Property-Based Language Generator (TextX)

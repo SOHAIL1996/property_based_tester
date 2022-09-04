@@ -23,7 +23,7 @@ import tf
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
-def pose_action_client(coord_x, coord_y, direction):
+def pose_action_client(coord_x, coord_y, direction, timeout=6):
     """Action client test for navigation using coordinates.
 
     Args:
@@ -62,19 +62,30 @@ def pose_action_client(coord_x, coord_y, direction):
         goal.target_pose.pose.orientation.w = np.cos(R/2) * np.cos(P/2) * np.cos(Y/2) + np.sin(R/2) * np.sin(P/2) * np.sin(Y/2)
 
         client.send_goal(goal)
+        start = time.time()
 
+        # For 0 tolerance navigation
         if not distance_tolerance > 0.0:
-                client.wait_for_result()
+                client.wait_for_result(timeout)
                 time.sleep(duration)
         else:
+            # For navigation with tolerance
             distance = 10
-            while(distance > distance_tolerance):
+            while(distance > distance_tolerance) :
                 try:
                     trans,rot = listener.lookupTransform(odom_frame_id,base_frame_id, rospy.Time.now())
                 except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
                     continue
                 distance = math.sqrt(pow(coord_x-trans[0],2)+pow(coord_y-trans[1],2))
+        
+                # Time out tolerance
+                end = time.time()
+                time_elapsed = end - start
+                if time_elapsed >= timeout:
+                    client.cancel_all_goals()
+                    return False
             client.cancel_all_goals()
+
         return True
 
     except Exception as exc:

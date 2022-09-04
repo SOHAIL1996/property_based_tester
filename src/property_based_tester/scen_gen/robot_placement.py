@@ -43,14 +43,16 @@ class RobotModel():
         self.robo_dir        = conf.robots_dir+'/urdf/'+model_name+'.urdf'
         self.model_name      = model_name
 
+        R, P, Y = R*((22/7)/180), P*((22/7)/180), Y*((22/7)/180)
+
         self.object_pose = Pose()
         self.object_pose.position.x = x
         self.object_pose.position.y = y
         self.object_pose.position.z = z
-        self.object_pose.orientation.x = np.sin(R/2) * np.cos(P/2) * np.cos(Y/2) - np.cos(R/2) * np.sin(P/2) * np.sin(Y/2)
-        self.object_pose.orientation.y = np.cos(R/2) * np.sin(P/2) * np.cos(Y/2) + np.sin(R/2) * np.cos(P/2) * np.sin(Y/2)
-        self.object_pose.orientation.z = np.cos(R/2) * np.cos(P/2) * np.sin(Y/2) - np.sin(R/2) * np.sin(P/2) * np.cos(Y/2)
-        self.object_pose.orientation.w = np.cos(R/2) * np.cos(P/2) * np.cos(Y/2) + np.sin(R/2) * np.sin(P/2) * np.sin(Y/2)
+        self.object_pose.orientation.x = np.sin(R/2) * np.cos(P/2) * np.cos(Y/2) - np.cos(R/2) * np.sin(P/2) * np.sin(Y/2) 
+        self.object_pose.orientation.y = np.cos(R/2) * np.sin(P/2) * np.cos(Y/2) + np.sin(R/2) * np.cos(P/2) * np.sin(Y/2) 
+        self.object_pose.orientation.z = np.cos(R/2) * np.cos(P/2) * np.sin(Y/2) - np.sin(R/2) * np.sin(P/2) * np.cos(Y/2) 
+        self.object_pose.orientation.w = np.cos(R/2) * np.cos(P/2) * np.cos(Y/2) + np.sin(R/2) * np.sin(P/2) * np.sin(Y/2) 
 
         # self.bounding_box = bound_box(self.model_real_name)
         

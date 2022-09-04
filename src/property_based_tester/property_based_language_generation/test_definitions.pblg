@@ -28,8 +28,7 @@ Test_definitions (S)
             must_collide
                 collision_object 'safety_obstacle_square'
             must_have_collision_force_less_than
-                force_threshhold 25.0
-                tolerance 0.1    
+                force_threshhold 70.0
         section 11
             scenario_configuration
                 world_type 'empty'

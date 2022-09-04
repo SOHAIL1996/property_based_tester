@@ -148,14 +148,25 @@ class TestScenario(Base):
 
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
 
+        # Logging test collision details for other tests
         pytest.collision = self.composite_properties.in_collision
         pytest.collider_1 = self.composite_properties.collider_1
         pytest.collider_2 = self.composite_properties.collider_2
         pytest.collision_force = self.composite_properties.collision_force
-        print(pytest.collider_1,pytest.collider_2)
 
         assert result == True    
 
+    def test_must_have_collision_force_less_than(self, pblg_config):
+        """ Checking the max force exrted by the robot on an obstacle.
+        """ 
+        check = False
+        for configuration in pblg_config[2][1]:
+            if configuration[0] == 'must_have_collision_force_less_than':
+                check = True
+                assert self.composite_properties.must_have_collision_force_less_than(pytest.collision_force, configuration[1].force_threshhold) == True
+        if check == False:
+            pytest.skip("Test Un-marked")
+    
     def test_must_collide(self, pblg_config):
         """ Checking if the robot collided with a specific obstacle during navigation.
         """    

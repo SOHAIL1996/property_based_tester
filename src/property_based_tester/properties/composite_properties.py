@@ -16,6 +16,7 @@ Date: July 01, 2022
 ----------------------------------------------------
 """
 
+from cgitb import reset
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import figure
 from matplotlib.patches import Rectangle
@@ -201,12 +202,33 @@ class CompositeProperties():
     def must_not_collide(self, robot, object):
         pass
 
+    def must_have_collision_force_less_than(self, forces_applied, threshhold):
+        result = []
+        try:
+            for force in forces_applied:
+                if abs(force.force.x) >= threshhold: 
+                    result.append(1)
+                if abs(force.force.y) >= threshhold: 
+                    result.append(1)
+                if abs(force.force.z) >= threshhold: 
+                    result.append(1)
+
+            force_less_than_threshold = sum(result)
+            if force_less_than_threshold > 0:
+                return False
+            else:
+                return True
+        except:
+            return False
+
+
     # Callback functions
     def robot_force_sensor_callback(self, data):
         info = data.states
         if info:
             self.collider_1 = info[0].collision1_name
             self.collider_2 = info[0].collision2_name
+            self.collision_force = info[0].wrenches
             self.in_collision = True   
 
 

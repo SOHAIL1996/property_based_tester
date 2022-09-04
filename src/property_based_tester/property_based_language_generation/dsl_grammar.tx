@@ -151,7 +151,6 @@ MustNotBeAt:
 
 MustHaveCollisionForcesLessThan:
     'force_threshhold' force_threshhold = FLOAT
-    'tolerance' (tolerance = FLOAT)?
 ; 
 
 MustHaveOrientation:

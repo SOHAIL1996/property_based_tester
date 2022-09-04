@@ -27,7 +27,10 @@ ScenarioConfiguration:
 ;
 
 ScenarioModifiers:   
-    
+    sm_robot_position *= RobotPosition
+    sm_robot_goal *= RobotGoal
+    sm_robot_velocity *= RobotVelocity
+    sm_payload *= Payload
     sm_imparted_forces *= ImpartedForces
     sm_safety_obstacle *= SafetyObstacle
     sm_velocity_percentage *= VelocityPercentage
@@ -37,30 +40,34 @@ ScenarioModifiers:
 
 RobotPosition:
     "robot_position" 
-    'x_pos' x_pos= FLOAT
-    'y_pos' y_pos= FLOAT
-    'z_pos' z_pos= FLOAT
-    'r_ori' r_ori= FLOAT
+    'x_pos' x_pos = FLOAT
+    'y_pos' y_pos = FLOAT
+    'z_pos' z_pos = FLOAT
+    'r_ori' r_ori = FLOAT
     'p_ori' p_ori = FLOAT
     'y_ori' y_ori = FLOAT
 ;
 
 RobotGoal:
     "robot_goal" 
-    'x_pos' x_pos= FLOAT
-    'y_pos' y_pos= FLOAT
-    'z_pos' z_pos= FLOAT
-    'r_ori' r_ori= FLOAT
+    'x_pos' x_pos = FLOAT
+    'y_pos' y_pos = FLOAT
+    'z_pos' z_pos = FLOAT
+    'r_ori' r_ori = FLOAT
     'p_ori' p_ori = FLOAT
     'y_ori' y_ori = FLOAT
 ;
 
-PayloadPosition:
-    "payload_position" 
-    'x_pos' x_pos= FLOAT
-    'y_pos' y_pos= FLOAT
-    'z_pos' z_pos= FLOAT
-    'r_ori' r_ori= FLOAT
+RobotVelocity:
+    "robot_speed" robot_speed = FLOAT
+;
+
+Payload:
+    "payload" payload= STRING 
+    'x_pos' x_pos = FLOAT
+    'y_pos' y_pos = FLOAT
+    'z_pos' z_pos = FLOAT
+    'r_ori' r_ori = FLOAT
     'p_ori' p_ori = FLOAT
     'y_ori' y_ori = FLOAT
 ;
@@ -70,6 +77,12 @@ ImpartedForces:
 ;
 SafetyObstacle:
     "safety_obstacle" safety_obstacle = STRING
+    'x_pos' x_pos = FLOAT
+    'y_pos' y_pos = FLOAT
+    'z_pos' z_pos = FLOAT
+    'r_ori' r_ori = FLOAT
+    'p_ori' p_ori = FLOAT
+    'y_ori' y_ori = FLOAT
 ;
 VelocityPercentage:
     "velocity_percentage" velocity_percentage = FLOAT

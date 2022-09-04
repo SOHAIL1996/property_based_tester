@@ -38,7 +38,7 @@ class CompositeProperties():
         self.in_collision = False 
         rospy.Subscriber("bumper_contact_state", ContactsState, self.robot_force_sensor_callback)
 
-    def must_be_at(self, target_area_min=[-2,-2,-2], target_area_max=[1, 2, 2], time=0, tolerance=0):
+    def must_be_at(self, object='jackal_robot', target_area_min=[-2,-2,-2], target_area_max=[1, 2, 2], time=0, tolerance=0):
         """Composite property that ensures the robot is in its given operation zone througout the
             a given scenario.
 
@@ -51,7 +51,7 @@ class CompositeProperties():
         Returns:
             Bool: Returns True if it stayed inside the operation zone.
         """
-        all_robot_position = self.primitive_properties.spatial_temporal_information()
+        all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
 
         result = []
 
@@ -84,7 +84,7 @@ class CompositeProperties():
         else:
             return True
         
-    def must_not_be_at(self, target_area_min=[2, 2, -1], target_area_max=[6, 6, 2], time=0, tolerance=0):
+    def must_not_be_at(self, object='jackal_robot', target_area_min=[2, 2, -1], target_area_max=[6, 6, 2], time=0, tolerance=0):
         """Composite property that ensures the robot does not wander into a forbidden zone througout the
             a given scenario.
         Args:
@@ -96,7 +96,7 @@ class CompositeProperties():
         Returns:
             Bool: Returns True if it did not go into a forbidden zone.
         """
-        all_robot_position = self.primitive_properties.spatial_temporal_information()
+        all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
 
         result = []
 
@@ -130,11 +130,39 @@ class CompositeProperties():
         else:
             return True
 
-    def must_be_near_to(self, robot, object, time, tolerance):
+    def must_be_near_to(self, robot, object, time=0, tolerance=0):
         pass
 
-    def must_not_be_near_to(self, robot, object, time, tolerance):
+    def must_not_be_near_to(self, robot, object, time=0, tolerance=0):
         pass
+
+    def must_have_orientation(self, object='jackal_robot_issac', orientation=[25, 25, 360], time=0, tolerance=0):
+        """Composite property that ensures the object is in the correct orientation.
+
+        Args:
+            orientation (list, optional): _description_. Defaults to [25, 25, 360].
+            time (int, optional): _description_. Defaults to 0.
+            tolerance (int, optional): Safety tolerance value that robot shouldn't exceed. Defaults to 0.
+
+        Returns:
+            Bool: Returns True if the object orientation was correct.
+        """
+        object_orientations = self.primitive_properties.spatial_temporal_information(object)
+        result = []
+
+        for obj_ori in object_orientations:
+            if obj_ori[0] >= orientation[0] + tolerance:
+                result.append(1)
+            if obj_ori[1] >= orientation[1] + tolerance:
+                result.append(2)
+            if obj_ori[2] >= orientation[2] + tolerance:
+                result.append(3)
+
+        object_at_designated_orientation = sum(result)
+        if object_at_designated_orientation > 0:
+            return False
+        else:
+            return True
 
     def must_collide(self, robot, object, robot_position=[0,2,0], target_area_min=[-1,-1,0], target_area_max=[2,2,0], time=0, tolerance=0):
 
@@ -171,9 +199,6 @@ class CompositeProperties():
     def must_not_collide(self, robot, object):
         pass
 
-    def must_have_orientation(self, robot, object):
-        pass
-
     # Callback functions
     def robot_force_sensor_callback(self, data):
         info = data.states
@@ -185,3 +210,6 @@ class CompositeProperties():
 
 if __name__ == '__main__':
     u = CompositeProperties()
+    print(u.must_be_at())
+    print(u.must_not_be_at())
+    print(u.must_have_orientation())

@@ -24,13 +24,13 @@ import pytest
 import allure
 
 from property_based_tester.configuration.config import Configuration
-from property_based_tester.custom_tests.user_test_builder import UserTesting
 from property_based_tester.property_based_language_generation.textx_test_specification import PropertyBasedLanguageGenerator
 from property_based_tester.robot_controllers.navigation_client import pose_action_client
+from property_based_tester.robot_controllers.speed_client import move
 from property_based_tester.scen_gen.obstacle_gen import Model
+from property_based_tester.scen_gen.force_generation import apply_force
 from property_based_tester.scen_gen.model_placement import delete_model
 from property_based_tester.scen_gen.robot_placement import RobotModel
-
 from property_based_tester.properties.composite_properties import CompositeProperties
 
 
@@ -48,7 +48,6 @@ class Base:
     def set_up(self):
         self.config = Configuration()
         self.composite_properties = CompositeProperties()
-        self.user_tests = UserTesting()
 
 @pytest.mark.usefixtures('set_up')    
 @pytest.mark.parametrize('pblg_config', pblg_config, scope="class")
@@ -61,22 +60,57 @@ class TestScenario(Base):
             return val
         return _parameters
 
-    @pytest.fixture()
-    def robo_pose_correction(self):
-        robo = RobotModel(self.config.robot_urdf,x=0,y=0,z=0.12,R=0,P=0,Y=0)
-        robo.robot_pose()
-
     def pytest_configure():
         pytest.collision = False
 
-    def test_set_up(self, robo_pose_correction, pblg_config):
+    def test_set_up(self, pblg_config):
         """Initializing property-based generator language scenario.
         """  
         rospy.init_node('pblg_test')
 
     def test_scenario_generation(self, randomizer, pblg_config):
+        
         world = Model(pblg_config[2][0].world_type,0,0,0)
         world.insert_model()
+
+        try:
+            robo = RobotModel(self.config.robot_urdf,
+                            x= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].x_pos,
+                            y= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].y_pos,
+                            z= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].z_pos,
+                            R= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].r_ori,
+                            P= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].p_ori,
+                            Y= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].y_ori)
+            robo.robot_pose()
+        except:
+            robo = RobotModel(self.config.robot_urdf,
+                            x= 0,
+                            y= 0,
+                            z= 0.12,
+                            R= 0,
+                            P= 0,
+                            Y= 0)
+            robo.robot_pose()
+
+        try:
+            payload = Model(pblg_config[2][0].scenario_modifier[0].sm_payload[0].payload,
+                            pblg_config[2][0].scenario_modifier[0].sm_payload[0].x_pos,
+                            pblg_config[2][0].scenario_modifier[0].sm_payload[0].y_pos,
+                            pblg_config[2][0].scenario_modifier[0].sm_payload[0].z_pos)
+            payload.insert_model()
+        except:
+            pass
+
+        try:
+            for i in range(len(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle)):
+                safety_obstacle = Model(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].safety_obstacle,
+                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].x_pos,
+                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].y_pos,
+                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].z_pos)
+                safety_obstacle.insert_model()
+        except:
+            pass
+            
         assert True
     
     # @settings(max_examples=1)
@@ -89,35 +123,52 @@ class TestScenario(Base):
     #     data_logger('logger/logs/nav_end')
     #     assert result == True
 
-    # def test_scenario_execution(self, randomizer, pblg_config): 
-    #     """Defines a scenario for the rest of the tests to run in using coodrinates.
-    #     """    
-    #     # Randomize given coordinates
-    #     coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
+    def test_scenario_execution(self, randomizer, pblg_config): 
+        """Defines a scenario for the rest of the tests to run in using coodrinates.
+        """    
+        try:
+            # Test definition goal if exists
+            coord_x = pblg_config[2][0].scenario_modifier[0].sm_robot_goal[0].x_pos
+            coord_y = pblg_config[2][0].scenario_modifier[0].sm_robot_goal[0].y_pos
+            direction = pblg_config[2][0].scenario_modifier[0].sm_robot_goal[0].y_ori
+        except:
+            # Randomize given coordinates
+            coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
 
-    #     # Excute navigation and temporal logger
-    #     temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'], preexec_fn=os.setsid)
-    #     result = pose_action_client(coord_x, coord_y, direction)
-    #     os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
-    #     pytest.collision = self.composite_properties.in_collision
+        # Excute navigation and temporal logger
+        temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'], preexec_fn=os.setsid)
 
-    #     assert result == True    
+        apply_force(x=0,y=40,z=0,link='base_link',timeout=2)
+        result = move(1,'/jackal_velocity_controller/cmd_vel',5)
+        # result = pose_action_client(coord_x, coord_y, direction)
 
-    # def test_must_collide(self, pblg_config):
-    #     """ Checking if the robot collided with a specific obstacle during navigation.
-    #     """    
-    #     if self.user_tests.must_collide:
-    #         assert pytest.collision == True
-    #     else:
-    #         pytest.skip("Uninitialized by user")
 
-    # def test_must_not_collide(self, pblg_config):
-    #     """ Checking if the robot has not collided with an obstacle during navigation.
-    #     """    
-    #     if self.user_tests.must_not_collide:
-    #         assert pytest.collision == False
-    #     else:
-    #         pytest.skip("Uninitialized by user")
+        os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
+        pytest.collision = self.composite_properties.in_collision
+
+        assert result == True    
+
+    def test_must_collide(self, pblg_config):
+        """ Checking if the robot collided with a specific obstacle during navigation.
+        """    
+        check = False
+        for configuration in pblg_config[2][1]:
+            if configuration[0] == 'must_collide':
+                check = True
+                assert pytest.collision == True
+        if check == False:
+            pytest.skip("Test Un-marked")
+
+    def test_must_not_collide(self, pblg_config):
+        """ Checking if the robot has not collided with an obstacle during navigation.
+        """ 
+        check = False
+        for configuration in pblg_config[2][1]:
+            if configuration[0] == 'must_not_collide':
+                check = True
+                assert pytest.collision == True
+        if check == False:
+            pytest.skip("Test Un-marked")
 
     def test_must_be_at(self, pblg_config):
         """ Checking if the robot is within a given area.
@@ -129,7 +180,6 @@ class TestScenario(Base):
 
                 assert self.composite_properties.must_be_at(target_area_min=[configuration[1].x1,configuration[1].y1,configuration[1].z1], 
                                                             target_area_max=[configuration[1].x2,configuration[1].y2,configuration[1].z2]) == True
-                
         if check == False:
             pytest.skip("Test Un-marked")
 
@@ -151,5 +201,17 @@ class TestScenario(Base):
         """Tearing down the setup for navigation.
         """  
         delete_model(pblg_config[2][0].world_type) 
+
+        try:
+            for i in range(len(pblg_config[2][0].scenario_modifier[0].sm_payload)):
+                delete_model(pblg_config[2][0].scenario_modifier[0].sm_payload[i].payload) 
+        except:
+            pass
+
+        try:
+            for i in range(len(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle)):
+                delete_model(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].safety_obstacle) 
+        except:
+            pass
 
         # allure.attach(data, 'Configuration', allure.attachment_type.CSV)            

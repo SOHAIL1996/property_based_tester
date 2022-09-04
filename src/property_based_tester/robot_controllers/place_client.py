@@ -16,6 +16,7 @@ Date: July 01, 2022
 """
 import rospy
 import actionlib
+import numpy as np
 
 from mdr_place_action.msg import PlaceAction, PlaceGoal
 

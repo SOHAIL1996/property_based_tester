@@ -62,6 +62,9 @@ class TestScenario(Base):
 
     def pytest_configure():
         pytest.collision = False
+        pytest.collider_1 = None
+        pytest.collider_2 = None
+        pytest.collision_force = None
 
     def test_set_up(self, pblg_config):
         """Initializing property-based generator language scenario.
@@ -73,6 +76,7 @@ class TestScenario(Base):
         world = Model(pblg_config[2][0].world_type,0,0,0)
         world.insert_model()
 
+        # Correcting robot spawn location
         try:
             robo = RobotModel(self.config.robot_urdf,
                             x= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].x_pos,
@@ -142,9 +146,13 @@ class TestScenario(Base):
         result = move(1,'/jackal_velocity_controller/cmd_vel',5)
         # result = pose_action_client(coord_x, coord_y, direction)
 
-
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
+
         pytest.collision = self.composite_properties.in_collision
+        pytest.collider_1 = self.composite_properties.collider_1
+        pytest.collider_2 = self.composite_properties.collider_2
+        pytest.collision_force = self.composite_properties.collision_force
+        print(pytest.collider_1,pytest.collider_2)
 
         assert result == True    
 

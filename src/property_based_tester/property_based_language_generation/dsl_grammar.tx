@@ -116,15 +116,11 @@ PropertyCheck:
 ; 
 
 MustNotCollide:
-    'collision-object' collision_object = STRING
-    'tolerance' (tolerance = FLOAT)?
-    'time-constraint' (time_constraint = FLOAT)?
+    'collision_object' collision_object = STRING
 ; 
 
 MustCollide:
-    'collision-object' collision_object = STRING
-    'tolerance' (tolerance = FLOAT)?
-    'time-constraint' (time_constraint = FLOAT)?
+    'collision_object' collision_object = STRING
 ; 
 
 MustBeAt:

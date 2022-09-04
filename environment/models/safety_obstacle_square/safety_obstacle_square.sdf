@@ -6,7 +6,7 @@
     <link name="body">
 
     <inertial> 
-      <mass>5</mass>
+      <mass>25</mass>
       <!-- <pose>0 -106.010 14.016 0 0 0</pose> -->
         <inertia> 
           <!-- <ixx>1.222e-004</ixx>      

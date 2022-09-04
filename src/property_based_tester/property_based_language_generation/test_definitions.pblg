@@ -18,13 +18,6 @@ Test_definitions (S)
                     r_ori 0
                     p_ori 0
                     y_ori 90
-                payload 'pay_load_square'
-                    x_pos -0.1
-                    y_pos 0
-                    z_pos 0.25
-                    r_ori 0
-                    p_ori 0
-                    y_ori 0
                 safety_obstacle 'safety_obstacle_square'
                     x_pos 0
                     y_pos 1
@@ -32,6 +25,8 @@ Test_definitions (S)
                     r_ori 0
                     p_ori 0
                     y_ori 0
+            must_collide
+                collision_object 'safety_obstacle_square'
             must_have_collision_force_less_than
                 force_threshhold 25.0
                 tolerance 0.1    

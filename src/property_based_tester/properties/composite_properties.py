@@ -26,7 +26,6 @@ from stl import mesh
 
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.properties.primitive_properties import PrimitiveProperties
-
 from gazebo_msgs.msg import ContactsState
 
 class CompositeProperties():
@@ -36,6 +35,9 @@ class CompositeProperties():
         self.primitive_properties = PrimitiveProperties()
 
         self.in_collision = False 
+        self.collider_1 = False 
+        self.collider_2 = False 
+        self.collision_force = False 
         rospy.Subscriber("bumper_contact_state", ContactsState, self.robot_force_sensor_callback)
 
     def must_be_at(self, object='jackal_robot', target_area_min=[-2,-2,-2], target_area_max=[1, 2, 2], time=0, tolerance=0):
@@ -203,13 +205,13 @@ class CompositeProperties():
     def robot_force_sensor_callback(self, data):
         info = data.states
         if info:
-            collider_1 = info[0].collision1_name
-            collider_2 = info[0].collision2_name
-            self.in_collision = True       
+            self.collider_1 = info[0].collision1_name
+            self.collider_2 = info[0].collision2_name
+            self.in_collision = True   
 
 
-if __name__ == '__main__':
-    u = CompositeProperties()
-    print(u.must_be_at())
-    print(u.must_not_be_at())
-    print(u.must_have_orientation())
+# if __name__ == '__main__':
+#     u = CompositeProperties()
+#     print(u.must_be_at())
+#     print(u.must_not_be_at())
+#     print(u.must_have_orientation())

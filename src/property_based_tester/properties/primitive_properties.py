@@ -77,7 +77,7 @@ class PrimitiveProperties():
 
         for i in range(len(object_pos_q1)):
             r,p,y = self.quaternion_to_euler_angle_vectorized2(object_pos_q4[i],object_pos_q1[i],object_pos_q2[i],object_pos_q3[i])
-            all_orientations = np.vstack((all_orientations, [r,p,y]))
+            all_orientations = np.vstack((all_orientations, [abs(r),abs(p),abs(y)]))
 
         return all_orientations
 

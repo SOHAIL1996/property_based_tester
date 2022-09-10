@@ -65,11 +65,13 @@ class TestScenario(Base):
         pytest.collider_1 = None
         pytest.collider_2 = None
         pytest.collision_force = None
+        pytest.robot_controller = None
 
     def test_set_up(self, pblg_config):
         """Initializing property-based generator language scenario.
         """  
         rospy.init_node('pblg_test')
+        pytest.robot_controller = subprocess.Popen(['roslaunch', self.config.rospkg_name, self.config.launch_controller_file])
 
     def test_scenario_generation(self, randomizer, pblg_config):
         
@@ -143,8 +145,14 @@ class TestScenario(Base):
         temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'], preexec_fn=os.setsid)
 
         apply_force(x=0,y=40,z=0,link='base_link',timeout=2)
-        result = move(1,'/jackal_velocity_controller/cmd_vel',5)
-        # result = pose_action_client(coord_x, coord_y, direction)
+
+        try:
+            if pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].manual_speed == True:
+                result = move(pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].robot_speed
+                ,self.config.robot_cmd_vel, 
+                pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].speed_duration)
+        except:
+            result = pose_action_client(coord_x, coord_y, direction)
 
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
 
@@ -157,7 +165,7 @@ class TestScenario(Base):
         assert result == True    
 
     def test_must_have_collision_force_less_than(self, pblg_config):
-        """ Checking the max force exrted by the robot on an obstacle.
+        """ Checking the max force exerted by the robot on an obstacle.
         """ 
         check = False
         for configuration in pblg_config[2][1]:
@@ -216,11 +224,28 @@ class TestScenario(Base):
         if check == False:
             pytest.skip("Test Un-marked")
     
+    def test_must_have_orientation(self, pblg_config):
+        """ Checking if the robot is has a given area.
+        """    
+        check = False
+        for configuration in pblg_config[2][1]:
+            if configuration[0] == 'must_have_orientation':
+                check = True
+
+                assert self.composite_properties.must_have_orientation(object=configuration[1].entity, 
+                                                            orientation=[configuration[1].roll,
+                                                                         configuration[1].pitch,
+                                                                         configuration[1].yaw], 
+                                                            time=0, 
+                                                            tolerance=configuration[1].tolerance) == True
+        if check == False:
+            pytest.skip("Test Un-marked")
+
     def test_static_obstacle_generation_tear_down(self, pblg_config):
         """Tearing down the setup for navigation.
         """  
         delete_model(pblg_config[2][0].world_type) 
-
+        
         try:
             for i in range(len(pblg_config[2][0].scenario_modifier[0].sm_payload)):
                 delete_model(pblg_config[2][0].scenario_modifier[0].sm_payload[i].payload) 
@@ -232,5 +257,7 @@ class TestScenario(Base):
                 delete_model(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].safety_obstacle) 
         except:
             pass
+
+        pytest.robot_controller.terminate()
 
         # allure.attach(data, 'Configuration', allure.attachment_type.CSV)            

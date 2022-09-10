@@ -59,7 +59,9 @@ RobotGoal:
 ;
 
 RobotVelocity:
+    "manual_speed" manual_speed = BOOL
     "robot_speed" robot_speed = FLOAT
+    "speed_duration" speed_duration = FLOAT
 ;
 
 Payload:

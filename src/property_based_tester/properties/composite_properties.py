@@ -232,8 +232,8 @@ class CompositeProperties():
             self.in_collision = True   
 
 
-# if __name__ == '__main__':
-#     u = CompositeProperties()
+if __name__ == '__main__':
+    u = CompositeProperties()
 #     print(u.must_be_at())
 #     print(u.must_not_be_at())
-#     print(u.must_have_orientation())
+    print(u.must_have_orientation())

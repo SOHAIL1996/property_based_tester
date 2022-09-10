@@ -1,0 +1,50 @@
+Test_definitions (S)
+    standard 'ISO 23482-1'
+        section 7.2
+            scenario_configuration
+                world_type 'empty'
+                robot_type 'UGV'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.12
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_collide
+                collision_object 'safety_obstacle_square'
+            must_have_collision_force_less_than
+                force_threshhold 70.0
+        section 11
+            scenario_configuration
+                world_type 'empty'
+                robot_type 'UGV'
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+            must_have_orientation
+                entity 'payload'
+                angles
+                    roll 0.0
+                    pitch 0.0
+                    yaw 0.0
+                tolerance 5 
+Test_definitions (E)

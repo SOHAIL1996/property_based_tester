@@ -22,7 +22,7 @@ StandardSection:
 ScenarioConfiguration:
     "scenario_configuration"
     "world_type" world_type = STRING
-    "robot_type" robot_type = STRING
+    'description' description = STRING
     scenario_modifier *= ScenarioModifiers
 ;
 

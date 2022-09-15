@@ -9,8 +9,6 @@
 ![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/figures/Methodology.jpg)
 
 
-![Jackal ISO 23482-1 Compliance Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/jackal_iso_compliance.gif)
-
 ## Running Framework (Hypothesis|ROS|Gazebo|Allure|TextX)
 
 1. Basic setup 
@@ -51,6 +49,8 @@ Robot:
    robot_urdf_name: xarm6_gripper
    robot_spawner_name: spawn_xarm6_controller.launch
 ```
+
+<!-- ![Jackal ISO 23482-1 Compliance Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/jackal_iso_compliance.gif) -->
 
 ![Husky Odom Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif)
 

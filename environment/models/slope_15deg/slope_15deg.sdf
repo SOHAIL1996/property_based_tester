@@ -38,7 +38,7 @@
           <script> <!-- Very important to change-->
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/slope_15deg/materials/scripts</uri>
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/slope_15deg/materials/textures</uri>
-             <name>Gazebo/Grey</name>
+             <name>Gazebo/DarkGrey</name>
           </script>
         </material>
       </visual>

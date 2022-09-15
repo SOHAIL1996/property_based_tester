@@ -148,11 +148,11 @@ class TestScenario(Base):
 
         try:
             if pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].manual_speed == True:
-                result = move(pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].robot_speed
-                ,self.config.robot_cmd_vel, 
-                pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].speed_duration)
+                result = move(pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].robot_speed,
+                              self.config.robot_cmd_vel, 
+                              pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].speed_duration)
         except:
-            result = pose_action_client(coord_x, coord_y, direction)
+            result = pose_action_client(coord_x, coord_y, direction, timeout=15)
 
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
 
@@ -259,5 +259,4 @@ class TestScenario(Base):
             pass
 
         pytest.robot_controller.terminate()
-
         # allure.attach(data, 'Configuration', allure.attachment_type.CSV)            

@@ -10,6 +10,10 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 *Salman Omar Sohail*
 
+### Co-authors
+
+*Prof. Dr. Nico Hochgeschwender, Prof. Dr. Paul G. Pl ̈oger, Sven Schneider*
+
 ## Framework Overview
 
 ![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/figures/Methodology.jpg)

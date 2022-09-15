@@ -357,7 +357,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.52 0.45 0.1"/>
+        <box size="0.52 0.45 0.05"/>
       </geometry>
     </collision>
     <!-- <visual>
@@ -374,7 +374,7 @@
   </link>
 
   <joint name="sim_collider_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0.10" rpy="0 0 0"/>
     <parent link="base_link"/> <!-- Change param parent link -->
     <child link="sim_collider"/>   <!-- Change param same as link -->
   </joint>
@@ -421,7 +421,7 @@
   <joint name="os1_sensor_joint" type="fixed">
       <parent link="sim_collider" />
       <child link="os1_sensor" />
-      <origin xyz="0.18 0.0 0.218" rpy="0 0 0" /> <!-- 0.03618 is the default height -->
+      <origin xyz="0.18 0.0 0.118" rpy="0 0 0" /> <!-- 0.03618 is the default height -->
   </joint>
 
   <!-- Ouster gazebo library -->

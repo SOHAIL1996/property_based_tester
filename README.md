@@ -6,8 +6,10 @@
 
 ## Framework Overview
 
-![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/briefoverview.png)
+![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/figures/Methodology.jpg)
 
+
+![Jackal ISO 23482-1 Compliance Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/jackal_iso_compliance.gif)
 
 ## Running Framework (Hypothesis|ROS|Gazebo|Allure|TextX)
 
@@ -137,7 +139,7 @@ rosrun xacro xacro -o model.urdf model.urdf.xacro
 
 - (In the works!)  Used for feeding into hypothesis for  generating tests 
 
-![Sample: TextX Generation](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/standard_test_definitions.png)
+![Sample: TextX Generation](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/figures/standard_test_definitions.png)
 
 ## Running Framework (Hypothesis|ROS|Omniverse Nvidia IssacSim|Allure|TextX)
 
@@ -146,7 +148,7 @@ rosrun xacro xacro -o model.urdf model.urdf.xacro
 ```bash
 ./omni.sh
 ```
-![Sample: Nvidia Issac Sim](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/Figures/jackal_nvidia_issac_sim.png)
+![Sample: Nvidia Issac Sim](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/figures/jackal_nvidia_issac_sim.png)
 
 ## Acknowledgements
 

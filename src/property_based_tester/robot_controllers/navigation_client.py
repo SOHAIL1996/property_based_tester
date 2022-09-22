@@ -47,7 +47,7 @@ def pose_action_client(coord_x, coord_y, direction, timeout=6):
     P = 0
     Y = np.deg2rad(direction)
         
-    client.wait_for_server()
+    client.wait_for_server(rospy.Duration(timeout))
     goal = MoveBaseGoal()    
     listener = tf.TransformListener()
     try:

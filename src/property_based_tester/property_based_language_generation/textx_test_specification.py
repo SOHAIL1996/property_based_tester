@@ -29,10 +29,14 @@ class PropertyBasedLanguageGenerator():
         self.scenario_composite_tests[2][1]: Contains section composite properties information 
         """
 
-        self.config = Configuration()        
+        self.config = Configuration()               
         
         try:
             self.pblg = metamodel_from_file(self.config.grammar_dir)
+        except:
+            print('\n Test grammar rules directory not detected at {}'.format(self.config.grammar_dir))
+
+        try:
             self.test_model = self.pblg.model_from_file(self.config.test_def_dir)
         except:
             print('\n Test definitions directory not detected at {}'.format(self.config.test_def_dir))
@@ -91,5 +95,4 @@ class PropertyBasedLanguageGenerator():
 
         return (scen, comp)
              
-
 # p = PropertyBasedLanguageGenerator()

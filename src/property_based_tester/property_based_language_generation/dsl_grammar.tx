@@ -29,8 +29,8 @@ ScenarioConfiguration:
 ScenarioModifiers:   
     sm_robot_position *= RobotPosition
     sm_robot_goal *= RobotGoal
-    sm_robot_velocity *= RobotVelocity
     sm_payload *= Payload
+    sm_robot_velocity *= RobotVelocity
     sm_imparted_forces *= ImpartedForces
     sm_safety_obstacle *= SafetyObstacle
     sm_velocity_percentage *= VelocityPercentage

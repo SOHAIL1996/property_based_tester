@@ -6,21 +6,21 @@
     <link name="body">
 
     <inertial> 
-      <mass>5</mass>
+      <mass>10</mass>
       <!-- <pose>0 -106.010 14.016 0 0 0</pose> -->
-        <inertia> 
-          <!-- <ixx>1.222e-004</ixx>      
-          <ixy>-5.2e-008</ixy>     
-          <ixz>3.514e-009</ixz>        
-          <iyy>4.296e-006</iyy>      
-          <iyz>1.391e-005</iyz>      
-          <izz>1.225e-004</izz>   -->
-          <ixx>1</ixx>      
+        <inertia>
+          <!-- <ixx>0.083</ixx>      
           <ixy>0</ixy>     
           <ixz>0</ixz>        
-          <iyy>1</iyy>      
+          <iyy>0.083</iyy>      
           <iyz>0</iyz>      
-          <izz>1</izz> 
+          <izz>0.083</izz>   -->
+          <ixx>52.01374740480</ixx>      
+          <ixy>0</ixy>     
+          <ixz>0</ixz>        
+          <iyy>51.99018065920</iyy>      
+          <iyz>0</iyz>      
+          <izz>52.05836431360</izz> 
       </inertia>
     </inertial>
 
@@ -28,7 +28,7 @@
         <geometry>
           <mesh>
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/meshes/pay_load_square.stl</uri>
-             <scale>0.001 0.001 0.001</scale>
+             <scale>0.0005 0.0005 0.0005</scale>
           </mesh>
         </geometry>
       </collision>
@@ -37,7 +37,7 @@
         <geometry>
           <mesh>
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/meshes/pay_load_square.stl</uri>
-             <scale>0.001 0.001 0.001</scale>
+             <scale>0.0005 0.0005 0.0005</scale>
           </mesh>
         </geometry>
 

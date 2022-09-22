@@ -42,6 +42,7 @@ class Model():
     def __init__(self, model_real_name, x=0, y=0, z=0, R=0, P=0, Y=0):
         
         conf = Configuration()
+        R, P, Y = R*((22/7)/180), P*((22/7)/180), Y*((22/7)/180)
 
         self.model_dir       = conf.model_dir
         self.model_real_name = model_real_name

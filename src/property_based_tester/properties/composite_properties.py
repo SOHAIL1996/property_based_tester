@@ -161,7 +161,12 @@ class CompositeProperties():
             if obj_ori[2] >= orientation[2] + tolerance:
                 result.append(3)
 
+            # print(orientation[0])
+            # print(obj_ori)
         object_at_designated_orientation = sum(result)
+
+        # print(object_at_designated_orientation)
+
         if object_at_designated_orientation > 0:
             return False
         else:
@@ -221,7 +226,6 @@ class CompositeProperties():
         except:
             return False
 
-
     # Callback functions
     def robot_force_sensor_callback(self, data):
         info = data.states
@@ -236,4 +240,5 @@ if __name__ == '__main__':
     u = CompositeProperties()
 #     print(u.must_be_at())
 #     print(u.must_not_be_at())
-    print(u.must_have_orientation())
+    print(u.must_have_orientation(object='pay_load_square', orientation=[15, 15, 360], time=0, tolerance=1))
+    print(u.must_have_orientation(object='jackal_robot', orientation=[15, 15, 360], time=0, tolerance=1))

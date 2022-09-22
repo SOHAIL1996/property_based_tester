@@ -1,0 +1,35 @@
+Test_definitions (S)
+    standard 'ISO 23482-1'
+        section 7.2
+            scenario_configuration
+                world_type 'empty'
+                description 'Robot force collision measurement'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.12
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                manual_speed true
+                    robot_speed 1.0
+                    speed_duration 4.0
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_collide
+                collision_object 'safety_obstacle_square'
+            must_have_collision_force_less_than
+                force_threshhold 75.0
+Test_definitions (E)

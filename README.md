@@ -1,5 +1,7 @@
 # Property-Based Testing: Formalized Robotic Testing for Standard Compliance
 
+![Jackal ISO 23482-1 Compliance Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif)
+
 ### Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -59,8 +61,6 @@ Robot:
    robot_urdf_name: xarm6_gripper
    robot_spawner_name: spawn_xarm6_controller.launch
 ```
-
-<!-- ![Jackal ISO 23482-1 Compliance Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/jackal_iso_compliance.gif) -->
 
 ![Husky Odom Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif)
 

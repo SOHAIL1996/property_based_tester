@@ -64,7 +64,9 @@ Robot:
    robot_spawner_name: spawn_xarm6_controller.launch
 ```
 
-![Husky Odom Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif)
+<p align="center">
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif" />
+</p>
 
 ### Result generation (Allure)
 

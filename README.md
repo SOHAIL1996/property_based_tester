@@ -1,6 +1,8 @@
 # Property-Based Testing: Formalized Robotic Testing for Standard Compliance
 
-![Jackal ISO 23482-1 Compliance Test](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif)
+<p align="center">
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" />
+</p>
 
 ### Copyright and licence
 

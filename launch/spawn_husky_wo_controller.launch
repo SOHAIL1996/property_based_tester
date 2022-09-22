@@ -22,15 +22,11 @@
   <arg name="config_extras"
        default="$(eval optenv('HUSKY_CONFIG_EXTRAS', find('husky_control') + '/config/empty.yaml'))"/>
 
-  <!-- Load robot description -->
-  <include file="$(find husky_description)/launch/description.launch" >
-  </include>
-
-
   <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server" output="screen">
     <param name="link_name" value="base_link" />
   </node>
 
+  <param name="robot_description" textfile="$(find property_based_tester)/environment/robots/urdf/husky.urdf"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <node pkg="twist_mux" type="twist_mux" name="twist_mux">

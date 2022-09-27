@@ -37,7 +37,7 @@ def apply_force(x=0,y=15,z=0,link='base_link',timeout=10,randomized=False):
         wrench.torque.y = 0
         wrench.torque.z = 0
 
-        force(body_name = link, wrench = wrench, duration = rospy.Duration(timeout))
+        force(body_name=link, wrench = wrench, duration = rospy.Duration(timeout))
 
     except:
             print(colored('Cannot apply force torque','red')) 

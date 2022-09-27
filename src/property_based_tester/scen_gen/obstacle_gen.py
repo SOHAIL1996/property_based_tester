@@ -73,7 +73,7 @@ class Model():
             time.sleep(1.5)
             property_node.terminate()    
                
-    def insert_model(self):
+    def insert_model(self, placement_frame='world'):
         """
         This function inserts a model in the gazebo world by passing a roscommand from the terminal. 
         """        
@@ -86,7 +86,7 @@ class Model():
                        robot_namespace = "/RSG",
                        initial_pose = Pose(position=Point(self.x_coord,self.y_coord,self.z_coord),
                                           orientation=Quaternion(self.quat1,self.quat2,self.quat3,self.quat4)),
-                       reference_frame ="world")
+                                          reference_frame=placement_frame)
         except rospy.ServiceException as e:
             print(colored('Cannot spawn {0} model'.format(self.model_real_name),'red')) 
 

@@ -27,7 +27,6 @@
 #    robot_urdf_name: xarm6_gripper
 #    robot_spawner_name: spawn_xarm6_controller.launch
 
-
 #  Robot: 
 #    robot_urdf_name: jackal_robot # URDF name
 #    robot_spawner_name: spawn_jackal_wo_controller.launch

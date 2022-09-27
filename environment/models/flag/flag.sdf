@@ -1,0 +1,32 @@
+<?xml version='1.0'?>
+<sdf version="1.5">
+  <model name="flag"> <!-- Very important to change-->
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
+    <link name="body">
+
+    <inertial> >
+    <mass>0.301</mass>
+    <pose>-0.003 -0.024 118.081 0 0 0</pose> 
+      <inertia> 
+        <ixx>0.003</ixx>      
+        <ixy>4.33e-8</ixy>     
+        <ixz>-3.65e-8</ixz>        
+        <iyy>0.003</iyy>      
+        <iyz>-2.57e-7</iyz>      
+        <izz>3.88e-4</izz>  
+      </inertia>
+    </inertial>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/flag/meshes/flag.dae</uri>
+            <scale>0.01 0.01 0.01</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

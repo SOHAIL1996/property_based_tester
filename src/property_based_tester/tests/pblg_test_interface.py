@@ -114,7 +114,6 @@ class TestScenario(Base):
             pass
 
         # Correcting safety_obstacle spawn
-
         try:
             for i in range(len(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle)):
                 safety_obstacle = Model(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].safety_obstacle,
@@ -149,10 +148,30 @@ class TestScenario(Base):
             # Randomize given coordinates
             coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
 
+        try:
+            # Create visual marker for final navigation point
+            finish_point = Model('flag', 
+                                x= coord_x, y= coord_y, z= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].z_pos-1.6, 
+                                R= 0, P= 0, Y= 0)
+            finish_point.insert_model(placement_frame=self.config.robot_urdf)
+        except:
+            # Create visual marker for final navigation point with no params
+            finish_point = Model('flag', x= coord_x, y= coord_y, z= 0.0, R= 0, P= 0, Y= 0)
+            finish_point.insert_model(placement_frame=self.config.robot_urdf)
+
         # Excute navigation and temporal logger
         temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'], preexec_fn=os.setsid)
 
-        apply_force(x=0,y=40,z=0,link='base_link',timeout=2)
+        # Apply random forces
+        try:
+            apply_force(x=randomizer(-pblg_config[2][0].scenario_modifier[0].sm_imparted_forces[0].imparted_forces,
+                            pblg_config[2][0].scenario_modifier[0].sm_imparted_forces[0].imparted_forces),
+                        y=randomizer(-pblg_config[2][0].scenario_modifier[0].sm_imparted_forces[0].imparted_forces,
+                            pblg_config[2][0].scenario_modifier[0].sm_imparted_forces[0].imparted_forces),
+                        z=0,
+                        link='base_link',timeout=5)
+        except:
+            pass
 
         try:
             # Direct control test
@@ -162,9 +181,12 @@ class TestScenario(Base):
                               pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].speed_duration)
         except:
             # Movebase control test
-            result = pose_action_client(coord_x, coord_y, direction, timeout=15)
+            result = pose_action_client(coord_x, coord_y, direction, timeout=5)
 
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
+        
+        # Remove finish marker
+        delete_model('flag') 
 
         # Logging test collision details for other tests
         pytest.collision = self.composite_properties.in_collision

@@ -12,26 +12,26 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 robot_goal 
+                    x_pos 0
+                    y_pos 6
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 6
+                    y_pos 6
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
                     x_pos 6
                     y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
-                    y_ori 0
-                robot_goal 
-                    x_pos 6
-                    y_pos -6
-                    z_pos 0
-                    r_ori 0
-                    p_ori 0
-                    y_ori 0
-                robot_goal 
-                    x_pos 0
-                    y_pos -6
-                    z_pos 0
-                    r_ori 0
-                    p_ori 0
-                    y_ori 0
+                    y_ori 90
                 robot_goal 
                     x_pos 0
                     y_pos 0
@@ -45,7 +45,7 @@ Test_definitions (S)
                     z_pos 0.20
                     r_ori 0
                     p_ori 0
-                    y_ori 0
+                    y_ori 90
             must_not_collide 
                     collision_object 'safety_obstacle_square'
 Test_definitions (E)

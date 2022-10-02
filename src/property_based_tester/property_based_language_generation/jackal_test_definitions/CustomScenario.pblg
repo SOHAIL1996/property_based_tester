@@ -2,17 +2,11 @@ Test_definitions (S)
     UserScenario
         scenario_configuration
             world_type 'lab'
-            robot_type 'UGV'
-            repetition 8
-            randomize_obstacles true
+            description 'AGV response in localization and navigation tasks'
         must_not_collide
             collision-object '*'
-            tolerance 0.5
-            time-constraint 0.2
         must_collide
             collision-object 'Table'
-            tolerance 3.5
-            time-constraint 0.2
         must_be_at
             area_start
                 x1 1.0

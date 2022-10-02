@@ -23,7 +23,7 @@ import tf
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
-def pose_action_client(coord_x, coord_y, direction, timeout=6):
+def single_goal_movebase(coord_x, coord_y, direction, timeout=6):
     """Action client test for navigation using coordinates.
 
     Args:

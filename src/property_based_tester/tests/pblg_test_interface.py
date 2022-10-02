@@ -25,7 +25,7 @@ import allure
 
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.property_based_language_generation.textx_test_specification import PropertyBasedLanguageGenerator
-from property_based_tester.robot_controllers.navigation_client import pose_action_client
+from property_based_tester.robot_controllers.navigation_client import single_goal_movebase
 from property_based_tester.robot_controllers.speed_client import move
 from property_based_tester.scen_gen.obstacle_gen import Model
 from property_based_tester.scen_gen.force_generation import apply_force
@@ -139,6 +139,9 @@ class TestScenario(Base):
     def test_scenario_execution(self, randomizer, pblg_config): 
         """Defines a scenario for the rest of the tests to run in using coodrinates.
         """    
+        multi_goal = []
+        result = None
+        
         try:
             # Test definition goal if exists
             coord_x = pblg_config[2][0].scenario_modifier[0].sm_robot_goal[0].x_pos
@@ -147,18 +150,7 @@ class TestScenario(Base):
         except:
             # Randomize given coordinates
             coord_x, coord_y, direction = randomizer(-2,2),randomizer(-2,2),randomizer(0,360)
-
-        try:
-            # Create visual marker for final navigation point
-            finish_point = Model('flag', 
-                                x= coord_x, y= coord_y, z= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].z_pos-1.6, 
-                                R= 0, P= 0, Y= 0)
-            finish_point.insert_model(placement_frame=self.config.robot_urdf)
-        except:
-            # Create visual marker for final navigation point with no params
-            finish_point = Model('flag', x= coord_x, y= coord_y, z= 0.0, R= 0, P= 0, Y= 0)
-            finish_point.insert_model(placement_frame=self.config.robot_urdf)
-
+         
         # Excute navigation and temporal logger
         temporal_logger = subprocess.Popen(['rosrun', self.config.rospkg_name, 'temporal_log.py'], preexec_fn=os.setsid)
 
@@ -169,7 +161,8 @@ class TestScenario(Base):
                         y=randomizer(-pblg_config[2][0].scenario_modifier[0].sm_imparted_forces[0].imparted_forces,
                             pblg_config[2][0].scenario_modifier[0].sm_imparted_forces[0].imparted_forces),
                         z=0,
-                        link='base_link',timeout=5)
+                        link= pblg_config[2][0].scenario_modifier[0].sm_imparted_forces[0].target_entity,
+                        timeout=5)
         except:
             pass
 
@@ -180,20 +173,33 @@ class TestScenario(Base):
                               self.config.robot_cmd_vel, 
                               pblg_config[2][0].scenario_modifier[0].sm_robot_velocity[0].speed_duration)
         except:
-            # Movebase control test
-            result = pose_action_client(coord_x, coord_y, direction, timeout=5)
+            for goals in pblg_config[2][0].scenario_modifier[0].sm_robot_goal:
+                multi_goal.append([goals.x_pos, goals.y_pos, goals.y_ori])
+            # Multi goal movebase control test
+            for goal in multi_goal:
+                # Create visual marker for final navigation point with no params
+                finish_point = Model('flag', x= goal[0], y= goal[1], z= 0.0, R= 0, P= 0, Y= 0)
+                finish_point.insert_model(placement_frame=self.config.robot_urdf)    
+                result = single_goal_movebase(goal[0], goal[1], goal[2], timeout=10)
+                # Remove finish marker
+                delete_model('flag') 
 
+        if result == None:
+            # Create visual marker for final navigation point with no params
+            finish_point = Model('flag', x= coord_x, y= coord_y, z= 0.0, R= 0, P= 0, Y= 0)
+            finish_point.insert_model(placement_frame=self.config.robot_urdf)    
+            result = single_goal_movebase(coord_x, coord_y, direction, timeout=10)   
+            # Remove finish marker
+            delete_model('flag') 
+                    
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
-        
-        # Remove finish marker
-        delete_model('flag') 
-
+               
         # Logging test collision details for other tests
         pytest.collision = self.composite_properties.in_collision
         pytest.collider_1 = self.composite_properties.collider_1
         pytest.collider_2 = self.composite_properties.collider_2
         pytest.collision_force = self.composite_properties.collision_force
-
+    
         assert result == True    
 
     def test_must_have_collision_force_less_than(self, pblg_config):
@@ -225,7 +231,7 @@ class TestScenario(Base):
         for configuration in pblg_config[2][1]:
             if configuration[0] == 'must_not_collide':
                 check = True
-                assert pytest.collision == True
+                assert pytest.collision == False
         if check == False:
             pytest.skip("Test Un-marked")
 

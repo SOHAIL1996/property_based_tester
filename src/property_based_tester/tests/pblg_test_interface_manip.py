@@ -25,7 +25,7 @@ import allure
 
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.property_based_language_generation.textx_test_specification import PropertyBasedLanguageGenerator
-from property_based_tester.robot_controllers.navigation_client import pose_action_client
+from property_based_tester.robot_controllers.navigation_client import single_goal_movebase
 from property_based_tester.robot_controllers.speed_client import move
 from property_based_tester.scen_gen.obstacle_gen import Model
 from property_based_tester.scen_gen.force_generation import apply_force

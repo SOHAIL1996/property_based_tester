@@ -76,7 +76,9 @@ Payload:
 
 ImpartedForces:
     "imparted_forces" imparted_forces = FLOAT
+    "target_entity" target_entity = STRING
 ;
+
 SafetyObstacle:
     "safety_obstacle" safety_obstacle = STRING
     'x_pos' x_pos = FLOAT

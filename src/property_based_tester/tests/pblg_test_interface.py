@@ -119,7 +119,10 @@ class TestScenario(Base):
                 safety_obstacle = Model(pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].safety_obstacle,
                                         pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].x_pos,
                                         pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].y_pos,
-                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].z_pos)
+                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].z_pos,
+                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].r_ori,
+                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].p_ori,
+                                        pblg_config[2][0].scenario_modifier[0].sm_safety_obstacle[i].y_ori)
                 safety_obstacle.insert_model()
         except:
             pass

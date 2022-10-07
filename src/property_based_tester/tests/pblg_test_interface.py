@@ -22,6 +22,7 @@ import numpy as np
 import os, subprocess, signal, time
 import pytest
 import allure
+import time
 
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.property_based_language_generation.textx_test_specification import PropertyBasedLanguageGenerator
@@ -202,6 +203,12 @@ class TestScenario(Base):
         pytest.collider_1 = self.composite_properties.collider_1
         pytest.collider_2 = self.composite_properties.collider_2
         pytest.collision_force = self.composite_properties.collision_force
+
+        # Apply dead time for robot slippage and checking stopping time
+        try:
+            time.sleep(pblg_config[2][0].scenario_modifier[0].sm_dead_time[0].dead_time)
+        except:
+            pass
     
         assert result == True    
 

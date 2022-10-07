@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <sdf version="1.5">
-  <model name="split_flat_surface"> <!-- Very important to change-->
+  <model name="split_flat_surface_75mu"> <!-- Very important to change-->
     <static>true</static>
     <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
     <link name="body">
@@ -20,25 +20,33 @@
        <collision name="collision"> <!-- You can use mesh like below -->
         <geometry>
           <mesh><!-- Very important to change-->
-             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface/meshes/split_flat_surface.stl</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface_75mu/meshes/split_flat_surface_75mu.stl</uri>
              <scale>0.01 0.01 0.01</scale>
           </mesh>
         </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.75</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
       </collision>
 
       <visual name="visual">
         <geometry>
           <mesh><!-- Very important to change-->
-             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface/meshes/split_flat_surface.stl</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface_75mu/meshes/split_flat_surface_75mu.stl</uri>
              <scale>0.01 0.01 0.01</scale>
           </mesh>
         </geometry>
 
         <material>
           <script> <!-- Very important to change-->
-             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface/materials/scripts</uri>
-             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface/materials/textures</uri>
-             <name>Gazebo/DarkGrey</name>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface_75mu/materials/scripts</uri>
+             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/split_flat_surface_75mu/materials/textures</uri>
+             <name>Gazebo/Black</name>
           </script>
         </material>
       </visual>

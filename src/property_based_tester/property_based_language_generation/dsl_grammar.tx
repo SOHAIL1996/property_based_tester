@@ -36,6 +36,7 @@ ScenarioModifiers:
     sm_velocity_percentage *= VelocityPercentage
     sm_repetition *= Repetition
     sm_randomize_obstacles *= Randomization
+    sm_dead_time *= DeadTime
 ; 
 
 RobotPosition:
@@ -96,6 +97,10 @@ Repetition:
 ;
 Randomization:
     "randomize_obstacles" randomize_obstacles = BOOL
+;
+
+DeadTime:
+    "dead_time" dead_time = FLOAT
 ;
 
 UserScenario:

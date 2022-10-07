@@ -24,6 +24,7 @@ from matplotlib.patches import Rectangle
 import numpy as np
 import rospy
 from stl import mesh
+from scipy.spatial import distance
 
 from property_based_tester.configuration.config import Configuration
 from property_based_tester.properties.primitive_properties import PrimitiveProperties
@@ -74,7 +75,7 @@ class CompositeProperties():
             com_bx =  target_area_max[0]
             com_by =  target_area_max[1]
             com_bz =  target_area_max[2]
-            
+           
             # Operation zone
             if (robot_size_min_x_coord > com_sx and robot_size_max_x_coord < com_bx and robot_size_min_y_coord > com_sy and robot_size_max_y_coord < com_by):
                 result.append(0)
@@ -82,6 +83,7 @@ class CompositeProperties():
                 result.append(1)
 
         robot_at_designated_location = sum(result)
+        
         if robot_at_designated_location > 0:
             return False
         else:
@@ -133,11 +135,49 @@ class CompositeProperties():
         else:
             return True
 
-    def must_be_near_to(self, robot, object, time=0, tolerance=0):
-        pass
+    def must_be_near_to(self, object='jackal_robot', target_object='convex_5cm', req_dis=6, tolerance=0):
+        
+        all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
+        target_object = self.primitive_properties.spatial_temporal_information(target_object)
+        result = []
 
-    def must_not_be_near_to(self, robot, object, time=0, tolerance=0):
-        pass
+        for i in range(len(all_robot_position)):
+            dst = distance.euclidean(all_robot_position[i], target_object[i])
+
+            # Need to be within required distance
+            if dst < req_dis:
+                result.append(0)
+            else:
+                result.append(1)
+
+        robot_has_less_distance = sum(result)
+
+        if robot_has_less_distance > 0:
+            return False
+        else:
+            return True
+
+    def must_not_be_near_to(self, object='jackal_robot', target_object='convex_5cm', req_dis=6, tolerance=0):
+
+        all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
+        target_object = self.primitive_properties.spatial_temporal_information(target_object)
+        result = []
+
+        for i in range(len(all_robot_position)):
+            dst = distance.euclidean(all_robot_position[i], target_object[i])
+            
+            # Need to be away required distance
+            if dst > req_dis:
+                result.append(0)
+            else:
+                result.append(1)
+
+        robot_has_less_distance = sum(result)
+
+        if robot_has_less_distance > 0:
+            return False
+        else:
+            return True
 
     def must_have_orientation(self, object='jackal_robot_issac', orientation=[25, 25, 360], time=0, tolerance=0):
         """Composite property that ensures the object is in the correct orientation.
@@ -238,7 +278,8 @@ class CompositeProperties():
 
 if __name__ == '__main__':
     u = CompositeProperties()
-#     print(u.must_be_at())
+    # print(u.must_be_at())
+    print(u.must_be_near_to())
 #     print(u.must_not_be_at())
-    print(u.must_have_orientation(object='pay_load_square', orientation=[15, 15, 360], time=0, tolerance=1))
-    print(u.must_have_orientation(object='jackal_robot', orientation=[15, 15, 360], time=0, tolerance=1))
+    # print(u.must_have_orientation(object='pay_load_square', orientation=[15, 15, 360], time=0, tolerance=1))
+    # print(u.must_have_orientation(object='jackal_robot', orientation=[15, 15, 360], time=0, tolerance=1))

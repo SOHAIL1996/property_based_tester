@@ -1,83 +1,31 @@
 Test_definitions (S)
     standard 'ISO 23482-1'
-        section 15.4
+        section 13.1
             scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving 90deg forward on concave terrain'
+                world_type 'slope_6deg'
+                description 'Robot stability check forward ascent 6 deg slope'
                 robot_position 
                     x_pos 0
-                    y_pos 0.5
-                    z_pos 0.16
+                    y_pos -0.5
+                    z_pos 0.12
                     r_ori 0
                     p_ori 0
-                    y_ori -90
-                manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_not_collide
-                    collision_object 'safety_obstacle_square'
-        section 15.4
-            scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving 45deg forward on concave terrain'
-                robot_position 
-                    x_pos 0
-                    y_pos 0.5
-                    z_pos 0.16
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
                     r_ori 0
                     p_ori 0
-                    y_ori -45
+                    y_ori 90
                 manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_not_collide
-                    collision_object 'safety_obstacle_square'
-        section 15.4
-            scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving 10deg forward on concave terrain'
-                robot_position 
-                    x_pos 0
-                    y_pos 0.5
-                    z_pos 0.16
-                    r_ori 0
-                    p_ori 0
-                    y_ori -10
-                manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_not_collide
-                    collision_object 'safety_obstacle_square'
-        section 15.4
-            scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving -90deg forward on concave terrain left wheel'
-                robot_position 
-                    x_pos 5
-                    y_pos 0.5
-                    z_pos 0.16
-                    r_ori 0
-                    p_ori 0
-                    y_ori -90
-                manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_not_collide
-                    collision_object 'safety_obstacle_square'
-        section 15.4
-            scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving -90deg forward on concave terrain right wheel'
-                robot_position 
-                    x_pos -5
-                    y_pos 0.5
-                    z_pos 0.16
-                    r_ori 0
-                    p_ori 0
-                    y_ori -90
-                manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_not_collide
-                    collision_object 'safety_obstacle_square'
+                    robot_speed 100.0
+                    speed_duration 8.0
+            must_have_orientation
+                entity 'jackal_robot'
+                angles
+                    roll 7.0
+                    pitch 7.0
+                    yaw 360.0
+                tolerance 1 
 Test_definitions (E)

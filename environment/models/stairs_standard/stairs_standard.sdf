@@ -21,7 +21,7 @@
         <geometry>
           <mesh><!-- Very important to change-->
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/stairs_standard/meshes/stairs_standard.stl</uri>
-             <scale>0.01 0.01 0.01</scale>
+             <scale>0.01 0.01 0.001</scale>
           </mesh>
         </geometry>
         <surface>
@@ -38,7 +38,7 @@
         <geometry>
           <mesh><!-- Very important to change-->
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/stairs_standard/meshes/stairs_standard.stl</uri>
-             <scale>0.01 0.01 0.01</scale>
+             <scale>0.01 0.01 0.001</scale>
           </mesh>
         </geometry>
 

@@ -264,6 +264,34 @@ class TestScenario(Base):
         if check == False:
             pytest.skip("Test Un-marked")
     
+    def test_must_be_near_to(self, pblg_config):
+        """ Checking if the robot is within a given euclidean distance.
+        """    
+        check = False
+        for configuration in pblg_config[2][1]:
+            if configuration[0] == 'must_be_near_to':
+                check = True
+                assert self.composite_properties.must_be_near_to(object=self.config.robot_urdf, 
+                                                                target_object=configuration[1].entity, 
+                                                                req_dis=configuration[1].euclidean_distance, 
+                                                                tolerance=configuration[1].tolerance) == True
+        if check == False:
+            pytest.skip("Test Un-marked")
+    
+    def test_must_not_be_near_to(self, pblg_config):
+        """ Checking if the robot is within a given euclidean distance.
+        """    
+        check = False
+        for configuration in pblg_config[2][1]:
+            if configuration[0] == 'must_not_be_near_to':
+                check = True
+                assert self.composite_properties.must_be_near_to(object=self.config.robot_urdf, 
+                                                                target_object=configuration[1].entity, 
+                                                                req_dis=configuration[1].euclidean_distance, 
+                                                                tolerance=configuration[1].tolerance) == True
+        if check == False:
+            pytest.skip("Test Un-marked")
+    
     def test_must_have_orientation(self, pblg_config):
         """ Checking if the robot is has a given area.
         """    

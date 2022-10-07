@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <sdf version="1.5">
-  <model name="concave_5cm"> <!-- Very important to change-->
+  <model name="convex_5cm"> <!-- Very important to change-->
     <static>true</static>
     <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
     <link name="body">

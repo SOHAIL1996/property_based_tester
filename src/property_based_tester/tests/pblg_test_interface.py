@@ -336,13 +336,18 @@ class TestScenario(Base):
 
         # Attaching log file to the test results
         test_parameters = self.config.workspace + '/src/property_based_tester/property_based_language_generation/test_definitions.pblg'
+        simulation_data = self.config.workspace + '/src/property_based_tester/temporal_cache/logs/test_logs.csv'
         controller_parameters = self.config.workspace + '/src/property_based_tester/configuration/property_based_tester_params.yaml'
 
         with open(test_parameters) as f:
             test_data = f.read()
+        
+        with open(simulation_data) as f:
+            sim_data = f.read()
 
         with open(controller_parameters) as f:
             controller_data = f.read()
 
         allure.attach(test_data, 'Test Parameters')
+        allure.attach(sim_data, 'Simulation Data')
         allure.attach(controller_data, 'Controller Parameters')            

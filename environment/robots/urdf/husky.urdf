@@ -416,11 +416,11 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
          <box size="1.0 0.7 0.02"/>
       </geometry>
     </visual> -->
-    <inertial>
+    <!-- <inertial>
       <mass value="1e-5" />
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
-    </inertial>
+    </inertial> -->
   </link>
 
   <joint name="sim_collider_joint" type="fixed">

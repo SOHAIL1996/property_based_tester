@@ -651,5 +651,47 @@
       <maxEffort>10.0</maxEffort>
     </plugin>
   </gazebo>
+
+
+ <!-- Links and joints templplate if you do not already have -->
+ <link name="sim_collider">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.115"/>
+      </geometry>
+    </collision>
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+         <box size="0.05 0.05 0.115"/>
+      </geometry>
+    </visual> -->
+  </link>
+
+  <joint name="sim_collider_joint" type="fixed">
+    <origin xyz="0 -0.07 0.11" rpy="0 0 0"/>
+    <parent link="link6"/> <!-- Change param parent link -->
+    <child link="sim_collider"/>   <!-- Change param same as link -->
+  </joint>
+
+  <!-- Contact Sensor -->
+  <gazebo reference="sim_collider"> <!-- Change param same as link -->
+    <sensor name="sim_collider_link_contact_sensor" type="contact">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <contact>
+        <collision>link6_fixed_joint_lump__sim_collider_collision_2</collision> <!-- Change param same as link -->
+      </contact>
+      <plugin filename="libgazebo_ros_bumper.so" name="gazebo_ros_sim_collider_controller">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <frameName>world</frameName> <!-- Change param -->
+        <bumperTopicName>bumper_contact_state</bumperTopicName>
+      </plugin>
+    </sensor>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
 </robot>
 

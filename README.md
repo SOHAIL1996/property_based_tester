@@ -31,9 +31,16 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 ``` 
 2. Run from inside the `src/property_based_tester` folder, this applies the tests
 ```bash
-python3 -m pytest --alluredir=results tests/ugv_test.py -v -W ignore::DeprecationWarning --count=2 --repeat-scope=class
 python3 -m pytest --alluredir=results tests/pblg_test_interface.py -v -W ignore::DeprecationWarning 
+python3 -m pytest --alluredir=results tests/pblg_test_interface_manip.py -v -W ignore::DeprecationWarning 
+python3 -m pytest --alluredir=results tests/pblg_test_interface_randomizer.py -v -W ignore::DeprecationWarning 
 ```
+  - The first test is for any ground vehicle
+  - The second test is for robotic manipulators
+  - The third test is for randomized testing
+
+**_NOTE:_** Examples for applying these tests are available in `src/property_based_tester/
+property_based_language_generation/*_test_definitions`
 
 3. Run for the navigation tests
 ```bash

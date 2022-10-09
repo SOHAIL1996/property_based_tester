@@ -16,7 +16,6 @@ Date: July 01, 2022
 ----------------------------------------------------
 """
 
-import random
 import rospy
 import numpy as np
 import os, subprocess, signal, time
@@ -129,16 +128,6 @@ class TestScenario(Base):
             
         assert True
     
-    # @settings(max_examples=1)
-    # @given(st.sampled_from(['table','shelf','cabinet','sofa']))
-    # def test_scenario_generation_map(destination): 
-    #     """Defines a scenario for the rest of the tests to run in using navigation map.
-    #     """    
-    #     data_logger('logger/logs/nav_start')
-    #     result = navi_action_client(destination)
-    #     data_logger('logger/logs/nav_end')
-    #     assert result == True
-
     def test_scenario_execution(self, randomizer, pblg_config): 
         """Defines a scenario for the rest of the tests to run in using coodrinates.
         """    

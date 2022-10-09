@@ -8,6 +8,17 @@ TestType:
     StandardScenario | UserScenario | RandomizerScenario
 ;
 
+StandardScenario:
+    'standard' standard = STRING
+    section_number += StandardSection
+; 
+
+StandardSection:
+    'section' section = FLOAT    
+    scenario_configuration = ScenarioConfiguration
+    custom_scenario = CompositeProperties
+;
+
 UserScenario:
     'UserScenario' 
     scenario_configuration = ScenarioConfiguration
@@ -33,17 +44,6 @@ RandomWorlds:
 
 RandomObstacles:
     "obstacle_type" obstacle_type = STRING
-;
-
-StandardScenario:
-    'standard' standard = STRING
-    section_number += StandardSection
-; 
-
-StandardSection:
-    'section' section = FLOAT    
-    scenario_configuration = ScenarioConfiguration
-    custom_scenario = CompositeProperties
 ;
 
 ScenarioConfiguration:

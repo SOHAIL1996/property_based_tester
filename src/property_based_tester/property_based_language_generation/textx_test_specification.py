@@ -124,7 +124,7 @@ class PropertyBasedLanguageGeneratorRandomizer():
         self.scenario_composite_tests.append(test_details)
 
         self.rando_scenario = self.random_scenario_generation()
-        print(self.rando_scenario[0][2])
+        # print(self.rando_scenario[0][2])
 
     def scenario_composite_test_extractor(self, scenario, composite_tests):
 
@@ -183,4 +183,4 @@ class PropertyBasedLanguageGeneratorRandomizer():
         
         return random_scen
 
-p = PropertyBasedLanguageGeneratorRandomizer()
+# p = PropertyBasedLanguageGeneratorRandomizer()

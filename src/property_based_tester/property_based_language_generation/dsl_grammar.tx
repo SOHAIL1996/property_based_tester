@@ -5,7 +5,34 @@ TestInterface:
 ;
 
 TestType:
-    StandardScenario | UserScenario
+    StandardScenario | UserScenario | RandomizerScenario
+;
+
+UserScenario:
+    'UserScenario' 
+    scenario_configuration = ScenarioConfiguration
+    custom_scenario = CompositeProperties
+; 
+
+RandomizerScenario:
+    'RandomizerScenario' 
+    scenario_configuration = RandomScenarioConfiguration
+    custom_scenario = CompositeProperties
+; 
+
+RandomScenarioConfiguration:
+    "scenario_configuration"
+    "iterations" iterations = INT
+    "worlds" worlds += RandomWorlds
+    "obstacles" obstacles += RandomObstacles
+;
+
+RandomWorlds:
+    "world_type" world_type = STRING
+;
+
+RandomObstacles:
+    "obstacle_type" obstacle_type = STRING
 ;
 
 StandardScenario:
@@ -102,12 +129,6 @@ Randomization:
 DeadTime:
     "dead_time" dead_time = FLOAT
 ;
-
-UserScenario:
-    'UserScenario' 
-    scenario_configuration = ScenarioConfiguration
-    custom_scenario = CompositeProperties
-; 
 
 CompositeProperties:
     property_check += PropertyCheck

@@ -6,33 +6,18 @@
 #██   ██ ██      ██      ██   ██ ██    ██ ██         ██        ██      ██   ██ ██   ██ ██   ██ ██  ██  ██ ██         ██    ██      ██   ██      ██ 
 #██████  ███████ ██      ██   ██  ██████  ███████    ██        ██      ██   ██ ██   ██ ██   ██ ██      ██ ███████    ██    ███████ ██   ██ ███████ 
 
-#---------------------------------------------*---------------------------------------------#    
-
- World: lab
-#  World: room
-#  World: iso_nav_room
-#  World: stairs_standard
-#  World: concave_5cm
-#  World: concave_10cm
-#  World: convex_5cm
-#  World: convex_10cm
-#  World: gap_5cm
-#  World: slope_6deg
-#  World: slope_9deg
-#  World: slope_15deg
-
-#---------------------------------------------*---------------------------------------------#                                              
+#---------------------------------------------*---------------------------------------------#                                        
                                                 
- Robot: 
-   robot_urdf_name: xarm6_gripper
-   robot_spawner_name: spawn_xarm6_controller.launch
-
 #  Robot: 
-#    robot_urdf_name: jackal_robot # URDF name
-#    robot_spawner_name: spawn_jackal_wo_controller.launch
-#    robot_controller: jackal_standalone_controller.launch
-#    robot_velocity: /jackal_velocity_controller/cmd_vel
-#    robot_size: [0.990, 0.670, 0.390] # x,y,z in meters
+#    robot_urdf_name: xarm6_gripper
+#    robot_spawner_name: spawn_xarm6_controller.launch
+
+ Robot: 
+   robot_urdf_name: jackal_robot # URDF name
+   robot_spawner_name: spawn_jackal_wo_controller.launch
+   robot_controller: jackal_standalone_controller.launch
+   robot_velocity: /jackal_velocity_controller/cmd_vel
+   robot_size: [0.990, 0.670, 0.390] # x,y,z in meters
 
 #  Robot: 
 #    robot_urdf_name: husky # URDF name
@@ -40,34 +25,3 @@
 #    robot_controller: husky_standalone_controller.launch
 #    robot_velocity: /husky_velocity_controller/cmd_vel
 #    robot_size: [0.580, 0.430, 0.250] # x,y,z in meters
-
-#---------------------------------------------*---------------------------------------------#    
-
- Models_manipulation:
-   Spawnable: 8
-   Objects:
-    - bottle
-    - glass
-    - plate
-    - spoon 
-    - fork
-    - mug 
-    - saltshaker  
-
-#---------------------------------------------*---------------------------------------------#    
-
- Models_obstacles:
-   Spawnable: 8
-   Objects:
-    #  - coffeetable
-    #  - minicoffeetable
-    #  - block_90x90_transparent
-    #  - block_90x90_white
-    #  - pay_load_square
-    #  - pay_load_cylinder
-     - safety_obstacle_square
-     - safety_obstacle_cylinder
-     - safety_obstacle_hexagon
-    #  - force_sensor_obstacle
-
-#---------------------------------------------*---------------------------------------------#    

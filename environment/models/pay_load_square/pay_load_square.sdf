@@ -5,16 +5,36 @@
     <pose>0 0 0 0 0 0</pose> <!-- Translation: X Y Z and Rotation: Roll Pitch Yaw (In Radian)-->
     <link name="body">
 
-    <inertial> 
+    <inertial>
+        <mass>30</mass>
+        <inertia> <!-- inertias are tricky to compute -->
+          <ixx>0.7003125</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+          <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+          <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+          <iyy>0.7003125</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+          <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+          <izz>0.7003125</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.25 0.25 0.25</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <!-- <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.25 0.25 0.25</size>
+          </box>
+        </geometry>
+      </visual> -->
+
+    <!-- <inertial> 
       <mass>10</mass>
-      <!-- <pose>0 -106.010 14.016 0 0 0</pose> -->
         <inertia>
-          <!-- <ixx>0.083</ixx>      
-          <ixy>0</ixy>     
-          <ixz>0</ixz>        
-          <iyy>0.083</iyy>      
-          <iyz>0</iyz>      
-          <izz>0.083</izz>   -->
           <ixx>52.01374740480</ixx>      
           <ixy>0</ixy>     
           <ixz>0</ixz>        
@@ -24,29 +44,28 @@
       </inertia>
     </inertial>
 
-       <collision name="collision"> <!-- You can use mesh like below -->
+       <collision name="collision"> 
         <geometry>
           <mesh>
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/meshes/pay_load_square.stl</uri>
              <scale>0.0005 0.0005 0.0005</scale>
           </mesh>
         </geometry>
-      </collision>
+      </collision> -->
 
       <visual name="visual">
         <geometry>
           <mesh>
              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/meshes/pay_load_square.stl</uri>
-             <scale>0.0005 0.0005 0.0005</scale>
-          </mesh>
-        </geometry>
-
-        <material>
-          <script> 
-             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/materials/scripts</uri>
-             <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/materials/textures</uri>
-             <name>Gazebo/DarkGrey</name>
-          </script>
+             <scale>0.05 0.05 0.05</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script> 
+              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/materials/scripts</uri>
+              <uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/pay_load_square/materials/textures</uri>
+              <name>Gazebo/DarkGrey</name>
+            </script>
         </material>
       </visual>
     </link>

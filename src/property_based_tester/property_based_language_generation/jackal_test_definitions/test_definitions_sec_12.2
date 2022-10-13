@@ -1,6 +1,6 @@
 Test_definitions (S)
     standard 'ISO 23482-1'
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check forward ascent 6 deg slope'
@@ -19,7 +19,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -33,11 +33,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+            must_have_orientation
+                entity 'pay_load_square'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check backward ascent 6 deg slope'
@@ -56,7 +63,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -70,11 +77,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+            must_have_orientation
+                entity 'pay_load_square'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check left side ascent 6 deg slope'
@@ -93,7 +107,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -104,18 +118,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1
             must_have_orientation
                 entity 'pay_load_square'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check right side ascent 6 deg slope'
@@ -134,7 +148,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -145,18 +159,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1  
             must_have_orientation
                 entity 'pay_load_square'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check forward ascent 9 deg slope'
@@ -175,7 +189,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -200,7 +214,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check backward ascent 9 deg slope'
@@ -219,7 +233,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -244,7 +258,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check left side ascent 9 deg slope'
@@ -263,7 +277,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -285,7 +299,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check right side ascent 9 deg slope'
@@ -304,7 +318,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -326,7 +340,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check forward ascent 15 deg slope'
@@ -345,7 +359,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -370,7 +384,7 @@ Test_definitions (S)
                     pitch 15.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check backward ascent 15 deg slope'
@@ -389,7 +403,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -414,7 +428,7 @@ Test_definitions (S)
                     pitch 15.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check left side ascent 15 deg slope'
@@ -433,7 +447,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -455,7 +469,7 @@ Test_definitions (S)
                     pitch 15.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check right side ascent 15 deg slope'
@@ -474,7 +488,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.15
+                    x_pos 0.000
                     y_pos -0.5
                     z_pos 0.24
                     r_ori 0
@@ -496,7 +510,7 @@ Test_definitions (S)
                     pitch 15.0
                     yaw 360.0
                 tolerance 1
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check forward descent 6 deg slope'
@@ -515,7 +529,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 0.72
                     r_ori 0
@@ -529,18 +543,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
             must_have_orientation
                 entity 'pay_load_square'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check backward descent 6 deg slope'
@@ -559,7 +573,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 0.72
                     r_ori 0
@@ -573,18 +587,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
             must_have_orientation
                 entity 'pay_load_square'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check left side descent 6 deg slope'
@@ -603,7 +617,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 0.72
                     r_ori 0
@@ -614,18 +628,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1
             must_have_orientation
                 entity 'pay_load_square'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_6deg'
                 description 'Robot with payload stability check right side descent 6 deg slope'
@@ -644,7 +658,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 0.72
                     r_ori 0
@@ -655,18 +669,18 @@ Test_definitions (S)
             must_have_orientation
                 entity 'jackal_robot'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1 
             must_have_orientation
                 entity 'pay_load_square'
                 angles
-                    roll 7.0
-                    pitch 7.0
+                    roll 6.0
+                    pitch 6.0
                     yaw 360.0
                 tolerance 1  
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check forward descent 9 deg slope'
@@ -685,7 +699,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 1.02
                     r_ori 0
@@ -710,7 +724,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check backward descent 9 deg slope'
@@ -729,7 +743,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 1.02
                     r_ori 0
@@ -754,7 +768,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check left side descent 9 deg slope'
@@ -773,7 +787,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 1.02
                     r_ori 0
@@ -795,7 +809,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_9deg'
                 description 'Robot with payload stability check right side descent 9 deg slope'
@@ -814,7 +828,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.6
                     z_pos 1.02
                     r_ori 0
@@ -836,7 +850,7 @@ Test_definitions (S)
                     pitch 9.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check forward descent 15 deg slope'
@@ -855,7 +869,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.4
                     z_pos 1.52
                     r_ori 0
@@ -880,7 +894,7 @@ Test_definitions (S)
                     pitch 15.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check backward descent 15 deg slope'
@@ -899,7 +913,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.4
                     z_pos 1.52
                     r_ori 0
@@ -924,7 +938,7 @@ Test_definitions (S)
                     pitch 15.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check left side descent 15 deg slope'
@@ -943,7 +957,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.4
                     z_pos 1.52
                     r_ori 0
@@ -965,7 +979,7 @@ Test_definitions (S)
                     pitch 15.0
                     yaw 360.0
                 tolerance 1 
-        section 11
+        section 12.2
             scenario_configuration
                 world_type 'slope_15deg'
                 description 'Robot with payload stability check right side descent 15 deg slope'
@@ -984,7 +998,7 @@ Test_definitions (S)
                     p_ori 0
                     y_ori -90
                 payload 'pay_load_square'
-                    x_pos 0.12
+                    x_pos 0.000
                     y_pos 5.4
                     z_pos 1.52
                     r_ori 0

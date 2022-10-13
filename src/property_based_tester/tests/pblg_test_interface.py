@@ -169,20 +169,10 @@ class TestScenario(Base):
                 multi_goal.append([goals.x_pos, goals.y_pos, goals.y_ori])
             # Multi goal movebase control test
             for goal in multi_goal:
-                # Create visual marker for final navigation point with no params
-                finish_point = Model('flag', x= goal[0], y= goal[1], z= 0.0, R= 0, P= 0, Y= 0)
-                finish_point.insert_model(placement_frame=self.config.robot_urdf)    
                 result = single_goal_movebase(goal[0], goal[1], goal[2], timeout=10)
-                # Remove finish marker
-                delete_model('flag') 
 
         if result == None:
-            # Create visual marker for final navigation point with no params
-            finish_point = Model('flag', x= coord_x, y= coord_y, z= 0.0, R= 0, P= 0, Y= 0)
-            finish_point.insert_model(placement_frame=self.config.robot_urdf)    
             result = single_goal_movebase(coord_x, coord_y, direction, timeout=10)   
-            # Remove finish marker
-            delete_model('flag') 
                     
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
                

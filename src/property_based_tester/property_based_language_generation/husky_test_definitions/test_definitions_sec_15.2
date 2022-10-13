@@ -1,19 +1,19 @@
 Test_definitions (S)
     standard 'ISO 23482-1'
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in front'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -31,20 +31,20 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in back'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos -1
+                    x_pos -2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -62,20 +62,20 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in left'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos -1
-                    y_pos 0
+                    x_pos 0
+                    y_pos 1
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -93,20 +93,20 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in right'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 1
-                    y_pos 0
+                    x_pos 0
+                    y_pos -1
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -124,20 +124,20 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 90'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -155,27 +155,27 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 45'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 safety_obstacle 'safety_obstacle_square'
                     x_pos 0
-                    y_pos 1
+                    y_pos 1.5
                     z_pos 0.20
                     r_ori 0
                     p_ori 0
@@ -186,20 +186,20 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 180'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -217,20 +217,20 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 270'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -248,20 +248,20 @@ Test_definitions (S)
                     entity 'safety_obstacle_square'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle in front'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -279,20 +279,20 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle in back'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos -1
+                    x_pos -2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -310,20 +310,20 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle in left'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos -1
-                    y_pos 0
+                    x_pos 0
+                    y_pos 2
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -341,20 +341,20 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle in right'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 1
-                    y_pos 0
+                    x_pos 0
+                    y_pos -2
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -372,20 +372,20 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle angled at 90'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -403,27 +403,27 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle angled at 45'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 safety_obstacle 'block_90x90_transparent'
                     x_pos 0
-                    y_pos 1
+                    y_pos 1.5
                     z_pos 0.20
                     r_ori 0
                     p_ori 0
@@ -434,20 +434,20 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle angled at 180'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -465,20 +465,20 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when transparent obstacle angled at 270'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -496,20 +496,20 @@ Test_definitions (S)
                     entity 'block_90x90_transparent'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in front'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -527,20 +527,20 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in back'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos -1
+                    x_pos -2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -558,20 +558,20 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in left'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos -1
-                    y_pos 0
+                    x_pos 0
+                    y_pos 2
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -589,20 +589,20 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in right'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 1
-                    y_pos 0
+                    x_pos 0
+                    y_pos -2
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -620,20 +620,20 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 90'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -651,27 +651,27 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 45'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 safety_obstacle 'pole'
                     x_pos 0
-                    y_pos 1
+                    y_pos 1.5
                     z_pos 0.20
                     r_ori 0
                     p_ori 0
@@ -682,20 +682,20 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 180'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -713,20 +713,20 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 270'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -744,20 +744,20 @@ Test_definitions (S)
                     entity 'pole'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in front'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -775,20 +775,20 @@ Test_definitions (S)
                     entity 'fence'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in back'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos -1
+                    x_pos -2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -806,20 +806,20 @@ Test_definitions (S)
                     entity 'fence'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in left'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos -1
-                    y_pos 0
+                    x_pos 0
+                    y_pos 2
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -830,27 +830,27 @@ Test_definitions (S)
                     z_pos 0
                     r_ori 0
                     p_ori 0
-                    y_ori 90
+                    y_ori 0
             must_not_collide 
                     collision_object 'fence'
             must_not_be_near_to
                     entity 'fence'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle in right'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 1
-                    y_pos 0
+                    x_pos 0
+                    y_pos -2
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -861,27 +861,27 @@ Test_definitions (S)
                     z_pos 0
                     r_ori 0
                     p_ori 0
-                    y_ori 90
+                    y_ori 0
             must_not_collide 
                     collision_object 'fence'
             must_not_be_near_to
                     entity 'fence'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 90'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -899,27 +899,27 @@ Test_definitions (S)
                     entity 'fence'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 45'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 safety_obstacle 'fence'
                     x_pos 0
-                    y_pos 1
+                    y_pos 1.5
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -930,20 +930,20 @@ Test_definitions (S)
                     entity 'fence'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 180'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -961,20 +961,20 @@ Test_definitions (S)
                     entity 'fence'
                     euclidean_distance 0.3
                     tolerance 0
-        section 15.1
+        section 15.2
             scenario_configuration
                 world_type 'empty'
                 description 'AGV halting when obstacle angled at 270'
                 robot_position 
                     x_pos 0
                     y_pos 0
-                    z_pos 0.12
+                    z_pos 0.20
                     r_ori 0
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0
-                    y_pos 1
+                    x_pos 2
+                    y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0

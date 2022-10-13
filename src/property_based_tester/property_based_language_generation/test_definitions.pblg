@@ -1,62 +1,995 @@
 Test_definitions (S)
-    RandomizerScenario
-        scenario_configuration
-            iterations 3
-            worlds
-                world_type 'lab'
+    standard 'ISO 23482-1'
+        section 15.1
+            scenario_configuration
                 world_type 'empty'
-                world_type 'slope_6deg'
-                world_type 'slope_9deg'
-                world_type 'slope_15deg'
-                world_type 'stairs_standard'
-                world_type 'concave_5cm'
-                world_type 'concave_10cm'
-                world_type 'convex_5cm'
-                world_type 'convex_10cm'
-                world_type 'gap_5cm'
-                world_type 'room'
-                world_type 'split_flat_surface_35mu'
-                world_type 'split_flat_surface_75mu'
-            obstacles
-                obstacle_type 'pay_load_square'
-                obstacle_type 'pay_load_cylinder'
-                obstacle_type 'coffeetable'
-                obstacle_type 'cabinet'
-                obstacle_type 'fence'
-                obstacle_type 'pole'
-                obstacle_type 'minicoffeetable'
-                obstacle_type 'shelf'
-                obstacle_type 'sofa'
-                obstacle_type 'table'
-                obstacle_type 'block_90x90_transparent'
-                obstacle_type 'block_90x90_white'
-                obstacle_type 'safety_obstacle_cylinder'
-                obstacle_type 'safety_obstacle_square'
-                obstacle_type 'safety_obstacle_hexagon'
-        must_not_collide
-            collision_object '*'
-        must_collide
-            collision_object 'Table'
-        must_be_at
-            area_start
-                x1 1.0
-                y1 2.2
-                z1 0.0
-            area_end
-                x2 12.0
-                y2 6.5
-                z2 0.5
-            tolerance 3.5
-            time-constraint 0.2
-        must_not_be_at
-            allowable_region_start
-                x1 1.0
-                y1 10.2
-                z1 0.0
-            allowable_region_end
-                x2 12.0
-                y2 155.5
-                z2 1.0
-            tolerance 3.5
-            time-constraint 0.2
+                description 'AGV halting when obstacle in front'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in back'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos -2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos -1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in left'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos -1
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in right'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos -1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 1
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 90'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 45'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos 1.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 45
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 180'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 180
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 270'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'safety_obstacle_square'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 270
+            must_not_collide 
+                    collision_object 'safety_obstacle_square'
+            must_not_be_near_to
+                    entity 'safety_obstacle_square'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle in front'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle in back'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos -2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos 0
+                    y_pos -1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle in left'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos 2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos -1
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle in right'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos -2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos 1
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle angled at 90'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle angled at 45'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos 0
+                    y_pos 1.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 45
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle angled at 180'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 180
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when transparent obstacle angled at 270'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'block_90x90_transparent'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 270
+            must_not_collide 
+                    collision_object 'block_90x90_transparent'
+            must_not_be_near_to
+                    entity 'block_90x90_transparent'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in front'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in back'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos -2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos 0
+                    y_pos -1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in left'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos 2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos -1
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in right'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos -2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos 1
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 90'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 45'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos 0
+                    y_pos 1.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 45
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 180'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 180
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 270'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'pole'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 270
+            must_not_collide 
+                    collision_object 'pole'
+            must_not_be_near_to
+                    entity 'pole'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in front'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0.0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in back'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos -2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos 0
+                    y_pos -1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in left'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos 2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos -1
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle in right'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0
+                    y_pos -2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos 1
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 90'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 45'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos 0
+                    y_pos 1.5
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 45
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 180'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 180
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
+        section 15.1
+            scenario_configuration
+                world_type 'empty'
+                description 'AGV halting when obstacle angled at 270'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                safety_obstacle 'fence'
+                    x_pos 0
+                    y_pos 1
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 270
+            must_not_collide 
+                    collision_object 'fence'
+            must_not_be_near_to
+                    entity 'fence'
+                    euclidean_distance 0.3
+                    tolerance 0
 Test_definitions (E)

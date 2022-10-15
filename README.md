@@ -2,7 +2,8 @@
 
 <p align="center">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" width="45%"/>
-  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" width="45%"/>
+  &nbsp; &nbsp; &nbsp; &nbsp;
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec11.1.gif" width="45%"/>
 </p>
 
 

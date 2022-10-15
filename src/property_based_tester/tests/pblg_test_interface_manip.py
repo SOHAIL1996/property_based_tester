@@ -156,7 +156,11 @@ class TestScenario(Base):
                 multi_goal.append([goals.x_pos, goals.y_pos, goals.z_pos, goals.r_ori, goals.p_ori, goals.y_ori])
             # Multi goal movebase control test
             for goal in multi_goal:
-                result = pytest.xarm6.go_to_pose_goal(x =goal[0], y =goal[1], z =goal[2], R=goal[3] , P=goal[4], Y=goal[5])
+                if goal[0] == 1000:
+                    pytest.xarm6_gripper.go_to_manipulator_joint_state(goal[1])
+                    continue 
+
+                result = pytest.xarm6.go_to_pose_goal(x=goal[0], y=goal[1], z=goal[2], R=goal[3] , P=goal[4], Y=goal[5])
             pytest.xarm6.set_state('home') 
         except:
             pass

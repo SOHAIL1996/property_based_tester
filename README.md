@@ -1,13 +1,11 @@
 # Property-Based Testing: Formalized Robotic Testing for Standard Compliance
 
-<div class="row">
-  <div class="column">
-    <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" style="width:50%">
-  </div>
-  <div class="column">
-    <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" style="width:50%">
-  </div>
-</div> 
+<p align="center">
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" width="45%"/>
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" width="45%"/>
+</p>
+
+
 
 ### Copyright and licence
 

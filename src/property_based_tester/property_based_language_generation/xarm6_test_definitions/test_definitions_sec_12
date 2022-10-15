@@ -1,6 +1,6 @@
 Test_definitions (S)
     standard 'ISO 23482-1'
-        section 7.2
+        section 12
             scenario_configuration
                 world_type 'empty'
                 description 'Robot force collision measurement'
@@ -12,9 +12,9 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 90
                 robot_goal 
-                    x_pos 0.20
+                    x_pos 0.50
                     y_pos 0.01
-                    z_pos 0.40
+                    z_pos 0.60
                     r_ori 0
                     p_ori 90
                     y_ori 0
@@ -25,13 +25,55 @@ Test_definitions (S)
                     r_ori 0
                     p_ori 0
                     y_ori 0
-                safety_obstacle 'glass'
-                    x_pos 0.2
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.10
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.60
+                    y_pos 0.01
+                    z_pos -0.05
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0.15
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
                     y_pos 0
                     z_pos 0
                     r_ori 0
                     p_ori 0
                     y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0.848
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                safety_obstacle 'glass'
+                    x_pos 0.58
+                    y_pos 0.01
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
             must_collide
-                collision_object 'safety_obstacle_square'
+                collision_object 'paperweight'
 Test_definitions (E)

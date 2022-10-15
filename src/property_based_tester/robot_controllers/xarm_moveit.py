@@ -103,6 +103,33 @@ class ManipulatorMoveit(object):
     current_joints = self.group.get_current_joint_values()
     return all_close(joint_goal, current_joints, 0.01)
 
+  def go_to_manipulator_joint_state(self, joints):
+    """Moves gripper from open to close. 0 is open 0.848 is closed
+
+    Args:
+        joints (float): Gripper Postion
+
+    Returns:
+        Bool: Verifies whether joint angle is the same as given angle.
+    """    
+    group = self.group
+
+    joint_goal = group.get_current_joint_values()
+
+    joint_goal[0] = joints
+    joint_goal[1] = joints
+    joint_goal[2] = joints
+    joint_goal[3] = joints
+    joint_goal[4] = joints
+    joint_goal[5] = joints
+
+
+    group.go(joint_goal, wait=True)
+    group.stop()
+
+    current_joints = self.group.get_current_joint_values()
+    return all_close(joint_goal, current_joints, 0.01)
+
   def go_to_pose_goal(self, x =0.600, y =0.050, z =0.400, R=0 , P=90, Y=0):
 
     R, P, Y = R*((22/7)/180), P*((22/7)/180), Y*((22/7)/180)
@@ -276,8 +303,9 @@ def main():
     xarm6 = ManipulatorMoveit('xarm6')
     xarm6_gripper = ManipulatorMoveit('xarm_gripper')
     
-    result = xarm6.go_to_pose_goal(x =0.600, y =0.050, z =0.400, R=0 , P=90, Y=0)
-    xarm6_gripper.set_state(state='close')
+    # result = xarm6.go_to_pose_goal(x =0.600, y =0.050, z =0.400, R=0 , P=90, Y=0)
+    # xarm6_gripper.set_state(state='close')
+    xarm6_gripper.go_to_manipulator_joint_state(0.8)
 
     # Additional commands
     # xarm6.set_state('home') 

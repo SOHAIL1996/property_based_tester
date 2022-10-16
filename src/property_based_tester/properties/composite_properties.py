@@ -192,7 +192,7 @@ class CompositeProperties():
         """
         object_orientations = self.primitive_properties.spatial_temporal_information(object)
         result = []
-
+        # obj_ori = roll, pitch, yaw
         for obj_ori in object_orientations:
             if obj_ori[0] >= orientation[0] + tolerance:
                 result.append(1)
@@ -201,7 +201,7 @@ class CompositeProperties():
             if obj_ori[2] >= orientation[2] + tolerance:
                 result.append(3)
 
-            # print(orientation[0])
+            # print(orientation)
             # print(obj_ori)
         object_at_designated_orientation = sum(result)
 
@@ -279,7 +279,7 @@ class CompositeProperties():
 if __name__ == '__main__':
     u = CompositeProperties()
     # print(u.must_be_at())
-    print(u.must_be_near_to())
-#     print(u.must_not_be_at())
+    # print(u.must_be_near_to())
+    # print(u.must_not_be_at())
     # print(u.must_have_orientation(object='pay_load_square', orientation=[15, 15, 360], time=0, tolerance=1))
-    # print(u.must_have_orientation(object='jackal_robot', orientation=[15, 15, 360], time=0, tolerance=1))
+    print(u.must_have_orientation(object='husky', orientation=[7, 7, 360], time=0, tolerance=1))

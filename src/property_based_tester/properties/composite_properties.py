@@ -282,4 +282,4 @@ if __name__ == '__main__':
     # print(u.must_be_near_to())
     # print(u.must_not_be_at())
     # print(u.must_have_orientation(object='pay_load_square', orientation=[15, 15, 360], time=0, tolerance=1))
-    print(u.must_have_orientation(object='husky', orientation=[7, 7, 360], time=0, tolerance=1))
+    print(u.must_have_orientation(object='husky', orientation=[6, 6, 360], time=0, tolerance=1))

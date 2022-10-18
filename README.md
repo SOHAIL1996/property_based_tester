@@ -4,13 +4,14 @@
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" width="100%"/>
 </p>
 
-<p align="center">
+<figure>
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec11.1.gif" width="32%"/>
   &nbsp;
-  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec13.2.gif" width="32%" caption='Husky ISO 23482-1 Section 13.2'/>
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec13.2.gif" width="32%"/>
   &nbsp; 
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec13.3.gif" width="32%"/>
-</p>
+  <figcaption>Husky ISO 23482-1 Section 13.2</figcaption>
+</figure>
 
 ### Copyright and licence
 

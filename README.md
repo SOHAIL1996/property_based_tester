@@ -1,10 +1,10 @@
 # Property-Based Testing: Formalized Robotic Testing for Standard Compliance
 
-<p align="center">
+<p align="center" style="border:solid #6495ED">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" width="100%"/>
 </p>
 
-<p align="center">
+<p align="center" style="border:solid #6495ED">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec11.1.gif" width="32%"/>
   &nbsp;
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec13.2.gif" width="32%"/>
@@ -12,7 +12,7 @@
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec13.3.gif" width="32%"/>
 </p>
 
-<p align="center">
+<p align="center" style="border:solid #6495ED">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec15.1.gif" width="32%"/>
   &nbsp;
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec15.3.gif" width="32%"/>
@@ -20,7 +20,7 @@
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec15.4.gif" width="32%"/>
 </p>
 
-<p align="center">
+<p align="center" style="border:solid #6495ED">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec16.gif" width="32%"/>
   &nbsp;
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec17.gif" width="32%"/>

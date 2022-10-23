@@ -169,7 +169,7 @@ class TestScenario(Base):
                 multi_goal.append([goals.x_pos, goals.y_pos, goals.y_ori])
             # Multi goal movebase control test
             for goal in multi_goal:
-                result = single_goal_movebase(goal[0], goal[1], goal[2], timeout=30)
+                result = single_goal_movebase(goal[0], goal[1], goal[2], timeout=120)
 
         if result == None:
             result = single_goal_movebase(coord_x, coord_y, direction, timeout=30)   

@@ -3,82 +3,7 @@ Test_definitions (S)
         section 15.4
             scenario_configuration
                 world_type 'concave_5cm'
-                description 'AGV’s halting while moving 90deg forward on concave terrain'
-                robot_position 
-                    x_pos 0
-                    y_pos 0.5
-                    z_pos 0.20
-                    r_ori 0
-                    p_ori 0
-                    y_ori -90
-                manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_be_at
-                    area_start
-                        x1 -6.0
-                        y1 0
-                        z1 0.0
-                    area_end
-                        x2 6.0
-                        y2 6.0
-                        z2 0.5
-                    tolerance 3.5
-                    time-constraint 0.2
-        section 15.4
-            scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving 45deg forward on concave terrain'
-                robot_position 
-                    x_pos 0
-                    y_pos 0.5
-                    z_pos 0.20
-                    r_ori 0
-                    p_ori 0
-                    y_ori -45
-                manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_be_at
-                    area_start
-                        x1 -6.0
-                        y1 0
-                        z1 0.0
-                    area_end
-                        x2 6.0
-                        y2 6.0
-                        z2 0.5
-                    tolerance 3.5
-                    time-constraint 0.2
-        section 15.4
-            scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving 10deg forward on concave terrain'
-                robot_position 
-                    x_pos 0
-                    y_pos 0.5
-                    z_pos 0.20
-                    r_ori 0
-                    p_ori 0
-                    y_ori -10
-                manual_speed true
-                    robot_speed 1.0
-                    speed_duration 4.0
-                must_be_at
-                    area_start
-                        x1 -6.0
-                        y1 0
-                        z1 0.0
-                    area_end
-                        x2 6.0
-                        y2 6.0
-                        z2 0.5
-                    tolerance 3.5
-                    time-constraint 0.2
-        section 15.4
-            scenario_configuration
-                world_type 'concave_5cm'
-                description 'AGV’s halting while moving -90deg forward on concave terrain left wheel'
+                description 'AGV’s halting while moving forward on concave terrain left wheel'
                 robot_position 
                     x_pos 4
                     y_pos 2.5
@@ -103,7 +28,7 @@ Test_definitions (S)
         section 15.4
             scenario_configuration
                 world_type 'concave_5cm'
-                description 'AGV’s halting while moving -90deg forward on concave terrain right wheel'
+                description 'AGV’s halting while moving forward on concave terrain right wheel'
                 robot_position 
                     x_pos -4
                     y_pos 2.5

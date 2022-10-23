@@ -24,8 +24,8 @@
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec16.gif" width="32%"/>
   &nbsp;
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec17.gif" width="32%"/>
-  <!-- &nbsp; 
-  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec15.4.gif" width="32%"/> -->
+  &nbsp; 
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/xarm6_iso23482-1_sec17.gif" width="32%"/>
 </p>
 
 ### Copyright and licence

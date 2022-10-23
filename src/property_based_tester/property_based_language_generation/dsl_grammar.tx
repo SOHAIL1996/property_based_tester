@@ -206,5 +206,5 @@ MustNotBeNearTo:
 
 
 Comment:
-  /A comment/
+  /\/\/.*$/
 ;

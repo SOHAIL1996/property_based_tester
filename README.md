@@ -232,9 +232,11 @@ Supervised by:
 
 ### Required ROS Packages
 
-* `Jackal`
-* `xARM6`
-* `Husky`
+* ![Husky](https://github.com/husky/husky)
+* ![Jackal](https://github.com/jackal/jackal)
+* ![xARM6](https://github.com/xArm-Developer/xarm_ros)
+* ![Ouster](https://github.com/ouster-lidar/ouster-ros)
+* ![Gazebo-pkgs](https://github.com/JenniferBuehler/gazebo-pkgs)
 
 ## Hardware Requirements
 

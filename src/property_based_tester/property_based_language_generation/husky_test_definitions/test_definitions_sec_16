@@ -38,7 +38,7 @@ Test_definitions (S)
                     z_pos 0
                     r_ori 0
                     p_ori 0
-                    y_ori 90
+                    y_ori 0
                 safety_obstacle 'safety_obstacle_square'
                     x_pos 3
                     y_pos 0

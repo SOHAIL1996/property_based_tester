@@ -1,0 +1,2329 @@
+<sdf version='1.7'>
+  <model name='rovo'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.056555 0.0021 0.229553 0 -0 0</pose>
+        <mass>229.212</mass>
+        <inertia>
+          <ixx>35.3005</ixx>
+          <ixy>0.0484495</ixy>
+          <ixz>-0.581679</ixz>
+          <iyy>17.9058</iyy>
+          <iyz>0.132941</iyz>
+          <izz>44.1113</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_fixed_joint_lump__chasis_link_collision'>
+        <pose>0 0 0.18 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/chasis.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__body_link_collision_1'>
+        <pose>-0.04315 -0.00067 0.41273 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/body.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__lidar_plate_link_collision_2'>
+        <pose>-0.04315 -0.00067 0.46273 1.5708 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/lidar_plate.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__os1_sensor_collision_3'>
+        <pose>-0.04315 -0.00067 0.51473 0.0001 -0 1.5708</pose>
+        <geometry>
+          <cylinder>
+            <length>0.073</length>
+            <radius>0.04</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__control_box_link_collision_4'>
+        <pose>0.14018 -0.018069 0.38167 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/control_box.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__left_shaft_link_collision_5'>
+        <pose>0.002509 0.26654 0.26556 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/shaft.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__left_suspension_link_collision_6'>
+        <pose>-0.051591 0.30223 0.27956 -3e-06 3e-06 -1.57079</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/suspension.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__left_wishbone_link_collision_7'>
+        <pose>0.035489 0.37227 0.13491 3.14159 3e-06 -1.57079</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/wishbone.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__left_motor_link_collision_8'>
+        <pose>0.153769 0.363891 0.30266 -3e-06 3e-06 -1.57079</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/motor.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__right_shaft_link_collision_9'>
+        <pose>0.002511 -0.26654 0.26556 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/shaft.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__right_suspension_link_collision_10'>
+        <pose>-0.051589 -0.30223 0.27956 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/suspension.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__right_wishbone_link_collision_11'>
+        <pose>0.035491 -0.37227 0.13491 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/wishbone.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__right_motor_link_collision_12'>
+        <pose>0.153771 -0.363889 0.30266 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/motor.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_fixed_joint_lump__chasis_link_visual'>
+        <pose>0 0 0.18 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/chasis.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__body_link_visual_1'>
+        <pose>-0.04315 -0.00067 0.41273 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/body.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__lidar_plate_link_visual_2'>
+        <pose>-0.04315 -0.00067 0.46273 1.5708 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/lidar_plate.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__os1_sensor_visual_3'>
+        <pose>-0.04315 -0.00067 0.51473 0 -0.0001 3.1415</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/os1_64.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__control_box_link_visual_4'>
+        <pose>0.14018 -0.018069 0.38167 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/control_box.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__left_shaft_link_visual_5'>
+        <pose>0.002509 0.26654 0.26556 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/shaft.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__left_suspension_link_visual_6'>
+        <pose>-0.051591 0.30223 0.27956 -3e-06 3e-06 -1.57079</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/suspension.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__left_wishbone_link_visual_7'>
+        <pose>0.035489 0.37227 0.13491 3.14159 3e-06 -1.57079</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/wishbone.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__left_axle_link_visual_8'>
+        <pose>0.022278 0.45986 0.11672 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/left_axle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__left_motor_link_visual_9'>
+        <pose>0.153769 0.363891 0.30266 -3e-06 3e-06 -1.57079</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/motor.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__left_track_link_visual_10'>
+        <pose>0.054648 0.47094 0.17675 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/track.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__right_shaft_link_visual_11'>
+        <pose>0.002511 -0.26654 0.26556 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/shaft.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__right_suspension_link_visual_12'>
+        <pose>-0.051589 -0.30223 0.27956 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/suspension.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__right_wishbone_link_visual_13'>
+        <pose>0.035491 -0.37227 0.13491 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/wishbone.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__right_axle_link_visual_14'>
+        <pose>0.022282 -0.45986 0.11672 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/right_axle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__right_motor_link_visual_15'>
+        <pose>0.153771 -0.363889 0.30266 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/motor.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__right_track_link_visual_16'>
+        <pose>0.054652 -0.44878 0.17675 0 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/track.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <sensor name='os1_sensor-OS1-64' type='ray'>
+        <visualize>0</visualize>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>220</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>64</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.26</min_angle>
+              <max_angle>0.26</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.9</min>
+            <max>75</max>
+            <resolution>0.03</resolution>
+          </range>
+        </ray>
+        <plugin name='gazebo_ros_laser_controller' filename='libgazebo_ros_ouster_laser.so'>
+          <topicName>/points</topicName>
+          <frameName>os1_sensor</frameName>
+          <min_range>0.90</min_range>
+          <max_range>75.0</max_range>
+          <gaussianNoise>0.008</gaussianNoise>
+        </plugin>
+        <pose>-0.04315 -0.00067 0.51473 0.0001 -0 1.5708</pose>
+      </sensor>
+    </link>
+    <joint name='left_mutator_joint' type='revolute'>
+      <pose relative_to='base_link'>0.156658 0.503041 0.29726 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_mutator_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_mutator_link'>
+      <pose relative_to='left_mutator_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>8</mass>
+        <inertia>
+          <ixx>0.09715</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0554</iyy>
+          <iyz>0</iyz>
+          <izz>0.0554</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_mutator_link_collision'>
+        <pose>0 0 0 3.14159 3e-06 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/mutator.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_mutator_link_visual'>
+        <pose>0 0 0 3.14159 3e-06 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/mutator.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_a_joint' type='revolute'>
+      <pose relative_to='base_link'>0.459968 0.529302 0.11829 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_a_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_a_link'>
+      <pose relative_to='left_wheel_a_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00458</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00239</iyy>
+          <iyz>0</iyz>
+          <izz>0.00239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_a_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/front_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_a_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/front_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_b_joint' type='revolute'>
+      <pose relative_to='base_link'>0.264968 0.529081 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_b_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_b_link'>
+      <pose relative_to='left_wheel_b_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_b_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_b_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_c_joint' type='revolute'>
+      <pose relative_to='base_link'>0.106958 0.52909 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_c_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_c_link'>
+      <pose relative_to='left_wheel_c_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_c_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_c_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_d_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.051052 0.52909 0.06929 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_d_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_d_link'>
+      <pose relative_to='left_wheel_d_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_d_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_d_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_e_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.209042 0.529089 0.06928 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_e_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_e_link'>
+      <pose relative_to='left_wheel_e_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_e_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_e_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_f_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.428952 0.529008 0.07978 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_f_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_f_link'>
+      <pose relative_to='left_wheel_f_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_f_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_f_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_g_joint' type='revolute'>
+      <pose relative_to='base_link'>0.459959 0.386902 0.11828 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_g_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_g_link'>
+      <pose relative_to='left_wheel_g_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00458</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00239</iyy>
+          <iyz>0</iyz>
+          <izz>0.00239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_g_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/front_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_g_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/front_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_h_joint' type='revolute'>
+      <pose relative_to='base_link'>0.264969 0.387111 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_h_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_h_link'>
+      <pose relative_to='left_wheel_h_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_h_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_h_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_i_joint' type='revolute'>
+      <pose relative_to='base_link'>0.106959 0.38712 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_i_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_i_link'>
+      <pose relative_to='left_wheel_i_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_i_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_i_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_j_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.051051 0.38712 0.06929 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_j_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_j_link'>
+      <pose relative_to='left_wheel_j_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_j_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_j_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_k_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.209041 0.387119 0.06928 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_k_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_k_link'>
+      <pose relative_to='left_wheel_k_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_k_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_k_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_l_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.428921 0.387188 0.07977 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_l_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_l_link'>
+      <pose relative_to='left_wheel_l_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_l_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_l_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_va_joint' type='revolute'>
+      <pose relative_to='base_link'>0.47228 -0.040138 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_va_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_va_link'>
+      <pose relative_to='left_wheel_va_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_va_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='left_wheel_vb_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.17772 -0.040141 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_vb_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_vb_link'>
+      <pose relative_to='left_wheel_vb_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_vb_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='left_wheel_vc_joint' type='revolute'>
+      <pose relative_to='base_link'>0.22228 -0.040139 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_vc_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_vc_link'>
+      <pose relative_to='left_wheel_vc_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_vc_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='left_wheel_vd_joint' type='revolute'>
+      <pose relative_to='base_link'>0.472278 0.459862 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_vd_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_vd_link'>
+      <pose relative_to='left_wheel_vd_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_vd_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='left_wheel_ve_joint' type='revolute'>
+      <pose relative_to='base_link'>0.222278 0.459861 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_ve_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_ve_link'>
+      <pose relative_to='left_wheel_ve_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_ve_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='left_wheel_vf_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.177722 0.459859 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_vf_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_vf_link'>
+      <pose relative_to='left_wheel_vf_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_vf_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='left_wheel_vg_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.42772 -0.040142 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_vg_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_vg_link'>
+      <pose relative_to='left_wheel_vg_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_vg_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='left_wheel_vh_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.427722 0.459858 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>left_wheel_vh_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel_vh_link'>
+      <pose relative_to='left_wheel_vh_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_vh_link_collision'>
+        <pose>0.2 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_mutator_joint' type='revolute'>
+      <pose relative_to='base_link'>0.156662 -0.503039 0.29726 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_mutator_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_mutator_link'>
+      <pose relative_to='right_mutator_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>8</mass>
+        <inertia>
+          <ixx>0.09715</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0554</iyy>
+          <iyz>0</iyz>
+          <izz>0.0554</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_mutator_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/mutator.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_mutator_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/mutator.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_a_joint' type='revolute'>
+      <pose relative_to='base_link'>0.459971 -0.390418 0.11829 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_a_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_a_link'>
+      <pose relative_to='right_wheel_a_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00458</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00239</iyy>
+          <iyz>0</iyz>
+          <izz>0.00239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_a_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/front_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_a_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/front_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_b_joint' type='revolute'>
+      <pose relative_to='base_link'>0.264971 -0.390639 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_b_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_b_link'>
+      <pose relative_to='right_wheel_b_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_b_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_b_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_c_joint' type='revolute'>
+      <pose relative_to='base_link'>0.106961 -0.39063 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_c_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_c_link'>
+      <pose relative_to='right_wheel_c_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_c_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_c_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_d_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.051049 -0.39063 0.06929 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_d_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_d_link'>
+      <pose relative_to='right_wheel_d_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_d_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_d_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_e_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.209039 -0.390631 0.06928 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_e_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_e_link'>
+      <pose relative_to='right_wheel_e_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_e_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_e_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_f_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.428949 -0.390712 0.07978 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_f_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_f_link'>
+      <pose relative_to='right_wheel_f_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_f_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_f_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_g_joint' type='revolute'>
+      <pose relative_to='base_link'>0.459962 -0.532818 0.11828 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_g_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_g_link'>
+      <pose relative_to='right_wheel_g_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00458</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00239</iyy>
+          <iyz>0</iyz>
+          <izz>0.00239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_g_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/front_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_g_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/front_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_h_joint' type='revolute'>
+      <pose relative_to='base_link'>0.264972 -0.532609 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_h_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_h_link'>
+      <pose relative_to='right_wheel_h_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_h_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_h_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_i_joint' type='revolute'>
+      <pose relative_to='base_link'>0.106962 -0.5326 0.0693 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_i_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_i_link'>
+      <pose relative_to='right_wheel_i_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_i_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_i_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_j_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.051048 -0.5326 0.06929 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_j_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_j_link'>
+      <pose relative_to='right_wheel_j_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_j_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_j_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_k_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.209038 -0.532601 0.06928 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_k_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_k_link'>
+      <pose relative_to='right_wheel_k_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_k_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_k_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_l_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.428918 -0.532532 0.07977 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_l_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_l_link'>
+      <pose relative_to='right_wheel_l_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00094</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.00052</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_l_link_collision'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/rare_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_l_link_visual'>
+        <pose>0 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/visual/rare_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_va_joint' type='revolute'>
+      <pose relative_to='base_link'>0.472282 -0.459858 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_va_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_va_link'>
+      <pose relative_to='right_wheel_va_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_va_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_wheel_vb_joint' type='revolute'>
+      <pose relative_to='base_link'>0.222282 -0.459859 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_vb_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_vb_link'>
+      <pose relative_to='right_wheel_vb_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_vb_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_wheel_vc_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.427718 -0.459862 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_vc_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_vc_link'>
+      <pose relative_to='right_wheel_vc_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_vc_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_wheel_vd_joint' type='revolute'>
+      <pose relative_to='base_link'>0.47228 0.040142 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_vd_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_vd_link'>
+      <pose relative_to='right_wheel_vd_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_vd_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_wheel_ve_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.17772 0.040139 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_ve_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_ve_link'>
+      <pose relative_to='right_wheel_ve_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_ve_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_wheel_vf_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.42772 0.040138 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_vf_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_vf_link'>
+      <pose relative_to='right_wheel_vf_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_vf_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_wheel_vg_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.177718 -0.459861 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_vg_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_vg_link'>
+      <pose relative_to='right_wheel_vg_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_vg_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_wheel_vh_joint' type='revolute'>
+      <pose relative_to='base_link'>0.22228 0.040141 0.01672 0 -0 1.5708</pose>
+      <parent>base_link</parent>
+      <child>right_wheel_vh_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <effort>10000</effort>
+          <velocity>1000</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel_vh_link'>
+      <pose relative_to='right_wheel_vh_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy>1e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.239</iyy>
+          <iyz>0</iyz>
+          <izz>0.239</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_vh_link_collision'>
+        <pose>-0.2 0 0 3.14159 3.3e-05 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://mbs_rovo_gazebo/robot_gazebo_description/meshes/collision/v_wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <static>0</static>
+    <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </model>
+</sdf>

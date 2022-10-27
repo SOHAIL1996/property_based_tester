@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find mbs_rovo_gazebo)/launch/control.launch"/>
+  <node pkg="topic_tools" type="relay" name="relay_rovo_odom" args="/rovo_velocity_controller/odom /odom" />
+</launch>

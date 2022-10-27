@@ -246,6 +246,15 @@ These constitute the bare minimum requirements to run this package.
 * `AMD Ryzen 5 5600H CPU @ 3.30GHz`
 * `Nvidia GeForce RTX 3060`
 * `250 Gb SSD`
+
+# Known Issues
+
+The movebase is not running. Make sure the topics are correct for the odom, map, and cmd_vel. Also,
+make sure that sim_time is enabled for move_basei.e.:
+```bash
+<param name="use_sim_time" value="true" />
+```
+
 <!-- 
 
 ## Note has to be redone

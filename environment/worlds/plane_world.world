@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-  <world name="my_world"> 
+  <world name="plane_world"> 
     <!-- The sun -->
     <include>
       <uri>model://sun</uri>
@@ -30,17 +30,15 @@
         </constraints>
       </ode>
     </physics>
-    <!-- The world environment -->
-    <!-- <include>
-			<uri>/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/environment/models/lab</uri>
-      <name>lab</name>  
-      <pose>0 0 0 0 0 0</pose> 
-		</include> -->
+
     <!-- The Scene setup -->
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
     <scene>
-      <ambient>0.4 0.4 0.4 1</ambient>
-          <background>0.7 0.7 0.7 1</background>
-        <shadows>true</shadows>
+      <ambient>0.1 0.1 0.1 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
     </scene>
     <!-- The Camera position -->
     <gui>

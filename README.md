@@ -5,7 +5,7 @@
 </p>
 
 <p align="center" style="border:solid #6495ED">
-  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec11.1.gif" width="32%"/>
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/rovo_iso23482-1_sec11.gif" width="32%"/>
   &nbsp;
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec13.2.gif" width="32%"/>
   &nbsp; 
@@ -72,9 +72,9 @@ roslaunch jackal_navigation odom_navigation_demo.launch
 roslaunch husky_navigation move_base_mapless_demo.launch 
 ```
 
-4. World configuration inside the `src/property_based_tester/configuration/property_based_tester_params.yaml`
+4. Robot configuration inside the `src/property_based_tester/configuration/property_based_tester_params.yaml`
 
-Current available parameters:
+Current available robots:
 ```bash
  Robot: 
    robot_urdf_name: husky # URDF name
@@ -94,6 +94,16 @@ Robot:
    robot_urdf_name: xarm6_gripper
    robot_spawner_name: spawn_xarm6_controller.launch
 ```
+
+```bash
+ Robot: 
+   robot_urdf_name: rovo # URDF name
+   robot_spawner_name: spawn_rovo_wo_controller.launch
+   robot_controller: rovo_standalone_controller.launch
+   robot_velocity: /rovo_velocity_controller/cmd_vel
+   robot_size: [1.200, 1.230, 0.530] # x,y,z in meters
+```
+
 
 <p align="center">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif" />
@@ -249,6 +259,9 @@ These constitute the bare minimum requirements to run this package.
 
 # Issues
 
+<p align="center" style="border:solid #6495ED">
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/rovo_physics_simulator_bug.gif" width="100%"/>
+</p>
 
 ## Movebase not working
 

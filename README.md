@@ -247,12 +247,23 @@ These constitute the bare minimum requirements to run this package.
 * `Nvidia GeForce RTX 3060`
 * `250 Gb SSD`
 
-# Known Issues
+# Issues
+
+
+## Movebase not working
 
 The movebase is not running. Make sure the topics are correct for the odom, map, and cmd_vel. Also,
 make sure that sim_time is enabled for move_basei.e.:
 ```bash
 <param name="use_sim_time" value="true" />
+```
+
+## Ouster or other Gazebo plugins not working
+
+Add this and place the plugins binaries and shared objects into this folder
+
+```bash
+export GAZEBO_PLUGIN_PATH=/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/plugins/roboticsgroup_gazebo_plugins/build/devel/lib
 ```
 
 <!-- 

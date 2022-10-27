@@ -1,9 +1,9 @@
 Test_definitions (S)
     standard 'ISO 23482-1'
-        section 12
+        section 17
             scenario_configuration
                 world_type 'empty'
-                description 'Robot force collision measurement'
+                description 'Robot object pick from front'
                 robot_position 
                     x_pos 0
                     y_pos 0
@@ -41,7 +41,7 @@ Test_definitions (S)
                     y_ori 0
                 robot_goal 
                     x_pos 1000
-                    y_pos 0.15
+                    y_pos 0.3
                     z_pos 0
                     r_ori 0
                     p_ori 0
@@ -75,5 +75,5 @@ Test_definitions (S)
                     p_ori 0
                     y_ori 0
             must_collide
-                collision_object 'paperweight'
+                collision_object 'glass'
 Test_definitions (E)

@@ -283,7 +283,7 @@ make sure that sim_time is enabled for move_basei.e.:
 Add this and place the plugins binaries and shared objects into this folder
 
 ```bash
-export GAZEBO_PLUGIN_PATH=/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/plugins/roboticsgroup_gazebo_plugins/build/devel/lib
+export GAZEBO_PLUGIN_PATH=/home/sorox23/robotic_ws/master_thesis_ws/src/property_based_tester/plugins/gazebo_plugins_manual_amd64
 ```
 
 <!-- 

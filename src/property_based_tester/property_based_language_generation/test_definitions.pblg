@@ -1,37 +1,79 @@
 Test_definitions (S)
-    RandomizerScenario
-        scenario_configuration
-            iterations 12
-            worlds
-                world_type 'stairs_standard'
-                world_type 'split_flat_surface_35mu'
-            obstacles
-                obstacle_type 'cabinet'
-                obstacle_type 'fence'
-        must_not_collide
-            collision_object '*'
-        must_collide
-            collision_object 'fence'
-        must_be_at
-            area_start
-                x1 1.0
-                y1 2.2
-                z1 0.0
-            area_end
-                x2 12.0
-                y2 6.5
-                z2 0.5
-            tolerance 3.5
-            time-constraint 0.2
-        must_not_be_at
-            allowable_region_start
-                x1 1.0
-                y1 10.2
-                z1 0.0
-            allowable_region_end
-                x2 12.0
-                y2 155.5
-                z2 1.0
-            tolerance 3.5
-            time-constraint 0.2
+    standard 'ISO 23482-1'
+        section 17
+            scenario_configuration
+                world_type 'empty'
+                description 'Robot object pick from front'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.10
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.60
+                    y_pos 0.01
+                    z_pos -0.05
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0.3
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0.848
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                safety_obstacle 'glass'
+                    x_pos 0.58
+                    y_pos 0.01
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_collide
+                collision_object 'glass'
 Test_definitions (E)

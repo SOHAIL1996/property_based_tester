@@ -34,7 +34,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/gazebo-11"
   "/usr/include/bullet"
-  "/usr/include/sdformat-9.7"
+  "/usr/include/sdformat-9.8"
   "/usr/include/OGRE"
   "/usr/include/OGRE/Terrain"
   "/usr/include/OGRE/Paging"
@@ -46,7 +46,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/ignition/common3"
   "/usr/include/ignition/fuel_tools4"
   "/usr/include/eigen3"
-  "/usr/include/sdformat-9.7/sdf/.."
+  "/usr/include/sdformat-9.8/sdf/.."
   "/usr/include/ignition/cmake2"
   "/usr/include/uuid"
   )

@@ -340,64 +340,89 @@ CMakeFiles/gazebo_ros_ouster_gpu_laser.dir/src/GazeboRosOusterLaser.cpp.o
  /usr/include/ignition/common3/ignition/common/config.hh
  /usr/include/ignition/common3/ignition/common/profiler/Export.hh
  /usr/include/ignition/common3/ignition/common/profiler/detail/Export.hh
+ /usr/include/ignition/math6/gz/math.hh
+ /usr/include/ignition/math6/gz/math/AdditivelySeparableScalarField3.hh
+ /usr/include/ignition/math6/gz/math/Angle.hh
+ /usr/include/ignition/math6/gz/math/AxisAlignedBox.hh
+ /usr/include/ignition/math6/gz/math/Box.hh
+ /usr/include/ignition/math6/gz/math/Capsule.hh
+ /usr/include/ignition/math6/gz/math/Color.hh
+ /usr/include/ignition/math6/gz/math/Cylinder.hh
+ /usr/include/ignition/math6/gz/math/DiffDriveOdometry.hh
+ /usr/include/ignition/math6/gz/math/Ellipsoid.hh
+ /usr/include/ignition/math6/gz/math/Export.hh
+ /usr/include/ignition/math6/gz/math/Filter.hh
+ /usr/include/ignition/math6/gz/math/Frustum.hh
+ /usr/include/ignition/math6/gz/math/GaussMarkovProcess.hh
+ /usr/include/ignition/math6/gz/math/Helpers.hh
+ /usr/include/ignition/math6/gz/math/Inertial.hh
+ /usr/include/ignition/math6/gz/math/Interval.hh
+ /usr/include/ignition/math6/gz/math/Kmeans.hh
+ /usr/include/ignition/math6/gz/math/Line2.hh
+ /usr/include/ignition/math6/gz/math/Line3.hh
+ /usr/include/ignition/math6/gz/math/MassMatrix3.hh
+ /usr/include/ignition/math6/gz/math/Material.hh
+ /usr/include/ignition/math6/gz/math/MaterialType.hh
+ /usr/include/ignition/math6/gz/math/Matrix3.hh
+ /usr/include/ignition/math6/gz/math/Matrix4.hh
+ /usr/include/ignition/math6/gz/math/Matrix6.hh
+ /usr/include/ignition/math6/gz/math/MovingWindowFilter.hh
+ /usr/include/ignition/math6/gz/math/OrientedBox.hh
+ /usr/include/ignition/math6/gz/math/PID.hh
+ /usr/include/ignition/math6/gz/math/PiecewiseScalarField3.hh
+ /usr/include/ignition/math6/gz/math/Plane.hh
+ /usr/include/ignition/math6/gz/math/Polynomial3.hh
+ /usr/include/ignition/math6/gz/math/Pose3.hh
+ /usr/include/ignition/math6/gz/math/Quaternion.hh
+ /usr/include/ignition/math6/gz/math/Rand.hh
+ /usr/include/ignition/math6/gz/math/Region3.hh
+ /usr/include/ignition/math6/gz/math/RollingMean.hh
+ /usr/include/ignition/math6/gz/math/RotationSpline.hh
+ /usr/include/ignition/math6/gz/math/SemanticVersion.hh
+ /usr/include/ignition/math6/gz/math/SignalStats.hh
+ /usr/include/ignition/math6/gz/math/SpeedLimiter.hh
+ /usr/include/ignition/math6/gz/math/Sphere.hh
+ /usr/include/ignition/math6/gz/math/SphericalCoordinates.hh
+ /usr/include/ignition/math6/gz/math/Spline.hh
+ /usr/include/ignition/math6/gz/math/Stopwatch.hh
+ /usr/include/ignition/math6/gz/math/Temperature.hh
+ /usr/include/ignition/math6/gz/math/Triangle.hh
+ /usr/include/ignition/math6/gz/math/Triangle3.hh
+ /usr/include/ignition/math6/gz/math/Vector2.hh
+ /usr/include/ignition/math6/gz/math/Vector3.hh
+ /usr/include/ignition/math6/gz/math/Vector3Stats.hh
+ /usr/include/ignition/math6/gz/math/Vector4.hh
+ /usr/include/ignition/math6/gz/math/config.hh
+ /usr/include/ignition/math6/gz/math/detail/Box.hh
+ /usr/include/ignition/math6/gz/math/detail/Capsule.hh
+ /usr/include/ignition/math6/gz/math/detail/Cylinder.hh
+ /usr/include/ignition/math6/gz/math/detail/Ellipsoid.hh
+ /usr/include/ignition/math6/gz/math/detail/Export.hh
+ /usr/include/ignition/math6/gz/math/detail/Sphere.hh
+ /usr/include/ignition/math6/gz/math/detail/WellOrderedVector.hh
+ /usr/include/ignition/math6/gz/math/graph/Edge.hh
+ /usr/include/ignition/math6/gz/math/graph/Graph.hh
+ /usr/include/ignition/math6/gz/math/graph/GraphAlgorithms.hh
+ /usr/include/ignition/math6/gz/math/graph/Vertex.hh
  /usr/include/ignition/math6/ignition/math.hh
  /usr/include/ignition/math6/ignition/math/Angle.hh
  /usr/include/ignition/math6/ignition/math/AxisAlignedBox.hh
  /usr/include/ignition/math6/ignition/math/Box.hh
- /usr/include/ignition/math6/ignition/math/Capsule.hh
  /usr/include/ignition/math6/ignition/math/Color.hh
  /usr/include/ignition/math6/ignition/math/Cylinder.hh
- /usr/include/ignition/math6/ignition/math/DiffDriveOdometry.hh
- /usr/include/ignition/math6/ignition/math/Ellipsoid.hh
- /usr/include/ignition/math6/ignition/math/Export.hh
- /usr/include/ignition/math6/ignition/math/Filter.hh
- /usr/include/ignition/math6/ignition/math/Frustum.hh
- /usr/include/ignition/math6/ignition/math/GaussMarkovProcess.hh
- /usr/include/ignition/math6/ignition/math/Helpers.hh
  /usr/include/ignition/math6/ignition/math/Inertial.hh
- /usr/include/ignition/math6/ignition/math/Kmeans.hh
- /usr/include/ignition/math6/ignition/math/Line2.hh
- /usr/include/ignition/math6/ignition/math/Line3.hh
  /usr/include/ignition/math6/ignition/math/MassMatrix3.hh
- /usr/include/ignition/math6/ignition/math/Material.hh
- /usr/include/ignition/math6/ignition/math/MaterialType.hh
  /usr/include/ignition/math6/ignition/math/Matrix3.hh
- /usr/include/ignition/math6/ignition/math/Matrix4.hh
- /usr/include/ignition/math6/ignition/math/MovingWindowFilter.hh
- /usr/include/ignition/math6/ignition/math/OrientedBox.hh
- /usr/include/ignition/math6/ignition/math/PID.hh
  /usr/include/ignition/math6/ignition/math/Plane.hh
  /usr/include/ignition/math6/ignition/math/Pose3.hh
  /usr/include/ignition/math6/ignition/math/Quaternion.hh
- /usr/include/ignition/math6/ignition/math/Rand.hh
- /usr/include/ignition/math6/ignition/math/RollingMean.hh
  /usr/include/ignition/math6/ignition/math/RotationSpline.hh
- /usr/include/ignition/math6/ignition/math/SemanticVersion.hh
- /usr/include/ignition/math6/ignition/math/SignalStats.hh
- /usr/include/ignition/math6/ignition/math/SpeedLimiter.hh
  /usr/include/ignition/math6/ignition/math/Sphere.hh
- /usr/include/ignition/math6/ignition/math/SphericalCoordinates.hh
  /usr/include/ignition/math6/ignition/math/Spline.hh
- /usr/include/ignition/math6/ignition/math/Stopwatch.hh
  /usr/include/ignition/math6/ignition/math/Temperature.hh
- /usr/include/ignition/math6/ignition/math/Triangle.hh
- /usr/include/ignition/math6/ignition/math/Triangle3.hh
  /usr/include/ignition/math6/ignition/math/Vector2.hh
  /usr/include/ignition/math6/ignition/math/Vector3.hh
- /usr/include/ignition/math6/ignition/math/Vector3Stats.hh
- /usr/include/ignition/math6/ignition/math/Vector4.hh
  /usr/include/ignition/math6/ignition/math/config.hh
- /usr/include/ignition/math6/ignition/math/detail/Box.hh
- /usr/include/ignition/math6/ignition/math/detail/Capsule.hh
- /usr/include/ignition/math6/ignition/math/detail/Cylinder.hh
- /usr/include/ignition/math6/ignition/math/detail/Ellipsoid.hh
- /usr/include/ignition/math6/ignition/math/detail/Export.hh
- /usr/include/ignition/math6/ignition/math/detail/Sphere.hh
- /usr/include/ignition/math6/ignition/math/detail/WellOrderedVector.hh
- /usr/include/ignition/math6/ignition/math/graph/Edge.hh
- /usr/include/ignition/math6/ignition/math/graph/Graph.hh
- /usr/include/ignition/math6/ignition/math/graph/GraphAlgorithms.hh
- /usr/include/ignition/math6/ignition/math/graph/Vertex.hh
  /usr/include/ignition/msgs5/ignition/msgs.hh
  /usr/include/ignition/msgs5/ignition/msgs/Export.hh
  /usr/include/ignition/msgs5/ignition/msgs/Factory.hh
@@ -448,6 +473,7 @@ CMakeFiles/gazebo_ros_ouster_gpu_laser.dir/src/GazeboRosOusterLaser.cpp.o
  /usr/include/ignition/msgs5/ignition/msgs/entity.pb.h
  /usr/include/ignition/msgs5/ignition/msgs/entity_factory.pb.h
  /usr/include/ignition/msgs5/ignition/msgs/entity_factory_v.pb.h
+ /usr/include/ignition/msgs5/ignition/msgs/entity_wrench.pb.h
  /usr/include/ignition/msgs5/ignition/msgs/float.pb.h
  /usr/include/ignition/msgs5/ignition/msgs/float_v.pb.h
  /usr/include/ignition/msgs5/ignition/msgs/fluid.pb.h
@@ -603,53 +629,54 @@ CMakeFiles/gazebo_ros_ouster_gpu_laser.dir/src/GazeboRosOusterLaser.cpp.o
  /usr/include/ignition/transport8/ignition/transport/config.hh
  /usr/include/ignition/transport8/ignition/transport/detail/Export.hh
  /usr/include/ignition/transport8/ignition/transport/detail/Node.hh
- /usr/include/sdformat-9.7/sdf/Actor.hh
- /usr/include/sdformat-9.7/sdf/AirPressure.hh
- /usr/include/sdformat-9.7/sdf/Altimeter.hh
- /usr/include/sdformat-9.7/sdf/Assert.hh
- /usr/include/sdformat-9.7/sdf/Atmosphere.hh
- /usr/include/sdformat-9.7/sdf/Box.hh
- /usr/include/sdformat-9.7/sdf/Camera.hh
- /usr/include/sdformat-9.7/sdf/Collision.hh
- /usr/include/sdformat-9.7/sdf/Console.hh
- /usr/include/sdformat-9.7/sdf/Cylinder.hh
- /usr/include/sdformat-9.7/sdf/Element.hh
- /usr/include/sdformat-9.7/sdf/Error.hh
- /usr/include/sdformat-9.7/sdf/Exception.hh
- /usr/include/sdformat-9.7/sdf/Filesystem.hh
- /usr/include/sdformat-9.7/sdf/ForceTorque.hh
- /usr/include/sdformat-9.7/sdf/Frame.hh
- /usr/include/sdformat-9.7/sdf/Geometry.hh
- /usr/include/sdformat-9.7/sdf/Gui.hh
- /usr/include/sdformat-9.7/sdf/Heightmap.hh
- /usr/include/sdformat-9.7/sdf/Imu.hh
- /usr/include/sdformat-9.7/sdf/Joint.hh
- /usr/include/sdformat-9.7/sdf/JointAxis.hh
- /usr/include/sdformat-9.7/sdf/Lidar.hh
- /usr/include/sdformat-9.7/sdf/Light.hh
- /usr/include/sdformat-9.7/sdf/Link.hh
- /usr/include/sdformat-9.7/sdf/Magnetometer.hh
- /usr/include/sdformat-9.7/sdf/Material.hh
- /usr/include/sdformat-9.7/sdf/Mesh.hh
- /usr/include/sdformat-9.7/sdf/Model.hh
- /usr/include/sdformat-9.7/sdf/NavSat.hh
- /usr/include/sdformat-9.7/sdf/Noise.hh
- /usr/include/sdformat-9.7/sdf/Param.hh
- /usr/include/sdformat-9.7/sdf/Pbr.hh
- /usr/include/sdformat-9.7/sdf/Physics.hh
- /usr/include/sdformat-9.7/sdf/Plane.hh
- /usr/include/sdformat-9.7/sdf/Root.hh
- /usr/include/sdformat-9.7/sdf/SDFImpl.hh
- /usr/include/sdformat-9.7/sdf/Scene.hh
- /usr/include/sdformat-9.7/sdf/SemanticPose.hh
- /usr/include/sdformat-9.7/sdf/Sensor.hh
- /usr/include/sdformat-9.7/sdf/Sky.hh
- /usr/include/sdformat-9.7/sdf/Sphere.hh
- /usr/include/sdformat-9.7/sdf/Surface.hh
- /usr/include/sdformat-9.7/sdf/Types.hh
- /usr/include/sdformat-9.7/sdf/Visual.hh
- /usr/include/sdformat-9.7/sdf/World.hh
- /usr/include/sdformat-9.7/sdf/parser.hh
- /usr/include/sdformat-9.7/sdf/sdf.hh
- /usr/include/sdformat-9.7/sdf/sdf_config.h
- /usr/include/sdformat-9.7/sdf/system_util.hh
+ /usr/include/sdformat-9.8/sdf/Actor.hh
+ /usr/include/sdformat-9.8/sdf/AirPressure.hh
+ /usr/include/sdformat-9.8/sdf/Altimeter.hh
+ /usr/include/sdformat-9.8/sdf/Assert.hh
+ /usr/include/sdformat-9.8/sdf/Atmosphere.hh
+ /usr/include/sdformat-9.8/sdf/Box.hh
+ /usr/include/sdformat-9.8/sdf/Camera.hh
+ /usr/include/sdformat-9.8/sdf/Collision.hh
+ /usr/include/sdformat-9.8/sdf/Console.hh
+ /usr/include/sdformat-9.8/sdf/Cylinder.hh
+ /usr/include/sdformat-9.8/sdf/Element.hh
+ /usr/include/sdformat-9.8/sdf/Error.hh
+ /usr/include/sdformat-9.8/sdf/Exception.hh
+ /usr/include/sdformat-9.8/sdf/Filesystem.hh
+ /usr/include/sdformat-9.8/sdf/ForceTorque.hh
+ /usr/include/sdformat-9.8/sdf/Frame.hh
+ /usr/include/sdformat-9.8/sdf/Geometry.hh
+ /usr/include/sdformat-9.8/sdf/Gui.hh
+ /usr/include/sdformat-9.8/sdf/Heightmap.hh
+ /usr/include/sdformat-9.8/sdf/Imu.hh
+ /usr/include/sdformat-9.8/sdf/Joint.hh
+ /usr/include/sdformat-9.8/sdf/JointAxis.hh
+ /usr/include/sdformat-9.8/sdf/Lidar.hh
+ /usr/include/sdformat-9.8/sdf/Light.hh
+ /usr/include/sdformat-9.8/sdf/Link.hh
+ /usr/include/sdformat-9.8/sdf/Magnetometer.hh
+ /usr/include/sdformat-9.8/sdf/Material.hh
+ /usr/include/sdformat-9.8/sdf/Mesh.hh
+ /usr/include/sdformat-9.8/sdf/Model.hh
+ /usr/include/sdformat-9.8/sdf/NavSat.hh
+ /usr/include/sdformat-9.8/sdf/Noise.hh
+ /usr/include/sdformat-9.8/sdf/Param.hh
+ /usr/include/sdformat-9.8/sdf/Pbr.hh
+ /usr/include/sdformat-9.8/sdf/Physics.hh
+ /usr/include/sdformat-9.8/sdf/Plane.hh
+ /usr/include/sdformat-9.8/sdf/Polyline.hh
+ /usr/include/sdformat-9.8/sdf/Root.hh
+ /usr/include/sdformat-9.8/sdf/SDFImpl.hh
+ /usr/include/sdformat-9.8/sdf/Scene.hh
+ /usr/include/sdformat-9.8/sdf/SemanticPose.hh
+ /usr/include/sdformat-9.8/sdf/Sensor.hh
+ /usr/include/sdformat-9.8/sdf/Sky.hh
+ /usr/include/sdformat-9.8/sdf/Sphere.hh
+ /usr/include/sdformat-9.8/sdf/Surface.hh
+ /usr/include/sdformat-9.8/sdf/Types.hh
+ /usr/include/sdformat-9.8/sdf/Visual.hh
+ /usr/include/sdformat-9.8/sdf/World.hh
+ /usr/include/sdformat-9.8/sdf/parser.hh
+ /usr/include/sdformat-9.8/sdf/sdf.hh
+ /usr/include/sdformat-9.8/sdf/sdf_config.h
+ /usr/include/sdformat-9.8/sdf/system_util.hh

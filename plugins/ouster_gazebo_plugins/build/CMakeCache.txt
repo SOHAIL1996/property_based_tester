@@ -382,6 +382,10 @@ GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 
 //Compile with a sanitizer. Options are: Address, Memory, MemoryWithOrigins,
 // Undefined, Thread, Leak, 'Address;Undefined', CFI
+GZ_SANITIZER:STRING=
+
+//Compile with a sanitizer. Options are: Address, Memory, MemoryWithOrigins,
+// Undefined, Thread, Leak, 'Address;Undefined', CFI
 IGN_SANITIZER:STRING=
 
 //Enable installation of googletest. (Projects embedding googletest

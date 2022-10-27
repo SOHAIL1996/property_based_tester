@@ -76,4 +76,80 @@ Test_definitions (S)
                     y_ori 0
             must_collide
                 collision_object 'glass'
+        section 17
+            scenario_configuration
+                world_type 'empty'
+                description 'Robot object pick from front'
+                robot_position 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.10
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.60
+                    y_pos 0.01
+                    z_pos -0.05
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0.7
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 0.50
+                    y_pos 0.01
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 90
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 1000
+                    y_pos 0.848
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                safety_obstacle 'wine_cup'
+                    x_pos 0.58
+                    y_pos 0.01
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_collide
+                collision_object 'wine_cup'
 Test_definitions (E)

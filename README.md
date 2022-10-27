@@ -232,7 +232,6 @@ Supervised by:
 * `keras 2.0.8`
 * `pandas 0.17.1`
 * `termcolor 1.1.0`
-* `yocs_cmd_vel_mux package`
 * `pytest==4.6.11`
 * `maven`
 * `jdk 8`
@@ -252,6 +251,9 @@ Supervised by:
 * [xARM6](https://github.com/xArm-Developer/xarm_ros)
 * [Ouster](https://github.com/ouster-lidar/ouster-ros)
 * [Gazebo-pkgs](https://github.com/JenniferBuehler/gazebo-pkgs)
+* `yocs_cmd_vel_mux package`
+* `MBS ROVO2`
+* `RoboticsGroup_gazebo_plugins`
 
 ## Hardware Requirements
 

@@ -1,0 +1,118 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+18494688[ label="{TestInterface|}"]
+
+18207216[ label="{*TestType|}"]
+
+18574688[ label="{StandardScenario|standard: STRING\l}"]
+
+18291760[ label="{StandardSection|section: FLOAT\l}"]
+
+18599360[ label="{UserScenario|}"]
+
+18604896[ label="{RandomizerScenario|}"]
+
+18610432[ label="{RandomScenarioConfiguration|iterations: INT\l}"]
+
+18615968[ label="{RandomWorlds|world_type: STRING\l}"]
+
+18621504[ label="{RandomObstacles|obstacle_type: STRING\l}"]
+
+18628160[ label="{ScenarioConfiguration|world_type: STRING\ldescription: STRING\l}"]
+
+18633104[ label="{ScenarioModifiers|}"]
+
+18639232[ label="{RobotPosition|x_pos: FLOAT\ly_pos: FLOAT\lz_pos: FLOAT\lr_ori: FLOAT\lp_ori: FLOAT\ly_ori: FLOAT\l}"]
+
+18644768[ label="{RobotGoal|x_pos: FLOAT\ly_pos: FLOAT\lz_pos: FLOAT\lr_ori: FLOAT\lp_ori: FLOAT\ly_ori: FLOAT\l}"]
+
+18613968[ label="{RobotVelocity|manual_speed: BOOL\lrobot_speed: FLOAT\lspeed_duration: FLOAT\l}"]
+
+18578816[ label="{Payload|payload: STRING\lx_pos: FLOAT\ly_pos: FLOAT\lz_pos: FLOAT\lr_ori: FLOAT\lp_ori: FLOAT\ly_ori: FLOAT\l}"]
+
+18638288[ label="{ImpartedForces|imparted_forces: FLOAT\ltarget_entity: STRING\l}"]
+
+18648416[ label="{SafetyObstacle|safety_obstacle: STRING\lx_pos: FLOAT\ly_pos: FLOAT\lz_pos: FLOAT\lr_ori: FLOAT\lp_ori: FLOAT\ly_ori: FLOAT\l}"]
+
+18653952[ label="{VelocityPercentage|velocity_percentage: FLOAT\l}"]
+
+18659488[ label="{Repetition|repetition: INT\l}"]
+
+18665024[ label="{Randomization|randomize_obstacles: BOOL\l}"]
+
+18670560[ label="{DeadTime|dead_time: FLOAT\l}"]
+
+18676096[ label="{CompositeProperties|}"]
+
+18651952[ label="{PropertyCheck|}"]
+
+18602896[ label="{MustNotCollide|collision_object: STRING\l}"]
+
+18674096[ label="{MustCollide|collision_object: STRING\l}"]
+
+18681808[ label="{MustBeAt|x1: FLOAT\ly1: FLOAT\lz1: FLOAT\lx2: FLOAT\ly2: FLOAT\lz2: FLOAT\ltolerance: FLOAT\ltime_constraint: FLOAT\l}"]
+
+18687344[ label="{MustNotBeAt|x1: FLOAT\ly1: FLOAT\lz1: FLOAT\lx2: FLOAT\ly2: FLOAT\lz2: FLOAT\ltolerance: FLOAT\ltime_constraint: FLOAT\l}"]
+
+18692880[ label="{MustHaveCollisionForcesLessThan|force_threshhold: FLOAT\l}"]
+
+18698416[ label="{MustHaveOrientation|entity: STRING\lroll: FLOAT\lpitch: FLOAT\lyaw: FLOAT\ltolerance: FLOAT\l}"]
+
+18685344[ label="{MustBeNearTo|entity: STRING\leuclidean_distance: FLOAT\ltolerance: FLOAT\l}"]
+
+18603840[ label="{MustNotBeNearTo|entity: STRING\leuclidean_distance: FLOAT\ltolerance: FLOAT\l}"]
+
+
+
+18494688 -> 18207216[arrowtail=diamond, dir=both, headlabel="test_type 1..*"]
+18207216 -> 18574688 [dir=back]
+18207216 -> 18599360 [dir=back]
+18207216 -> 18604896 [dir=back]
+18574688 -> 18291760[arrowtail=diamond, dir=both, headlabel="section_number 1..*"]
+18291760 -> 18628160[arrowtail=diamond, dir=both, headlabel="scenario_configuration "]
+18291760 -> 18676096[arrowtail=diamond, dir=both, headlabel="custom_scenario "]
+18599360 -> 18628160[arrowtail=diamond, dir=both, headlabel="scenario_configuration "]
+18599360 -> 18676096[arrowtail=diamond, dir=both, headlabel="custom_scenario "]
+18604896 -> 18610432[arrowtail=diamond, dir=both, headlabel="scenario_configuration "]
+18604896 -> 18676096[arrowtail=diamond, dir=both, headlabel="custom_scenario "]
+18610432 -> 18615968[arrowtail=diamond, dir=both, headlabel="worlds 1..*"]
+18610432 -> 18621504[arrowtail=diamond, dir=both, headlabel="obstacles 1..*"]
+18628160 -> 18633104[arrowtail=diamond, dir=both, headlabel="scenario_modifier 0..*"]
+18633104 -> 18639232[arrowtail=diamond, dir=both, headlabel="sm_robot_position 0..*"]
+18633104 -> 18644768[arrowtail=diamond, dir=both, headlabel="sm_robot_goal 0..*"]
+18633104 -> 18578816[arrowtail=diamond, dir=both, headlabel="sm_payload 0..*"]
+18633104 -> 18613968[arrowtail=diamond, dir=both, headlabel="sm_robot_velocity 0..*"]
+18633104 -> 18638288[arrowtail=diamond, dir=both, headlabel="sm_imparted_forces 0..*"]
+18633104 -> 18648416[arrowtail=diamond, dir=both, headlabel="sm_safety_obstacle 0..*"]
+18633104 -> 18653952[arrowtail=diamond, dir=both, headlabel="sm_velocity_percentage 0..*"]
+18633104 -> 18659488[arrowtail=diamond, dir=both, headlabel="sm_repetition 0..*"]
+18633104 -> 18665024[arrowtail=diamond, dir=both, headlabel="sm_randomize_obstacles 0..*"]
+18633104 -> 18670560[arrowtail=diamond, dir=both, headlabel="sm_dead_time 0..*"]
+18676096 -> 18651952[arrowtail=diamond, dir=both, headlabel="property_check 1..*"]
+18651952 -> 18602896[arrowtail=diamond, dir=both, headlabel="must_not_collide "]
+18651952 -> 18674096[arrowtail=diamond, dir=both, headlabel="must_collide "]
+18651952 -> 18681808[arrowtail=diamond, dir=both, headlabel="must_be_at "]
+18651952 -> 18687344[arrowtail=diamond, dir=both, headlabel="must_not_be_at "]
+18651952 -> 18692880[arrowtail=diamond, dir=both, headlabel="must_have_collision_force_less_than "]
+18651952 -> 18698416[arrowtail=diamond, dir=both, headlabel="must_have_orientation "]
+18651952 -> 18685344[arrowtail=diamond, dir=both, headlabel="must_be_near_to "]
+18651952 -> 18603840[arrowtail=diamond, dir=both, headlabel="must_not_be_near_to "]
+match_rules [ shape=plaintext, label=< <table>
+	<tr>
+		<td><b>Comment</b></td><td>\/\/.*$</td>
+	</tr>
+</table> >]
+
+
+}

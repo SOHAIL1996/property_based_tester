@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>property_based_tester.scen_gen.obstacle_gen &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">property_based_tester.scen_gen.obstacle_gen</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for property_based_tester.scen_gen.obstacle_gen</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------- </span>
+<span class="sd">Obstacle Generator</span>
+
+<span class="sd">Generates obstacles and gathers worlds properties.</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
+<span class="sd">            Prof. Dr. Paul Ploger</span>
+<span class="sd">            Sven Schneider </span>
+
+<span class="sd">Author    : Salman Omar Sohail</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Date: July 01, 2022</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">import</span> <span class="nn">std_srvs.srv</span> <span class="k">as</span> <span class="nn">std_srvs</span>
+<span class="kn">import</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">as</span> <span class="nn">gazebo_srvs</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">SpawnModel</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">DeleteModel</span> 
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetModelState</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetLinkState</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetWorldProperties</span>
+
+<span class="kn">from</span> <span class="nn">property_based_tester.configuration.config</span> <span class="k">import</span> <span class="n">Configuration</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="k">import</span> <span class="n">colored</span>
+
+<div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.obstacle_gen.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class contains all relevant information of a gazebo model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_real_name</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        
+        <span class="n">conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+        <span class="n">R</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="p">((</span><span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">180</span><span class="p">),</span> <span class="n">P</span><span class="o">*</span><span class="p">((</span><span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">180</span><span class="p">),</span> <span class="n">Y</span><span class="o">*</span><span class="p">((</span><span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span>       <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">model_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_real_name</span> <span class="o">=</span> <span class="n">model_real_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_number</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_coord</span>   <span class="o">=</span> <span class="n">x</span>  <span class="c1"># X-coordinate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_coord</span>   <span class="o">=</span> <span class="n">y</span>  <span class="c1"># Y-coordinate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z_coord</span>   <span class="o">=</span> <span class="n">z</span>  <span class="c1"># Z-coordinate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R_coord</span>   <span class="o">=</span> <span class="n">R</span>  <span class="c1"># Roll in radians</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">P_coord</span>   <span class="o">=</span> <span class="n">P</span>  <span class="c1"># Pitch in radians</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Y_coord</span>   <span class="o">=</span> <span class="n">Y</span>  <span class="c1"># Yaw in radians</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quat1</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quat2</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quat3</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quat4</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        
+<div class="viewcode-block" id="Model.model_properties"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.obstacle_gen.Model.model_properties">[docs]</a>    <span class="k">def</span> <span class="nf">model_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function obtains a models property.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            model_name (str): Name of the object and the object ID from which the model will be obtained.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model_desc</span> <span class="o">=</span> <span class="s1">&#39;{model_name: &#39;</span><span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span><span class="s1">&#39;}&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">property_node</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;rosservice&#39;</span><span class="p">,</span> <span class="s1">&#39;call&#39;</span><span class="p">,</span> <span class="s1">&#39;gazebo/get_model_properties&#39;</span><span class="p">,</span> <span class="n">model_desc</span><span class="p">])</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+            <span class="n">property_node</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>    </div>
+               
+<div class="viewcode-block" id="Model.insert_model"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.obstacle_gen.Model.insert_model">[docs]</a>    <span class="k">def</span> <span class="nf">insert_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">placement_frame</span><span class="o">=</span><span class="s1">&#39;world&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function inserts a model in the gazebo world by passing a roscommand from the terminal. </span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/spawn_sdf_model&quot;</span><span class="p">)</span>
+        <span class="n">conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>           
+            <span class="n">model_node</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s2">&quot;/gazebo/spawn_sdf_model&quot;</span><span class="p">,</span> <span class="n">SpawnModel</span><span class="p">)</span>
+            <span class="n">model_node</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_real_name</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model_number</span><span class="p">,</span> 
+                       <span class="n">model_xml</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span> <span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model_real_name</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model_real_name</span><span class="o">+</span><span class="s1">&#39;.sdf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> 
+                       <span class="n">robot_namespace</span> <span class="o">=</span> <span class="s2">&quot;/RSG&quot;</span><span class="p">,</span>
+                       <span class="n">initial_pose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_coord</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y_coord</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">z_coord</span><span class="p">),</span>
+                                          <span class="n">orientation</span><span class="o">=</span><span class="n">Quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quat1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">quat2</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">quat3</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">quat4</span><span class="p">)),</span>
+                                          <span class="n">reference_frame</span><span class="o">=</span><span class="n">placement_frame</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;Cannot spawn </span><span class="si">{0}</span><span class="s1"> model&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_real_name</span><span class="p">),</span><span class="s1">&#39;red&#39;</span><span class="p">))</span> </div>
+
+<div class="viewcode-block" id="Model.delete_model"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.obstacle_gen.Model.delete_model">[docs]</a>    <span class="k">def</span> <span class="nf">delete_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function deletes a model in the gazebo world by passing a roscommand from the terminal.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            model_name (str): Name of the object and the object ID to be deleted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model_desc</span> <span class="o">=</span> <span class="s1">&#39;{model_name: &#39;</span><span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span><span class="s1">&#39;}&#39;</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/delete_model&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">del_model_prox</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/delete_model&#39;</span><span class="p">,</span> <span class="n">DeleteModel</span><span class="p">)</span> 
+            <span class="n">del_model_prox</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span> 
+        <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Rospy.ServiceException </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">))</span> </div>
+            
+<div class="viewcode-block" id="Model.lucy_pos"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.obstacle_gen.Model.lucy_pos">[docs]</a>    <span class="k">def</span> <span class="nf">lucy_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_model_state&#39;</span><span class="p">,</span> <span class="n">GetModelState</span><span class="p">)</span>
+            <span class="n">coordinates</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="s1">&#39;hsrb&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+            <span class="n">log</span>   <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span> 
+            <span class="k">return</span> <span class="n">log</span>
+        <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;Cannot acquire Model State.&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">))</span> </div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>property_based_tester.robot_controllers.pick_Toyota_client &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">property_based_tester.robot_controllers.pick_Toyota_client</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for property_based_tester.robot_controllers.pick_Toyota_client</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python2</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------- </span>
+<span class="sd">Pick and place sample by Yoshimi_yoda </span>
+
+<span class="sd">Copyright (C) 2017 Toyota Motor Corporation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">geometry_msgs.msg</span>
+<span class="kn">import</span> <span class="nn">moveit_commander</span>
+<span class="kn">import</span> <span class="nn">moveit_msgs.msg</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">import</span> <span class="nn">shape_msgs.msg</span>
+<span class="kn">from</span> <span class="nn">tf.transformations</span> <span class="k">import</span> <span class="n">quaternion_from_euler</span><span class="p">,</span> <span class="n">quaternion_multiply</span>
+<span class="kn">import</span> <span class="nn">trajectory_msgs.msg</span>
+
+
+<div class="viewcode-block" id="MoveItPickAndPlace"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace">[docs]</a><span class="k">class</span> <span class="nc">MoveItPickAndPlace</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pick_x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pick_y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pick_z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">place_x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">place_y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">place_z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">wait</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="c1"># initialize</span>
+        <span class="n">moveit_commander</span><span class="o">.</span><span class="n">roscpp_initialize</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+        <span class="c1"># rospy.init_node(&quot;moveit_demo&quot;, anonymous=True)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_frame</span> <span class="o">=</span> <span class="s2">&quot;odom&quot;</span>
+        <span class="n">arm</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">MoveGroupCommander</span><span class="p">(</span><span class="s2">&quot;arm&quot;</span><span class="p">)</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">MoveGroupCommander</span><span class="p">(</span><span class="s2">&quot;base&quot;</span><span class="p">)</span>
+        <span class="n">gripper</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">MoveGroupCommander</span><span class="p">(</span><span class="s2">&quot;gripper&quot;</span><span class="p">)</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">MoveGroupCommander</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">MoveGroupCommander</span><span class="p">(</span><span class="s2">&quot;whole_body&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">PlanningSceneInterface</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span><span class="o">.</span><span class="n">allow_replanning</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span><span class="o">.</span><span class="n">set_planning_time</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span><span class="o">.</span><span class="n">set_pose_reference_frame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reference_frame</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_effector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span><span class="o">.</span><span class="n">get_end_effector_link</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pick_x</span> <span class="o">=</span> <span class="n">pick_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pick_y</span> <span class="o">=</span> <span class="n">pick_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pick_z</span> <span class="o">=</span> <span class="n">pick_z</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">place_x</span> <span class="o">=</span> <span class="n">place_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">place_y</span> <span class="o">=</span> <span class="n">place_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">place_z</span> <span class="o">=</span> <span class="n">place_z</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1">##############################################################################</span>
+        <span class="c1"># remove all objects</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">remove_attached_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_effector</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">remove_world_object</span><span class="p">()</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1">##############################################################################</span>
+        <span class="c1"># move_to_neutral</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;step1: move_to_neutral&quot;</span><span class="p">)</span>
+        <span class="c1"># base.go()</span>
+        <span class="n">arm</span><span class="o">.</span><span class="n">set_named_target</span><span class="p">(</span><span class="s2">&quot;neutral&quot;</span><span class="p">)</span>
+        <span class="n">arm</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">set_named_target</span><span class="p">(</span><span class="s2">&quot;neutral&quot;</span><span class="p">)</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+        <span class="n">gripper</span><span class="o">.</span><span class="n">set_joint_value_target</span><span class="p">(</span><span class="s2">&quot;hand_motor_joint&quot;</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="n">gripper</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">logdebug</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">wait</span><span class="p">)</span>
+        <span class="c1">##############################################################################</span>
+        <span class="c1"># add objects</span>
+        <span class="c1"># top 3 are box coordinates bottom 3 are pose coordinates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_box</span><span class="p">(</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+                     <span class="p">[</span><span class="mf">0.63</span><span class="p">,</span> <span class="mf">0.63</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">],</span>
+                     <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pick_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pick_y</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
+        <span class="c1"># self.add_box(&quot;wall&quot;,</span>
+        <span class="c1">#              [0.3, 0.01, 0.1],</span>
+        <span class="c1">#              [0.5, 0.0, 0.5 + 0.1 / 2])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_box</span><span class="p">(</span><span class="s2">&quot;target1&quot;</span><span class="p">,</span>
+                     <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+                     <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pick_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pick_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pick_z</span><span class="p">])</span>
+        <span class="c1">##############################################################################</span>
+        <span class="c1"># pick target1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span><span class="o">.</span><span class="n">set_support_surface_name</span><span class="p">(</span><span class="s2">&quot;table&quot;</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;step2: pick target1&quot;</span><span class="p">)</span>
+        <span class="n">grasps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_grasps</span><span class="p">(</span><span class="s2">&quot;target1&quot;</span><span class="p">,</span>
+                                  <span class="p">(</span><span class="mf">0.707</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+                                  <span class="n">quality</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pitch</span><span class="p">),</span>  <span class="c1"># noqa</span>
+                                  <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.07</span><span class="p">],</span>
+                                  <span class="n">pitch</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s2">&quot;target1&quot;</span><span class="p">,</span> <span class="n">grasps</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">logdebug</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">wait</span><span class="p">)</span>
+                
+        <span class="n">arm</span><span class="o">.</span><span class="n">set_named_target</span><span class="p">(</span><span class="s2">&quot;neutral&quot;</span><span class="p">)</span>
+        <span class="n">arm</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">set_named_target</span><span class="p">(</span><span class="s2">&quot;neutral&quot;</span><span class="p">)</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.pick"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.pick">[docs]</a>    <span class="k">def</span> <span class="nf">pick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">grasps</span><span class="p">):</span>
+        <span class="n">n_attempts</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">max_pick_attempts</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">MoveItErrorCodes</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">)</span> <span class="ow">and</span> \
+              <span class="p">(</span><span class="n">n_attempts</span> <span class="o">&lt;</span> <span class="n">max_pick_attempts</span><span class="p">):</span>
+            <span class="n">n_attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Pick attempt: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_attempts</span><span class="p">))</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">grasps</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">MoveItErrorCodes</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">remove_attached_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_effector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.place"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.place">[docs]</a>    <span class="k">def</span> <span class="nf">place</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+        <span class="n">n_attempts</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">max_pick_attempts</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">MoveItErrorCodes</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">)</span> <span class="ow">and</span> \
+              <span class="p">(</span><span class="n">n_attempts</span> <span class="o">&lt;</span> <span class="n">max_pick_attempts</span><span class="p">):</span>
+            <span class="n">n_attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Place attempt: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_attempts</span><span class="p">))</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">whole_body</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">MoveItErrorCodes</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">remove_attached_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_effector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.make_gripper_posture"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_gripper_posture">[docs]</a>    <span class="k">def</span> <span class="nf">make_gripper_posture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">effort</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">trajectory_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">JointTrajectory</span><span class="p">()</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">joint_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;hand_motor_joint&quot;</span><span class="p">]</span>
+        <span class="n">tp</span> <span class="o">=</span> <span class="n">trajectory_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">JointTrajectoryPoint</span><span class="p">()</span>
+        <span class="n">tp</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+        <span class="n">tp</span><span class="o">.</span><span class="n">effort</span> <span class="o">=</span> <span class="p">[</span><span class="n">effort</span><span class="p">]</span>
+        <span class="n">tp</span><span class="o">.</span><span class="n">time_from_start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">t</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.make_gripper_translation"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_gripper_translation">[docs]</a>    <span class="k">def</span> <span class="nf">make_gripper_translation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">desired</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">GripperTranslation</span><span class="p">()</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">vector</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_effector</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="n">frame</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">min_distance</span> <span class="o">=</span> <span class="n">min_dist</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">desired_distance</span> <span class="o">=</span> <span class="n">desired</span>
+        <span class="k">return</span> <span class="n">g</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.make_pose"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_pose">[docs]</a>    <span class="k">def</span> <span class="nf">make_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">):</span>
+        <span class="n">pose</span> <span class="o">=</span> <span class="n">geometry_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">PoseStamped</span><span class="p">()</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_frame</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">quaternion_from_euler</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">quaternion_multiply</span><span class="p">(</span><span class="n">init</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+        <span class="k">return</span> <span class="n">pose</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.make_grasps"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_grasps">[docs]</a>    <span class="k">def</span> <span class="nf">make_grasps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span>
+                    <span class="n">quality</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">roll</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pitch</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yaw</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">poses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">get_object_poses</span><span class="p">([</span><span class="n">target</span><span class="p">])</span>
+        <span class="n">pose</span> <span class="o">=</span> <span class="n">poses</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">Grasp</span><span class="p">()</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">pre_grasp_posture</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_gripper_posture</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">grasp_posture</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_gripper_posture</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">pre_grasp_approach</span> \
+            <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_gripper_translation</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">post_grasp_retreat</span> \
+            <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_gripper_translation</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+                                            <span class="s2">&quot;base_footprint&quot;</span><span class="p">)</span>
+        <span class="n">grasps</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">iz</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">iroll</span> <span class="ow">in</span> <span class="n">roll</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">ipitch</span> <span class="ow">in</span> <span class="n">pitch</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">iyaw</span> <span class="ow">in</span> <span class="n">yaw</span><span class="p">:</span>
+                                <span class="n">x</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">ix</span>
+                                <span class="n">y</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">iy</span>
+                                <span class="n">z</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">iz</span>
+                                <span class="n">g</span><span class="o">.</span><span class="n">grasp_pose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_pose</span><span class="p">(</span><span class="n">init</span><span class="p">,</span>
+                                                              <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span>
+                                                              <span class="n">iroll</span><span class="p">,</span>
+                                                              <span class="n">ipitch</span><span class="p">,</span>
+                                                              <span class="n">iyaw</span><span class="p">)</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grasps</span><span class="p">))</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">allowed_touch_objects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;target1&quot;</span><span class="p">]</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">max_contact_force</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">quality</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">g</span><span class="o">.</span><span class="n">grasp_quality</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">g</span><span class="o">.</span><span class="n">grasp_quality</span> <span class="o">=</span> <span class="n">quality</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">,</span> <span class="n">iz</span><span class="p">,</span> <span class="n">iroll</span><span class="p">,</span> <span class="n">ipitch</span><span class="p">,</span> <span class="n">iyaw</span><span class="p">)</span>
+            <span class="n">grasps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">grasps</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.make_place_location"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_place_location">[docs]</a>    <span class="k">def</span> <span class="nf">make_place_location</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">PlaceLocation</span><span class="p">()</span>
+        <span class="n">location</span><span class="o">.</span><span class="n">pre_place_approach</span> \
+            <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_gripper_translation</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+                                            <span class="s2">&quot;base_footprint&quot;</span><span class="p">)</span>
+        <span class="n">location</span><span class="o">.</span><span class="n">post_place_posture</span> \
+            <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_gripper_posture</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+        <span class="n">location</span><span class="o">.</span><span class="n">post_place_retreat</span> \
+            <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_gripper_translation</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">])</span>
+        <span class="n">location</span><span class="o">.</span><span class="n">place_pose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_pose</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span>
+                                             <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">location</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.add_box"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_box">[docs]</a>    <span class="k">def</span> <span class="nf">add_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">geometry_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">PoseStamped</span><span class="p">()</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_frame</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add_box</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MoveItPickAndPlace.add_cylinder"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_cylinder">[docs]</a>    <span class="k">def</span> <span class="nf">add_cylinder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="n">co</span> <span class="o">=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">CollisionObject</span><span class="p">()</span>
+        <span class="n">co</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">CollisionObject</span><span class="o">.</span><span class="n">ADD</span>
+        <span class="n">co</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">co</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_frame</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">shape_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">SolidPrimitive</span><span class="p">()</span>
+        <span class="n">box</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">shape_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">SolidPrimitive</span><span class="o">.</span><span class="n">CYLINDER</span>
+        <span class="n">box</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="n">height</span><span class="p">,</span> <span class="n">radius</span><span class="p">]</span>
+        <span class="n">co</span><span class="o">.</span><span class="n">primitives</span> <span class="o">=</span> <span class="p">[</span><span class="n">box</span><span class="p">]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">geometry_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">Pose</span><span class="p">()</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">co</span><span class="o">.</span><span class="n">primitive_poses</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">_pub_co</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">co</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

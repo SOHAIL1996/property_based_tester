@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>property_based_tester.robot_controllers.xarm_moveit &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">property_based_tester.robot_controllers.xarm_moveit</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for property_based_tester.robot_controllers.xarm_moveit</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">import</span> <span class="nn">moveit_commander</span>
+<span class="kn">import</span> <span class="nn">moveit_msgs.msg</span>
+<span class="kn">import</span> <span class="nn">geometry_msgs.msg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="k">import</span> <span class="n">String</span>
+<span class="kn">from</span> <span class="nn">moveit_commander.conversions</span> <span class="k">import</span> <span class="n">pose_to_list</span>
+
+<div class="viewcode-block" id="all_close"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.all_close">[docs]</a><span class="k">def</span> <span class="nf">all_close</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Convenience method for testing if a list of values are within a tolerance of their counterparts in another list</span>
+<span class="sd">  @param: goal       A list of floats, a Pose or a PoseStamped</span>
+<span class="sd">  @param: actual     A list of floats, a Pose or a PoseStamped</span>
+<span class="sd">  @param: tolerance  A float</span>
+<span class="sd">  @returns: bool</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">all_equal</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">goal</span><span class="p">)):</span>
+      <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">actual</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">-</span> <span class="n">goal</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+  <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span> <span class="ow">is</span> <span class="n">geometry_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">PoseStamped</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">all_close</span><span class="p">(</span><span class="n">goal</span><span class="o">.</span><span class="n">pose</span><span class="p">,</span> <span class="n">actual</span><span class="o">.</span><span class="n">pose</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">)</span>
+
+  <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span> <span class="ow">is</span> <span class="n">geometry_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">Pose</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">all_close</span><span class="p">(</span><span class="n">pose_to_list</span><span class="p">(</span><span class="n">goal</span><span class="p">),</span> <span class="n">pose_to_list</span><span class="p">(</span><span class="n">actual</span><span class="p">),</span> <span class="n">tolerance</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit">[docs]</a><span class="k">class</span> <span class="nc">ManipulatorMoveit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manipulator_group_name</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">ManipulatorMoveit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="n">moveit_commander</span><span class="o">.</span><span class="n">roscpp_initialize</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;move_group_python_interface_tutorial&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">robot</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">RobotCommander</span><span class="p">()</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">PlanningSceneInterface</span><span class="p">()</span>
+
+    <span class="n">group_name</span> <span class="o">=</span> <span class="n">manipulator_group_name</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">moveit_commander</span><span class="o">.</span><span class="n">MoveGroupCommander</span><span class="p">(</span><span class="n">group_name</span><span class="p">)</span>
+
+    <span class="n">group</span><span class="o">.</span><span class="n">set_max_velocity_scaling_factor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">set_max_acceleration_scaling_factor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">display_trajectory_publisher</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/move_group/display_planned_path&#39;</span><span class="p">,</span>
+                                                   <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">DisplayTrajectory</span><span class="p">,</span>
+                                                   <span class="n">queue_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># We can get the name of the reference frame for this robot:</span>
+    <span class="n">planning_frame</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_planning_frame</span><span class="p">()</span>
+    <span class="c1"># print(planning_frame)</span>
+    <span class="c1"># We can also print the name of the end-effector link for this group:</span>
+    <span class="n">eef_link</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_end_effector_link</span><span class="p">()</span>
+    <span class="c1"># print(eef_link)</span>
+    <span class="c1"># We can get a list of all the groups in the robot:</span>
+    <span class="n">group_names</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_group_names</span><span class="p">()</span>
+    <span class="n">joint_names</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_joint_names</span> <span class="p">()</span>
+
+    <span class="c1"># Sometimes for debugging it is useful to print the entire state of the robot:</span>
+    <span class="c1"># print(robot.get_current_state())</span>
+    <span class="c1"># print(group.get_named_targets())</span>
+
+    <span class="c1"># Misc variables</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">box_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">robot</span> <span class="o">=</span> <span class="n">robot</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="o">=</span> <span class="n">scene</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">group</span> <span class="o">=</span> <span class="n">group</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">display_trajectory_publisher</span> <span class="o">=</span> <span class="n">display_trajectory_publisher</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">planning_frame</span> <span class="o">=</span> <span class="n">planning_frame</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">eef_link</span> <span class="o">=</span> <span class="n">eef_link</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">group_names</span> <span class="o">=</span> <span class="n">group_names</span>
+
+<div class="viewcode-block" id="ManipulatorMoveit.go_to_joint_state"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_joint_state">[docs]</a>  <span class="k">def</span> <span class="nf">go_to_joint_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span>
+
+    <span class="c1">## Planning to a Joint Goal</span>
+    <span class="c1">## ^^^^^^^^^^^^^^^^^^^^^^^^</span>
+    <span class="c1"># We can get the joint values from the group and adjust some of the values:</span>
+    <span class="n">joint_goal</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_current_joint_values</span><span class="p">()</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+
+    <span class="c1"># The go command can be called with joint values, poses, or without any</span>
+    <span class="c1"># parameters if you have already set the pose or joint target for the group</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">go</span><span class="p">(</span><span class="n">joint_goal</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Calling ``stop()`` ensures that there is no residual movement</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="n">current_joints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">get_current_joint_values</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">all_close</span><span class="p">(</span><span class="n">joint_goal</span><span class="p">,</span> <span class="n">current_joints</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.go_to_manipulator_joint_state"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_manipulator_joint_state">[docs]</a>  <span class="k">def</span> <span class="nf">go_to_manipulator_joint_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joints</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Moves gripper from open to close. 0 is open 0.848 is closed</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        joints (float): Gripper Postion</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Bool: Verifies whether joint angle is the same as given angle.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span>
+
+    <span class="n">joint_goal</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_current_joint_values</span><span class="p">()</span>
+
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">joints</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">joints</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">joints</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">joints</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">joints</span>
+    <span class="n">joint_goal</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">joints</span>
+
+
+    <span class="n">group</span><span class="o">.</span><span class="n">go</span><span class="p">(</span><span class="n">joint_goal</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="n">current_joints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">get_current_joint_values</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">all_close</span><span class="p">(</span><span class="n">joint_goal</span><span class="p">,</span> <span class="n">current_joints</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.go_to_pose_goal"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_pose_goal">[docs]</a>  <span class="k">def</span> <span class="nf">go_to_pose_goal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span><span class="mf">0.600</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span><span class="mf">0.050</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span><span class="mf">0.400</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+    <span class="n">R</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="p">((</span><span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">180</span><span class="p">),</span> <span class="n">P</span><span class="o">*</span><span class="p">((</span><span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">180</span><span class="p">),</span> <span class="n">Y</span><span class="o">*</span><span class="p">((</span><span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+
+    <span class="n">q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">q2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">q4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">clear_pose_targets</span><span class="p">()</span>
+    <span class="c1"># group.allow_replanning(True)</span>
+
+    <span class="n">pose_goal</span> <span class="o">=</span> <span class="n">geometry_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">Pose</span><span class="p">()</span>
+    <span class="n">pose_goal</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">q1</span>
+    <span class="n">pose_goal</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">q2</span>
+    <span class="n">pose_goal</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">q3</span>
+    <span class="n">pose_goal</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">q4</span>
+
+    <span class="n">pose_goal</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">pose_goal</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">pose_goal</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+
+    <span class="n">group</span><span class="o">.</span><span class="n">set_pose_target</span><span class="p">(</span><span class="n">pose_goal</span><span class="p">,</span> <span class="s1">&#39;link_tcp&#39;</span><span class="p">)</span>
+    <span class="c1"># group.set_random_target()</span>
+
+    <span class="n">plan</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">go</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Calling `stop()` ensures that there is no residual movement</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">clear_pose_targets</span><span class="p">()</span>
+
+    <span class="n">current_pose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">get_current_pose</span><span class="p">()</span><span class="o">.</span><span class="n">pose</span>
+    <span class="k">return</span> <span class="n">all_close</span><span class="p">(</span><span class="n">pose_goal</span><span class="p">,</span> <span class="n">current_pose</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.set_state"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.set_state">[docs]</a>  <span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+
+    <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">set_named_target</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">plan</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">go</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.plan_cartesian_path"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.plan_cartesian_path">[docs]</a>  <span class="k">def</span> <span class="nf">plan_cartesian_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span>
+
+    <span class="c1">## Cartesian Paths</span>
+    <span class="c1">## ^^^^^^^^^^^^^^^</span>
+    <span class="c1">## You can plan a Cartesian path directly by specifying a list of waypoints</span>
+    <span class="c1">## for the end-effector to go through:</span>
+    <span class="n">waypoints</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">wpose</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_current_pose</span><span class="p">()</span><span class="o">.</span><span class="n">pose</span>
+    <span class="n">wpose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">-=</span> <span class="n">scale</span> <span class="o">*</span> <span class="mf">0.1</span>  <span class="c1"># First move up (z)</span>
+    <span class="n">wpose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">scale</span> <span class="o">*</span> <span class="mf">0.2</span>  <span class="c1"># and sideways (y)</span>
+    <span class="n">waypoints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">wpose</span><span class="p">))</span>
+
+    <span class="n">wpose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">scale</span> <span class="o">*</span> <span class="mf">0.1</span>  <span class="c1"># Second move forward/backwards in (x)</span>
+    <span class="n">waypoints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">wpose</span><span class="p">))</span>
+
+    <span class="n">wpose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">scale</span> <span class="o">*</span> <span class="mf">0.1</span>  <span class="c1"># Third move sideways (y)</span>
+    <span class="n">waypoints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">wpose</span><span class="p">))</span>
+
+    <span class="c1"># We want the Cartesian path to be interpolated at a resolution of 1 cm</span>
+    <span class="c1"># which is why we will specify 0.01 as the eef_step in Cartesian</span>
+    <span class="c1"># translation.  We will disable the jump threshold by setting it to 0.0 disabling:</span>
+    <span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="n">fraction</span><span class="p">)</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">compute_cartesian_path</span><span class="p">(</span>
+                                       <span class="n">waypoints</span><span class="p">,</span>   <span class="c1"># waypoints to follow</span>
+                                       <span class="mf">0.01</span><span class="p">,</span>        <span class="c1"># eef_step</span>
+                                       <span class="mf">0.0</span><span class="p">)</span>         <span class="c1"># jump_threshold</span>
+
+    <span class="c1"># Note: We are just planning, not asking move_group to actually move the robot yet:</span>
+    <span class="k">return</span> <span class="n">plan</span><span class="p">,</span> <span class="n">fraction</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.display_trajectory"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.display_trajectory">[docs]</a>  <span class="k">def</span> <span class="nf">display_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plan</span><span class="p">):</span>
+    <span class="n">robot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">robot</span>
+    <span class="n">display_trajectory_publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_trajectory_publisher</span>
+
+    <span class="n">display_trajectory</span> <span class="o">=</span> <span class="n">moveit_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">DisplayTrajectory</span><span class="p">()</span>
+    <span class="n">display_trajectory</span><span class="o">.</span><span class="n">trajectory_start</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_current_state</span><span class="p">()</span>
+    <span class="n">display_trajectory</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>
+    <span class="c1"># Publish</span>
+    <span class="n">display_trajectory_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">display_trajectory</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ManipulatorMoveit.execute_plan"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.execute_plan">[docs]</a>  <span class="k">def</span> <span class="nf">execute_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plan</span><span class="p">):</span>
+
+    <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.wait_for_state_update"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.wait_for_state_update">[docs]</a>  <span class="k">def</span> <span class="nf">wait_for_state_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">box_is_known</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">box_is_attached</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">box_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_name</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">seconds</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+      <span class="c1"># Test if the box is in attached objects</span>
+      <span class="n">attached_objects</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">get_attached_objects</span><span class="p">([</span><span class="n">box_name</span><span class="p">])</span>
+      <span class="n">is_attached</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">attached_objects</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+      <span class="c1"># Test if the box is in the scene.</span>
+      <span class="c1"># Note that attaching the box will remove it from known_objects</span>
+      <span class="n">is_known</span> <span class="o">=</span> <span class="n">box_name</span> <span class="ow">in</span> <span class="n">scene</span><span class="o">.</span><span class="n">get_known_object_names</span><span class="p">()</span>
+
+      <span class="c1"># Test if we are in the expected state</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">box_is_attached</span> <span class="o">==</span> <span class="n">is_attached</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">box_is_known</span> <span class="o">==</span> <span class="n">is_known</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+      <span class="c1"># Sleep so that we give other threads time on the processor</span>
+      <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+      <span class="n">seconds</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
+
+    <span class="c1"># If we exited the while loop without returning then we timed out</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="ManipulatorMoveit.add_box"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.add_box">[docs]</a>  <span class="k">def</span> <span class="nf">add_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+
+    <span class="n">box_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_name</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span>
+
+    <span class="c1">## Adding Objects to the Planning Scene</span>
+    <span class="c1">## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+    <span class="c1">## First, we will create a box in the planning scene at the location of the left finger:</span>
+    <span class="n">box_pose</span> <span class="o">=</span> <span class="n">geometry_msgs</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">PoseStamped</span><span class="p">()</span>
+    <span class="n">box_pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s2">&quot;panda_leftfinger&quot;</span>
+    <span class="n">box_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">box_name</span> <span class="o">=</span> <span class="s2">&quot;box&quot;</span>
+    <span class="n">scene</span><span class="o">.</span><span class="n">add_box</span><span class="p">(</span><span class="n">box_name</span><span class="p">,</span> <span class="n">box_pose</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">box_name</span><span class="o">=</span><span class="n">box_name</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_state_update</span><span class="p">(</span><span class="n">box_is_known</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ManipulatorMoveit.attach_box"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.attach_box">[docs]</a>  <span class="k">def</span> <span class="nf">attach_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+
+    <span class="n">box_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_name</span>
+    <span class="n">robot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">robot</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span>
+    <span class="n">eef_link</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eef_link</span>
+    <span class="n">group_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_names</span>
+
+    <span class="n">grasping_group</span> <span class="o">=</span> <span class="s1">&#39;hand&#39;</span>
+    <span class="n">touch_links</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_link_names</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">grasping_group</span><span class="p">)</span>
+    <span class="n">scene</span><span class="o">.</span><span class="n">attach_box</span><span class="p">(</span><span class="n">eef_link</span><span class="p">,</span> <span class="n">box_name</span><span class="p">,</span> <span class="n">touch_links</span><span class="o">=</span><span class="n">touch_links</span><span class="p">)</span>
+
+    <span class="c1"># We wait for the planning scene to update.</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_state_update</span><span class="p">(</span><span class="n">box_is_attached</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">box_is_known</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.detach_box"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.detach_box">[docs]</a>  <span class="k">def</span> <span class="nf">detach_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">box_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_name</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span>
+    <span class="n">eef_link</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eef_link</span>
+
+    <span class="n">scene</span><span class="o">.</span><span class="n">remove_attached_object</span><span class="p">(</span><span class="n">eef_link</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">box_name</span><span class="p">)</span>
+
+    <span class="c1"># We wait for the planning scene to update.</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_state_update</span><span class="p">(</span><span class="n">box_is_known</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">box_is_attached</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ManipulatorMoveit.remove_box"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.remove_box">[docs]</a>  <span class="k">def</span> <span class="nf">remove_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">box_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_name</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span>
+
+    <span class="n">scene</span><span class="o">.</span><span class="n">remove_world_object</span><span class="p">(</span><span class="n">box_name</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_state_update</span><span class="p">(</span><span class="n">box_is_attached</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">box_is_known</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.xarm_moveit.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">xarm6</span> <span class="o">=</span> <span class="n">ManipulatorMoveit</span><span class="p">(</span><span class="s1">&#39;xarm6&#39;</span><span class="p">)</span>
+    <span class="n">xarm6_gripper</span> <span class="o">=</span> <span class="n">ManipulatorMoveit</span><span class="p">(</span><span class="s1">&#39;xarm_gripper&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># result = xarm6.go_to_pose_goal(x =0.600, y =0.050, z =0.400, R=0 , P=90, Y=0)</span>
+    <span class="c1"># xarm6_gripper.set_state(state=&#39;close&#39;)</span>
+    <span class="n">xarm6_gripper</span><span class="o">.</span><span class="n">go_to_manipulator_joint_state</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span></div>
+
+    <span class="c1"># Additional commands</span>
+    <span class="c1"># xarm6.set_state(&#39;home&#39;) </span>
+    <span class="c1"># xarm6.set_state(&#39;hold-up&#39;)</span>
+    <span class="c1"># reult = xarm6.plan_cartesian_path()</span>
+    <span class="c1"># result = xarm6.go_to_joint_state()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

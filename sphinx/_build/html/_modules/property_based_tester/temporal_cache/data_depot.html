@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>property_based_tester.temporal_cache.data_depot &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">property_based_tester.temporal_cache.data_depot</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for property_based_tester.temporal_cache.data_depot</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------- </span>
+<span class="sd">Logs the temporal properties of the models.</span>
+
+<span class="sd">Starter module for the source code.</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
+<span class="sd">            Prof. Dr. Paul Ploger</span>
+<span class="sd">            Sven Schneider </span>
+
+<span class="sd">Author    : Salman Omar Sohail</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Date: July 01, 2022</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetModelState</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetLinkState</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetWorldProperties</span>
+
+<div class="viewcode-block" id="world_state_extractor"><a class="viewcode-back" href="../../../property_based_tester.temporal_cache.html#property_based_tester.temporal_cache.data_depot.world_state_extractor">[docs]</a><span class="k">def</span> <span class="nf">world_state_extractor</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;It extracts the information of all models in the gazebo world.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            [list]: Returns list of all relevant information</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="c1"># logs_objects = [[&#39;Models&#39;, &#39;X-pos&#39;,&#39;Y-pos&#39;,&#39;Z-pos&#39;,&#39;Q-1&#39;,&#39;Q-2&#39;,&#39;Q-3&#39;,&#39;Q-4&#39;,&#39;Time&#39;]]</span>
+        <span class="n">logs_objects</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/get_world_properties&quot;</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/get_model_state&quot;</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/get_link_state&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">world_service</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_world_properties&#39;</span><span class="p">,</span><span class="n">GetWorldProperties</span><span class="p">)</span>
+            <span class="n">model_service</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_model_state&#39;</span><span class="p">,</span> <span class="n">GetModelState</span><span class="p">)</span>
+            <span class="n">link_state_service</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_link_state&#39;</span><span class="p">,</span> <span class="n">GetLinkState</span><span class="p">)</span>
+
+            <span class="n">world_props</span> <span class="o">=</span> <span class="n">world_service</span><span class="p">()</span>
+            
+            <span class="k">for</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">world_props</span><span class="o">.</span><span class="n">model_names</span><span class="p">:</span>
+                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">model_service</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+
+                <span class="n">temp_model_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">objects</span><span class="p">,</span> <span class="c1"># object name</span>
+                               <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="c1"># Position x</span>
+                               <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="c1"># Position y</span>
+                               <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="c1"># Position z</span>
+                               <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="c1"># Quaternion x</span>
+                               <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="c1"># Quaternion y</span>
+                               <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="c1"># Quaternion z</span>
+                               <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="c1"># Quaternion w</span>
+                               <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%H:%M:%S&quot;</span><span class="p">)]</span> <span class="c1"># time</span>
+                <span class="n">logs_objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_model_data</span><span class="p">)</span>    
+            <span class="k">return</span> <span class="n">logs_objects</span>
+
+        <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot acquire Model State.&#39;</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="data_logger"><a class="viewcode-back" href="../../../property_based_tester.temporal_cache.html#property_based_tester.temporal_cache.data_depot.data_logger">[docs]</a><span class="k">def</span> <span class="nf">data_logger</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Writes data into a csv file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        loc (str): file path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>   
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">loc</span> <span class="o">+</span><span class="s1">&#39;_logs.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span> <span class="s1">&#39;w&#39;</span> <span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>      </div>
+    
+<div class="viewcode-block" id="data_reader"><a class="viewcode-back" href="../../../property_based_tester.temporal_cache.html#property_based_tester.temporal_cache.data_depot.data_reader">[docs]</a><span class="k">def</span> <span class="nf">data_reader</span><span class="p">(</span><span class="n">loc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads .csv files and returns two data frames, one is </span>
+<span class="sd">    all the models and their positions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        loc (str): code name for calling the log file</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        df_1 data_frame: Position and orientation of all the models.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">df_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">loc</span> <span class="o">+</span><span class="s1">&#39;_logs.csv&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_1</span></div>
+
+<div class="viewcode-block" id="log_reader_comparator"><a class="viewcode-back" href="../../../property_based_tester.temporal_cache.html#property_based_tester.temporal_cache.data_depot.log_reader_comparator">[docs]</a><span class="k">def</span> <span class="nf">log_reader_comparator</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">action_start</span><span class="p">,</span> <span class="n">action_end</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads nav files for testing purposes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        loc (str): the column to be compared in testing</span>
+<span class="sd">        </span>
+<span class="sd">        action (str): the filename of the action test e.g. nav_start, nav_end</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        int: Returns 2 numbers which are the difference in the log file,</span>
+<span class="sd">             note the robot change in position in not taken into consideration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">nswp</span><span class="p">,</span> <span class="n">ignore</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="s1">&#39;logger/logs/&#39;</span><span class="o">+</span><span class="n">action_start</span><span class="p">)</span>
+    <span class="n">newp</span><span class="p">,</span> <span class="n">ignore</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="s1">&#39;logger/logs/&#39;</span><span class="o">+</span><span class="n">action_end</span><span class="p">)</span>
+           
+    <span class="n">nswp</span> <span class="o">=</span> <span class="n">nswp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-0.000&#39;</span><span class="p">,</span> <span class="s1">&#39;0.000&#39;</span><span class="p">)</span>
+    <span class="n">newp</span> <span class="o">=</span> <span class="n">newp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-0.000&#39;</span><span class="p">,</span> <span class="s1">&#39;0.000&#39;</span><span class="p">)</span>
+    
+    <span class="n">newp</span> <span class="o">=</span> <span class="n">newp</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Models&quot;</span><span class="p">)</span>
+    <span class="n">newp</span> <span class="o">=</span> <span class="n">newp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;hsrb&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nswp</span> <span class="o">=</span> <span class="n">nswp</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Models&quot;</span><span class="p">)</span>
+    <span class="n">nswp</span> <span class="o">=</span> <span class="n">nswp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;hsrb&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Checking if objects have moved -+0.05 cm or +-5 mm</span>
+    <span class="n">newp</span><span class="p">[</span><span class="s1">&#39;8&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nswp</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">-</span><span class="mf">0.05</span><span class="o">&lt;=</span><span class="n">newp</span><span class="p">[</span><span class="n">loc</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
+    <span class="n">newp</span><span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">newp</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">nswp</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+             
+    <span class="n">expected_difference_lower_tolerance</span> <span class="o">=</span> <span class="n">newp</span><span class="p">[</span><span class="s1">&#39;8&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">original_difference_lower_tolerance</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">newp</span><span class="p">[</span><span class="s1">&#39;8&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">expected_difference_lower_tolerance</span> <span class="o">==</span> <span class="n">original_difference_lower_tolerance</span><span class="p">:</span>
+        <span class="n">low</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">low</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="n">expected_difference_upper_tolerance</span> <span class="o">=</span> <span class="n">newp</span><span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">original_difference_upper_tolerance</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">newp</span><span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">])</span>
+    
+    <span class="k">if</span> <span class="n">expected_difference_upper_tolerance</span> <span class="o">==</span> <span class="n">original_difference_upper_tolerance</span><span class="p">:</span>
+        <span class="n">up</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">up</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="k">return</span> <span class="n">low</span><span class="p">,</span><span class="n">up</span></div>
+
+<div class="viewcode-block" id="log_hsrb_reader"><a class="viewcode-back" href="../../../property_based_tester.temporal_cache.html#property_based_tester.temporal_cache.data_depot.log_hsrb_reader">[docs]</a><span class="k">def</span> <span class="nf">log_hsrb_reader</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Extracts the robots location</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: returns the x y z quat1 quat2 quat3 quat4</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">nav_start_world_props</span><span class="p">,</span> <span class="n">ignore</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="s1">&#39;logger/logs/nav_start&#39;</span><span class="p">)</span>
+    <span class="n">nav_end_world_props</span><span class="p">,</span> <span class="n">ignore</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="s1">&#39;logger/logs/nav_end&#39;</span><span class="p">)</span>
+    
+    <span class="n">nav_end_world_props</span> <span class="o">=</span> <span class="n">nav_end_world_props</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Models&quot;</span><span class="p">)</span>
+    <span class="n">hsrb</span> <span class="o">=</span> <span class="n">nav_end_world_props</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;hsrb&quot;</span><span class="p">]</span>
+    <span class="n">hsrb</span> <span class="o">=</span> <span class="n">hsrb</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span> 
+    <span class="k">return</span> <span class="n">hsrb</span></div>
+
+<div class="viewcode-block" id="lucy_gripper_information"><a class="viewcode-back" href="../../../property_based_tester.temporal_cache.html#property_based_tester.temporal_cache.data_depot.lucy_gripper_information">[docs]</a><span class="k">def</span> <span class="nf">lucy_gripper_information</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Extracts the gripper information</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: returns the x y z quat1 quat2 quat3 quat4</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">ignore</span><span class="p">,</span> <span class="n">gripper</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="s1">&#39;logger/logs/pick_action_end&#39;</span><span class="p">)</span>
+    <span class="n">gripper</span> <span class="o">=</span> <span class="n">gripper</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Gripper Position&quot;</span><span class="p">)</span>
+    <span class="n">gripper_l</span> <span class="o">=</span> <span class="n">gripper</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Lucy left gripper&quot;</span><span class="p">]</span>
+    <span class="n">gripper_r</span> <span class="o">=</span> <span class="n">gripper</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Lucy right gripper&quot;</span><span class="p">]</span>
+    <span class="n">gripper_l</span> <span class="o">=</span> <span class="n">gripper_l</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">gripper_r</span> <span class="o">=</span> <span class="n">gripper_r</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">gripper_l</span><span class="p">,</span> <span class="n">gripper_r</span></div>
+
+<div class="viewcode-block" id="object_information"><a class="viewcode-back" href="../../../property_based_tester.temporal_cache.html#property_based_tester.temporal_cache.data_depot.object_information">[docs]</a><span class="k">def</span> <span class="nf">object_information</span><span class="p">(</span><span class="n">object_name</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extracts an objects information.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: returns the x y z quat1 quat2 quat3 quat4</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">end_action_model_states</span><span class="p">,</span> <span class="n">ignore</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="s1">&#39;logger/logs/&#39;</span><span class="o">+</span><span class="n">action</span><span class="p">)</span>
+    <span class="n">end_action_model_states</span> <span class="o">=</span> <span class="n">end_action_model_states</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Models&quot;</span><span class="p">)</span>
+    <span class="n">object_properties</span> <span class="o">=</span> <span class="n">end_action_model_states</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span>
+    <span class="n">object_properties</span> <span class="o">=</span> <span class="n">object_properties</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span> 
+    <span class="k">return</span> <span class="n">object_properties</span></div>
+
+
+    
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

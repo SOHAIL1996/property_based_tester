@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>property_based_tester.configuration.config &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">property_based_tester.configuration.config</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for property_based_tester.configuration.config</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------- </span>
+<span class="sd">Utilities</span>
+
+<span class="sd">Provides miscellaneous utility functions.</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
+<span class="sd">            Prof. Dr. Paul Ploger</span>
+<span class="sd">            Sven Schneider </span>
+
+<span class="sd">Author    : Salman Omar Sohail</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Date: July 01, 2022</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">stl</span> <span class="k">import</span> <span class="n">mesh</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">accumulate</span> <span class="k">as</span> <span class="n">_accumulate</span><span class="p">,</span> <span class="n">repeat</span> <span class="k">as</span> <span class="n">_repeat</span>
+<span class="kn">from</span> <span class="nn">bisect</span> <span class="k">import</span> <span class="n">bisect</span> <span class="k">as</span> <span class="n">_bisect</span>
+<span class="kn">import</span> <span class="nn">rospkg</span>
+
+
+<div class="viewcode-block" id="Configuration"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.Configuration">[docs]</a><span class="k">class</span> <span class="nc">Configuration</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;It extracts information from the configuration file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">rospkg_name</span> <span class="o">=</span> <span class="s1">&#39;property_based_tester&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">rospkg</span><span class="o">.</span><span class="n">RosPack</span><span class="p">()</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rospkg_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">+</span><span class="s1">&#39;/environment/models&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robots_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">+</span><span class="s1">&#39;/environment/robots&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">grammar_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">+</span><span class="s1">&#39;/src/property_based_tester/property_based_language_generation/dsl_grammar.tx&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_def_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">+</span><span class="s1">&#39;/src/property_based_tester/property_based_language_generation/test_definitions.pblg&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">yaml_parser</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Configuration.yaml_parser"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.Configuration.yaml_parser">[docs]</a>    <span class="k">def</span> <span class="nf">yaml_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="n">yaml_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;property_based_tester_params.yaml&#39;</span><span class="p">)</span>
+
+        <span class="n">stream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">dictionary</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">full_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;World&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">world</span> <span class="o">=</span> <span class="n">value</span>
+
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;Robot&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key_ro</span><span class="p">,</span> <span class="n">value_ro</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key_ro</span> <span class="o">==</span> <span class="s2">&quot;robot_urdf_name&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">robot_urdf</span> <span class="o">=</span> <span class="n">value_ro</span>
+                    <span class="k">if</span> <span class="n">key_ro</span> <span class="o">==</span> <span class="s2">&quot;robot_spawner_name&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">launch_robot_file</span> <span class="o">=</span> <span class="n">value_ro</span>
+                    <span class="k">if</span> <span class="n">key_ro</span> <span class="o">==</span> <span class="s2">&quot;robot_controller&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">launch_controller_file</span> <span class="o">=</span> <span class="n">value_ro</span>
+                    <span class="k">if</span> <span class="n">key_ro</span> <span class="o">==</span> <span class="s2">&quot;robot_velocity&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">robot_cmd_vel</span> <span class="o">=</span> <span class="n">value_ro</span>
+                    <span class="k">if</span> <span class="n">key_ro</span> <span class="o">==</span> <span class="s2">&quot;robot_size&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">robot_size</span> <span class="o">=</span> <span class="n">value_ro</span>
+
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;Models_manipulation&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key_manip</span><span class="p">,</span> <span class="n">value_manip</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key_manip</span> <span class="o">==</span> <span class="s2">&quot;Spawnable&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">model_manip_num</span> <span class="o">=</span> <span class="n">value_manip</span>
+                    <span class="k">if</span> <span class="n">key_manip</span> <span class="o">==</span> <span class="s2">&quot;Objects&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">models_manip</span> <span class="o">=</span> <span class="n">value_manip</span>
+            
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;Models_obstacles&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key_obst</span><span class="p">,</span> <span class="n">value_obst</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key_obst</span> <span class="o">==</span> <span class="s2">&quot;Spawnable&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">model_obst_num</span> <span class="o">=</span> <span class="n">value_obst</span>
+                    <span class="k">if</span> <span class="n">key_obst</span> <span class="o">==</span> <span class="s2">&quot;Objects&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">obstacles</span> <span class="o">=</span> <span class="n">value_obst</span></div>
+
+<div class="viewcode-block" id="Configuration.model_uri_correcter"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.Configuration.model_uri_correcter">[docs]</a>    <span class="k">def</span> <span class="nf">model_uri_correcter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function opens the sdf model files and corrects the uri tags. This is useful when changing the</span>
+<span class="sd">        paths of the model folder. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_name (str): The model name for the uri tag correction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span> <span class="o">+</span> <span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;.sdf&#39;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">counter</span>    <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">data</span>       <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+                <span class="n">save_index</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> 
+                        <span class="n">save_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span> 
+                    <span class="n">counter</span> <span class="o">+=</span><span class="mi">1</span>
+                
+                <span class="n">data</span><span class="p">[</span><span class="n">save_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;             &lt;uri&gt;&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;/meshes/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;.stl&lt;/uri&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">save_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;             &lt;uri&gt;&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;/meshes/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;.stl&lt;/uri&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">save_index</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;             &lt;uri&gt;&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;/materials/scripts&lt;/uri&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">save_index</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;             &lt;uri&gt;&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;/materials/textures&lt;/uri&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dir</span> <span class="o">+</span> <span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;.sdf&#39;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div></div>
+            
+    
+<div class="viewcode-block" id="mesh_extractor"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.mesh_extractor">[docs]</a><span class="k">def</span> <span class="nf">mesh_extractor</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extracts mesh from the model folder.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+    <span class="n">model_directory</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">workspace</span> <span class="o">+</span><span class="s1">&#39;/environment/models/&#39;</span><span class="o">+</span> <span class="n">model</span> <span class="o">+</span><span class="s1">&#39;/meshes/&#39;</span><span class="o">+</span> <span class="n">model</span> <span class="o">+</span><span class="s1">&#39;.stl&#39;</span>
+    <span class="n">model_mesh</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">model_directory</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model_mesh</span></div>
+    
+<div class="viewcode-block" id="find_mins_maxs"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.find_mins_maxs">[docs]</a><span class="k">def</span> <span class="nf">find_mins_maxs</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This extracts the minimum and maximum value of the meshes boundaries.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        obj </span>
+<span class="sd">        class.obj: A class object obtained from the numpy-stl library. The </span>
+<span class="sd">        functionality is directly tied to the mesh_extracto function.</span>
+<span class="sd">        </span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        minx, maxx, miny, maxy, minz, maxz </span>
+<span class="sd">        float: The values of the cartesian coordinate.</span>
+<span class="sd">    &quot;&quot;&quot;</span>   
+    <span class="n">minx</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">maxx</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">miny</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">maxy</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">minz</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">maxz</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">,</span> <span class="n">minz</span><span class="p">,</span> <span class="n">maxz</span></div>
+
+<div class="viewcode-block" id="bound_box"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.bound_box">[docs]</a><span class="k">def</span> <span class="nf">bound_box</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generates bounding box for a given model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">mesh_obj</span> <span class="o">=</span> <span class="n">mesh_extractor</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+    <span class="n">cartesian_min_max_vals</span> <span class="o">=</span> <span class="n">find_mins_maxs</span><span class="p">(</span><span class="n">mesh_obj</span><span class="p">)</span>
+    <span class="n">adjusting_for_scaling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">cartesian_min_max_vals</span><span class="p">)</span><span class="o">*</span><span class="mf">0.001</span>
+    <span class="k">return</span> <span class="n">adjusting_for_scaling</span>   </div>
+
+<div class="viewcode-block" id="stl_property_extractor"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.stl_property_extractor">[docs]</a><span class="k">def</span> <span class="nf">stl_property_extractor</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Views the property of a specific mesh, doesnt work well.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">meshy</span> <span class="o">=</span> <span class="n">mesh_extractor</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+    <span class="n">volume</span><span class="p">,</span> <span class="n">cog</span><span class="p">,</span> <span class="n">inertia</span> <span class="o">=</span> <span class="n">meshy</span><span class="o">.</span><span class="n">get_mass_properties</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Volume                                  = </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">volume</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Position of the center of gravity (COG) = </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cog</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inertia matrix at expressed at the COG  = </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inertia</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                                          </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inertia</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                                          </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inertia</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">inertia</span><span class="o">/</span><span class="n">volume</span><span class="p">)</span></div>
+    
+
+<div class="viewcode-block" id="choices"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.choices">[docs]</a><span class="k">def</span> <span class="nf">choices</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cum_weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a k sized list of population elements chosen with replacement.</span>
+<span class="sd">    If the relative weights or cumulative weights are not specified,</span>
+<span class="sd">    the selections are made with equal probability.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cum_weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_int</span> <span class="o">=</span> <span class="nb">int</span>
+            <span class="n">n</span> <span class="o">+=</span> <span class="mf">0.0</span>    <span class="c1"># convert to float for a small speed improvement</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">population</span><span class="p">[</span><span class="n">_int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">_repeat</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span>
+        <span class="n">cum_weights</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_accumulate</span><span class="p">(</span><span class="n">weights</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot specify both weights and cumulative weights&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cum_weights</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The number of weights does not match the population&#39;</span><span class="p">)</span>
+    <span class="n">bisect</span> <span class="o">=</span> <span class="n">_bisect</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">cum_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.0</span>   <span class="c1"># convert to float</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">population</span><span class="p">[</span><span class="n">bisect</span><span class="p">(</span><span class="n">cum_weights</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">total</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">_repeat</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span></div>
+    
+<div class="viewcode-block" id="collision_checker"><a class="viewcode-back" href="../../../property_based_tester.configuration.html#property_based_tester.configuration.config.collision_checker">[docs]</a><span class="k">def</span> <span class="nf">collision_checker</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">model_tracer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks the collision with all other dynamic models. Uses </span>
+<span class="sd">    Axis-Aligned Bounding Box.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        obj_small_x (float): Model&#39;s bounding box minimum x coordinate.</span>
+<span class="sd">        obj_big_x (float): Model&#39;s bounding box maximum x coordinate.</span>
+<span class="sd">        obj_small_y (float): Model&#39;s bounding box minimum y coordinate.</span>
+<span class="sd">        obj_big_y (float): Model&#39;s bounding box maximum y coordinate.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Returns True if there is no valid position for given model.</span>
+<span class="sd">              Returns False if there is a valid position for given model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="c1"># Model to be placed bounding box</span>
+    <span class="n">org_sx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+    <span class="n">org_bx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+    <span class="n">org_sy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+    <span class="n">org_by</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+    <span class="n">org_sz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">z</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+    <span class="n">org_bz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">+</span><span class="n">z</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+        
+    <span class="k">if</span> <span class="n">model_tracer</span> <span class="o">!=</span> <span class="p">[]:</span> 
+             
+        <span class="k">for</span> <span class="n">models</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">)):</span> 
+            <span class="c1"># Previous models bounding box</span>
+            <span class="n">com_sx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">x_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+            <span class="n">com_bx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">x_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+            <span class="n">com_sy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">y_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+            <span class="n">com_by</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">y_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+            <span class="n">com_sz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">z_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+            <span class="n">com_bz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">model_tracer</span><span class="p">[</span><span class="n">models</span><span class="p">]</span><span class="o">.</span><span class="n">z_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.6</span>
+            
+            <span class="c1"># Collision X-Y-Z-element</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">org_sx</span> <span class="o">&lt;</span> <span class="n">com_bx</span> <span class="ow">and</span> <span class="n">org_bx</span> <span class="o">&gt;</span> <span class="n">com_sx</span> <span class="ow">and</span> <span class="n">org_sy</span> <span class="o">&lt;</span> <span class="n">com_by</span> <span class="ow">and</span> <span class="n">org_by</span> <span class="o">&gt;</span> <span class="n">com_sy</span> <span class="ow">and</span> <span class="n">org_sz</span> <span class="o">&lt;</span> <span class="n">com_bz</span> <span class="ow">and</span> <span class="n">org_bz</span> <span class="o">&gt;</span> <span class="n">com_sz</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="c1"># Collision X-Y-element Axis Aligned Collision Box</span>
+            <span class="c1"># if (org_sx &lt; com_bx and org_bx &gt; com_sx and org_sy &lt; com_by and org_by &gt; com_sy):</span>
+            <span class="c1">#     return True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>  </div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

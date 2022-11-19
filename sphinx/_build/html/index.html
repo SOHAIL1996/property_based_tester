@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Property-Based Testing: Formalized Robotic Testing for Standard Compliance’s documentation! &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to Property-Based Testing: Formalized Robotic Testing for Standard Compliance’s documentation!</a></li>
+<li><a class="reference internal" href="#property-based-tester-configuration-package">property_based_tester.configuration package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.configuration.config">property_based_tester.configuration.config module</a><ul>
+<li><a class="reference internal" href="#provides-miscellaneous-utility-functions">Provides miscellaneous utility functions.</a></li>
+<li><a class="reference internal" href="#author-salman-omar-sohail">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#date-july-01-2022">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.configuration">Module contents</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-nvidia-issac-sim-package">property_based_tester.nvidia_issac_sim package</a><ul>
+<li><a class="reference internal" href="#id1">Submodules</a></li>
+<li><a class="reference internal" href="#property-based-tester-nvidia-issac-sim-omniverse-module">property_based_tester.nvidia_issac_sim.omniverse module</a></li>
+<li><a class="reference internal" href="#id2">Module contents</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-properties-package">property_based_tester.properties package</a><ul>
+<li><a class="reference internal" href="#id3">Submodules</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.properties.composite_properties">property_based_tester.properties.composite_properties module</a><ul>
+<li><a class="reference internal" href="#culmination-of-composite-properties-that-can-used">Culmination of composite properties that can used.</a></li>
+<li><a class="reference internal" href="#id4">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id5">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.properties.primitive_properties">property_based_tester.properties.primitive_properties module</a><ul>
+<li><a class="reference internal" href="#id6">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id7">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">Module contents</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-property-based-language-generation-package">property_based_tester.property_based_language_generation package</a><ul>
+<li><a class="reference internal" href="#id9">Submodules</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.property_based_language_generation.textx_test_specification">property_based_tester.property_based_language_generation.textx_test_specification module</a><ul>
+<li><a class="reference internal" href="#property-based-language-generator-based-on-textx">Property-Based Language Generator based on textX.</a><ul>
+<li><a class="reference internal" href="#id10">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#date-july-16-2022">Date: July 16, 2022</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">Module contents</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-robot-controllers-package">property_based_tester.robot_controllers package</a><ul>
+<li><a class="reference internal" href="#id12">Submodules</a></li>
+<li><a class="reference internal" href="#property-based-tester-robot-controllers-experimental-pick-place-client-module">property_based_tester.robot_controllers.experimental_pick_place_client module</a></li>
+<li><a class="reference internal" href="#property-based-tester-robot-controllers-nav-client-module">property_based_tester.robot_controllers.nav_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.navigation_client">property_based_tester.robot_controllers.navigation_client module</a><ul>
+<li><a class="reference internal" href="#the-client-activates-the-mdr-navigation-module">The client activates the MDR navigation module.</a></li>
+<li><a class="reference internal" href="#id13">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id14">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-robot-controllers-perceive-client-module">property_based_tester.robot_controllers.perceive_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.pick_Toyota_client">property_based_tester.robot_controllers.pick_Toyota_client module</a></li>
+<li><a class="reference internal" href="#property-based-tester-robot-controllers-pick-client-module">property_based_tester.robot_controllers.pick_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.pick_place_client">property_based_tester.robot_controllers.pick_place_client module</a><ul>
+<li><a class="reference internal" href="#id15">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id16">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-robot-controllers-place-client-module">property_based_tester.robot_controllers.place_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.speed_client">property_based_tester.robot_controllers.speed_client module</a><ul>
+<li><a class="reference internal" href="#id17">The client activates the MDR navigation module.</a></li>
+<li><a class="reference internal" href="#id18">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id19">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.xarm_moveit">property_based_tester.robot_controllers.xarm_moveit module</a></li>
+<li><a class="reference internal" href="#id20">Module contents</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-scen-gen-package">property_based_tester.scen_gen package</a><ul>
+<li><a class="reference internal" href="#id21">Submodules</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.force_generation">property_based_tester.scen_gen.force_generation module</a><ul>
+<li><a class="reference internal" href="#generates-obstacles-and-gathers-worlds-properties">Generates obstacles and gathers worlds properties.</a></li>
+<li><a class="reference internal" href="#id22">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id23">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.model_placement">property_based_tester.scen_gen.model_placement module</a><ul>
+<li><a class="reference internal" href="#a-launching-file-for-static-and-dynamic-model-placement">A launching file for static and dynamic model placement.</a></li>
+<li><a class="reference internal" href="#id24">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id25">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.obstacle_gen">property_based_tester.scen_gen.obstacle_gen module</a><ul>
+<li><a class="reference internal" href="#id26">Generates obstacles and gathers worlds properties.</a></li>
+<li><a class="reference internal" href="#id27">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id28">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.random_scenario_generator">property_based_tester.scen_gen.random_scenario_generator module</a><ul>
+<li><a class="reference internal" href="#id29">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id30">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.robot_placement">property_based_tester.scen_gen.robot_placement module</a><ul>
+<li><a class="reference internal" href="#id31">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id32">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.world_prop">property_based_tester.scen_gen.world_prop module</a><ul>
+<li><a class="reference internal" href="#extracts-information-of-the-gazebo-world">Extracts information of the gazebo world.</a></li>
+<li><a class="reference internal" href="#id33">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id34">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id35">Module contents</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#property-based-tester-temporal-cache-package">property_based_tester.temporal_cache package</a><ul>
+<li><a class="reference internal" href="#id36">Submodules</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.temporal_cache.data_depot">property_based_tester.temporal_cache.data_depot module</a><ul>
+<li><a class="reference internal" href="#starter-module-for-the-source-code">Starter module for the source code.</a></li>
+<li><a class="reference internal" href="#id37">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id38">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-property_based_tester.temporal_cache.temporal_log">property_based_tester.temporal_cache.temporal_log module</a><ul>
+<li><a class="reference internal" href="#id39">Starter module for the source code.</a></li>
+<li><a class="reference internal" href="#id40">Author    : Salman Omar Sohail</a></li>
+<li><a class="reference internal" href="#id41">Date: July 01, 2022</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id42">Module contents</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Property-Based Testing: Formalized Robotic Testing for Standard Compliance’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="welcome-to-property-based-testing-formalized-robotic-testing-for-standard-compliance-s-documentation">
+<h1>Welcome to Property-Based Testing: Formalized Robotic Testing for Standard Compliance’s documentation!<a class="headerlink" href="#welcome-to-property-based-testing-formalized-robotic-testing-for-standard-compliance-s-documentation" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="property-based-tester-configuration-package">
+<h1>property_based_tester.configuration package<a class="headerlink" href="#property-based-tester-configuration-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.configuration.config">
+<span id="property-based-tester-configuration-config-module"></span><h2>property_based_tester.configuration.config module<a class="headerlink" href="#module-property_based_tester.configuration.config" title="Permalink to this headline"></a></h2>
+<div class="section" id="provides-miscellaneous-utility-functions">
+<h3>Provides miscellaneous utility functions.<a class="headerlink" href="#provides-miscellaneous-utility-functions" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="author-salman-omar-sohail">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#author-salman-omar-sohail" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="date-july-01-2022">
+<h3>Date: July 01, 2022<a class="headerlink" href="#date-july-01-2022" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.Configuration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.configuration.config.</span></span><span class="sig-name descname"><span class="pre">Configuration</span></span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#Configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.Configuration" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>It extracts information from the configuration file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.Configuration.model_uri_correcter">
+<span class="sig-name descname"><span class="pre">model_uri_correcter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#Configuration.model_uri_correcter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.Configuration.model_uri_correcter" title="Permalink to this definition"></a></dt>
+<dd><p>This function opens the sdf model files and corrects the uri tags. This is useful when changing the
+paths of the model folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>) – The model name for the uri tag correction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.Configuration.yaml_parser">
+<span class="sig-name descname"><span class="pre">yaml_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#Configuration.yaml_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.Configuration.yaml_parser" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.bound_box">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.configuration.config.</span></span><span class="sig-name descname"><span class="pre">bound_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#bound_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.bound_box" title="Permalink to this definition"></a></dt>
+<dd><p>Generates bounding box for a given model.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.choices">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.configuration.config.</span></span><span class="sig-name descname"><span class="pre">choices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">population</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cum_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#choices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.choices" title="Permalink to this definition"></a></dt>
+<dd><p>Return a k sized list of population elements chosen with replacement.
+If the relative weights or cumulative weights are not specified,
+the selections are made with equal probability.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.collision_checker">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.configuration.config.</span></span><span class="sig-name descname"><span class="pre">collision_checker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tracer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#collision_checker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.collision_checker" title="Permalink to this definition"></a></dt>
+<dd><p>Checks the collision with all other dynamic models. Uses
+Axis-Aligned Bounding Box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj_small_x</strong> (<em>float</em>) – Model’s bounding box minimum x coordinate.</p></li>
+<li><p><strong>obj_big_x</strong> (<em>float</em>) – Model’s bounding box maximum x coordinate.</p></li>
+<li><p><strong>obj_small_y</strong> (<em>float</em>) – Model’s bounding box minimum y coordinate.</p></li>
+<li><p><strong>obj_big_y</strong> (<em>float</em>) – Model’s bounding box maximum y coordinate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Returns True if there is no valid position for given model.</dt><dd><p>Returns False if there is a valid position for given model.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.find_mins_maxs">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.configuration.config.</span></span><span class="sig-name descname"><span class="pre">find_mins_maxs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#find_mins_maxs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.find_mins_maxs" title="Permalink to this definition"></a></dt>
+<dd><p>This extracts the minimum and maximum value of the meshes boundaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> – </p></li>
+<li><p><strong>class.obj</strong> – A class object obtained from the numpy-stl library. The</p></li>
+<li><p><strong>function.</strong> (<em>functionality is directly tied to the mesh_extracto</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>minx, maxx, miny, maxy, minz, maxz
+float: The values of the cartesian coordinate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.mesh_extractor">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.configuration.config.</span></span><span class="sig-name descname"><span class="pre">mesh_extractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#mesh_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.mesh_extractor" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts mesh from the model folder.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.configuration.config.stl_property_extractor">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.configuration.config.</span></span><span class="sig-name descname"><span class="pre">stl_property_extractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/configuration/config.html#stl_property_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.configuration.config.stl_property_extractor" title="Permalink to this definition"></a></dt>
+<dd><p>Views the property of a specific mesh, doesnt work well.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.configuration">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-property_based_tester.configuration" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+<div class="section" id="property-based-tester-nvidia-issac-sim-package">
+<h1>property_based_tester.nvidia_issac_sim package<a class="headerlink" href="#property-based-tester-nvidia-issac-sim-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="id1">
+<h2>Submodules<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="property-based-tester-nvidia-issac-sim-omniverse-module">
+<h2>property_based_tester.nvidia_issac_sim.omniverse module<a class="headerlink" href="#property-based-tester-nvidia-issac-sim-omniverse-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="id2">
+<h2>Module contents<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-property_based_tester.nvidia_issac_sim"></span></div>
+</div>
+<div class="section" id="property-based-tester-properties-package">
+<h1>property_based_tester.properties package<a class="headerlink" href="#property-based-tester-properties-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="id3">
+<h2>Submodules<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.properties.composite_properties">
+<span id="property-based-tester-properties-composite-properties-module"></span><h2>property_based_tester.properties.composite_properties module<a class="headerlink" href="#module-property_based_tester.properties.composite_properties" title="Permalink to this headline"></a></h2>
+<div class="section" id="culmination-of-composite-properties-that-can-used">
+<h3>Culmination of composite properties that can used.<a class="headerlink" href="#culmination-of-composite-properties-that-can-used" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id5">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.properties.composite_properties.</span></span><span class="sig-name descname"><span class="pre">CompositeProperties</span></span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_be_at">
+<span class="sig-name descname"><span class="pre">must_be_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jackal_robot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_area_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-</span> <span class="pre">2,</span> <span class="pre">-</span> <span class="pre">2,</span> <span class="pre">-</span> <span class="pre">2]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_area_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">2]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_be_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_be_at" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Composite property that ensures the robot is in its given operation zone througout the</dt><dd><p>a given scenario.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_area_min</strong> (<em>list</em><em>, </em><em>optional</em>) – _description_. Defaults to [-2,-2,-2].</p></li>
+<li><p><strong>target_area_max</strong> (<em>list</em><em>, </em><em>optional</em>) – _description_. Defaults to [1, 2, 2].</p></li>
+<li><p><strong>time</strong> (<em>int</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.</p></li>
+<li><p><strong>tolerance</strong> (<em>int</em><em>, </em><em>optional</em>) – Safety tolerance value that robot shouldn’t exceed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True if it stayed inside the operation zone.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_be_near_to">
+<span class="sig-name descname"><span class="pre">must_be_near_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jackal_robot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'convex_5cm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">req_dis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_be_near_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_be_near_to" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_collide">
+<span class="sig-name descname"><span class="pre">must_collide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">robot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">2,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_area_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-</span> <span class="pre">1,</span> <span class="pre">-</span> <span class="pre">1,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_area_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2,</span> <span class="pre">2,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_collide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_collide" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_have_collision_force_less_than">
+<span class="sig-name descname"><span class="pre">must_have_collision_force_less_than</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forces_applied</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshhold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_have_collision_force_less_than"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_have_collision_force_less_than" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_have_orientation">
+<span class="sig-name descname"><span class="pre">must_have_orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jackal_robot_issac'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[25,</span> <span class="pre">25,</span> <span class="pre">360]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_have_orientation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_have_orientation" title="Permalink to this definition"></a></dt>
+<dd><p>Composite property that ensures the object is in the correct orientation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orientation</strong> (<em>list</em><em>, </em><em>optional</em>) – _description_. Defaults to [25, 25, 360].</p></li>
+<li><p><strong>time</strong> (<em>int</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.</p></li>
+<li><p><strong>tolerance</strong> (<em>int</em><em>, </em><em>optional</em>) – Safety tolerance value that robot shouldn’t exceed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True if the object orientation was correct.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_not_be_at">
+<span class="sig-name descname"><span class="pre">must_not_be_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jackal_robot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_area_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2,</span> <span class="pre">2,</span> <span class="pre">-</span> <span class="pre">1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_area_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[6,</span> <span class="pre">6,</span> <span class="pre">2]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_not_be_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_not_be_at" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Composite property that ensures the robot does not wander into a forbidden zone througout the</dt><dd><p>a given scenario.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_area_min</strong> (<em>list</em><em>, </em><em>optional</em>) – _description_. Defaults to [2, 2, -1].</p></li>
+<li><p><strong>target_area_max</strong> (<em>list</em><em>, </em><em>optional</em>) – _description_. Defaults to [6, 6, 2].</p></li>
+<li><p><strong>time</strong> (<em>int</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.</p></li>
+<li><p><strong>tolerance</strong> (<em>int</em><em>, </em><em>optional</em>) – Safety tolerance value that robot shouldn’t exceed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True if it did not go into a forbidden zone.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_not_be_near_to">
+<span class="sig-name descname"><span class="pre">must_not_be_near_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jackal_robot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'convex_5cm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">req_dis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_not_be_near_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_not_be_near_to" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.must_not_collide">
+<span class="sig-name descname"><span class="pre">must_not_collide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">robot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.must_not_collide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.must_not_collide" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.composite_properties.CompositeProperties.robot_force_sensor_callback">
+<span class="sig-name descname"><span class="pre">robot_force_sensor_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/composite_properties.html#CompositeProperties.robot_force_sensor_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.composite_properties.CompositeProperties.robot_force_sensor_callback" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.properties.primitive_properties">
+<span id="property-based-tester-properties-primitive-properties-module"></span><h2>property_based_tester.properties.primitive_properties module<a class="headerlink" href="#module-property_based_tester.properties.primitive_properties" title="Permalink to this headline"></a></h2>
+<p>Contains spatial and temporal information logged during
+navigation.
+—————————————————-
+Supervisor: Prof. Dr. Nico Hochgeschwender</p>
+<blockquote>
+<div><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</div></blockquote>
+<div class="section" id="id6">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id7">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.properties.primitive_properties.PrimitiveProperties">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.properties.primitive_properties.</span></span><span class="sig-name descname"><span class="pre">PrimitiveProperties</span></span><a class="reference internal" href="_modules/property_based_tester/properties/primitive_properties.html#PrimitiveProperties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.primitive_properties.PrimitiveProperties" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.primitive_properties.PrimitiveProperties.physical_information">
+<span class="sig-name descname"><span class="pre">physical_information</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/primitive_properties.html#PrimitiveProperties.physical_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.primitive_properties.PrimitiveProperties.physical_information" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.primitive_properties.PrimitiveProperties.quaternion_to_euler_angle_vectorized2">
+<span class="sig-name descname"><span class="pre">quaternion_to_euler_angle_vectorized2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/primitive_properties.html#PrimitiveProperties.quaternion_to_euler_angle_vectorized2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.primitive_properties.PrimitiveProperties.quaternion_to_euler_angle_vectorized2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.primitive_properties.PrimitiveProperties.robo_spatial_temporal_information">
+<span class="sig-name descname"><span class="pre">robo_spatial_temporal_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/primitive_properties.html#PrimitiveProperties.robo_spatial_temporal_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.primitive_properties.PrimitiveProperties.robo_spatial_temporal_information" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts spatial information during the entire scenario. position is based on the 0,0 of gazebo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.properties.primitive_properties.PrimitiveProperties.spatial_temporal_information">
+<span class="sig-name descname"><span class="pre">spatial_temporal_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/properties/primitive_properties.html#PrimitiveProperties.spatial_temporal_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.properties.primitive_properties.PrimitiveProperties.spatial_temporal_information" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts spatial information during the entire scenario. position is based on the 0,0 of gazebo.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Module contents<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-property_based_tester.properties"></span></div>
+</div>
+<div class="section" id="property-based-tester-property-based-language-generation-package">
+<h1>property_based_tester.property_based_language_generation package<a class="headerlink" href="#property-based-tester-property-based-language-generation-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="id9">
+<h2>Submodules<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.property_based_language_generation.textx_test_specification">
+<span id="property-based-tester-property-based-language-generation-textx-test-specification-module"></span><h2>property_based_tester.property_based_language_generation.textx_test_specification module<a class="headerlink" href="#module-property_based_tester.property_based_language_generation.textx_test_specification" title="Permalink to this headline"></a></h2>
+<div class="section" id="property-based-language-generator-based-on-textx">
+<h3>Property-Based Language Generator based on textX.<a class="headerlink" href="#property-based-language-generator-based-on-textx" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+<div class="section" id="id10">
+<h4>Author    : Salman Omar Sohail<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
+</div>
+<div class="section" id="date-july-16-2022">
+<h4>Date: July 16, 2022<a class="headerlink" href="#date-july-16-2022" title="Permalink to this headline"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.property_based_language_generation.textx_test_specification.</span></span><span class="sig-name descname"><span class="pre">PropertyBasedLanguageGenerator</span></span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator.scenario_composite_test_extractor">
+<span class="sig-name descname"><span class="pre">scenario_composite_test_extractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composite_tests</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGenerator.scenario_composite_test_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator.scenario_composite_test_extractor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.property_based_language_generation.textx_test_specification.</span></span><span class="sig-name descname"><span class="pre">PropertyBasedLanguageGeneratorRandomizer</span></span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGeneratorRandomizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation">
+<span class="sig-name descname"><span class="pre">random_scenario_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor">
+<span class="sig-name descname"><span class="pre">scenario_composite_test_extractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composite_tests</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>Module contents<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-property_based_tester.property_based_language_generation"></span></div>
+</div>
+<div class="section" id="property-based-tester-robot-controllers-package">
+<h1>property_based_tester.robot_controllers package<a class="headerlink" href="#property-based-tester-robot-controllers-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="id12">
+<h2>Submodules<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="property-based-tester-robot-controllers-experimental-pick-place-client-module">
+<h2>property_based_tester.robot_controllers.experimental_pick_place_client module<a class="headerlink" href="#property-based-tester-robot-controllers-experimental-pick-place-client-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="property-based-tester-robot-controllers-nav-client-module">
+<h2>property_based_tester.robot_controllers.nav_client module<a class="headerlink" href="#property-based-tester-robot-controllers-nav-client-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.robot_controllers.navigation_client">
+<span id="property-based-tester-robot-controllers-navigation-client-module"></span><h2>property_based_tester.robot_controllers.navigation_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.navigation_client" title="Permalink to this headline"></a></h2>
+<div class="section" id="the-client-activates-the-mdr-navigation-module">
+<h3>The client activates the MDR navigation module.<a class="headerlink" href="#the-client-activates-the-mdr-navigation-module" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id13">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id14">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.navigation_client.single_goal_movebase">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.navigation_client.</span></span><span class="sig-name descname"><span class="pre">single_goal_movebase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_odom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'odom'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_base_link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base_link'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/navigation_client.html#single_goal_movebase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.navigation_client.single_goal_movebase" title="Permalink to this definition"></a></dt>
+<dd><p>Action client test for navigation using coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord_x</strong> (<em>float 32</em>) – x coordinate in the map for the robot to move towards.</p></li>
+<li><p><strong>coord_y</strong> (<em>float 32</em>) – y coordinate in the map for the robot to move towards.</p></li>
+<li><p><strong>direction</strong> (<em>float 32</em><em>)</em><em>(</em><em>Degrees</em>) – Direction the robot should face.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns boolean rarely works in a laptop.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="property-based-tester-robot-controllers-perceive-client-module">
+<h2>property_based_tester.robot_controllers.perceive_client module<a class="headerlink" href="#property-based-tester-robot-controllers-perceive-client-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.robot_controllers.pick_Toyota_client">
+<span id="property-based-tester-robot-controllers-pick-toyota-client-module"></span><h2>property_based_tester.robot_controllers.pick_Toyota_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.pick_Toyota_client" title="Permalink to this headline"></a></h2>
+<p>Copyright (C) 2017 Toyota Motor Corporation</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.pick_Toyota_client.</span></span><span class="sig-name descname"><span class="pre">MoveItPickAndPlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pick_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_box">
+<span class="sig-name descname"><span class="pre">add_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.add_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_box" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_cylinder">
+<span class="sig-name descname"><span class="pre">add_cylinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.add_cylinder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_cylinder" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_grasps">
+<span class="sig-name descname"><span class="pre">make_grasps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.make_grasps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_grasps" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_gripper_posture">
+<span class="sig-name descname"><span class="pre">make_gripper_posture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.make_gripper_posture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_gripper_posture" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_gripper_translation">
+<span class="sig-name descname"><span class="pre">make_gripper_translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.make_gripper_translation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_gripper_translation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_place_location">
+<span class="sig-name descname"><span class="pre">make_place_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.make_place_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_place_location" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_pose">
+<span class="sig-name descname"><span class="pre">make_pose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.make_pose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.make_pose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.pick">
+<span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grasps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.pick"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.pick" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.place">
+<span class="sig-name descname"><span class="pre">place</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.place"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.place" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="property-based-tester-robot-controllers-pick-client-module">
+<h2>property_based_tester.robot_controllers.pick_client module<a class="headerlink" href="#property-based-tester-robot-controllers-pick-client-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.robot_controllers.pick_place_client">
+<span id="property-based-tester-robot-controllers-pick-place-client-module"></span><h2>property_based_tester.robot_controllers.pick_place_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.pick_place_client" title="Permalink to this headline"></a></h2>
+<p>Copyright (C) 2017 Toyota Motor Corporation</p>
+<p>The client activates the pick and place action based
+on the default Toyota HSR client.
+—————————————————-
+Supervisor: Prof. Dr. Nico Hochgeschwender</p>
+<blockquote>
+<div><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</div></blockquote>
+<div class="section" id="id15">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id16">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.pick_place_client.</span></span><span class="sig-name descname"><span class="pre">MoveItPickAndPlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pick_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.add_box">
+<span class="sig-name descname"><span class="pre">add_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.add_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.add_box" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.add_cylinder">
+<span class="sig-name descname"><span class="pre">add_cylinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.add_cylinder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.add_cylinder" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_grasps">
+<span class="sig-name descname"><span class="pre">make_grasps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.make_grasps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_grasps" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_gripper_posture">
+<span class="sig-name descname"><span class="pre">make_gripper_posture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.make_gripper_posture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_gripper_posture" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_gripper_translation">
+<span class="sig-name descname"><span class="pre">make_gripper_translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.make_gripper_translation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_gripper_translation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_place_location">
+<span class="sig-name descname"><span class="pre">make_place_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.make_place_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_place_location" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_pose">
+<span class="sig-name descname"><span class="pre">make_pose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.make_pose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.make_pose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.pick">
+<span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grasps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.pick"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.pick" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.place">
+<span class="sig-name descname"><span class="pre">place</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace.place"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace.place" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="property-based-tester-robot-controllers-place-client-module">
+<h2>property_based_tester.robot_controllers.place_client module<a class="headerlink" href="#property-based-tester-robot-controllers-place-client-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.robot_controllers.speed_client">
+<span id="property-based-tester-robot-controllers-speed-client-module"></span><h2>property_based_tester.robot_controllers.speed_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.speed_client" title="Permalink to this headline"></a></h2>
+<div class="section" id="id17">
+<h3>The client activates the MDR navigation module.<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id18">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id19">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.speed_client.move">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.speed_client.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmd_vel_topic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/cmd_vel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/speed_client.html#move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.speed_client.move" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.robot_controllers.xarm_moveit">
+<span id="property-based-tester-robot-controllers-xarm-moveit-module"></span><h2>property_based_tester.robot_controllers.xarm_moveit module<a class="headerlink" href="#module-property_based_tester.robot_controllers.xarm_moveit" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.xarm_moveit.</span></span><span class="sig-name descname"><span class="pre">ManipulatorMoveit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manipulator_group_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.add_box">
+<span class="sig-name descname"><span class="pre">add_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.add_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.add_box" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.attach_box">
+<span class="sig-name descname"><span class="pre">attach_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.attach_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.attach_box" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.detach_box">
+<span class="sig-name descname"><span class="pre">detach_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.detach_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.detach_box" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.display_trajectory">
+<span class="sig-name descname"><span class="pre">display_trajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.display_trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.display_trajectory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.execute_plan">
+<span class="sig-name descname"><span class="pre">execute_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.execute_plan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.execute_plan" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_joint_state">
+<span class="sig-name descname"><span class="pre">go_to_joint_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.go_to_joint_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_joint_state" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_manipulator_joint_state">
+<span class="sig-name descname"><span class="pre">go_to_manipulator_joint_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joints</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.go_to_manipulator_joint_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_manipulator_joint_state" title="Permalink to this definition"></a></dt>
+<dd><p>Moves gripper from open to close. 0 is open 0.848 is closed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>joints</strong> (<em>float</em>) – Gripper Postion</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Verifies whether joint angle is the same as given angle.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_pose_goal">
+<span class="sig-name descname"><span class="pre">go_to_pose_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.go_to_pose_goal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.go_to_pose_goal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.plan_cartesian_path">
+<span class="sig-name descname"><span class="pre">plan_cartesian_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.plan_cartesian_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.plan_cartesian_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.remove_box">
+<span class="sig-name descname"><span class="pre">remove_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.remove_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.remove_box" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.set_state">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.set_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.set_state" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.wait_for_state_update">
+<span class="sig-name descname"><span class="pre">wait_for_state_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">box_is_known</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box_is_attached</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit.wait_for_state_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit.wait_for_state_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.all_close">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.xarm_moveit.</span></span><span class="sig-name descname"><span class="pre">all_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">goal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#all_close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.all_close" title="Permalink to this definition"></a></dt>
+<dd><p>Convenience method for testing if a list of values are within a tolerance of their counterparts in another list
+&#64;param: goal       A list of floats, a Pose or a PoseStamped
+&#64;param: actual     A list of floats, a Pose or a PoseStamped
+&#64;param: tolerance  A float
+&#64;returns: bool</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.main">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.xarm_moveit.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.main" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="id20">
+<h2>Module contents<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-property_based_tester.robot_controllers"></span></div>
+</div>
+<div class="section" id="property-based-tester-scen-gen-package">
+<h1>property_based_tester.scen_gen package<a class="headerlink" href="#property-based-tester-scen-gen-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="id21">
+<h2>Submodules<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.scen_gen.force_generation">
+<span id="property-based-tester-scen-gen-force-generation-module"></span><h2>property_based_tester.scen_gen.force_generation module<a class="headerlink" href="#module-property_based_tester.scen_gen.force_generation" title="Permalink to this headline"></a></h2>
+<div class="section" id="generates-obstacles-and-gathers-worlds-properties">
+<h3>Generates obstacles and gathers worlds properties.<a class="headerlink" href="#generates-obstacles-and-gathers-worlds-properties" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id22">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id23">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.force_generation.apply_force">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.force_generation.</span></span><span class="sig-name descname"><span class="pre">apply_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base_link'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randomized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/force_generation.html#apply_force"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.force_generation.apply_force" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.scen_gen.model_placement">
+<span id="property-based-tester-scen-gen-model-placement-module"></span><h2>property_based_tester.scen_gen.model_placement module<a class="headerlink" href="#module-property_based_tester.scen_gen.model_placement" title="Permalink to this headline"></a></h2>
+<div class="section" id="a-launching-file-for-static-and-dynamic-model-placement">
+<h3>A launching file for static and dynamic model placement.<a class="headerlink" href="#a-launching-file-for-static-and-dynamic-model-placement" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id24">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id25">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.model_placement.delete_model">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.model_placement.</span></span><span class="sig-name descname"><span class="pre">delete_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/model_placement.html#delete_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.model_placement.delete_model" title="Permalink to this definition"></a></dt>
+<dd><p>This function deletes a model in the gazebo world by passing a roscommand from the terminal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>) – Name of the object and the object ID to be deleted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.model_placement.model_placement">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.model_placement.</span></span><span class="sig-name descname"><span class="pre">model_placement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/model_placement.html#model_placement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.model_placement.model_placement" title="Permalink to this definition"></a></dt>
+<dd><p>This just places some static objects when the world starts.
+It also logs the placement of the objects as startup_logs in the
+logger file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>param</strong> (<em>[</em><em>type</em><em>]</em><em>, </em><em>optional</em>) – [description]. Defaults to None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.model_placement.world_placement">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.model_placement.</span></span><span class="sig-name descname"><span class="pre">world_placement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/model_placement.html#world_placement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.model_placement.world_placement" title="Permalink to this definition"></a></dt>
+<dd><p>This just places some static objects when the world starts.
+It also logs the placement of the objects as startup_logs in the
+logger file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>param</strong> (<em>[</em><em>type</em><em>]</em><em>, </em><em>optional</em>) – [description]. Defaults to None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.scen_gen.obstacle_gen">
+<span id="property-based-tester-scen-gen-obstacle-gen-module"></span><h2>property_based_tester.scen_gen.obstacle_gen module<a class="headerlink" href="#module-property_based_tester.scen_gen.obstacle_gen" title="Permalink to this headline"></a></h2>
+<div class="section" id="id26">
+<h3>Generates obstacles and gathers worlds properties.<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id27">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id28">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.obstacle_gen.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.obstacle_gen.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_real_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/obstacle_gen.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.obstacle_gen.Model" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains all relevant information of a gazebo model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.obstacle_gen.Model.delete_model">
+<span class="sig-name descname"><span class="pre">delete_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/obstacle_gen.html#Model.delete_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.obstacle_gen.Model.delete_model" title="Permalink to this definition"></a></dt>
+<dd><p>This function deletes a model in the gazebo world by passing a roscommand from the terminal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>) – Name of the object and the object ID to be deleted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.obstacle_gen.Model.insert_model">
+<span class="sig-name descname"><span class="pre">insert_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'world'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/obstacle_gen.html#Model.insert_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.obstacle_gen.Model.insert_model" title="Permalink to this definition"></a></dt>
+<dd><p>This function inserts a model in the gazebo world by passing a roscommand from the terminal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.obstacle_gen.Model.lucy_pos">
+<span class="sig-name descname"><span class="pre">lucy_pos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/obstacle_gen.html#Model.lucy_pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.obstacle_gen.Model.lucy_pos" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.obstacle_gen.Model.model_properties">
+<span class="sig-name descname"><span class="pre">model_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/obstacle_gen.html#Model.model_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.obstacle_gen.Model.model_properties" title="Permalink to this definition"></a></dt>
+<dd><p>This function obtains a models property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>) – Name of the object and the object ID from which the model will be obtained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.scen_gen.random_scenario_generator">
+<span id="property-based-tester-scen-gen-random-scenario-generator-module"></span><h2>property_based_tester.scen_gen.random_scenario_generator module<a class="headerlink" href="#module-property_based_tester.scen_gen.random_scenario_generator" title="Permalink to this headline"></a></h2>
+<p>The RSG will be used to generate unique and altered
+poses for the models that will be used within the
+worlds of Gazebo simulator.
+—————————————————-
+Supervisor: Prof. Dr. Nico Hochgeschwender</p>
+<blockquote>
+<div><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</div></blockquote>
+<div class="section" id="id29">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id30">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.random_scenario_generator.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_real_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.Model" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains all relevant information of a gazebo model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.Model.delete_model">
+<span class="sig-name descname"><span class="pre">delete_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#Model.delete_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.Model.delete_model" title="Permalink to this definition"></a></dt>
+<dd><p>This function deletes a model in the gazebo world by passing a roscommand from the terminal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>) – Name of the object and the object ID to be deleted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.Model.insert_model">
+<span class="sig-name descname"><span class="pre">insert_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#Model.insert_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.Model.insert_model" title="Permalink to this definition"></a></dt>
+<dd><p>This function inserts a model in the gazebo world by passing a roscommand from the terminal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.Model.model_properties">
+<span class="sig-name descname"><span class="pre">model_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#Model.model_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.Model.model_properties" title="Permalink to this definition"></a></dt>
+<dd><p>This function obtains a models property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>) – Name of the object and the object ID from which the model will be obtained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.World">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.random_scenario_generator.</span></span><span class="sig-name descname"><span class="pre">World</span></span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#World"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.World" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains all relevant information of a gazebo world.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.World.reset_simulation">
+<span class="sig-name descname"><span class="pre">reset_simulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#World.reset_simulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.World.reset_simulation" title="Permalink to this definition"></a></dt>
+<dd><p>This class contains resets everything in gazebo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.World.reset_world">
+<span class="sig-name descname"><span class="pre">reset_world</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#World.reset_world"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.World.reset_world" title="Permalink to this definition"></a></dt>
+<dd><p>This class contains resets the models poses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.World.unpause_simulation">
+<span class="sig-name descname"><span class="pre">unpause_simulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#World.unpause_simulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.World.unpause_simulation" title="Permalink to this definition"></a></dt>
+<dd><p>This class un pauses the physics engine in gazebo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.World.world_properties">
+<span class="sig-name descname"><span class="pre">world_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#World.world_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.World.world_properties" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.World.world_state">
+<span class="sig-name descname"><span class="pre">world_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#World.world_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.World.world_state" title="Permalink to this definition"></a></dt>
+<dd><p>It extracts the information of all models in the gazebo world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns list of all relevant information</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.scen_gen.robot_placement">
+<span id="property-based-tester-scen-gen-robot-placement-module"></span><h2>property_based_tester.scen_gen.robot_placement module<a class="headerlink" href="#module-property_based_tester.scen_gen.robot_placement" title="Permalink to this headline"></a></h2>
+<p>The RSG will be used to generate unique and altered
+poses for the models that will be used within the
+worlds of Gazebo simulator.
+—————————————————-
+Supervisor: Prof. Dr. Nico Hochgeschwender</p>
+<blockquote>
+<div><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</div></blockquote>
+<div class="section" id="id31">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id32">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.robot_placement.RobotModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.robot_placement.</span></span><span class="sig-name descname"><span class="pre">RobotModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/robot_placement.html#RobotModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.robot_placement.RobotModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains all relevant information of a gazebo model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.robot_placement.RobotModel.robot_pose">
+<span class="sig-name descname"><span class="pre">robot_pose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/robot_placement.html#RobotModel.robot_pose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.robot_placement.RobotModel.robot_pose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.robot_placement.RobotModel.spawn_robot">
+<span class="sig-name descname"><span class="pre">spawn_robot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/robot_placement.html#RobotModel.spawn_robot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.robot_placement.RobotModel.spawn_robot" title="Permalink to this definition"></a></dt>
+<dd><p>This function spawns the robot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>) – Name of the object and the object ID from which the model will be obtained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.scen_gen.world_prop">
+<span id="property-based-tester-scen-gen-world-prop-module"></span><h2>property_based_tester.scen_gen.world_prop module<a class="headerlink" href="#module-property_based_tester.scen_gen.world_prop" title="Permalink to this headline"></a></h2>
+<div class="section" id="extracts-information-of-the-gazebo-world">
+<h3>Extracts information of the gazebo world.<a class="headerlink" href="#extracts-information-of-the-gazebo-world" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id33">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id34">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.scen_gen.world_prop.world_state">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.world_prop.</span></span><span class="sig-name descname"><span class="pre">world_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/world_prop.html#world_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.world_prop.world_state" title="Permalink to this definition"></a></dt>
+<dd><p>It extracts the information of all models in the gazebo world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns list of all relevant information</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="id35">
+<h2>Module contents<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-property_based_tester.scen_gen"></span></div>
+</div>
+<div class="section" id="property-based-tester-temporal-cache-package">
+<h1>property_based_tester.temporal_cache package<a class="headerlink" href="#property-based-tester-temporal-cache-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="id36">
+<h2>Submodules<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-property_based_tester.temporal_cache.data_depot">
+<span id="property-based-tester-temporal-cache-data-depot-module"></span><h2>property_based_tester.temporal_cache.data_depot module<a class="headerlink" href="#module-property_based_tester.temporal_cache.data_depot" title="Permalink to this headline"></a></h2>
+<div class="section" id="starter-module-for-the-source-code">
+<h3>Starter module for the source code.<a class="headerlink" href="#starter-module-for-the-source-code" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id37">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id37" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id38">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.temporal_cache.data_depot.data_logger">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.temporal_cache.data_depot.</span></span><span class="sig-name descname"><span class="pre">data_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/temporal_cache/data_depot.html#data_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.temporal_cache.data_depot.data_logger" title="Permalink to this definition"></a></dt>
+<dd><p>Writes data into a csv file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>loc</strong> (<em>str</em>) – file path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.temporal_cache.data_depot.data_reader">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.temporal_cache.data_depot.</span></span><span class="sig-name descname"><span class="pre">data_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/temporal_cache/data_depot.html#data_reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.temporal_cache.data_depot.data_reader" title="Permalink to this definition"></a></dt>
+<dd><p>Reads .csv files and returns two data frames, one is
+all the models and their positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>loc</strong> (<em>str</em>) – code name for calling the log file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Position and orientation of all the models.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>df_1 data_frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.temporal_cache.data_depot.log_hsrb_reader">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.temporal_cache.data_depot.</span></span><span class="sig-name descname"><span class="pre">log_hsrb_reader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/temporal_cache/data_depot.html#log_hsrb_reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.temporal_cache.data_depot.log_hsrb_reader" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts the robots location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the x y z quat1 quat2 quat3 quat4</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.temporal_cache.data_depot.log_reader_comparator">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.temporal_cache.data_depot.</span></span><span class="sig-name descname"><span class="pre">log_reader_comparator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/temporal_cache/data_depot.html#log_reader_comparator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.temporal_cache.data_depot.log_reader_comparator" title="Permalink to this definition"></a></dt>
+<dd><p>Reads nav files for testing purposes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loc</strong> (<em>str</em>) – the column to be compared in testing</p></li>
+<li><p><strong>action</strong> (<em>str</em>) – the filename of the action test e.g. nav_start, nav_end</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Returns 2 numbers which are the difference in the log file,</dt><dd><p>note the robot change in position in not taken into consideration.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.temporal_cache.data_depot.lucy_gripper_information">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.temporal_cache.data_depot.</span></span><span class="sig-name descname"><span class="pre">lucy_gripper_information</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/temporal_cache/data_depot.html#lucy_gripper_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.temporal_cache.data_depot.lucy_gripper_information" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts the gripper information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the x y z quat1 quat2 quat3 quat4</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.temporal_cache.data_depot.object_information">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.temporal_cache.data_depot.</span></span><span class="sig-name descname"><span class="pre">object_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/temporal_cache/data_depot.html#object_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.temporal_cache.data_depot.object_information" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts an objects information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the x y z quat1 quat2 quat3 quat4</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.temporal_cache.data_depot.world_state_extractor">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.temporal_cache.data_depot.</span></span><span class="sig-name descname"><span class="pre">world_state_extractor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/temporal_cache/data_depot.html#world_state_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.temporal_cache.data_depot.world_state_extractor" title="Permalink to this definition"></a></dt>
+<dd><p>It extracts the information of all models in the gazebo world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns list of all relevant information</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-property_based_tester.temporal_cache.temporal_log">
+<span id="property-based-tester-temporal-cache-temporal-log-module"></span><h2>property_based_tester.temporal_cache.temporal_log module<a class="headerlink" href="#module-property_based_tester.temporal_cache.temporal_log" title="Permalink to this headline"></a></h2>
+<div class="section" id="id39">
+<h3>Starter module for the source code.<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h3>
+<dl class="simple">
+<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
+Sven Schneider</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id40">
+<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id40" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="id41">
+<h3>Date: July 01, 2022<a class="headerlink" href="#id41" title="Permalink to this headline"></a></h3>
+</div>
+</div>
+<div class="section" id="id42">
+<h2>Module contents<a class="headerlink" href="#id42" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-property_based_tester.temporal_cache"></span></div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

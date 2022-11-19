@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>property_based_tester.scen_gen.model_placement &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">property_based_tester.scen_gen.model_placement</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for property_based_tester.scen_gen.model_placement</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------- </span>
+<span class="sd">Model Placement</span>
+
+<span class="sd">A launching file for static and dynamic model placement.</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
+<span class="sd">            Prof. Dr. Paul Ploger</span>
+<span class="sd">            Sven Schneider </span>
+
+<span class="sd">Author    : Salman Omar Sohail</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Date: July 01, 2022</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">property_based_tester.scen_gen.random_scenario_generator</span> <span class="k">import</span> <span class="n">World</span>
+<span class="kn">from</span> <span class="nn">property_based_tester.scen_gen.random_scenario_generator</span> <span class="k">import</span> <span class="n">Model</span>
+
+<span class="kn">from</span> <span class="nn">property_based_tester.configuration.config</span> <span class="k">import</span> <span class="n">Configuration</span>
+<span class="kn">from</span> <span class="nn">property_based_tester.configuration.config</span> <span class="k">import</span> <span class="n">choices</span>
+<span class="kn">from</span> <span class="nn">property_based_tester.configuration.config</span> <span class="k">import</span> <span class="n">collision_checker</span>
+
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="k">import</span> <span class="n">colored</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">DeleteModel</span> 
+
+
+<div class="viewcode-block" id="world_placement"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.model_placement.world_placement">[docs]</a><span class="k">def</span> <span class="nf">world_placement</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This just places some static objects when the world starts.</span>
+<span class="sd">    It also logs the placement of the objects as startup_logs in the</span>
+<span class="sd">    logger file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        param ([type], optional): [description]. Defaults to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;gazebo_ros&#39;</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/spawn_sdf_model&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="delete_model"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.model_placement.delete_model">[docs]</a><span class="k">def</span> <span class="nf">delete_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function deletes a model in the gazebo world by passing a roscommand from the terminal.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            model_name (str): Name of the object and the object ID to be deleted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model_desc</span> <span class="o">=</span> <span class="s1">&#39;{model_name: &#39;</span><span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span><span class="s1">&#39;}&#39;</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/delete_model&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">del_model_prox</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/delete_model&#39;</span><span class="p">,</span> <span class="n">DeleteModel</span><span class="p">)</span> 
+            <span class="n">del_model_prox</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span> 
+        <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Rospy.ServiceException </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="model_placement"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.model_placement.model_placement">[docs]</a><span class="k">def</span> <span class="nf">model_placement</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This just places some static objects when the world starts.</span>
+<span class="sd">    It also logs the placement of the objects as startup_logs in the</span>
+<span class="sd">    logger file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        param ([type], optional): [description]. Defaults to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;model_manipulator&#39;</span><span class="p">)</span>
+
+    <span class="n">conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+    <span class="n">dynamic_model_tracer</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Static model placement</span>
+    <span class="n">static_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">world</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">static_model</span><span class="o">.</span><span class="n">insert_model</span><span class="p">()</span>
+      
+    <span class="n">static_model_platform</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.0254</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">static_model_platform</span><span class="o">.</span><span class="n">insert_model</span><span class="p">()</span>
+    
+    <span class="n">static_model_shelf</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;shelf&#39;</span><span class="p">,</span><span class="mf">4.8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.0254</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5708</span><span class="p">)</span>
+    <span class="n">static_model_shelf</span><span class="o">.</span><span class="n">insert_model</span><span class="p">()</span>
+    
+    <span class="n">static_model_sofa</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;sofa&#39;</span><span class="p">,</span><span class="o">-</span><span class="mf">3.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.8</span><span class="p">,</span> <span class="mf">0.0254</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5708</span><span class="p">)</span>
+    <span class="n">static_model_sofa</span><span class="o">.</span><span class="n">insert_model</span><span class="p">()</span>
+    
+    <span class="n">static_model_cabinet</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;cabinet&#39;</span><span class="p">,</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.8</span><span class="p">,</span> <span class="mf">0.0254</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5708</span><span class="p">)</span>
+    <span class="n">static_model_cabinet</span><span class="o">.</span><span class="n">insert_model</span><span class="p">()</span>
+    
+    <span class="c1"># Temporary fixed spawning until MAS develops perceive pick library for Lucy</span>
+    <span class="c1"># complex_scenario_bottle = Model(&#39;glass&#39;,0.000, 0.900, 0.500, 0, 0, 0)</span>
+    <span class="c1"># complex_scenario_bottle.insert_model()</span>
+    <span class="c1"># dynamic_model_tracer.append(complex_scenario_bottle)</span>
+
+    <span class="c1"># Dynamic obstacles placement</span>
+    <span class="n">model_choices</span> <span class="o">=</span> <span class="n">choices</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">models_manip</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">model_manip_num</span><span class="p">))</span>
+    <span class="c1"># Dynamic model placement through testing</span>
+    <span class="c1"># model_choices = choices(conf.model_list(), k=int(param))</span>
+    
+    <span class="c1"># Ensuring the models spawns in the vicinity of the static model platform in this case the table</span>
+    <span class="n">minx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">0.8</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">x_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">maxx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">0.8</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">x_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">miny</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mf">0.8</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">y_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">maxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mf">0.8</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">y_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">minz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">z_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">maxz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="n">static_model_platform</span><span class="o">.</span><span class="n">z_coord</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">model_choices</span><span class="p">:</span>
+        <span class="n">dynamic_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                                
+        <span class="c1"># Ensuring models don&#39;t spawn on top of existing models</span>
+        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">):</span>
+            
+            <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">)</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">maxz</span> <span class="o">+</span> <span class="mf">0.015</span>
+
+            <span class="n">check</span> <span class="o">=</span> <span class="n">collision_checker</span><span class="p">(</span><span class="n">dynamic_model</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">dynamic_model_tracer</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">check</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">dynamic_model</span><span class="o">.</span><span class="n">x_coord</span> <span class="o">=</span> <span class="n">x</span>
+                <span class="n">dynamic_model</span><span class="o">.</span><span class="n">y_coord</span> <span class="o">=</span> <span class="n">y</span>
+                <span class="n">dynamic_model</span><span class="o">.</span><span class="n">z_coord</span> <span class="o">=</span> <span class="n">z</span>
+                
+                <span class="n">dynamic_model</span><span class="o">.</span><span class="n">insert_model</span><span class="p">()</span>
+                <span class="n">dynamic_model_tracer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dynamic_model</span><span class="p">)</span>
+                <span class="k">break</span>
+            
+            <span class="k">if</span> <span class="n">iteration</span> <span class="o">==</span> <span class="mi">999</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;No space for model insertion &#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">),</span><span class="n">dynamic_model</span><span class="o">.</span><span class="n">model_real_name</span><span class="p">)</span>
+                <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;Completed spawning dynamic models&#39;</span><span class="p">,</span><span class="s1">&#39;cyan&#39;</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

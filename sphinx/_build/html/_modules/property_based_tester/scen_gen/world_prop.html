@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>property_based_tester.scen_gen.world_prop &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Property-Based Testing: Formalized Robotic Testing for Standard Compliance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Property-Based Testing: Formalized Robotic Testing for Standard Compliance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">property_based_tester.scen_gen.world_prop</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for property_based_tester.scen_gen.world_prop</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------- </span>
+<span class="sd">World properties</span>
+
+<span class="sd">Extracts information of the gazebo world.</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
+<span class="sd">            Prof. Dr. Paul Ploger</span>
+<span class="sd">            Sven Schneider </span>
+
+<span class="sd">Author    : Salman Omar Sohail</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">Date: July 01, 2022</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="k">import</span> <span class="n">colored</span>
+
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetModelState</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetLinkState</span>
+<span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">GetWorldProperties</span>
+
+<div class="viewcode-block" id="world_state"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.world_prop.world_state">[docs]</a><span class="k">def</span> <span class="nf">world_state</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;It extracts the information of all models in the gazebo world.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        [list]: Returns list of all relevant information</span>
+<span class="sd">    &quot;&quot;&quot;</span>        
+    <span class="n">logs</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Models&#39;</span><span class="p">,</span> <span class="s1">&#39;X-pos&#39;</span><span class="p">,</span><span class="s1">&#39;Y-pos&#39;</span><span class="p">,</span><span class="s1">&#39;Z-pos&#39;</span><span class="p">,</span><span class="s1">&#39;Q-1&#39;</span><span class="p">,</span><span class="s1">&#39;Q-2&#39;</span><span class="p">,</span><span class="s1">&#39;Q-3&#39;</span><span class="p">,</span><span class="s1">&#39;Q-4&#39;</span><span class="p">]]</span>
+    <span class="n">lucy_logs</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Gripper Position&#39;</span><span class="p">,</span> <span class="s1">&#39;X-pos&#39;</span><span class="p">,</span><span class="s1">&#39;Y-pos&#39;</span><span class="p">,</span><span class="s1">&#39;Z-pos&#39;</span><span class="p">,</span><span class="s1">&#39;Q-1&#39;</span><span class="p">,</span><span class="s1">&#39;Q-2&#39;</span><span class="p">,</span><span class="s1">&#39;Q-3&#39;</span><span class="p">,</span><span class="s1">&#39;Q-4&#39;</span><span class="p">]]</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/get_world_properties&quot;</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/get_model_state&quot;</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s2">&quot;/gazebo/get_link_state&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># print(colored(&#39;Acquiring Model State&#39;,&#39;yellow&#39;))</span>
+        
+        <span class="n">world</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_world_properties&#39;</span><span class="p">,</span><span class="n">GetWorldProperties</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_model_state&#39;</span><span class="p">,</span> <span class="n">GetModelState</span><span class="p">)</span>
+        <span class="n">end_of_effector_left</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_link_state&#39;</span><span class="p">,</span> <span class="n">GetLinkState</span><span class="p">)</span>
+        <span class="n">end_of_effector_right</span><span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/get_link_state&#39;</span><span class="p">,</span> <span class="n">GetLinkState</span><span class="p">)</span>
+
+        <span class="n">world_props</span> <span class="o">=</span> <span class="n">world</span><span class="p">()</span>
+        <span class="n">lucy_lef_gripper</span> <span class="o">=</span> <span class="n">end_of_effector_left</span><span class="p">(</span><span class="s1">&#39;hsrb::hand_l_distal_link&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+        <span class="n">lucy_rig_gripper</span> <span class="o">=</span> <span class="n">end_of_effector_right</span><span class="p">(</span><span class="s1">&#39;hsrb::hand_r_distal_link&#39;</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">objs</span> <span class="ow">in</span> <span class="n">world_props</span><span class="o">.</span><span class="n">model_names</span><span class="p">:</span>
+            <span class="n">coordinates</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+            <span class="n">temp_data</span>   <span class="o">=</span> <span class="p">[</span><span class="n">objs</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+            <span class="n">logs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_data</span><span class="p">)</span>    
+            
+
+        <span class="n">lucy_data_lef</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lucy left gripper&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_lef_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_lef_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_lef_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_lef_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_lef_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_lef_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_lef_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+        
+        <span class="n">lucy_data_rig</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lucy right gripper&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_rig_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_rig_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_rig_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_rig_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_rig_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_rig_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">lucy_rig_gripper</span><span class="o">.</span><span class="n">link_state</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+        
+        <span class="n">lucy_logs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lucy_data_lef</span><span class="p">)</span>
+        <span class="n">lucy_logs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lucy_data_rig</span><span class="p">)</span> 
+        
+        <span class="c1"># print(colored(&#39;Successfully acquired Model State&#39;,&#39;green&#39;)) </span>
+        <span class="k">return</span> <span class="n">logs</span><span class="p">,</span> <span class="n">lucy_logs</span>
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;Cannot acquire Model State.&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">))</span> 
+    <span class="k">return</span> </div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Salman Omar Sohail.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

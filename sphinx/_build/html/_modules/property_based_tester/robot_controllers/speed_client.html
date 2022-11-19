@@ -63,25 +63,25 @@
   <h1>Source code for property_based_tester.robot_controllers.speed_client</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">---------------------------------------------------- </span>
-<span class="sd">Movement client</span>
-
-<span class="sd">The client activates the MDR navigation module.</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
-<span class="sd">            Prof. Dr. Paul Ploger</span>
-<span class="sd">            Sven Schneider </span>
-
-<span class="sd">Author    : Salman Omar Sohail</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Date: July 01, 2022</span>
-<span class="sd">----------------------------------------------------</span>
+<span class="sd">Movement Client: The client activates the provides raw command velocity to mobile</span>
+<span class="sd">robots.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span>
 
 <div class="viewcode-block" id="move"><a class="viewcode-back" href="../../../property_based_tester.robot_controllers.html#property_based_tester.robot_controllers.speed_client.move">[docs]</a><span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmd_vel_topic</span><span class="o">=</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utilizes a ROS publiser to provide raw command velocities in a given</span>
+<span class="sd">    topic to move a mobile robot.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        speed (int, optional): The value of speed that the robot should move with. Defaults to 1.</span>
+<span class="sd">        cmd_vel_topic (str, optional): The receiving topic by which the robot moves. Defaults to &#39;/cmd_vel&#39;.</span>
+<span class="sd">        timeout (int, optional): The amount of time to publish. Defaults to 5.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Returns True if publishing was successful.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">velocity_publisher</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">cmd_vel_topic</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">vel_msg</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>

@@ -38,14 +38,7 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">property_based_tester.property_based_language_generation package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-property_based_tester.property_based_language_generation.textx_test_specification">property_based_tester.property_based_language_generation.textx_test_specification module</a><ul>
-<li><a class="reference internal" href="#property-based-language-generator-based-on-textx">Property-Based Language Generator based on textX.</a><ul>
-<li><a class="reference internal" href="#author-salman-omar-sohail">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#date-july-16-2022">Date: July 16, 2022</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#module-property_based_tester.property_based_language_generation.textx_test_specification">property_based_tester.property_based_language_generation.textx_test_specification module</a></li>
 <li><a class="reference internal" href="#module-property_based_tester.property_based_language_generation">Module contents</a></li>
 </ul>
 </li>
@@ -82,26 +75,33 @@
 </div>
 <div class="section" id="module-property_based_tester.property_based_language_generation.textx_test_specification">
 <span id="property-based-tester-property-based-language-generation-textx-test-specification-module"></span><h2>property_based_tester.property_based_language_generation.textx_test_specification module<a class="headerlink" href="#module-property_based_tester.property_based_language_generation.textx_test_specification" title="Permalink to this headline"></a></h2>
-<div class="section" id="property-based-language-generator-based-on-textx">
-<h3>Property-Based Language Generator based on textX.<a class="headerlink" href="#property-based-language-generator-based-on-textx" title="Permalink to this headline"></a></h3>
-<dl class="simple">
-<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</dd>
-</dl>
-<div class="section" id="author-salman-omar-sohail">
-<h4>Author    : Salman Omar Sohail<a class="headerlink" href="#author-salman-omar-sohail" title="Permalink to this headline"></a></h4>
-</div>
-<div class="section" id="date-july-16-2022">
-<h4>Date: July 16, 2022<a class="headerlink" href="#date-july-16-2022" title="Permalink to this headline"></a></h4>
+<p>Property-Based Language Generator: A domain specific language based on textX for mapping
+usecases into tests via natural language.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.property_based_language_generation.textx_test_specification.</span></span><span class="sig-name descname"><span class="pre">PropertyBasedLanguageGenerator</span></span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Pre-processing of the test definitions for user tests as well as standard tests.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator.scenario_composite_test_extractor">
 <span class="sig-name descname"><span class="pre">scenario_composite_test_extractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composite_tests</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGenerator.scenario_composite_test_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator.scenario_composite_test_extractor" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Pre-processing in which the composite properties are parsed and flagged with their
+test types from the inputted test definitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scenario</strong> (<em>list</em>) – The scenario designated in the test definition file.</p></li>
+<li><p><strong>composite_tests</strong> (<em>list</em>) – The composite properties designate in the test definition file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Scenario Definition (list), Composite Properties (list)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -109,20 +109,45 @@ Sven Schneider</p>
 <dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.property_based_language_generation.textx_test_specification.</span></span><span class="sig-name descname"><span class="pre">PropertyBasedLanguageGeneratorRandomizer</span></span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGeneratorRandomizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Pre-processing of the test definitions for randomized tests.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation">
 <span class="sig-name descname"><span class="pre">random_scenario_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Pre-processing in which the the randomized scenario modifiers from the test definitions
+are extracted and returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Randomized scenario modifiers</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor">
 <span class="sig-name descname"><span class="pre">scenario_composite_test_extractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composite_tests</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/property_based_language_generation/textx_test_specification.html#PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Pre-processing in which the composite properties are parsed and flagged with their
+test types from the inputted test definitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scenario</strong> (<em>list</em>) – The scenario designated in the test definition file.</p></li>
+<li><p><strong>composite_tests</strong> (<em>list</em>) – The composite properties designate in the test definition file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Scenario Definition (list), Composite Properties (list)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
 </div>
 <div class="section" id="module-property_based_tester.property_based_language_generation">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-property_based_tester.property_based_language_generation" title="Permalink to this headline"></a></h2>

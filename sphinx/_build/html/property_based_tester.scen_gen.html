@@ -38,40 +38,12 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">property_based_tester.scen_gen package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-property_based_tester.scen_gen.force_generation">property_based_tester.scen_gen.force_generation module</a><ul>
-<li><a class="reference internal" href="#generates-obstacles-and-gathers-worlds-properties">Generates obstacles and gathers worlds properties.</a></li>
-<li><a class="reference internal" href="#author-salman-omar-sohail">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#date-july-01-2022">Date: July 01, 2022</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-property_based_tester.scen_gen.model_placement">property_based_tester.scen_gen.model_placement module</a><ul>
-<li><a class="reference internal" href="#a-launching-file-for-static-and-dynamic-model-placement">A launching file for static and dynamic model placement.</a></li>
-<li><a class="reference internal" href="#id1">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#id2">Date: July 01, 2022</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-property_based_tester.scen_gen.obstacle_gen">property_based_tester.scen_gen.obstacle_gen module</a><ul>
-<li><a class="reference internal" href="#id3">Generates obstacles and gathers worlds properties.</a></li>
-<li><a class="reference internal" href="#id4">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#id5">Date: July 01, 2022</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-property_based_tester.scen_gen.random_scenario_generator">property_based_tester.scen_gen.random_scenario_generator module</a><ul>
-<li><a class="reference internal" href="#id6">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#id7">Date: July 01, 2022</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-property_based_tester.scen_gen.robot_placement">property_based_tester.scen_gen.robot_placement module</a><ul>
-<li><a class="reference internal" href="#id8">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#id9">Date: July 01, 2022</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-property_based_tester.scen_gen.world_prop">property_based_tester.scen_gen.world_prop module</a><ul>
-<li><a class="reference internal" href="#extracts-information-of-the-gazebo-world">Extracts information of the gazebo world.</a></li>
-<li><a class="reference internal" href="#id10">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#id11">Date: July 01, 2022</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.force_generation">property_based_tester.scen_gen.force_generation module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.model_placement">property_based_tester.scen_gen.model_placement module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.obstacle_gen">property_based_tester.scen_gen.obstacle_gen module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.random_scenario_generator">property_based_tester.scen_gen.random_scenario_generator module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.robot_placement">property_based_tester.scen_gen.robot_placement module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.scen_gen.world_prop">property_based_tester.scen_gen.world_prop module</a></li>
 <li><a class="reference internal" href="#module-property_based_tester.scen_gen">Module contents</a></li>
 </ul>
 </li>
@@ -108,41 +80,29 @@
 </div>
 <div class="section" id="module-property_based_tester.scen_gen.force_generation">
 <span id="property-based-tester-scen-gen-force-generation-module"></span><h2>property_based_tester.scen_gen.force_generation module<a class="headerlink" href="#module-property_based_tester.scen_gen.force_generation" title="Permalink to this headline"></a></h2>
-<div class="section" id="generates-obstacles-and-gathers-worlds-properties">
-<h3>Generates obstacles and gathers worlds properties.<a class="headerlink" href="#generates-obstacles-and-gathers-worlds-properties" title="Permalink to this headline"></a></h3>
-<dl class="simple">
-<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="author-salman-omar-sohail">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#author-salman-omar-sohail" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="date-july-01-2022">
-<h3>Date: July 01, 2022<a class="headerlink" href="#date-july-01-2022" title="Permalink to this headline"></a></h3>
+<p>Obstacle Generator: Generates obstacles and gathers worlds properties.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="property_based_tester.scen_gen.force_generation.apply_force">
-<span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.force_generation.</span></span><span class="sig-name descname"><span class="pre">apply_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base_link'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randomized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/force_generation.html#apply_force"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.force_generation.apply_force" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.force_generation.</span></span><span class="sig-name descname"><span class="pre">apply_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base_link'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randomized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/force_generation.html#apply_force"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.force_generation.apply_force" title="Permalink to this definition"></a></dt>
+<dd><p>Applies a randomized force to a target entity in the Gazebo simulator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em><em>, </em><em>optional</em>) – The force to be applied in the x-axis. Defaults to 0.</p></li>
+<li><p><strong>y</strong> (<em>int</em><em>, </em><em>optional</em>) – The force to be applied in the y-axis. Defaults to 15.</p></li>
+<li><p><strong>z</strong> (<em>int</em><em>, </em><em>optional</em>) – The force to be applied in the z-axis. Defaults to 0.</p></li>
+<li><p><strong>link</strong> (<em>str</em><em>, </em><em>optional</em>) – The target link for applying the force. Defaults to ‘base_link’.</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – The amount of time to apply the force. Defaults to 10.</p></li>
+<li><p><strong>randomized</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether the force should be randomized. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-property_based_tester.scen_gen.model_placement">
 <span id="property-based-tester-scen-gen-model-placement-module"></span><h2>property_based_tester.scen_gen.model_placement module<a class="headerlink" href="#module-property_based_tester.scen_gen.model_placement" title="Permalink to this headline"></a></h2>
-<div class="section" id="a-launching-file-for-static-and-dynamic-model-placement">
-<h3>A launching file for static and dynamic model placement.<a class="headerlink" href="#a-launching-file-for-static-and-dynamic-model-placement" title="Permalink to this headline"></a></h3>
-<dl class="simple">
-<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="id1">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id2">
-<h3>Date: July 01, 2022<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>Model Placement: Static and dynamic model placement in the Gazebo simulator.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="property_based_tester.scen_gen.model_placement.delete_model">
 <span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.model_placement.</span></span><span class="sig-name descname"><span class="pre">delete_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/model_placement.html#delete_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.model_placement.delete_model" title="Permalink to this definition"></a></dt>
@@ -181,22 +141,9 @@ logger file.</p>
 </dd></dl>
 
 </div>
-</div>
 <div class="section" id="module-property_based_tester.scen_gen.obstacle_gen">
 <span id="property-based-tester-scen-gen-obstacle-gen-module"></span><h2>property_based_tester.scen_gen.obstacle_gen module<a class="headerlink" href="#module-property_based_tester.scen_gen.obstacle_gen" title="Permalink to this headline"></a></h2>
-<div class="section" id="id3">
-<h3>Generates obstacles and gathers worlds properties.<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<dl class="simple">
-<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="id4">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id5">
-<h3>Date: July 01, 2022<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>Obstacle Generator: Generates obstacles and collects worlds properties.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="property_based_tester.scen_gen.obstacle_gen.Model">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.obstacle_gen.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_real_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/obstacle_gen.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.obstacle_gen.Model" title="Permalink to this definition"></a></dt>
@@ -238,23 +185,11 @@ Sven Schneider</p>
 </dd></dl>
 
 </div>
-</div>
 <div class="section" id="module-property_based_tester.scen_gen.random_scenario_generator">
 <span id="property-based-tester-scen-gen-random-scenario-generator-module"></span><h2>property_based_tester.scen_gen.random_scenario_generator module<a class="headerlink" href="#module-property_based_tester.scen_gen.random_scenario_generator" title="Permalink to this headline"></a></h2>
-<p>The RSG will be used to generate unique and altered
-poses for the models that will be used within the
-worlds of Gazebo simulator.
-—————————————————-
-Supervisor: Prof. Dr. Nico Hochgeschwender</p>
-<blockquote>
-<div><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</div></blockquote>
-<div class="section" id="id6">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id7">
-<h3>Date: July 01, 2022<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>Random Scenario Generator (RSG): The RSG generates unique and altered
+poses for the models that will be place within the worlds of Gazebo simulator
+according to the required scenarios.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="property_based_tester.scen_gen.random_scenario_generator.Model">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.random_scenario_generator.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_real_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/random_scenario_generator.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.random_scenario_generator.Model" title="Permalink to this definition"></a></dt>
@@ -335,23 +270,10 @@ Sven Schneider</p>
 </dd></dl>
 
 </div>
-</div>
 <div class="section" id="module-property_based_tester.scen_gen.robot_placement">
 <span id="property-based-tester-scen-gen-robot-placement-module"></span><h2>property_based_tester.scen_gen.robot_placement module<a class="headerlink" href="#module-property_based_tester.scen_gen.robot_placement" title="Permalink to this headline"></a></h2>
-<p>The RSG will be used to generate unique and altered
-poses for the models that will be used within the
-worlds of Gazebo simulator.
-—————————————————-
-Supervisor: Prof. Dr. Nico Hochgeschwender</p>
-<blockquote>
-<div><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</div></blockquote>
-<div class="section" id="id8">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id9">
-<h3>Date: July 01, 2022<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>Robot Placement: Spawns the mobile robot/robotic arm in the
+Gazebo simulator.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="property_based_tester.scen_gen.robot_placement.RobotModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.robot_placement.</span></span><span class="sig-name descname"><span class="pre">RobotModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/robot_placement.html#RobotModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.robot_placement.RobotModel" title="Permalink to this definition"></a></dt>
@@ -376,22 +298,9 @@ Sven Schneider</p>
 </dd></dl>
 
 </div>
-</div>
 <div class="section" id="module-property_based_tester.scen_gen.world_prop">
 <span id="property-based-tester-scen-gen-world-prop-module"></span><h2>property_based_tester.scen_gen.world_prop module<a class="headerlink" href="#module-property_based_tester.scen_gen.world_prop" title="Permalink to this headline"></a></h2>
-<div class="section" id="extracts-information-of-the-gazebo-world">
-<h3>Extracts information of the gazebo world.<a class="headerlink" href="#extracts-information-of-the-gazebo-world" title="Permalink to this headline"></a></h3>
-<dl class="simple">
-<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="id10">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id11">
-<h3>Date: July 01, 2022<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<p>World properties: Extracts information of the gazebo world.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="property_based_tester.scen_gen.world_prop.world_state">
 <span class="sig-prename descclassname"><span class="pre">property_based_tester.scen_gen.world_prop.</span></span><span class="sig-name descname"><span class="pre">world_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/scen_gen/world_prop.html#world_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.scen_gen.world_prop.world_state" title="Permalink to this definition"></a></dt>
@@ -406,7 +315,6 @@ Sven Schneider</p>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-property_based_tester.scen_gen">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-property_based_tester.scen_gen" title="Permalink to this headline"></a></h2>

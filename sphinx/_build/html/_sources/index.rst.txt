@@ -6,22 +6,21 @@
 Welcome to Property-Based Testing: Formalized Robotic Testing for Standard Compliance's documentation!
 ======================================================================================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-.. include:: property_based_tester.configuration.rst
-.. include:: property_based_tester.nvidia_issac_sim.rst
-.. include:: property_based_tester.properties.rst
-.. include:: property_based_tester.property_based_language_generation.rst
-.. include:: property_based_tester.robot_controllers.rst
-.. include:: property_based_tester.scen_gen.rst
-.. include:: property_based_tester.temporal_cache.rst
-
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+.. include:: property_based_tester.configuration.rst
+.. include:: property_based_tester.properties.rst
+.. include:: property_based_tester.property_based_language_generation.rst
+.. include:: property_based_tester.robot_controllers.rst
+.. include:: property_based_tester.scen_gen.rst
+.. include:: property_based_tester.temporal_cache.rst

@@ -38,29 +38,15 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">property_based_tester.robot_controllers package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#property-based-tester-robot-controllers-experimental-pick-place-client-module">property_based_tester.robot_controllers.experimental_pick_place_client module</a></li>
-<li><a class="reference internal" href="#property-based-tester-robot-controllers-nav-client-module">property_based_tester.robot_controllers.nav_client module</a></li>
-<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.navigation_client">property_based_tester.robot_controllers.navigation_client module</a><ul>
-<li><a class="reference internal" href="#the-client-activates-the-mdr-navigation-module">The client activates the MDR navigation module.</a></li>
-<li><a class="reference internal" href="#author-salman-omar-sohail">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#date-july-01-2022">Date: July 01, 2022</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#property-based-tester-robot-controllers-perceive-client-module">property_based_tester.robot_controllers.perceive_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.experimental_pick_place_client">property_based_tester.robot_controllers.experimental_pick_place_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.nav_client">property_based_tester.robot_controllers.nav_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.navigation_client">property_based_tester.robot_controllers.navigation_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.perceive_client">property_based_tester.robot_controllers.perceive_client module</a></li>
 <li><a class="reference internal" href="#module-property_based_tester.robot_controllers.pick_Toyota_client">property_based_tester.robot_controllers.pick_Toyota_client module</a></li>
-<li><a class="reference internal" href="#property-based-tester-robot-controllers-pick-client-module">property_based_tester.robot_controllers.pick_client module</a></li>
-<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.pick_place_client">property_based_tester.robot_controllers.pick_place_client module</a><ul>
-<li><a class="reference internal" href="#id1">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#id2">Date: July 01, 2022</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#property-based-tester-robot-controllers-place-client-module">property_based_tester.robot_controllers.place_client module</a></li>
-<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.speed_client">property_based_tester.robot_controllers.speed_client module</a><ul>
-<li><a class="reference internal" href="#id3">The client activates the MDR navigation module.</a></li>
-<li><a class="reference internal" href="#id4">Author    : Salman Omar Sohail</a></li>
-<li><a class="reference internal" href="#id5">Date: July 01, 2022</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.pick_client">property_based_tester.robot_controllers.pick_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.pick_place_client">property_based_tester.robot_controllers.pick_place_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.place_client">property_based_tester.robot_controllers.place_client module</a></li>
+<li><a class="reference internal" href="#module-property_based_tester.robot_controllers.speed_client">property_based_tester.robot_controllers.speed_client module</a></li>
 <li><a class="reference internal" href="#module-property_based_tester.robot_controllers.xarm_moveit">property_based_tester.robot_controllers.xarm_moveit module</a></li>
 <li><a class="reference internal" href="#module-property_based_tester.robot_controllers">Module contents</a></li>
 </ul>
@@ -96,27 +82,99 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
 </div>
-<div class="section" id="property-based-tester-robot-controllers-experimental-pick-place-client-module">
-<h2>property_based_tester.robot_controllers.experimental_pick_place_client module<a class="headerlink" href="#property-based-tester-robot-controllers-experimental-pick-place-client-module" title="Permalink to this headline"></a></h2>
+<div class="section" id="module-property_based_tester.robot_controllers.experimental_pick_place_client">
+<span id="property-based-tester-robot-controllers-experimental-pick-place-client-module"></span><h2>property_based_tester.robot_controllers.experimental_pick_place_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.experimental_pick_place_client" title="Permalink to this headline"></a></h2>
+<p>Experimental pick, place client Toyota HSR: The client activates the pick and place action based
+on the default Toyota HSR client.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.experimental_pick_place_client.MoveItPickAndPlace">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.experimental_pick_place_client.</span></span><span class="sig-name descname"><span class="pre">MoveItPickAndPlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pick_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/experimental_pick_place_client.html#MoveItPickAndPlace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.experimental_pick_place_client.MoveItPickAndPlace" title="Permalink to this definition"></a></dt>
+<dd><p>Provides cartesian goal commands to the Toyota HSR to perform pick and place actions in
+the map frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pick_x</strong> (<em>int</em><em>, </em><em>optional</em>) – x-coordinates for pick action. Defaults to 0.</p></li>
+<li><p><strong>pick_y</strong> (<em>int</em><em>, </em><em>optional</em>) – y-coordinates for pick action. Defaults to 0.</p></li>
+<li><p><strong>pick_z</strong> (<em>int</em><em>, </em><em>optional</em>) – z-coordinates for pick action. Defaults to 0.</p></li>
+<li><p><strong>place_x</strong> (<em>int</em><em>, </em><em>optional</em>) – x-coordinates for place action. Defaults to 0.</p></li>
+<li><p><strong>place_y</strong> (<em>int</em><em>, </em><em>optional</em>) – y-coordinates for place action. Defaults to 0.</p></li>
+<li><p><strong>place_z</strong> (<em>int</em><em>, </em><em>optional</em>) – z-coordinates for place action. Defaults to 0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
-<div class="section" id="property-based-tester-robot-controllers-nav-client-module">
-<h2>property_based_tester.robot_controllers.nav_client module<a class="headerlink" href="#property-based-tester-robot-controllers-nav-client-module" title="Permalink to this headline"></a></h2>
+<div class="section" id="module-property_based_tester.robot_controllers.nav_client">
+<span id="property-based-tester-robot-controllers-nav-client-module"></span><h2>property_based_tester.robot_controllers.nav_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.nav_client" title="Permalink to this headline"></a></h2>
+<p>Navigation client: The client activates the MDR navigation module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.nav_client.navi_action_client">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.nav_client.</span></span><span class="sig-name descname"><span class="pre">navi_action_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/nav_client.html#navi_action_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.nav_client.navi_action_client" title="Permalink to this definition"></a></dt>
+<dd><p>Action client test for navigation using map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loc</strong> (<em>str</em>) – The location it has to go, updated in</p></li>
+<li><p><strong>goals.yaml</strong> (<em>mas_domestic_robotics &gt; mdr_environments &gt; navigation</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns boolean rarely works in my laptop.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.nav_client.pose_action_client">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.nav_client.</span></span><span class="sig-name descname"><span class="pre">pose_action_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/nav_client.html#pose_action_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.nav_client.pose_action_client" title="Permalink to this definition"></a></dt>
+<dd><p>Action client test for navigation using coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord_x</strong> (<em>float 32</em>) – x coordinate in the map for the robot to move towards.</p></li>
+<li><p><strong>coord_y</strong> (<em>float 32</em>) – y coordinate in the map for the robot to move towards.</p></li>
+<li><p><strong>direction</strong> (<em>float 32</em><em>)</em><em>(</em><em>Degrees</em>) – Direction the robot should face.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns boolean rarely works in a laptop.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.nav_client.toyota_action_client">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.nav_client.</span></span><span class="sig-name descname"><span class="pre">toyota_action_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/nav_client.html#toyota_action_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.nav_client.toyota_action_client" title="Permalink to this definition"></a></dt>
+<dd><p>Action client test for navigation using coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord_x</strong> (<em>float 32</em>) – x coordinate in the map for the robot to move towards.</p></li>
+<li><p><strong>coord_y</strong> (<em>float 32</em>) – y coordinate in the map for the robot to move towards.</p></li>
+<li><p><strong>direction</strong> (<em>float 32</em><em>)</em><em>(</em><em>Degrees</em>) – Direction the robot should face.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns boolean rarely works in a laptop.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-property_based_tester.robot_controllers.navigation_client">
 <span id="property-based-tester-robot-controllers-navigation-client-module"></span><h2>property_based_tester.robot_controllers.navigation_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.navigation_client" title="Permalink to this headline"></a></h2>
-<div class="section" id="the-client-activates-the-mdr-navigation-module">
-<h3>The client activates the MDR navigation module.<a class="headerlink" href="#the-client-activates-the-mdr-navigation-module" title="Permalink to this headline"></a></h3>
-<dl class="simple">
-<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="author-salman-omar-sohail">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#author-salman-omar-sohail" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="date-july-01-2022">
-<h3>Date: July 01, 2022<a class="headerlink" href="#date-july-01-2022" title="Permalink to this headline"></a></h3>
+<p>Navigation client: The client activates the MDR navigation module.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="property_based_tester.robot_controllers.navigation_client.single_goal_movebase">
 <span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.navigation_client.</span></span><span class="sig-name descname"><span class="pre">single_goal_movebase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_odom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'odom'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_base_link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base_link'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/navigation_client.html#single_goal_movebase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.navigation_client.single_goal_movebase" title="Permalink to this definition"></a></dt>
@@ -139,17 +197,38 @@ Sven Schneider</p>
 </dd></dl>
 
 </div>
-</div>
-<div class="section" id="property-based-tester-robot-controllers-perceive-client-module">
-<h2>property_based_tester.robot_controllers.perceive_client module<a class="headerlink" href="#property-based-tester-robot-controllers-perceive-client-module" title="Permalink to this headline"></a></h2>
+<div class="section" id="module-property_based_tester.robot_controllers.perceive_client">
+<span id="property-based-tester-robot-controllers-perceive-client-module"></span><h2>property_based_tester.robot_controllers.perceive_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.perceive_client" title="Permalink to this headline"></a></h2>
+<p>Perceive client: The client activates the perceive action based
+on the updated MDR module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.perceive_client.perceive_client">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.perceive_client.</span></span><span class="sig-name descname"><span class="pre">perceive_client</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/perceive_client.html#perceive_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.perceive_client.perceive_client" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes and runs the Toyota Human Support Robots Perception client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns True if the client successfully started.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-property_based_tester.robot_controllers.pick_Toyota_client">
 <span id="property-based-tester-robot-controllers-pick-toyota-client-module"></span><h2>property_based_tester.robot_controllers.pick_Toyota_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.pick_Toyota_client" title="Permalink to this headline"></a></h2>
-<p>Copyright (C) 2017 Toyota Motor Corporation</p>
+<p>Pick and place sample by Yoshimi_yoda: Copyright (C) 2017 Toyota Motor Corporation</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.pick_Toyota_client.</span></span><span class="sig-name descname"><span class="pre">MoveItPickAndPlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pick_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Using built in moveit commander for pick and place tasks for the Toyota HSR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>object</strong> (<em>class</em>) – Inherited class from moveit commander</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_box">
 <span class="sig-name descname"><span class="pre">add_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_Toyota_client.html#MoveItPickAndPlace.add_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_Toyota_client.MoveItPickAndPlace.add_box" title="Permalink to this definition"></a></dt>
@@ -198,25 +277,37 @@ Sven Schneider</p>
 </dd></dl>
 
 </div>
-<div class="section" id="property-based-tester-robot-controllers-pick-client-module">
-<h2>property_based_tester.robot_controllers.pick_client module<a class="headerlink" href="#property-based-tester-robot-controllers-pick-client-module" title="Permalink to this headline"></a></h2>
+<div class="section" id="module-property_based_tester.robot_controllers.pick_client">
+<span id="property-based-tester-robot-controllers-pick-client-module"></span><h2>property_based_tester.robot_controllers.pick_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.pick_client" title="Permalink to this headline"></a></h2>
+<p>Pick client: The client activates the pick action based on the MDR client.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_client.picker_client">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.pick_client.</span></span><span class="sig-name descname"><span class="pre">picker_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_client.html#picker_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_client.picker_client" title="Permalink to this definition"></a></dt>
+<dd><p>Iitialized pick action for the Toyota HSR using the MDR repository of MAS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – x-coordinates for pick action</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y-coordinates for pick action</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – z-coordinates for pick action</p></li>
+<li><p><strong>R</strong> (<em>float</em>) – r-orientation for pick action</p></li>
+<li><p><strong>P</strong> (<em>float</em>) – p-orientation for pick action</p></li>
+<li><p><strong>Y</strong> (<em>float</em>) – y-orientation for pick action</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True if action commands were successful.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-property_based_tester.robot_controllers.pick_place_client">
 <span id="property-based-tester-robot-controllers-pick-place-client-module"></span><h2>property_based_tester.robot_controllers.pick_place_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.pick_place_client" title="Permalink to this headline"></a></h2>
-<p>Copyright (C) 2017 Toyota Motor Corporation</p>
-<p>The client activates the pick and place action based
-on the default Toyota HSR client.
-—————————————————-
-Supervisor: Prof. Dr. Nico Hochgeschwender</p>
-<blockquote>
-<div><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</div></blockquote>
-<div class="section" id="id1">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id2">
-<h3>Date: July 01, 2022<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>Pick and place modified sample by Yoshimi_yoda Copyright (C) 2017 Toyota Motor Corporation</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.pick_place_client.</span></span><span class="sig-name descname"><span class="pre">MoveItPickAndPlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pick_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/pick_place_client.html#MoveItPickAndPlace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.pick_place_client.MoveItPickAndPlace" title="Permalink to this definition"></a></dt>
@@ -269,34 +360,64 @@ Sven Schneider</p>
 </dd></dl>
 
 </div>
-</div>
-<div class="section" id="property-based-tester-robot-controllers-place-client-module">
-<h2>property_based_tester.robot_controllers.place_client module<a class="headerlink" href="#property-based-tester-robot-controllers-place-client-module" title="Permalink to this headline"></a></h2>
+<div class="section" id="module-property_based_tester.robot_controllers.place_client">
+<span id="property-based-tester-robot-controllers-place-client-module"></span><h2>property_based_tester.robot_controllers.place_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.place_client" title="Permalink to this headline"></a></h2>
+<p>Place client: The client activates the MDR place action module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="property_based_tester.robot_controllers.place_client.placer_client">
+<span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.place_client.</span></span><span class="sig-name descname"><span class="pre">placer_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/place_client.html#placer_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.place_client.placer_client" title="Permalink to this definition"></a></dt>
+<dd><p>Initialized place action for the Toyota HSR using the MDR repository of MAS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – x-coordinates for place action</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y-coordinates for place action</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – z-coordinates for place action</p></li>
+<li><p><strong>R</strong> (<em>float</em>) – r-orientation for place action</p></li>
+<li><p><strong>P</strong> (<em>float</em>) – p-orientation for place action</p></li>
+<li><p><strong>Y</strong> (<em>float</em>) – y-orientation for place action</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True if action commands were successful.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-property_based_tester.robot_controllers.speed_client">
 <span id="property-based-tester-robot-controllers-speed-client-module"></span><h2>property_based_tester.robot_controllers.speed_client module<a class="headerlink" href="#module-property_based_tester.robot_controllers.speed_client" title="Permalink to this headline"></a></h2>
-<div class="section" id="id3">
-<h3>The client activates the MDR navigation module.<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<dl class="simple">
-<dt>Supervisor: Prof. Dr. Nico Hochgeschwender</dt><dd><p>Prof. Dr. Paul Ploger
-Sven Schneider</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="id4">
-<h3>Author    : Salman Omar Sohail<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id5">
-<h3>Date: July 01, 2022<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>Movement Client: The client activates the provides raw command velocity to mobile
+robots.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="property_based_tester.robot_controllers.speed_client.move">
 <span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.speed_client.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmd_vel_topic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/cmd_vel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/speed_client.html#move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.speed_client.move" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Utilizes a ROS publiser to provide raw command velocities in a given
+topic to move a mobile robot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speed</strong> (<em>int</em><em>, </em><em>optional</em>) – The value of speed that the robot should move with. Defaults to 1.</p></li>
+<li><p><strong>cmd_vel_topic</strong> (<em>str</em><em>, </em><em>optional</em>) – The receiving topic by which the robot moves. Defaults to ‘/cmd_vel’.</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – The amount of time to publish. Defaults to 5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True if publishing was successful.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-property_based_tester.robot_controllers.xarm_moveit">
 <span id="property-based-tester-robot-controllers-xarm-moveit-module"></span><h2>property_based_tester.robot_controllers.xarm_moveit module<a class="headerlink" href="#module-property_based_tester.robot_controllers.xarm_moveit" title="Permalink to this headline"></a></h2>
+<p>Moveit Client: The client that provides goal for the robotic arms in this case being xARM6.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">property_based_tester.robot_controllers.xarm_moveit.</span></span><span class="sig-name descname"><span class="pre">ManipulatorMoveit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manipulator_group_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/property_based_tester/robot_controllers/xarm_moveit.html#ManipulatorMoveit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#property_based_tester.robot_controllers.xarm_moveit.ManipulatorMoveit" title="Permalink to this definition"></a></dt>

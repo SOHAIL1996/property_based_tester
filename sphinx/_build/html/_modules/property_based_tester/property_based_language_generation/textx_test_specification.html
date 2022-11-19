@@ -64,31 +64,23 @@
 <span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">---------------------------------------------------- </span>
-<span class="sd">Property-Based Language Generator based on textX.</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
-<span class="sd">            Prof. Dr. Paul Ploger</span>
-<span class="sd">            Sven Schneider </span>
-
-<span class="sd">Author    : Salman Omar Sohail</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Date: July 16, 2022</span>
-<span class="sd">----------------------------------------------------</span>
+<span class="sd">Property-Based Language Generator: A domain specific language based on textX for mapping</span>
+<span class="sd">usecases into tests via natural language.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">textx</span> <span class="k">import</span> <span class="n">metamodel_from_file</span>
 <span class="kn">from</span> <span class="nn">property_based_tester.configuration.config</span> <span class="k">import</span> <span class="n">Configuration</span>
 
-<span class="kn">import</span> <span class="nn">pytest</span>
 <span class="kn">import</span> <span class="nn">random</span>
 
 <div class="viewcode-block" id="PropertyBasedLanguageGenerator"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator">[docs]</a><span class="k">class</span> <span class="nc">PropertyBasedLanguageGenerator</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Pre-processing of the test definitions for user tests as well as standard tests.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        self.scenario_composite_tests[0]: Contains standard information</span>
-<span class="sd">        self.scenario_composite_tests[1]: Contains standard sections information</span>
+<span class="sd">        self.scenario_composite_tests[0]:    Contains standard information</span>
+<span class="sd">        self.scenario_composite_tests[1]:    Contains standard sections information</span>
 <span class="sd">        self.scenario_composite_tests[2][0]: Contains section scenario information</span>
 <span class="sd">        self.scenario_composite_tests[2][1]: Contains section composite properties information </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -133,6 +125,16 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">scenario_composite_tests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_details</span><span class="p">)</span>        
 
 <div class="viewcode-block" id="PropertyBasedLanguageGenerator.scenario_composite_test_extractor"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator.scenario_composite_test_extractor">[docs]</a>    <span class="k">def</span> <span class="nf">scenario_composite_test_extractor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">composite_tests</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pre-processing in which the composite properties are parsed and flagged with their </span>
+<span class="sd">        test types from the inputted test definitions. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            scenario (list): The scenario designated in the test definition file.</span>
+<span class="sd">            composite_tests (list): The composite properties designate in the test definition file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: Scenario Definition (list), Composite Properties (list)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">comp</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">scen</span> <span class="o">=</span> <span class="n">scenario</span>
@@ -166,6 +168,8 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">scen</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="PropertyBasedLanguageGeneratorRandomizer"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer">[docs]</a><span class="k">class</span> <span class="nc">PropertyBasedLanguageGeneratorRandomizer</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Pre-processing of the test definitions for randomized tests.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -190,6 +194,16 @@
         <span class="c1"># print(self.rando_scenario[0][2])</span>
 
 <div class="viewcode-block" id="PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor">[docs]</a>    <span class="k">def</span> <span class="nf">scenario_composite_test_extractor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">composite_tests</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pre-processing in which the composite properties are parsed and flagged with their </span>
+<span class="sd">        test types from the inputted test definitions. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            scenario (list): The scenario designated in the test definition file.</span>
+<span class="sd">            composite_tests (list): The composite properties designate in the test definition file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: Scenario Definition (list), Composite Properties (list)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">comp</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">scen</span> <span class="o">=</span> <span class="n">scenario</span>
@@ -223,6 +237,12 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">scen</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation">[docs]</a>    <span class="k">def</span> <span class="nf">random_scenario_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pre-processing in which the the randomized scenario modifiers from the test definitions </span>
+<span class="sd">        are extracted and returned. </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: Randomized scenario modifiers</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">random_scen</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">comp_props</span> <span class="o">=</span> <span class="p">[]</span>

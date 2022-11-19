@@ -64,20 +64,8 @@
 <span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">---------------------------------------------------- </span>
-<span class="sd">Primitive properties</span>
-
-<span class="sd">Contains spatial and temporal information logged during</span>
-<span class="sd">navigation.</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
-<span class="sd">            Prof. Dr. Paul Ploger</span>
-<span class="sd">            Sven Schneider </span>
-
-<span class="sd">Author    : Salman Omar Sohail</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Date: July 01, 2022</span>
-<span class="sd">----------------------------------------------------</span>
+<span class="sd">Primitive properties: Processes spatial and temporal information logged during</span>
+<span class="sd">scenario execution.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">rospy</span>
@@ -98,14 +86,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">robot_urdf_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">robots_dir</span><span class="o">+</span><span class="s1">&#39;/urdf/&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">robot_urdf</span><span class="o">+</span><span class="s1">&#39;.urdf&#39;</span>
            
 <div class="viewcode-block" id="PrimitiveProperties.physical_information"><a class="viewcode-back" href="../../../property_based_tester.properties.html#property_based_tester.properties.primitive_properties.PrimitiveProperties.physical_information">[docs]</a>    <span class="k">def</span> <span class="nf">physical_information</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extracts the physical information of the robot such as inertia from the urdf.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># https://readthedocs.org/projects/urdfpy/downloads/pdf/latest/</span>
-        
         <span class="n">robot</span> <span class="o">=</span> <span class="n">URDF</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_urdf_file</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PrimitiveProperties.robo_spatial_temporal_information"><a class="viewcode-back" href="../../../property_based_tester.properties.html#property_based_tester.properties.primitive_properties.PrimitiveProperties.robo_spatial_temporal_information">[docs]</a>    <span class="k">def</span> <span class="nf">robo_spatial_temporal_information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39; Extracts spatial information during the entire scenario. position is based on the 0,0 of gazebo.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="sd">&quot;&quot;&quot;Extracts spatial information of the robotduring the entire scenario. Position is based on the 0,0 world frame of gazebo.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            object (str): Robot name for information extraction.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Numpy Matrix: All information of the logged data during scenario exectuion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">workspace</span><span class="o">+</span><span class="s1">&#39;/src/property_based_tester/temporal_cache/logs/test&#39;</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">])</span>
 
@@ -122,8 +117,14 @@
         <span class="k">return</span> <span class="n">robo_pos_all</span></div>
     
 <div class="viewcode-block" id="PrimitiveProperties.spatial_temporal_information"><a class="viewcode-back" href="../../../property_based_tester.properties.html#property_based_tester.properties.primitive_properties.PrimitiveProperties.spatial_temporal_information">[docs]</a>    <span class="k">def</span> <span class="nf">spatial_temporal_information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39; Extracts spatial information during the entire scenario. position is based on the 0,0 of gazebo.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="sd">&quot;&quot;&quot;Extracts spatial information during the entire scenario. Position is based on the 0,0 world frame of gazebo.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            object (str): Target entity for information extraction.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Numpy Matrix: All information of the logged data during scenario exectuion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">data_reader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">workspace</span><span class="o">+</span><span class="s1">&#39;/src/property_based_tester/temporal_cache/logs/test&#39;</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">])</span>
 
@@ -145,6 +146,17 @@
         <span class="k">return</span> <span class="n">all_orientations</span></div>
 
 <div class="viewcode-block" id="PrimitiveProperties.quaternion_to_euler_angle_vectorized2"><a class="viewcode-back" href="../../../property_based_tester.properties.html#property_based_tester.properties.primitive_properties.PrimitiveProperties.quaternion_to_euler_angle_vectorized2">[docs]</a>    <span class="k">def</span> <span class="nf">quaternion_to_euler_angle_vectorized2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts Quaternions to Euler angles.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            w (float): Quaternion 1</span>
+<span class="sd">            x (float): Quaternion 2</span>
+<span class="sd">            y (float): Quaternion 3</span>
+<span class="sd">            z (float): Quaternion 4</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Roll, Pitch, Yaw</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ysqr</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span>
 
         <span class="n">t0</span> <span class="o">=</span> <span class="o">+</span><span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span>

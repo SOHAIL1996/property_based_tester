@@ -64,19 +64,7 @@
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">---------------------------------------------------- </span>
-<span class="sd">Obstacle Generator</span>
-
-<span class="sd">Generates obstacles and gathers worlds properties.</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Supervisor: Prof. Dr. Nico Hochgeschwender</span>
-<span class="sd">            Prof. Dr. Paul Ploger</span>
-<span class="sd">            Sven Schneider </span>
-
-<span class="sd">Author    : Salman Omar Sohail</span>
-<span class="sd">----------------------------------------------------</span>
-<span class="sd">Date: July 01, 2022</span>
-<span class="sd">----------------------------------------------------</span>
+<span class="sd">Obstacle Generator: Generates obstacles and gathers worlds properties.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">rospy</span>
@@ -85,9 +73,17 @@
 <span class="kn">from</span> <span class="nn">gazebo_msgs.srv</span> <span class="k">import</span> <span class="n">ApplyBodyWrench</span> 
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Wrench</span>
 
+<div class="viewcode-block" id="apply_force"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.force_generation.apply_force">[docs]</a><span class="k">def</span> <span class="nf">apply_force</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">link</span><span class="o">=</span><span class="s1">&#39;base_link&#39;</span><span class="p">,</span><span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">randomized</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;Applies a randomized force to a target entity in the Gazebo simulator.</span>
 
-
-<div class="viewcode-block" id="apply_force"><a class="viewcode-back" href="../../../property_based_tester.scen_gen.html#property_based_tester.scen_gen.force_generation.apply_force">[docs]</a><span class="k">def</span> <span class="nf">apply_force</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">link</span><span class="o">=</span><span class="s1">&#39;base_link&#39;</span><span class="p">,</span><span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">randomized</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+<span class="sd">    Args:</span>
+<span class="sd">        x (int, optional): The force to be applied in the x-axis. Defaults to 0.</span>
+<span class="sd">        y (int, optional): The force to be applied in the y-axis. Defaults to 15.</span>
+<span class="sd">        z (int, optional): The force to be applied in the z-axis. Defaults to 0.</span>
+<span class="sd">        link (str, optional): The target link for applying the force. Defaults to &#39;base_link&#39;.</span>
+<span class="sd">        timeout (int, optional): The amount of time to apply the force. Defaults to 10.</span>
+<span class="sd">        randomized (bool, optional): Whether the force should be randomized. Defaults to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s1">&#39;/gazebo/apply_body_wrench&#39;</span><span class="p">)</span> 
         <span class="n">force</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/gazebo/apply_body_wrench&#39;</span><span class="p">,</span><span class="n">ApplyBodyWrench</span><span class="p">)</span>

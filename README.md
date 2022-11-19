@@ -26,11 +26,14 @@
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_iso23482-1_sec17.gif" width="32%"/>
   &nbsp; 
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/rovo_iso23482-1_sec11.gif" width="32%"/>
-  
 </p>
 
 <p align="center" style="border:solid #6495ED">
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/b1_iso23482-1_sec12.gif" width="32%"/>
+  &nbsp;
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/xarm6_iso23482-1_sec17.gif" width="32%"/>
+  &nbsp; 
+  <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/b1_iso23482-1_sec13.gif" width="32%"/>
 </p>
 
 ### Copyright and licence
@@ -95,7 +98,7 @@ Current available robots:
 ```
 
 ```bash
-Robot: 
+ Robot: 
    robot_urdf_name: xarm6_gripper
    robot_spawner_name: spawn_xarm6_controller.launch
 ```
@@ -107,6 +110,15 @@ Robot:
    robot_controller: rovo_standalone_controller.launch
    robot_velocity: /rovo_velocity_controller/cmd_vel
    robot_size: [1.200, 1.230, 0.530] # x,y,z in meters
+```
+
+```bash
+ Robot: 
+   robot_urdf_name: b1 # URDF name
+   robot_spawner_name: spawn_b1_wo_controller.launch
+   robot_controller: b1_standalone_controller.launch
+   robot_velocity: /b1/cmd_vel/smooth
+   robot_size: [1.10, 0.45, 0.50] # x,y,z in meters
 ```
 
 

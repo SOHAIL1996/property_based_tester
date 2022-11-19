@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- ==================== GAZEBO B1 ODOM PUBLISHER ==================== -->
+  <group ns="b1">
+    <node pkg="robot_localization" type="ekf_localization_node" name="footprint_to_odom_ekf"> 
+        <remap from="odometry/filtered" to="odom" />
+        <rosparam command="load" file="$(find champ_base)/config/ekf/footprint_to_odom.yaml" />
+    </node>
+  </group>
+</launch>

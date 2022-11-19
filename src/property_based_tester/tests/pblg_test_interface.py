@@ -90,13 +90,7 @@ class TestScenario(Base):
                             Y= pblg_config[2][0].scenario_modifier[0].sm_robot_position[0].y_ori)
             robo.robot_pose()
         except:
-            robo = RobotModel(self.config.robot_urdf,
-                            x= 0,
-                            y= 0,
-                            z= 0.12,
-                            R= 0,
-                            P= 0,
-                            Y= 0)
+            robo = RobotModel(self.config.robot_urdf, x= 0, y= 0, z= 0.12, R= 0, P= 0, Y= 0)
             robo.robot_pose()
 
         # Correcting payload spawn
@@ -133,6 +127,14 @@ class TestScenario(Base):
         """    
         multi_goal = []
         result = None
+
+        # Selecting custom frame_links for robots not following ROS conventions
+        try:
+            odom_frame = pblg_config[2][0].scenario_modifier[0].sm_robot_frames[0].odom_frame
+            base_link_frame = pblg_config[2][0].scenario_modifier[0].sm_robot_frames[0].base_link_frame
+        except:
+            odom_frame= 'odom'
+            base_link_frame= 'base_link'
         
         try:
             # Test definition goal if exists
@@ -169,10 +171,12 @@ class TestScenario(Base):
                 multi_goal.append([goals.x_pos, goals.y_pos, goals.y_ori])
             # Multi goal movebase control test
             for goal in multi_goal:
-                result = single_goal_movebase(goal[0], goal[1], goal[2], timeout=120)
+                result = single_goal_movebase(goal[0], goal[1], goal[2], custom_odom=odom_frame, 
+                                                custom_base_link=base_link_frame, timeout=30)
 
         if result == None:
-            result = single_goal_movebase(coord_x, coord_y, direction, timeout=30)   
+            result = single_goal_movebase(coord_x, coord_y, direction, custom_odom=odom_frame, 
+                                                custom_base_link=base_link_frame, timeout=30)   
                     
         os.killpg(os.getpgid(temporal_logger.pid), signal.SIGTERM) 
                

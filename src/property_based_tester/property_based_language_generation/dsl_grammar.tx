@@ -56,6 +56,7 @@ ScenarioConfiguration:
 ScenarioModifiers:   
     sm_robot_position *= RobotPosition
     sm_robot_goal *= RobotGoal
+    sm_robot_frames *= Frames
     sm_payload *= Payload
     sm_robot_velocity *= RobotVelocity
     sm_imparted_forces *= ImpartedForces
@@ -84,6 +85,11 @@ RobotGoal:
     'r_ori' r_ori = FLOAT
     'p_ori' p_ori = FLOAT
     'y_ori' y_ori = FLOAT
+;
+
+Frames:
+    "odom_frame" odom_frame = STRING 
+    "base_link_frame" base_link_frame = STRING
 ;
 
 RobotVelocity:

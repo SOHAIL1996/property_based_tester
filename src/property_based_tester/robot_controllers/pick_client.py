@@ -1,27 +1,29 @@
 #!/usr/bin/env python
 """
----------------------------------------------------- 
-Pick client
-
-The client activates the pick action based on the 
-default MDR client.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Pick client: The client activates the pick action based on the MDR client.
 """
 import rospy
 import numpy as np
 import actionlib
 
-from mdr_pickup_action.msg import PickupAction, PickupGoal
+'''Depreciated Libraries'''
+# from mdr_pickup_action.msg import PickupAction, PickupGoal
 
 def picker_client(x, y, z, R,P,Y):
+    """Iitialized pick action for the Toyota HSR using the MDR repository of MAS.
+
+    Args:
+        x (float): x-coordinates for pick action
+        y (float): y-coordinates for pick action
+        z (float): z-coordinates for pick action
+
+        R (float): r-orientation for pick action
+        P (float): p-orientation for pick action
+        Y (float): y-orientation for pick action
+
+    Returns:
+        bool: Returns True if action commands were successful.
+    """
     
     client = actionlib.SimpleActionClient('pickup_server', PickupAction)
     client.wait_for_server()

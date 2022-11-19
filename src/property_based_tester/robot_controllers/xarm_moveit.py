@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-
+"""
+Moveit Client: The client that provides goal for the robotic arms in this case being xARM6.
+"""
 import sys
 import copy
 import rospy

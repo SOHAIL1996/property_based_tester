@@ -1,19 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
----------------------------------------------------- 
-Composite Properties
-
-Culmination of composite properties that can used.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Composite Properties: Culmination of composite properties that can used.
 """
 
 from cgitb import reset
@@ -47,13 +35,13 @@ class CompositeProperties():
             a given scenario.
 
         Args:
-            target_area_min (list, optional): _description_. Defaults to [-2,-2,-2].
-            target_area_max (list, optional): _description_. Defaults to [1, 2, 2].
-            time (int, optional): _description_. Defaults to 0.
+            target_area_min (list, optional): minimum coordinates of the bounding zone. Defaults to [-2,-2,-2].
+            target_area_max (list, optional): maximum coordinates of the bounding zone. Defaults to [1, 2, 2].
+            time (int, optional): time to check the entity (currently not implemented). Defaults to 0.
             tolerance (int, optional): Safety tolerance value that robot shouldn't exceed. Defaults to 0.
 
         Returns:
-            Bool: Returns True if it stayed inside the operation zone.
+            Bool: Returns True if the robot stayed inside the operation zone.
         """
         all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
 
@@ -93,13 +81,13 @@ class CompositeProperties():
         """Composite property that ensures the robot does not wander into a forbidden zone througout the
             a given scenario.
         Args:
-            target_area_min (list, optional): _description_. Defaults to [2, 2, -1].
-            target_area_max (list, optional): _description_. Defaults to [6, 6, 2].
-            time (int, optional): _description_. Defaults to 0.
+            target_area_min (list, optional): minimum coordinates of the bounding zone. Defaults to [2, 2, -1].
+            target_area_max (list, optional): maximum coordinates of the bounding zone. Defaults to [6, 6, 2].
+            time (int, optional): time to check the entity (currently not implemented). Defaults to 0.
             tolerance (int, optional): Safety tolerance value that robot shouldn't exceed. Defaults to 0.
 
         Returns:
-            Bool: Returns True if it did not go into a forbidden zone.
+            Bool: Returns True if the robot did not go into a forbidden zone.
         """
         all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
 
@@ -136,6 +124,17 @@ class CompositeProperties():
             return True
 
     def must_be_near_to(self, object='jackal_robot', target_object='convex_5cm', req_dis=6, tolerance=0):
+        """Composite property that checks whether the robot is in a given square vicnity.
+
+        Args:
+            object (str, optional): The main entity to check the euclidean distance to other object. Defaults to 'jackal_robot'.
+            target_object (str, optional): The entity against which the euclidean distance is measured. Defaults to 'convex_5cm'.
+            req_dis (int, optional): The minimum distance required between the entities. Defaults to 6.
+            tolerance (int, optional): +/- values for required distance. Defaults to 0.
+
+        Returns:
+            Bool: Returns True if the main entity is near to the target entity.
+        """
         
         all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
         target_object = self.primitive_properties.spatial_temporal_information(target_object)
@@ -158,7 +157,17 @@ class CompositeProperties():
             return True
 
     def must_not_be_near_to(self, object='jackal_robot', target_object='convex_5cm', req_dis=6, tolerance=0):
+        """Composite property that checks whether the robot is not in a given square vicnity.
 
+        Args:
+            object (str, optional): The main entity to check the euclidean distance to other object. Defaults to 'jackal_robot'.
+            target_object (str, optional): The entity against which the euclidean distance is measured. Defaults to 'convex_5cm'.
+            req_dis (int, optional): The minimum distance required between the entities. Defaults to 6.
+            tolerance (int, optional): +/- values for required distance. Defaults to 0.
+
+        Returns:
+            Bool: Returns True if the main entity is not near to the target entity.
+        """
         all_robot_position = self.primitive_properties.robo_spatial_temporal_information(object)
         target_object = self.primitive_properties.spatial_temporal_information(target_object)
         result = []
@@ -183,9 +192,9 @@ class CompositeProperties():
         """Composite property that ensures the object is in the correct orientation.
 
         Args:
-            orientation (list, optional): _description_. Defaults to [25, 25, 360].
-            time (int, optional): _description_. Defaults to 0.
-            tolerance (int, optional): Safety tolerance value that robot shouldn't exceed. Defaults to 0.
+            orientation (list, optional): the orientation of the target entity. Defaults to [25, 25, 360].
+            time (int, optional): specific time step to check orientation of the entity. Defaults to 0.
+            tolerance (int, optional): Extra safety tolerance value that robot shouldn't exceed. Defaults to 0.
 
         Returns:
             Bool: Returns True if the object orientation was correct.
@@ -213,7 +222,20 @@ class CompositeProperties():
             return True
 
     def must_collide(self, robot, object, robot_position=[0,2,0], target_area_min=[-1,-1,0], target_area_max=[2,2,0], time=0, tolerance=0):
+        """Composite property that checks for collision of the robot using axis aligned bounding box method.
 
+        Args:
+            robot (str): The robot
+            object (str): The entity to check against
+            robot_position (list, optional): Robots current position. Defaults to [0,2,0].
+            target_area_min (list, optional): Entities bounding box size minimum coordinates. Defaults to [-1,-1,0].
+            target_area_max (list, optional): Entities bounding box size maximum coordinates. Defaults to [2,2,0].
+            time (int, optional): Time to check at. Defaults to 0.
+            tolerance (int, optional): Allowable tolerance. Defaults to 0.
+
+        Returns:
+            Bool: Returns True if the robot collided with target entity.
+        """
         robot_size_min_x_coord = (-1*self.config.robot_size[0]/2) + tolerance + robot_position[0]
         robot_size_min_y_coord = (-1*self.config.robot_size[1]/2) + tolerance + robot_position[1]
         robot_size_min_z_coord = (-1*self.config.robot_size[2]/2) + tolerance + robot_position[2]
@@ -245,9 +267,32 @@ class CompositeProperties():
             return False
 
     def must_not_collide(self, robot, object):
+        """Composite property that checks for collision of the robot using axis aligned bounding box method.
+
+        Args:
+            robot (str): The robot
+            object (str): The entity to check against
+            robot_position (list, optional): Robots current position. Defaults to [0,2,0].
+            target_area_min (list, optional): Entities bounding box size minimum coordinates. Defaults to [-1,-1,0].
+            target_area_max (list, optional): Entities bounding box size maximum coordinates. Defaults to [2,2,0].
+            time (int, optional): Time to check at. Defaults to 0.
+            tolerance (int, optional): Allowable tolerance. Defaults to 0.
+
+        Returns:
+            Bool: Returns True if the robot did not collide with target entity.
+        """
         pass
 
-    def must_have_collision_force_less_than(self, forces_applied, threshhold):
+    def must_have_collision_force_less_than(self, forces_applied:float, threshhold:float):
+        """Composite property that checks the collision force of a robot with an entity. It requires a collision sensor.
+
+        Args:
+            forces_applied (float): The maximum allowable force.
+            threshhold (float): Allowable tolerance.
+
+        Returns:
+            Bool: Returns True if the robot collided with target entity.
+        """
         result = []
         try:
             for force in forces_applied:
@@ -277,9 +322,10 @@ class CompositeProperties():
 
 
 if __name__ == '__main__':
-    u = CompositeProperties()
+    # u = CompositeProperties()
     # print(u.must_be_at())
     # print(u.must_be_near_to())
     # print(u.must_not_be_at())
     # print(u.must_have_orientation(object='pay_load_square', orientation=[15, 15, 360], time=0, tolerance=1))
-    print(u.must_have_orientation(object='husky', orientation=[6, 6, 360], time=0, tolerance=1))
+    # print(u.must_have_orientation(object='husky', orientation=[6, 6, 360], time=0, tolerance=1))
+    pass

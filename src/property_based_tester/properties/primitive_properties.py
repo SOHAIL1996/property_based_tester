@@ -1,20 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
----------------------------------------------------- 
-Primitive properties
-
-Contains spatial and temporal information logged during
-navigation.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Primitive properties: Processes spatial and temporal information logged during
+scenario execution.
 """
 
 import rospy
@@ -35,14 +23,21 @@ class PrimitiveProperties():
         self.robot_urdf_file = self.config.robots_dir+'/urdf/'+self.config.robot_urdf+'.urdf'
            
     def physical_information(self):
+        """Extracts the physical information of the robot such as inertia from the urdf.
+        """
 
         # https://readthedocs.org/projects/urdfpy/downloads/pdf/latest/
-        
         robot = URDF.load(self.robot_urdf_file)
 
     def robo_spatial_temporal_information(self, object):
-        ''' Extracts spatial information during the entire scenario. position is based on the 0,0 of gazebo.
-        '''
+        """Extracts spatial information of the robotduring the entire scenario. Position is based on the 0,0 world frame of gazebo.
+
+        Args:
+            object (str): Robot name for information extraction.
+
+        Returns:
+            Numpy Matrix: All information of the logged data during scenario exectuion.
+        """
         data = data_reader(self.config.workspace+'/src/property_based_tester/temporal_cache/logs/test')
         data = data.drop(columns=['Unnamed: 0'])
 
@@ -59,8 +54,14 @@ class PrimitiveProperties():
         return robo_pos_all
     
     def spatial_temporal_information(self, object):
-        ''' Extracts spatial information during the entire scenario. position is based on the 0,0 of gazebo.
-        '''
+        """Extracts spatial information during the entire scenario. Position is based on the 0,0 world frame of gazebo.
+
+        Args:
+            object (str): Target entity for information extraction.
+
+        Returns:
+            Numpy Matrix: All information of the logged data during scenario exectuion.
+        """
         data = data_reader(self.config.workspace+'/src/property_based_tester/temporal_cache/logs/test')
         data = data.drop(columns=['Unnamed: 0'])
 
@@ -82,6 +83,17 @@ class PrimitiveProperties():
         return all_orientations
 
     def quaternion_to_euler_angle_vectorized2(self, w, x, y, z):
+        """Converts Quaternions to Euler angles.
+
+        Args:
+            w (float): Quaternion 1
+            x (float): Quaternion 2
+            y (float): Quaternion 3
+            z (float): Quaternion 4
+
+        Returns:
+            float: Roll, Pitch, Yaw
+        """
         ysqr = y * y
 
         t0 = +2.0 * (w * x + y * z)

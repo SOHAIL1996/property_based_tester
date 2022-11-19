@@ -1,19 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
----------------------------------------------------- 
-Property-Based Test
-
-Tests robots in diverse scenarios.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Property-Based Test: Tests for mobile robots and robotic arms using the Property-Based Language Generator in 
+randomized scenarios.
 """
 
 import random

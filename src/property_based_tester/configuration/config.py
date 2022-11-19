@@ -2,19 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
----------------------------------------------------- 
-Utilities
-
 Provides miscellaneous utility functions.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
 """
 
 import yaml
@@ -28,7 +16,7 @@ import rospkg
 
 
 class Configuration():
-    """It extracts information from the configuration file.
+    """It extracts information from the property-based-tester parameter yaml file for controller information.
     """    
     def __init__(self):
         

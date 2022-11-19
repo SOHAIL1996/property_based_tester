@@ -1,26 +1,29 @@
 #!/usr/bin/env python
-"""
----------------------------------------------------- 
-Place client
-
-The client activates the MDR place action module.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+""" 
+Place client: The client activates the MDR place action module.
 """
 import rospy
 import actionlib
 import numpy as np
 
-from mdr_place_action.msg import PlaceAction, PlaceGoal
+'''Depreciated Libraries'''
+# from mdr_place_action.msg import PlaceAction, PlaceGoal
 
 def placer_client(x, y, z, R,P,Y):
+    """Initialized place action for the Toyota HSR using the MDR repository of MAS.
+
+    Args:
+        x (float): x-coordinates for place action
+        y (float): y-coordinates for place action
+        z (float): z-coordinates for place action
+
+        R (float): r-orientation for place action
+        P (float): p-orientation for place action
+        Y (float): y-orientation for place action
+
+    Returns:
+        bool: Returns True if action commands were successful.
+    """
     rospy.init_node('place_action_client_test')
 
     client = actionlib.SimpleActionClient('place_server', PlaceAction)
@@ -58,4 +61,3 @@ def placer_client(x, y, z, R,P,Y):
 
     rospy.loginfo(client.get_result())
     return True
-

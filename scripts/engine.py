@@ -1,19 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
----------------------------------------------------- 
-Engine
-
-Starter module for the test suite.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+""" 
+Engine: Starter module for the revised property-based testing suite.
 """
 import subprocess
 import rospy

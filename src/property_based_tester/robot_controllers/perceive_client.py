@@ -1,26 +1,21 @@
 #! /usr/bin/env python
 """
----------------------------------------------------- 
-Perceive client
-
-The client activates the perceive action based
+Perceive client: The client activates the perceive action based
 on the updated MDR module.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
 """
 import rospy
 import actionlib
-from mdr_perceive_plane_action.msg import PerceivePlaneAction, PerceivePlaneGoal  
-from hsrb_interface import Robot
+
+'''Depreciated Libraries'''
+# from mdr_perceive_plane_action.msg import PerceivePlaneAction, PerceivePlaneGoal 
+# from hsrb_interface import Robot 
     
 def perceive_client():
+    """Initializes and runs the Toyota Human Support Robots Perception client.
+
+    Returns:
+        bool: Returns True if the client successfully started.
+    """
 
     robot = Robot()
     whole_body = robot.get('whole_body')
@@ -36,6 +31,5 @@ def perceive_client():
         client.send_goal(goal)
         client.wait_for_result(rospy.Duration.from_sec(int(timeout)))
     except:
-        return False
-    
+        return False  
     return True

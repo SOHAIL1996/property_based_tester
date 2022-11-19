@@ -1,24 +1,24 @@
 #!/usr/bin/env python
 """
----------------------------------------------------- 
-Movement client
-
-The client activates the MDR navigation module.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Movement Client: The client activates the provides raw command velocity to mobile
+robots.
 """
 import time
 import rospy
 from geometry_msgs.msg import Twist
 
 def move(speed=1, cmd_vel_topic='/cmd_vel', timeout=5):
+    """Utilizes a ROS publiser to provide raw command velocities in a given
+    topic to move a mobile robot.
+
+    Args:
+        speed (int, optional): The value of speed that the robot should move with. Defaults to 1.
+        cmd_vel_topic (str, optional): The receiving topic by which the robot moves. Defaults to '/cmd_vel'.
+        timeout (int, optional): The amount of time to publish. Defaults to 5.
+
+    Returns:
+        bool: Returns True if publishing was successful.
+    """
 
     velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
     vel_msg = Twist()

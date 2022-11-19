@@ -1,31 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
----------------------------------------------------- 
-Property-Based Language Generator based on textX.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 16, 2022
-----------------------------------------------------
+Property-Based Language Generator: A domain specific language based on textX for mapping
+usecases into tests via natural language.
 """
 
 from textx import metamodel_from_file
 from property_based_tester.configuration.config import Configuration
 
-import pytest
 import random
 
 class PropertyBasedLanguageGenerator():
+    """Pre-processing of the test definitions for user tests as well as standard tests.
+    """
 
     def __init__(self):
         """
-        self.scenario_composite_tests[0]: Contains standard information
-        self.scenario_composite_tests[1]: Contains standard sections information
+        self.scenario_composite_tests[0]:    Contains standard information
+        self.scenario_composite_tests[1]:    Contains standard sections information
         self.scenario_composite_tests[2][0]: Contains section scenario information
         self.scenario_composite_tests[2][1]: Contains section composite properties information 
         """
@@ -70,6 +62,16 @@ class PropertyBasedLanguageGenerator():
                 self.scenario_composite_tests.append(test_details)        
 
     def scenario_composite_test_extractor(self, scenario, composite_tests):
+        """Pre-processing in which the composite properties are parsed and flagged with their 
+        test types from the inputted test definitions. 
+
+        Args:
+            scenario (list): The scenario designated in the test definition file.
+            composite_tests (list): The composite properties designate in the test definition file.
+
+        Returns:
+            tuple: Scenario Definition (list), Composite Properties (list)
+        """
 
         comp = []
         scen = scenario
@@ -103,6 +105,8 @@ class PropertyBasedLanguageGenerator():
         return (scen, comp)
 
 class PropertyBasedLanguageGeneratorRandomizer():
+    """Pre-processing of the test definitions for randomized tests.
+    """
 
     def __init__(self):
 
@@ -127,6 +131,16 @@ class PropertyBasedLanguageGeneratorRandomizer():
         # print(self.rando_scenario[0][2])
 
     def scenario_composite_test_extractor(self, scenario, composite_tests):
+        """Pre-processing in which the composite properties are parsed and flagged with their 
+        test types from the inputted test definitions. 
+
+        Args:
+            scenario (list): The scenario designated in the test definition file.
+            composite_tests (list): The composite properties designate in the test definition file.
+
+        Returns:
+            tuple: Scenario Definition (list), Composite Properties (list)
+        """
 
         comp = []
         scen = scenario
@@ -160,6 +174,12 @@ class PropertyBasedLanguageGeneratorRandomizer():
         return (scen, comp)
 
     def random_scenario_generation(self):
+        """Pre-processing in which the the randomized scenario modifiers from the test definitions 
+        are extracted and returned. 
+
+        Returns:
+            list: Randomized scenario modifiers
+        """
 
         random_scen = []
         comp_props = []

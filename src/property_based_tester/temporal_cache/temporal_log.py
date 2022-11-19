@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
----------------------------------------------------- 
-Logs the temporal properties of the models.
-
-Starter module for the source code.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Temporal Logger: Logs the temporal properties of the scenario entities in a csv file.
 """
 import numpy as np
 import pandas as pd

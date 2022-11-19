@@ -1,19 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
----------------------------------------------------- 
-Logs the temporal properties of the models.
-
-Starter module for the source code.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Data Depot: Logs the temporal properties of the models.
 """
 import numpy as np
 import pandas as pd
@@ -28,7 +16,7 @@ def world_state_extractor():
         """It extracts the information of all models in the gazebo world.
 
         Returns:
-            [list]: Returns list of all relevant information
+            list: Returns list of all relevant information
         """        
         now = datetime.now()
         # logs_objects = [['Models', 'X-pos','Y-pos','Z-pos','Q-1','Q-2','Q-3','Q-4','Time']]
@@ -169,6 +157,3 @@ def object_information(object_name, action):
     object_properties = end_action_model_states.loc[object_name]
     object_properties = object_properties.values.tolist()[1:] 
     return object_properties
-
-
-    

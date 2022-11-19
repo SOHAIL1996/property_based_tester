@@ -1,19 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
----------------------------------------------------- 
-World properties
-
-Extracts information of the gazebo world.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+""" 
+World properties: Extracts information of the gazebo world.
 """
 
 import rospy
@@ -82,4 +70,3 @@ def world_state():
     except rospy.ServiceException as e:
         print(colored('Cannot acquire Model State.','red')) 
     return 
-

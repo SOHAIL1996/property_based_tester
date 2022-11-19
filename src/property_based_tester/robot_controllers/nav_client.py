@@ -1,28 +1,18 @@
 #!/usr/bin/env python
 """
----------------------------------------------------- 
-Navigation client
-
-The client activates the MDR navigation module.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+Navigation client: The client activates the MDR navigation module.
 """
 import numpy as np
 import rospy
 import actionlib
 import std_msgs.msg
-import hsrb_interface
 
 from control_msgs.msg import JointTrajectoryControllerState
 from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
-from mdr_move_base_action.msg import MoveBaseAction, MoveBaseGoal
+
+'''Depreciated Libraries'''
+# import hsrb_interface
+# from mdr_move_base_action.msg import MoveBaseAction, MoveBaseGoal
 
 def navi_action_client(location):
     """Action client test for navigation using map.

@@ -1,9 +1,6 @@
 #!/usr/bin/env python2
 """
----------------------------------------------------- 
-Pick and place sample by Yoshimi_yoda 
-
-Copyright (C) 2017 Toyota Motor Corporation
+Pick and place sample by Yoshimi_yoda: Copyright (C) 2017 Toyota Motor Corporation
 """
 from copy import deepcopy
 import math
@@ -19,7 +16,13 @@ import trajectory_msgs.msg
 
 
 class MoveItPickAndPlace(object):
+    """Using built in moveit commander for pick and place tasks for the Toyota HSR.
+
+    Args:
+        object (class): Inherited class from moveit commander
+    """
     def __init__(self, pick_x = 0, pick_y = 0, pick_z = 0, place_x = 0, place_y = 0, place_z = 0,wait=0.0):
+
         # initialize
         moveit_commander.roscpp_initialize(sys.argv)
         # rospy.init_node("moveit_demo", anonymous=True)
@@ -90,6 +93,7 @@ class MoveItPickAndPlace(object):
         head.go()
 
     def pick(self, target, grasps):
+
         n_attempts = 0
         max_pick_attempts = 10
         result = None

@@ -2,30 +2,30 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2017 Toyota Motor Corporation
 """
----------------------------------------------------- 
-Experimental pick, place client
-
-The client activates the pick and place action based
+Experimental pick, place client Toyota HSR: The client activates the pick and place action based
 on the default Toyota HSR client.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
 """
 import math
 
-
-import hsrb_interface
-from hsrb_interface import geometry
-import tmc_interactive_grasp_planner.srv
+'''Depreciated Libraries'''
+# import hsrb_interface
+# from hsrb_interface import geometry
+# import tmc_interactive_grasp_planner.srv
 
 
 def MoveItPickAndPlace(pick_x = 0, pick_y = 0, pick_z = 0, place_x = 0, place_y = 0, place_z = 0):
+    """Provides cartesian goal commands to the Toyota HSR to perform pick and place actions in 
+    the map frame
+
+    Args:
+        pick_x (int, optional): x-coordinates for pick action. Defaults to 0.
+        pick_y (int, optional): y-coordinates for pick action. Defaults to 0.
+        pick_z (int, optional): z-coordinates for pick action. Defaults to 0.
+
+        place_x (int, optional): x-coordinates for place action. Defaults to 0.
+        place_y (int, optional): y-coordinates for place action. Defaults to 0.
+        place_z (int, optional): z-coordinates for place action. Defaults to 0.
+    """
     # Prepare hsrb_interface
     robot = hsrb_interface.Robot()
     whole_body = robot.get("whole_body")
@@ -53,4 +53,3 @@ def MoveItPickAndPlace(pick_x = 0, pick_y = 0, pick_z = 0, place_x = 0, place_y 
     # Grasp
     # gripper.grasp(-0.01)
     # whole_body.move_to_neutral()
-    

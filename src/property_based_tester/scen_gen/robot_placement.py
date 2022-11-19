@@ -1,21 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
----------------------------------------------------- 
-Random Scenario Generator (RSG)
-
-The RSG will be used to generate unique and altered
-poses for the models that will be used within the
-worlds of Gazebo simulator.
-----------------------------------------------------
-Supervisor: Prof. Dr. Nico Hochgeschwender
-            Prof. Dr. Paul Ploger
-            Sven Schneider 
-
-Author    : Salman Omar Sohail
-----------------------------------------------------
-Date: July 01, 2022
-----------------------------------------------------
+""" 
+Robot Placement: Spawns the mobile robot/robotic arm in the 
+Gazebo simulator. 
 """
 import os
 import numpy as np

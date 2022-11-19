@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="world_name" default="$(find property_based_tester)/environment/worlds/plane_world.world" />
+
+  <!-- Launch Gazebo with the specified world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="world_name" value="$(arg world_name)" />
+  </include>
+
+  <!-- B1 Config-->
+  <arg name="robot_name"             default="b1"/> 
+  <arg name="rviz"                   default="false"/> 
+  <arg name="gazebo"                 default="true"/> 
+  <arg name="lite"                   default="false" /> 
+  <arg name="joint_controller_topic" default="joint_group_position_controller/command"/>
+  <arg name="ros_control_file"       default="$(find b1_gazebo)/config/ros_control/ros_control.yaml" /> 
+  <arg name="hardware_connected"     default="false"/>
+  <arg name="close_loop_odom"        default="true"/>
+  <arg name="base_frame"             default="base"/>
+  <arg name="joints_map_file"        default="$(find b1_gazebo)/config/joints/joints.yaml"/> 
+  <arg name="links_map_file"         default="$(find b1_gazebo)/config/links/links.yaml"/> 
+  <arg name="gait_config_file"       default="$(find b1_gazebo)/config/gait/gait.yaml"/> 
+  <arg name="description_file"       default="$(find property_based_tester)/environment/robots/urdf/b1.urdf"/> 
+  <arg name="has_imu"                default="true" /> 
+  <arg name="publish_joint_control"  default="true" /> 
+  <arg name="publish_foot_contacts"  default="false"/>
+  <arg name="publish_odom_tf"        default="true"/>
+  <arg name="laser"                  default="sim"/> 
+
+  <group ns="$(arg robot_name)">
+    <param name="tf_prefix" value="$(arg robot_name)"/>
+    <param if="$(arg gazebo)" name="use_sim_time" value="true"/>
+
+    <!-- ==================== LOAD PARAMETERS ==================== -->
+    <param name="robot_description" textfile="$(arg description_file)"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <param name="use_tf_static"     value="false"/>
+        <!-- <param name="publish_frequency" value="200"/> -->
+        <param name="ignore_timestamp" value="true"/>
+    </node>
+   
+    <rosparam command="load" ns="gait"       file="$(arg gait_config_file)" />
+    <rosparam command="load" ns="links_map"  file="$(arg links_map_file)" />
+    <rosparam command="load" ns="joints_map" file="$(arg joints_map_file)" />
+
+    <!-- ==================== CONTROLLER ==================== -->
+    <include file="$(find champ_bringup)/launch/include/velocity_smoother.launch" />
+    <node unless="$(arg lite)" pkg="champ_base" name="champ_controller" type="quadruped_controller_node" output="screen">
+        <param                                    name="gazebo"                 value="$(arg gazebo)" />
+        <param if="$(arg hardware_connected)"     name="publish_joint_states"   value="false" />
+        <param unless="$(arg hardware_connected)" name="publish_joint_states"   value="true" />
+        <param                                    name="publish_foot_contacts"  value="$(arg publish_foot_contacts)" />
+        <param                                    name="publish_joint_control"  value="$(arg publish_joint_control)" />
+        <param                                    name="joint_controller_topic" value="$(arg joint_controller_topic)" />
+    </node>
+
+    <!-- ==================== STATE ESTIMATION ==================== -->
+    <node pkg="champ_base" name="state_estimator" type="state_estimation_node" output="screen">
+        <param if="$(arg gazebo)" name="orientation_from_imu" value="true"/>            
+    </node>
+
+    <node pkg="robot_localization" type="ekf_localization_node" name="base_to_footprint_ekf"> 
+        <remap from="odometry/filtered" to="odom/local" />
+        <param name="base_link_frame" value="$(arg base_frame)" />
+        <rosparam command="load" file="$(find champ_base)/config/ekf/base_to_footprint.yaml" />
+    </node>
+
+
+    <!-- Manually reset B1 odom in standalone launcher -->
+    <!-- <node if="$(arg publish_odom_tf)" pkg="robot_localization" type="ekf_localization_node" name="footprint_to_odom_ekf"> 
+        <remap from="odometry/filtered" to="odom" />
+        <rosparam command="load" file="$(find champ_base)/config/ekf/footprint_to_odom.yaml" />
+    </node> -->
+
+  </group>
+  
+  <!-- ==================== GAZEBO CONTROLLER ==================== -->
+  <group ns="$(arg robot_name)">
+    <rosparam file="$(arg ros_control_file)" command="load"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+        joint_states_controller
+        joint_group_position_controller">
+    </node>
+    <node pkg="champ_gazebo" name="contact_sensor" type="contact_sensor" output="screen"/>
+  </group>
+
+</launch>

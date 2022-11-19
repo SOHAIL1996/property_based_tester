@@ -1982,7 +1982,7 @@
           <ray>
             <scan>
               <horizontal>
-                <samples>220</samples> <!-- 512 default-->
+                <samples>220</samples> 
                 <resolution>1</resolution>
                 <min_angle>-3.1415926535897931</min_angle>
                 <max_angle>3.1415926535897931</max_angle>
@@ -2008,6 +2008,5 @@
             <gaussianNoise>0.008</gaussianNoise>
           </plugin>
         </sensor>
-    </gazebo>
-  
+    </gazebo> 
 </robot>

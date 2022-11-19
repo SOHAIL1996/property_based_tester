@@ -19,12 +19,12 @@
 #    robot_velocity: /jackal_velocity_controller/cmd_vel
 #    robot_size: [0.990, 0.670, 0.390] # x,y,z in meters
 
- Robot: 
-   robot_urdf_name: husky # URDF name
-   robot_spawner_name: spawn_husky_wo_controller.launch
-   robot_controller: husky_standalone_controller.launch
-   robot_velocity: /husky_velocity_controller/cmd_vel
-   robot_size: [0.580, 0.430, 0.250] # x,y,z in meters
+#  Robot: 
+#    robot_urdf_name: husky # URDF name
+#    robot_spawner_name: spawn_husky_wo_controller.launch
+#    robot_controller: husky_standalone_controller.launch
+#    robot_velocity: /husky_velocity_controller/cmd_vel
+#    robot_size: [0.580, 0.430, 0.250] # x,y,z in meters
 
 #  Robot: 
 #    robot_urdf_name: rovo # URDF name
@@ -32,3 +32,10 @@
 #    robot_controller: rovo_standalone_controller.launch
 #    robot_velocity: /rovo_velocity_controller/cmd_vel
 #    robot_size: [1.200, 1.230, 0.530] # x,y,z in meters
+
+ Robot: 
+   robot_urdf_name: b1 # URDF name
+   robot_spawner_name: spawn_b1_wo_controller.launch
+   robot_controller: b1_standalone_controller.launch
+   robot_velocity: /b1/cmd_vel/smooth
+   robot_size: [1.10, 0.45, 0.50] # x,y,z in meters

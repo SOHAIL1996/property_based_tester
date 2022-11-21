@@ -1,5 +1,11 @@
 # Property-Based Testing: Formalized Robotic Testing for Standard Compliance
 
+## Copyright and licence
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)[![DOI](https://zenodo.org/badge/451905367.svg)](10.1109/ECMR50962.2021.9568837)
+
+Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
+
 <p align="center" style="border:solid #6495ED">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/iso-23482-1_11.2.gif" width="100%"/>
 </p>
@@ -35,12 +41,6 @@
   &nbsp; 
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/b1_iso23482-1_sec13.gif" width="32%"/>
 </p>
-
-### Copyright and licence
-
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
-Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 ### Author 
 

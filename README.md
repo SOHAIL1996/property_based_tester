@@ -58,8 +58,8 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 
 ## Code Documentation
-![Salman Omar Sohail](https://img.shields.io/badge/maintainer-theMaintainer-blue)
-![maintenance-status](https://img.shields.io/badge/maintenance-passively--maintained-yellowgreen.svg)
+![maintenance-status](https://img.shields.io/badge/Maintenance-passively--maintained-yellowgreen.svg)
+![maintainer](https://img.shields.io/badge/Maintainer-Salman-blue)
 
 > [Docs: Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://htmlpreview.github.io/?https://github.com/SOHAIL1996/property_based_tester/blob/main/sphinx/_build/html/index.html)
 
@@ -298,7 +298,7 @@ These constitute the bare minimum requirements to run this package.
 
 ---
 
-The simulator bugging out can be caused by fast physics rendering.  Turn the [real time physics](https://classic.gazebosim.org/tutorials?tut=physics_params&cat=physics) simulation down to get better results.
+The simulator bugging out can be caused by fast physics rendering.  Turn the [real time factor](https://classic.gazebosim.org/tutorials?tut=physics_params&cat=physics) of the physics simulatior down to get better results.
 
 ## Movebase not working
 

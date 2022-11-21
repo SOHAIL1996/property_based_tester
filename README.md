@@ -42,13 +42,15 @@
 
 Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
+---
+
 ### Author 
 
 *Salman Omar Sohail*
 
 ### Co-authors
 
-*Prof. Dr. Nico Hochgeschwender, Prof. Dr. Paul G. Pl ̈oger, Sven Schneider*
+*Prof. Dr. Nico Hochgeschwender, Prof. Dr. Paul G. Pl ̈oger, M.Sc. Sven Schneider*
 
 ## Framework Overview
 
@@ -56,8 +58,10 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 
 ## Code Documentation
+![Salman Omar Sohail](https://img.shields.io/badge/maintainer-theMaintainer-blue)
+![maintenance-status](https://img.shields.io/badge/maintenance-passively--maintained-yellowgreen.svg)
 
-[Docs: Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://htmlpreview.github.io/?https://github.com/SOHAIL1996/property_based_tester/blob/main/sphinx/_build/html/index.html)
+> [Docs: Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://htmlpreview.github.io/?https://github.com/SOHAIL1996/property_based_tester/blob/main/sphinx/_build/html/index.html)
 
 ## Running Framework (Hypothesis|ROS|Gazebo|Allure|TextX)
 
@@ -125,6 +129,7 @@ Current available robots:
    robot_size: [1.10, 0.45, 0.50] # x,y,z in meters
 ```
 
+---
 
 <p align="center">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif" />
@@ -231,7 +236,11 @@ rosrun xacro xacro -o model.urdf model.urdf.xacro
 Supervised by:
  - Prof. Dr. Nico Hochgeschwender
  - Prof. Dr. Paul G. Pl ̈oger
- - Sven Schneider
+ - M.Sc. Sven Schneider
+ 
+Resource Provision:
+
+ - [MYBOTSHOP](https://mybotshop.de/)
 
 ## Software Requirements
 
@@ -267,9 +276,10 @@ Supervised by:
 * [xARM6](https://github.com/xArm-Developer/xarm_ros)
 * [Ouster](https://github.com/ouster-lidar/ouster-ros)
 * [Gazebo-pkgs](https://github.com/JenniferBuehler/gazebo-pkgs)
-* `yocs_cmd_vel_mux package`
-* `MBS ROVO2`
-* `RoboticsGroup_gazebo_plugins`
+* `MBS ROVO2` (Closed source)
+* `Quadruped B1` (Closed source)
+* [Yocs Velocity Smoother](https://github.com/yujinrobot/yujin_ocs/tree/devel/yocs_cmd_vel_mux)
+* [RoboticsGroup Gazebo Plugins](https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins)
 
 ## Hardware Requirements
 
@@ -280,11 +290,15 @@ These constitute the bare minimum requirements to run this package.
 * `Nvidia GeForce RTX 3060`
 * `250 Gb SSD`
 
-# Issues
+# Known Issues
 
 <p align="center" style="border:solid #6495ED">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/rovo_physics_simulator_bug.gif" width="100%"/>
 </p>
+
+---
+
+The simulator bugging out can be caused by fast physics rendering.  Turn the [real time physics](https://classic.gazebosim.org/tutorials?tut=physics_params&cat=physics) simulation down to get better results.
 
 ## Movebase not working
 

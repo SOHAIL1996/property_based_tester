@@ -1,17 +1,10 @@
-# This CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to generate yours today!
-
 cff-version: 1.2.0
-message:  "If you use this software, please cite it as below."
-  If you use this software, please cite it using the
-  metadata from this file.
-type: software
+message: "If you use this software, please cite it as below."
 authors:
   - given-names: Salman Omar
     family-names: Sohail
     email: salman.omar.sohail@gmail.com
     affiliation: Hochschule Bonn Rhein Sieg
-
 title: Property-Based Testing in Simulation for Verifying Robot Action Execution in Tabletop Manipulation
 version: 2.0.4
 doi: 10.1109/ECMR50962.2021.9568837

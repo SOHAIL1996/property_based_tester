@@ -1,0 +1,403 @@
+Test_definitions (S)
+    standard 'ISO 23482-1'
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check forward ascent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos -0.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                manual_speed true
+                    robot_speed 100.0
+                    speed_duration 5.0
+                dead_time 5
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1 
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check cross ascent 6 deg slope at 45 deg'
+                robot_position 
+                    x_pos 0
+                    y_pos -0.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 45
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                manual_speed true
+                    robot_speed 100.0
+                    speed_duration 5.0
+                dead_time 5
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1 
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check forward descent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos 5.6
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 0
+                    y_ori -90
+                robot_goal 
+                    x_pos -2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                manual_speed true
+                    robot_speed 100.0
+                    speed_duration 5.0
+                dead_time 5
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1 
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check forward descent 6 deg slope 360 turn around'
+                robot_position 
+                    x_pos 0
+                    y_pos 5.6
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 0
+                    y_ori -90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1  
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check forward descent 6 deg slope 360 turn around payload'
+                robot_position 
+                    x_pos 0
+                    y_pos 5.6
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 0
+                    y_ori -90
+                robot_goal 
+                    x_pos 2
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                robot_goal 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                payload 'pay_load_square'
+                    x_pos 0.00
+                    y_pos 5.6
+                    z_pos 1.0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1 
+            must_have_orientation
+                entity 'pay_load_square'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check cross descent 6 deg slope at 45 deg'
+                robot_position 
+                    x_pos 0
+                    y_pos 5.6
+                    z_pos 0.60
+                    r_ori 0
+                    p_ori 0
+                    y_ori -45
+                robot_goal 
+                    x_pos 0
+                    y_pos 0
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                manual_speed true
+                    robot_speed 100.0
+                    speed_duration 5.0
+                dead_time 5
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1 
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check left side ascent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos -0.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check right side ascent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos -0.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos -2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1  
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot with payload stability check left side ascent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos -0.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos 2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                payload 'pay_load_square'
+                    x_pos 0.15
+                    y_pos -0.5
+                    z_pos 0.5
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+            must_have_orientation
+                entity 'pay_load_square'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot with payload stability check right side ascent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos -0.5
+                    z_pos 0.20
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+                robot_goal 
+                    x_pos 2
+                    y_pos -2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                payload 'pay_load_square'
+                    x_pos 0.15
+                    y_pos -0.5
+                    z_pos 0.5
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1  
+            must_have_orientation
+                entity 'pay_load_square'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+    section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot with payload stability check left side descent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos 5.6
+                    z_pos 0.7
+                    r_ori 0
+                    p_ori 0
+                    y_ori -90
+                robot_goal 
+                    x_pos 2
+                    y_pos 2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                payload 'pay_load_square'
+                    x_pos 0.00
+                    y_pos 5.6
+                    z_pos 1.0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+            must_have_orientation
+                entity 'pay_load_square'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1 
+        section 13.3
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot with payload stability check right side descent 6 deg slope'
+                robot_position 
+                    x_pos 0
+                    y_pos 5.6
+                    z_pos 0.7
+                    r_ori 0
+                    p_ori 0
+                    y_ori -90
+                robot_goal 
+                    x_pos 2
+                    y_pos -2
+                    z_pos 0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 0
+                payload 'pay_load_square'
+                    x_pos 0.00
+                    y_pos 5.6
+                    z_pos 1.0
+                    r_ori 0
+                    p_ori 0
+                    y_ori 90
+            must_have_orientation
+                entity 'husky'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1 
+            must_have_orientation
+                entity 'pay_load_square'
+                angles
+                    roll 6.0
+                    pitch 6.0
+                    yaw 360.0
+                tolerance 1
+Test_definitions (E)

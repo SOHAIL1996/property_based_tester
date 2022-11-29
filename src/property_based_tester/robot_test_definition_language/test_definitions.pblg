@@ -1,0 +1,18 @@
+Test_definitions (S)
+    standard 'ISO 23482-1'
+        section 12.1
+            scenario_configuration
+                world_type 'slope_6deg'
+                description 'Robot stability check right side ascent 6 deg slope'
+                robot_position 
+                    x_pos 4.0 y_pos -0.5 z_pos 0.5
+                    r_ori 0 p_ori 0 y_ori 90
+                robot_goal 
+                    x_pos 2 y_pos 0 z_pos 0
+                    r_ori 0 p_ori 0 y_ori 0
+            must_have_orientation
+                entity 'b1'
+                angles
+                    roll 6.0 pitch 6.0 yaw 360.0
+                tolerance 1
+Test_definitions (E)

@@ -125,6 +125,21 @@ Current available robots:
    robot_size: [1.10, 0.45, 0.50] # x,y,z in meters
 ```
 
+5. Launching their navigation drivers
+
+```bash
+roslaunch husky_navigation move_base_mapless_demo.launch
+```
+```bash
+roslaunch jackal_navigation odom_navigation_demo.launch
+```
+```bash
+roslaunch rovo_navi odom_navigation.launch
+```
+```bash
+roslaunch b1_gazebo qre_gazebo_nav.launch
+```
+
 
 <p align="center">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/husky_waypoint_rviz.gif" />
@@ -208,7 +223,7 @@ rosrun xacro xacro -o model.urdf model.urdf.xacro
 - Run from inside the `src/property_based_tester/property_based_language_generator` folder, generates a DSL
 
 ```bash
-./pblg.sh
+./rtdl.sh
 ```
 
 - Test definitions are written in `src/property_based_tester/property_based_language_generator/standard_test_definitions.pblg`

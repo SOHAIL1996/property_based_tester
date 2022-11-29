@@ -222,15 +222,15 @@ rosrun xacro xacro -o model.urdf model.urdf.xacro
 
 3. Search in the .sdf file the collision tag corresponding to your URDF and place it in the contact sensors collision tag (i.e. sim_collider).
 
-### Property-Based Language Generator (TextX)
+### Robot Test Definition Language RTDL (TextX)
 
-- Run from inside the `src/property_based_tester/property_based_language_generator` folder, generates a DSL
+- Run from inside the `src/property_based_tester/robot_test_definition_language` folder, generates a DSL
 
 ```bash
 ./rtdl.sh
 ```
 
-- Test definitions are written in `src/property_based_tester/property_based_language_generator/standard_test_definitions.pblg`
+- Test definitions are written in `src/property_based_tester/robot_test_definition_language/standard_test_definitions.pblg`
 
 - Used for feeding into hypothesis for  generating tests 
 

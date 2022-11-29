@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Property-Based Language Generator: A domain specific language based on textX for mapping
+Robot Test Definition Language: A domain specific language based on textX for mapping
 usecases into tests via natural language.
 """
 

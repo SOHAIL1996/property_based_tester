@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Property-Based Test: Tests for mobile robots and robotic arms using the Property-Based Language Generator in 
+Property-Based Test: Tests for mobile robots and robotic arms using the Robot Test Definition Language in 
 randomized scenarios.
 """
 

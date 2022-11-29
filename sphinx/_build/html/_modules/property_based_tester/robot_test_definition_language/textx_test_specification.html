@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>property_based_tester.property_based_language_generation.textx_test_specification &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
+  <title>property_based_tester.robot_test_definition_language.textx_test_specification &mdash; Property-Based Testing: Formalized Robotic Testing for Standard Compliance 1.0 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -52,7 +52,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">property_based_tester.property_based_language_generation.textx_test_specification</li>
+      <li class="breadcrumb-item active">property_based_tester.robot_test_definition_language.textx_test_specification</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -61,7 +61,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for property_based_tester.property_based_language_generation.textx_test_specification</h1><div class="highlight"><pre>
+  <h1>Source code for property_based_tester.robot_test_definition_language.textx_test_specification</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -74,7 +74,7 @@
 
 <span class="kn">import</span> <span class="nn">random</span>
 
-<div class="viewcode-block" id="PropertyBasedLanguageGenerator"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator">[docs]</a><span class="k">class</span> <span class="nc">PropertyBasedLanguageGenerator</span><span class="p">():</span>
+<div class="viewcode-block" id="RobotTestDefinitionLanguage"><a class="viewcode-back" href="../../../property_based_tester.robot_test_definition_language.html#property_based_tester.robot_test_definition_language.textx_test_specification.RobotTestDefinitionLanguage">[docs]</a><span class="k">class</span> <span class="nc">RobotTestDefinitionLanguage</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Pre-processing of the test definitions for user tests as well as standard tests.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -125,7 +125,7 @@
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">scenario_composite_tests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_details</span><span class="p">)</span>        
 
-<div class="viewcode-block" id="PropertyBasedLanguageGenerator.scenario_composite_test_extractor"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGenerator.scenario_composite_test_extractor">[docs]</a>    <span class="k">def</span> <span class="nf">scenario_composite_test_extractor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">composite_tests</span><span class="p">):</span>
+<div class="viewcode-block" id="RobotTestDefinitionLanguage.scenario_composite_test_extractor"><a class="viewcode-back" href="../../../property_based_tester.robot_test_definition_language.html#property_based_tester.robot_test_definition_language.textx_test_specification.RobotTestDefinitionLanguage.scenario_composite_test_extractor">[docs]</a>    <span class="k">def</span> <span class="nf">scenario_composite_test_extractor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">composite_tests</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Pre-processing in which the composite properties are parsed and flagged with their </span>
 <span class="sd">        test types from the inputted test definitions. </span>
 
@@ -168,7 +168,7 @@
 
         <span class="k">return</span> <span class="p">(</span><span class="n">scen</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span></div></div>
 
-<div class="viewcode-block" id="PropertyBasedLanguageGeneratorRandomizer"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer">[docs]</a><span class="k">class</span> <span class="nc">PropertyBasedLanguageGeneratorRandomizer</span><span class="p">():</span>
+<div class="viewcode-block" id="RobotTestDefinitionLanguageRandomizer"><a class="viewcode-back" href="../../../property_based_tester.robot_test_definition_language.html#property_based_tester.robot_test_definition_language.textx_test_specification.RobotTestDefinitionLanguageRandomizer">[docs]</a><span class="k">class</span> <span class="nc">RobotTestDefinitionLanguageRandomizer</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Pre-processing of the test definitions for randomized tests.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -194,7 +194,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">rando_scenario</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_scenario_generation</span><span class="p">()</span>
         <span class="c1"># print(self.rando_scenario[0][2])</span>
 
-<div class="viewcode-block" id="PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.scenario_composite_test_extractor">[docs]</a>    <span class="k">def</span> <span class="nf">scenario_composite_test_extractor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">composite_tests</span><span class="p">):</span>
+<div class="viewcode-block" id="RobotTestDefinitionLanguageRandomizer.scenario_composite_test_extractor"><a class="viewcode-back" href="../../../property_based_tester.robot_test_definition_language.html#property_based_tester.robot_test_definition_language.textx_test_specification.RobotTestDefinitionLanguageRandomizer.scenario_composite_test_extractor">[docs]</a>    <span class="k">def</span> <span class="nf">scenario_composite_test_extractor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">composite_tests</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Pre-processing in which the composite properties are parsed and flagged with their </span>
 <span class="sd">        test types from the inputted test definitions. </span>
 
@@ -237,7 +237,7 @@
 
         <span class="k">return</span> <span class="p">(</span><span class="n">scen</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation"><a class="viewcode-back" href="../../../property_based_tester.property_based_language_generation.html#property_based_tester.property_based_language_generation.textx_test_specification.PropertyBasedLanguageGeneratorRandomizer.random_scenario_generation">[docs]</a>    <span class="k">def</span> <span class="nf">random_scenario_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RobotTestDefinitionLanguageRandomizer.random_scenario_generation"><a class="viewcode-back" href="../../../property_based_tester.robot_test_definition_language.html#property_based_tester.robot_test_definition_language.textx_test_specification.RobotTestDefinitionLanguageRandomizer.random_scenario_generation">[docs]</a>    <span class="k">def</span> <span class="nf">random_scenario_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Pre-processing in which the the randomized scenario modifiers from the test definitions </span>
 <span class="sd">        are extracted and returned. </span>
 
@@ -267,7 +267,7 @@
         
         <span class="k">return</span> <span class="n">random_scen</span></div></div>
 
-<span class="c1"># p = PropertyBasedLanguageGeneratorRandomizer()</span>
+<span class="c1"># p = RobotTestDefinitionLanguageRandomizer()</span>
 </pre></div>
 
            </div>

@@ -36,7 +36,7 @@ Indices and tables
 
 .. include:: property_based_tester.configuration.rst
 .. include:: property_based_tester.properties.rst
-.. include:: property_based_tester.property_based_language_generation.rst
+.. include:: property_based_tester.robot_test_definition_language.rst
 .. include:: property_based_tester.robot_controllers.rst
 .. include:: property_based_tester.scen_gen.rst
 .. include:: property_based_tester.temporal_cache.rst

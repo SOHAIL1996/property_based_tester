@@ -36,11 +36,13 @@
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/b1_iso23482-1_sec13.gif" width="32%"/>
 </p>
 
-### Copyright and licence
+## Copyright and licence
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![DOI](https://zenodo.org/badge/DOI/10.1109/ECMR50962.2021.9568837.svg)](https://ieeexplore.ieee.org/document/9568837)
 
 Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
+
+---
 
 ### Author 
 
@@ -48,7 +50,7 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 ### Co-authors
 
-*Prof. Dr. Nico Hochgeschwender, Prof. Dr. Paul G. Pl ̈oger, Sven Schneider*
+*Prof. Dr. Nico Hochgeschwender, Prof. Dr. Paul G. Pl ̈oger, M.Sc. Sven Schneider*
 
 ## Framework Overview
 
@@ -56,8 +58,10 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 
 ## Code Documentation
+![maintenance-status](https://img.shields.io/badge/Maintenance-passively--maintained-yellowgreen.svg)
+![maintainer](https://img.shields.io/badge/Maintainer-Salman-blue)
 
-[Docs: Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://htmlpreview.github.io/?https://github.com/SOHAIL1996/property_based_tester/blob/main/sphinx/_build/html/index.html)
+> [Docs: Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://htmlpreview.github.io/?https://github.com/SOHAIL1996/property_based_tester/blob/main/sphinx/_build/html/index.html)
 
 ## Running Framework (Hypothesis|ROS|Gazebo|Allure|TextX)
 
@@ -246,7 +250,11 @@ rosrun xacro xacro -o model.urdf model.urdf.xacro
 Supervised by:
  - Prof. Dr. Nico Hochgeschwender
  - Prof. Dr. Paul G. Pl ̈oger
- - Sven Schneider
+ - M.Sc. Sven Schneider
+ 
+Resource Provision:
+
+ - [MYBOTSHOP](https://mybotshop.de/)
 
 ## Software Requirements
 
@@ -282,9 +290,10 @@ Supervised by:
 * [xARM6](https://github.com/xArm-Developer/xarm_ros)
 * [Ouster](https://github.com/ouster-lidar/ouster-ros)
 * [Gazebo-pkgs](https://github.com/JenniferBuehler/gazebo-pkgs)
-* `yocs_cmd_vel_mux package`
-* `MBS ROVO2`
-* `RoboticsGroup_gazebo_plugins`
+* `MBS ROVO2` (Closed source)
+* `Quadruped B1` (Closed source)
+* [Yocs Velocity Smoother](https://github.com/yujinrobot/yujin_ocs/tree/devel/yocs_cmd_vel_mux)
+* [RoboticsGroup Gazebo Plugins](https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins)
 
 ## Hardware Requirements
 
@@ -295,11 +304,15 @@ These constitute the bare minimum requirements to run this package.
 * `Nvidia GeForce RTX 3060`
 * `250 Gb SSD`
 
-# Issues
+# Known Issues
 
 <p align="center" style="border:solid #6495ED">
   <img src="https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/gifs/rovo_physics_simulator_bug.gif" width="100%"/>
 </p>
+
+---
+
+The simulator bugging out can be caused by fast physics rendering.  Turn the [real time factor](https://classic.gazebosim.org/tutorials?tut=physics_params&cat=physics) of the physics simulatior down to get better results.
 
 ## Movebase not working
 

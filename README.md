@@ -52,6 +52,22 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 *Prof. Dr. Nico Hochgeschwender, Prof. Dr. Paul G. Pl ̈oger, M.Sc. Sven Schneider*
 
+## Publication
+[Automated Testing of Standard Conformance for Robots](https://ieeexplore.ieee.org/document/10260447)
+```bash
+@INPROCEEDINGS{10260447,
+  author={Sohail, Salman Omar and Schneider, Sven and Hochgeschwender, Nico},
+  booktitle={2023 IEEE 19th International Conference on Automation Science and Engineering (CASE)}, 
+  title={Automated Testing of Standard Conformance for Robots}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-8},
+  keywords={Computer aided software engineering;Automation;ISO Standards;Manuals;Conformance testing;Robots;Standards},
+  doi={10.1109/CASE56687.2023.10260447}}
+
+```
+
 ## Framework Overview
 
 ![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/figures/Methodology.jpg)

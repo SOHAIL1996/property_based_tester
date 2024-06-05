@@ -63,8 +63,11 @@ Copyright (C) 2024 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
   volume={},
   number={},
   pages={1-8},
+  abstract={Verifying that robots conform to standards is an essential part of any responsible development process. A common technique to verify whether robots faithfully meet the requirements of standards is testing. Unfortunately, conformance testing is, to a large extent, a manual and therefore costly exercise which needs to be repeated for every robot under test. In this paper, we propose an automated approach to robot standard conformance testing (RSCT). Based on an analysis of conformance clauses in robot standards (e.g., ISO 23482–1 and ISO 10218) we identify, harmonise and formalise high-level properties representing the assertions to be tested. To verify whether properties hold, we put forward a Robot Test Definition Language (RTDL) which enables developers to specify reusable test scenarios which can be executed in simulation. We evaluate the approach with four heterogeneous robot platforms, identifying previously undiscovered defects in a robot driver. Our approach enables the automated testing of 40% of the conformance clauses defined in ISO 23482–1.},
   keywords={Computer aided software engineering;Automation;ISO Standards;Manuals;Conformance testing;Robots;Standards},
-  doi={10.1109/CASE56687.2023.10260447}}
+  doi={10.1109/CASE56687.2023.10260447},
+  ISSN={2161-8089},
+  month={Aug},}
 ```
 
 [Property-Based Testing in Simulation for Verifying Robot Action Execution in Tabletop Manipulation](https://ieeexplore.ieee.org/document/9568837)
@@ -77,8 +80,11 @@ Copyright (C) 2024 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
   volume={},
   number={},
   pages={1-7},
+  abstract={An important prerequisite for the reliability and robustness of a service robot is ensuring the robot’s correct behavior when it performs various tasks of interest. Extensive testing is one established approach for ensuring behavioural correctness; this becomes even more important with the integration of learning-based methods into robot software architectures, as there are often no theoretical guarantees about the performance of such methods in varying scenarios. In this paper, we aim towards evaluating the correctness of robot behaviors in tabletop manipulation through automatic generation of simulated test scenarios in which a robot assesses its performance using property-based testing. In particular, key properties of interest for various robot actions are encoded in an action ontology and are then verified and validated within a simulated environment. We evaluate our framework with a Toyota Human Support Robot (HSR) which is tested in a Gazebo simulation. We show that our framework can correctly and consistently identify various failed actions in a variety of randomised tabletop manipulation scenarios, in addition to providing deeper insights into the type and location of failures for each designed property.},
   keywords={Software architecture;Service robots;Reliability theory;Ontologies;Robustness;Software reliability;Mobile robots},
-  doi={10.1109/ECMR50962.2021.9568837}}
+  doi={10.1109/ECMR50962.2021.9568837},
+  ISSN={},
+  month={Aug},}
 ```
 ## Framework Overview
 

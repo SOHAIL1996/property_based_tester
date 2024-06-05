@@ -52,7 +52,7 @@ Copyright (C) 2024 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 *Nico Hochgeschwender, Paul G. Pl ̈oger, Sven Schneider*
 
-## Publication
+## Publications
 [Automated Testing of Standard Conformance for Robots](https://ieeexplore.ieee.org/document/10260447)
 ```bash
 @INPROCEEDINGS{10260447,

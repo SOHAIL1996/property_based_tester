@@ -40,7 +40,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![DOI](https://zenodo.org/badge/DOI/10.1109/ECMR50962.2021.9568837.svg)](https://ieeexplore.ieee.org/document/9568837)
 
-Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
+Copyright (C) 2024 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 ---
 
@@ -50,7 +50,7 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
 
 ### Co-authors
 
-*Prof. Dr. Nico Hochgeschwender, Prof. Dr. Paul G. Pl ̈oger, M.Sc. Sven Schneider*
+*Nico Hochgeschwender, Paul G. Pl ̈oger, Sven Schneider*
 
 ## Publication
 [Automated Testing of Standard Conformance for Robots](https://ieeexplore.ieee.org/document/10260447)
@@ -65,9 +65,21 @@ Copyright (C) 2022 by [Hochschule Bonn Rhein Sieg](https://www.h-brs.de/de)
   pages={1-8},
   keywords={Computer aided software engineering;Automation;ISO Standards;Manuals;Conformance testing;Robots;Standards},
   doi={10.1109/CASE56687.2023.10260447}}
-
 ```
 
+[Property-Based Testing in Simulation for Verifying Robot Action Execution in Tabletop Manipulation](https://ieeexplore.ieee.org/document/9568837)
+```bash
+@INPROCEEDINGS{9568837,
+  author={Sohail, Salman Omar and Mitrevski, Alex and Hochgeschwender, Nico and Plöger, Paul G.},
+  booktitle={2021 European Conference on Mobile Robots (ECMR)}, 
+  title={Property-Based Testing in Simulation for Verifying Robot Action Execution in Tabletop Manipulation}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={1-7},
+  keywords={Software architecture;Service robots;Reliability theory;Ontologies;Robustness;Software reliability;Mobile robots},
+  doi={10.1109/ECMR50962.2021.9568837}}
+```
 ## Framework Overview
 
 ![Overview Property-Based Testing: Formalized Robotic Testing for Standard Compliance](https://github.com/SOHAIL1996/property_based_tester/blob/main/documentation/figures/Methodology.jpg)
